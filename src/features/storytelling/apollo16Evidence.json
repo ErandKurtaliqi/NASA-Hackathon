@@ -59,6 +59,17 @@
         "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_9_as16-0052-71p-519-sic_inspection_in_vab-9.22.71.jpg",
         "width": 985,
         "height": 779
+      },
+      {
+        "id": "apollo16-evidence-1-3-3",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/10/apollo_16_and_17_7_as16-0156-71hc-1452_nov_16_1971_0.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/10/apollo_16_and_17_7_as16-0156-71hc-1452_nov_16_1971_0.jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 945,
+        "title": "Apollo 16 spacecraft preparation",
+        "caption": "Technicians work around the Apollo 16 spacecraft before launch.",
+        "alt": "Apollo 16 spacecraft preparation"
       }
     ],
     [
@@ -83,6 +94,17 @@
         "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_3_geol_field_trip_mono_craters_ca_jun_10_1971_s71-36834.jpg",
         "width": 985,
         "height": 686
+      },
+      {
+        "id": "apollo16-evidence-1-4-3",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_4_geol_field_trip_sudbury_ontario_jul_9_1971_s71-39840.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_4_geol_field_trip_sudbury_ontario_jul_9_1971_s71-39840.jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 642,
+        "title": "Geology training at Sudbury",
+        "caption": "The crew practices field geology in Sudbury, Ontario.",
+        "alt": "Geology training at Sudbury"
       }
     ]
   ],
@@ -100,6 +122,17 @@
         "height": 375
       },
       {
+        "id": "apollo16-evidence-2-1-2",
+        "src": "https://images-assets.nasa.gov/image/7029784/7029784~large.jpg?w=1469&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "sourceUrl": "https://images-assets.nasa.gov/image/7029784/7029784~large.jpg?w=1469&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "credit": "NASA",
+        "width": 1469,
+        "height": 1920,
+        "title": "Saturn V clears the pad",
+        "caption": "Apollo 16 launches aboard a Saturn V.",
+        "alt": "Saturn V clears the pad"
+      },
+      {
         "id": "apollo16-p3-3",
         "title": "Descartes landing site",
         "caption": "Descartes landing site.",
@@ -109,6 +142,18 @@
         "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_2_landing_site_closeup.jpg",
         "width": 985,
         "height": 711
+      },
+      {
+        "id": "apollo16-evidence-2-1-4",
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwenYzd9dq2pXrML4YmrIyz27_YPZfhc7O94CraFiUdg&s=10",
+        "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwenYzd9dq2pXrML4YmrIyz27_YPZfhc7O94CraFiUdg&s=10",
+        "credit": "Supplied image",
+        "width": 638,
+        "height": 480,
+        "title": "Apollo spacecraft illustration",
+        "caption": "An illustration depicts an Apollo spacecraft above the lunar surface.",
+        "alt": "Apollo spacecraft illustration",
+        "kind": "Illustration · not a photograph"
       }
     ],
     [
@@ -125,14 +170,36 @@
       },
       {
         "id": "apollo16-p3-6",
-        "title": "Apollo 16 surface operations",
-        "caption": "Apollo 16 surface operations.",
-        "alt": "Apollo 16 surface operations",
+        "title": "John Young salutes the flag",
+        "caption": "Young jumps while saluting at the Descartes landing site.",
+        "alt": "John Young salutes the flag",
         "credit": "NASA",
         "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/as16-113-18339.jpg?w=1024",
         "src": "https://www.nasa.gov/wp-content/uploads/2023/03/as16-113-18339.jpg?w=1024",
         "width": 1024,
         "height": 1024
+      },
+      {
+        "id": "apollo16-evidence-2-2-3",
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-EYmuG1ebIsFMJXvicmt-vgOQ7bmmcx05d7UAkGw1xA&s=10",
+        "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-EYmuG1ebIsFMJXvicmt-vgOQ7bmmcx05d7UAkGw1xA&s=10",
+        "credit": "Supplied image",
+        "width": 480,
+        "height": 638,
+        "title": "Tracks across the landing site",
+        "caption": "An annotated overhead view traces activity at the landing site.",
+        "alt": "Tracks across the landing site"
+      },
+      {
+        "id": "apollo16-evidence-2-2-4",
+        "src": "https://www.nasa.gov/wp-content/uploads/2023/03/as16-114-18388.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/as16-114-18388.jpg",
+        "credit": "NASA",
+        "width": 1041,
+        "height": 1070,
+        "title": "Fieldwork in the Descartes Highlands",
+        "caption": "An Apollo 16 astronaut stands on the uneven lunar surface.",
+        "alt": "Fieldwork in the Descartes Highlands"
       }
     ],
     [
@@ -185,7 +252,7 @@
     ]
   ],
   [
-    null,
+    [],
     [
       {
         "id": "apollo16-p4-3",
@@ -197,6 +264,17 @@
         "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_28_eva1_from_rover_as16-109-17849.jpg",
         "width": 985,
         "height": 985
+      },
+      {
+        "id": "apollo16-evidence-3-2-2",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_38_eva3_sta_11_w_rover_and_duke_as16-116-18607hr.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_38_eva3_sta_11_w_rover_and_duke_as16-116-18607hr.jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 997,
+        "title": "Rover and Duke at Station 11",
+        "caption": "Duke and the rover appear at Station 11 during the third moonwalk.",
+        "alt": "Rover and Duke at Station 11"
       }
     ],
     [
@@ -221,16 +299,50 @@
         "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_26_eva1_sta_1_duke_collecting_big_muley.jpg",
         "width": 270,
         "height": 235
+      },
+      {
+        "id": "apollo16-evidence-3-3-3",
+        "src": "https://www.nasa.gov/wp-content/uploads/2023/03/a16_61016_football_captioned.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/a16_61016_football_captioned.jpg",
+        "credit": "NASA",
+        "width": 1041,
+        "height": 988,
+        "title": "Big Muley after return to Earth",
+        "caption": "An annotated photo shows Apollo 16 sample 61016 beside a football for scale.",
+        "alt": "Big Muley after return to Earth"
       }
     ]
   ],
   [
     [
       {
+        "id": "apollo16-evidence-4-1-1",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_30_eva1_lrv_grand_prix_still_from_movie_apr_21_1972_s72-37002.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_30_eva1_lrv_grand_prix_still_from_movie_apr_21_1972_s72-37002.jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 678,
+        "title": "The Lunar Rover Grand Prix",
+        "caption": "A frame from the rover handling demonstration shows John Young driving on the Moon.",
+        "alt": "The Lunar Rover Grand Prix",
+        "kind": "Video frame · actual mission footage"
+      },
+      {
+        "id": "apollo16-evidence-4-1-2",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_37_eva3_lm_w_rover_and_young_as16-116-18578.jpg",
+        "sourceUrl": "https://cache.getarchive.net/Prod/thumb/cdn2/L3Bob3RvLzIwMTAvMDgvMDQvYXBvbGxvLTE2LW1pc3Npb24taW1hZ2UtYXN0cm9uYXV0LWpvaG4tdy15b3VuZy1jb21tYW5kZXItb2YtdGhlLWFwb2xsby0xNi1sdW5hci05NzFlMTEtMTAyNC5qcGc%3D/320/336/jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 985,
+        "title": "John Young working at the rover",
+        "caption": "Young works beside the rover and lunar module Orion.",
+        "alt": "John Young working at the rover"
+      },
+      {
         "id": "apollo16-p5-10",
-        "title": "Apollo 16 rover preparations",
-        "caption": "Apollo 16 rover preparations.",
-        "alt": "Apollo 16 rover preparations",
+        "title": "John Young, Apollo 16 commander",
+        "caption": "Young’s astronaut portrait.",
+        "alt": "John Young, Apollo 16 commander",
         "credit": "NASA",
         "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/s71-51261.jpg?resize=812,1024",
         "src": "https://www.nasa.gov/wp-content/uploads/2023/03/s71-51261.jpg?resize=812,1024",
@@ -239,9 +351,9 @@
       },
       {
         "id": "apollo16-p5-11",
-        "title": "Apollo 16 rover documentation",
-        "caption": "Apollo 16 rover documentation.",
-        "alt": "Apollo 16 rover documentation",
+        "title": "Charles Duke, lunar module pilot",
+        "caption": "Duke’s astronaut portrait.",
+        "alt": "Charles Duke, lunar module pilot",
         "credit": "NASA",
         "sourceUrl": "https://images-assets.nasa.gov/image/S71-51289/S71-51289~large.jpg?w=819&h=1024&fit=crop&crop=faces%2Cfocalpoint",
         "src": "https://images-assets.nasa.gov/image/S71-51289/S71-51289~large.jpg?w=819&h=1024&fit=crop&crop=faces%2Cfocalpoint",
@@ -271,25 +383,73 @@
         "src": "https://www.nasa.gov/wp-content/uploads/2019/07/earth-geocorona-and-aurorae_0.jpg?resize=1200,994",
         "width": 1200,
         "height": 994
+      },
+      {
+        "id": "apollo16-evidence-4-2-3",
+        "src": "https://www.nasa.gov/wp-content/uploads/2019/07/ultraviolet-camera-spectrograph.jpg?resize=1200,1156",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2019/07/ultraviolet-camera-spectrograph.jpg?resize=1200,1156",
+        "credit": "NASA",
+        "width": 1200,
+        "height": 1156,
+        "title": "Ultraviolet camera and spectrograph",
+        "caption": "The instrument photographed Earth and astronomical targets in far-ultraviolet light.",
+        "alt": "Ultraviolet camera and spectrograph"
       }
     ],
-    [],
     [
       {
+        "id": "apollo16-evidence-4-3-1",
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxW96WKMHgONDctifHfVAfbmdULTHIpIAJ-VHGkS7D7cRrydKDlo502qg&s=10",
+        "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxW96WKMHgONDctifHfVAfbmdULTHIpIAJ-VHGkS7D7cRrydKDlo502qg&s=10",
+        "credit": "Supplied image",
+        "width": 444,
+        "height": 450,
+        "title": "View toward the parked rover",
+        "caption": "The rover is visible in the distance from Orion.",
+        "alt": "View toward the parked rover"
+      }
+    ],
+    [
+      {
+        "id": "apollo16-evidence-4-4-1",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_6_s72-35612.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_6_s72-35612.jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 783,
+        "title": "Orion before ascent",
+        "caption": "A television frame shows Orion on the lunar surface before liftoff.",
+        "alt": "Orion before ascent",
+        "kind": "Video frame · actual mission footage"
+      },
+      {
         "id": "apollo16-p6-4",
-        "title": "Orion’s lunar liftoff",
-        "caption": "Orion’s lunar liftoff.",
-        "alt": "Orion’s lunar liftoff",
+        "title": "Orion ignites its ascent engine",
+        "caption": "A television frame captures the start of liftoff.",
+        "alt": "Orion ignites its ascent engine",
         "credit": "NASA",
         "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_7_s72-35613.jpg",
         "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_7_s72-35613.jpg",
         "width": 985,
-        "height": 746
+        "height": 746,
+        "kind": "Video frame · actual mission footage"
+      },
+      {
+        "id": "apollo16-evidence-4-4-3",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_8_s72-35614.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_8_s72-35614.jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 775,
+        "title": "Orion rises above the Moon",
+        "caption": "A third television frame shows the ascent stage above the lunar surface.",
+        "alt": "Orion rises above the Moon",
+        "kind": "Video frame · actual mission footage"
       },
       {
         "id": "apollo16-p6-6",
         "title": "Orion approaches in lunar orbit",
-        "caption": "Orion approaches in lunar orbit.",
+        "caption": "The ascent stage returns to the command module.",
         "alt": "Orion approaches in lunar orbit",
         "credit": "NASA",
         "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_9_lm_approach_rev_53_as16-122-19530.jpg",
@@ -299,14 +459,36 @@
       },
       {
         "id": "apollo16-p6-7",
-        "title": "Apollo 16 splashdown recovery",
-        "caption": "Apollo 16 splashdown recovery.",
-        "alt": "Apollo 16 splashdown recovery",
+        "title": "Apollo 16 descends under parachutes",
+        "caption": "The command module approaches the ocean at the end of the mission.",
+        "alt": "Apollo 16 descends under parachutes",
         "credit": "NASA",
         "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_4_as16-0545c-s72-36291-4.27.72.jpg",
         "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_4_as16-0545c-s72-36291-4.27.72.jpg",
         "width": 985,
         "height": 985
+      },
+      {
+        "id": "apollo16-evidence-4-4-6",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_7_as16-0561-s72-36435.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_7_as16-0561-s72-36435.jpg",
+        "credit": "NASA",
+        "width": 985,
+        "height": 791,
+        "title": "Recovery after splashdown",
+        "caption": "A recovery team reaches the command module in the Pacific.",
+        "alt": "Recovery after splashdown"
+      },
+      {
+        "id": "apollo16-evidence-4-4-7",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_13_as16-0583-s72-36526.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_13_as16-0583-s72-36526.jpg",
+        "credit": "NASA",
+        "width": 799,
+        "height": 611,
+        "title": "Apollo 16 crew aboard the recovery ship",
+        "caption": "The astronauts are photographed aboard the recovery ship after splashdown.",
+        "alt": "Apollo 16 crew aboard the recovery ship"
       }
     ]
   ]
