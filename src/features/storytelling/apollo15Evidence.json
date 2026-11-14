@@ -1,28 +1,39 @@
 [
   [
     {
-      "id": "apollo15-p2-1",
-      "title": "LRV-1 on the Moon",
-      "caption": "The Apollo 15 rover on the lunar surface.",
-      "alt": "LRV-1 on the Moon",
-      "credit": "NASA",
-      "sourceUrl": "https://images-assets.nasa.gov/image/as15-88-11901/as15-88-11901~medium.jpg",
-      "src": "https://images-assets.nasa.gov/image/as15-88-11901/as15-88-11901~medium.jpg",
-      "width": 1224,
-      "height": 1280
+      "id": "apollo15-intro-1",
+      "title": "Apollo 15 mission patch",
+      "caption": "The mission insignia bears the names of David Scott, Alfred Worden and James Irwin.",
+      "alt": "Apollo 15 mission patch",
+      "credit": "Supplied image",
+      "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK2-gQ5ptvUh3HFPD8oTs7NQRtV24WbAE0CfvjUIOUalYWZ4-a_qeH5ZI&s=10",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK2-gQ5ptvUh3HFPD8oTs7NQRtV24WbAE0CfvjUIOUalYWZ4-a_qeH5ZI&s=10",
+      "width": 563,
+      "height": 545
+    },
+    {
+      "id": "apollo15-intro-2",
+      "title": "Lunar roving vehicle",
+      "caption": "A Smithsonian view of the Lunar Roving Vehicle.",
+      "alt": "Lunar roving vehicle",
+      "credit": "Smithsonian National Air and Space Museum",
+      "sourceUrl": "https://airandspace.si.edu/sites/default/files/styles/body_large/public/2021-07/NASM-NASM2020-00046.jpg.webp?itok=T4-bYZFK",
+      "src": "https://airandspace.si.edu/sites/default/files/styles/body_large/public/2021-07/NASM-NASM2020-00046.jpg.webp?itok=T4-bYZFK",
+      "width": 910,
+      "height": 683
     }
   ],
   [
     {
-      "id": "apollo15-p2-2",
-      "title": "Apollo landing sites",
-      "caption": "A map provides context for the choice of Hadley-Apennine.",
-      "alt": "Apollo landing sites",
-      "credit": "NASA",
-      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2019/07/edu_srch_celebrate_the_50th_anniversary_apollo11.jpg?resize=2000,1560",
-      "src": "https://www.nasa.gov/wp-content/uploads/2019/07/edu_srch_celebrate_the_50th_anniversary_apollo11.jpg?resize=2000,1560",
-      "width": 2000,
-      "height": 1560
+      "id": "apollo15-apennines",
+      "title": "Hadley-Apennine",
+      "caption": "A color-shaded orbital view of the lunar Apennines around the Apollo 15 destination.",
+      "alt": "Hadley-Apennine",
+      "credit": "NASA / LROC / Arizona State University",
+      "sourceUrl": "https://lroc.im-ldi.com/ckeditor_assets/pictures/43/content_apennines-waccolorshade.png",
+      "src": "https://lroc.im-ldi.com/ckeditor_assets/pictures/43/content_apennines-waccolorshade.png",
+      "width": 952,
+      "height": 931
     }
   ],
   [
@@ -47,28 +58,96 @@
       "src": "https://www.nasa.gov/wp-content/uploads/2021/04/apollo_15_l-3_months_1_crew_posing_w_rover_mar_1971_s71-22407.jpg",
       "width": 985,
       "height": 835
+    },
+    {
+      "id": "apollo15-build-3",
+      "title": "Rover and lunar module during training",
+      "caption": "The astronauts rehearse surface operations with the rover and lunar module before flight.",
+      "alt": "Apollo 15 crew training with the rover and lunar module",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/04/apollo_15_l-3_months_16_as15-0242-71pc-339.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/04/apollo_15_l-3_months_16_as15-0242-71pc-339.jpg",
+      "width": 985,
+      "height": 925
     }
   ],
-  [],
   [
     {
-      "id": "apollo15-p3-2",
-      "title": "Apollo 15 launch",
-      "caption": "The Saturn V carries Apollo 15 into flight.",
-      "alt": "Apollo 15 launch",
+      "id": "apollo15-deployment",
+      "title": "Unfolding the lunar rover",
+      "caption": "The deployment sequence shows how the folded rover was lowered from the lunar module.",
+      "alt": "Unfolding the lunar rover",
+      "credit": "HistoryLink",
+      "sourceUrl": "https://www.historylink.org/Content/Media/Photos/Large/Lunar_Rover_Deploymen.jpg",
+      "src": "https://www.historylink.org/Content/Media/Photos/Large/Lunar_Rover_Deploymen.jpg",
+      "kind": "Illustration · not a photograph",
+      "width": 1024,
+      "height": 475
+    }
+  ],
+  [
+    {
+      "id": "apollo15-launch-1",
+      "title": "Saturn V rollout",
+      "caption": "The Saturn V and its launch tower roll out before the mission.",
+      "alt": "Saturn V rollout",
       "credit": "NASA",
-      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_launch_9_as15-0542-71hc-1107.jpg",
+      "sourceUrl": "https://www.nasa.gov/history/apollo-15-launches-to-the-moon/",
+      "src": "https://images-assets.nasa.gov/image/S71-33786/S71-33786~large.jpg?w=1557&h=1919&fit=clip&crop=faces%2Cfocalpoint",
+      "width": 1557,
+      "height": 1919
+    },
+    {
+      "id": "apollo15-launch-2",
+      "title": "Apollo 15 liftoff",
+      "caption": "Apollo 15 launches aboard a Saturn V on July 26, 1971.",
+      "alt": "Apollo 15 liftoff",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/history/apollo-15-launches-to-the-moon/",
       "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_launch_9_as15-0542-71hc-1107.jpg",
       "width": 985,
       "height": 302
     },
     {
-      "id": "apollo15-p3-6",
-      "title": "Apollo 15 on the lunar surface",
-      "caption": "A mission photograph from the crew’s time at Hadley-Apennine.",
-      "alt": "Apollo 15 on the lunar surface",
+      "id": "apollo15-launch-3",
+      "title": "Mission Control during launch",
+      "caption": "Controllers follow Apollo 15 from Houston.",
+      "alt": "Mission Control during launch",
       "credit": "NASA",
-      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/as15-88-11866orig.jpg",
+      "sourceUrl": "https://www.nasa.gov/history/apollo-15-launches-to-the-moon/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_launch_10_mcc_t45_minutes_s71-41357.jpg",
+      "width": 985,
+      "height": 393
+    },
+    {
+      "id": "apollo15-launch-4",
+      "title": "Falcon during the journey to the Moon",
+      "caption": "The crew photographed the lunar module during the transposition and docking maneuver.",
+      "alt": "Falcon as seen from the command module",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/history/apollo-15-launches-to-the-moon/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_launch_11_as15-91-12331.jpg",
+      "width": 985,
+      "height": 985
+    },
+    {
+      "id": "apollo15-launch-5",
+      "title": "Earth from Apollo 15",
+      "caption": "The crew photographed Earth from about 54,900 miles away.",
+      "alt": "Earth from Apollo 15",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/history/apollo-15-launches-to-the-moon/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_launch_14_as15-91-12344_earth_from_54_900_mi.jpg",
+      "width": 450,
+      "height": 450
+    },
+    {
+      "id": "apollo15-launch-6",
+      "title": "The rover on the lunar surface",
+      "caption": "Apollo 15 reached Hadley-Apennine, where the crew deployed the rover.",
+      "alt": "The rover on the lunar surface",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-15/",
       "src": "https://www.nasa.gov/wp-content/uploads/2023/03/as15-88-11866orig.jpg",
       "width": 1041,
       "height": 1041
@@ -122,6 +201,17 @@
       "src": "https://www.nasa.gov/wp-content/uploads/2023/03/as15-85-11514.jpg?w=1019",
       "width": 1019,
       "height": 1023
+    },
+    {
+      "id": "apollo15-milestone-2",
+      "title": "Rover traverses at Hadley-Apennine",
+      "caption": "Colored route lines trace the rover’s journeys across the landing area.",
+      "alt": "Route lines over the Hadley-Apennine landscape",
+      "credit": "Supplied image",
+      "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFk0rg8gqF0pcY5jRmhGT3n1Q1m8mjxiHXDe-dBoZRC7Duqr5MxtX432M4&s=10",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFk0rg8gqF0pcY5jRmhGT3n1Q1m8mjxiHXDe-dBoZRC7Duqr5MxtX432M4&s=10",
+      "width": 447,
+      "height": 447
     }
   ],
   [
@@ -233,18 +323,65 @@
       "height": 307
     }
   ],
-  null,
   [
     {
-      "id": "apollo15-p5-5",
-      "title": "Falcon and the parked rover",
-      "caption": "A final surface photograph shows Falcon and LRV-1 in the distance.",
-      "alt": "Falcon and the parked rover",
+      "id": "apollo15-liftoff-1",
+      "title": "Falcon begins lunar liftoff",
+      "caption": "The rover-mounted camera recorded the start of the ascent.",
+      "alt": "Falcon begins lunar liftoff",
       "credit": "NASA",
-      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_34_eva3_final_surface_photo_lm_and_rover_in_distance_as15-88-11930hr.jpg",
-      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_34_eva3_final_surface_photo_lm_and_rover_in_distance_as15-88-11930hr.jpg",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_10_liftoff_from_rover_1_as15-0979-s71-41511.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_10_liftoff_from_rover_1_as15-0979-s71-41511.jpg",
+      "kind": "Video frame · actual mission footage",
+      "width": 985,
+      "height": 708
+    },
+    {
+      "id": "apollo15-liftoff-2",
+      "title": "Falcon rises above the Moon",
+      "caption": "A second frame from the rover’s television coverage of liftoff.",
+      "alt": "Falcon rises above the Moon",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_11_liftoff_from_rover_2_10075757.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_11_liftoff_from_rover_2_10075757.jpg",
+      "kind": "Video frame · actual mission footage",
+      "width": 628,
+      "height": 476
+    },
+    {
+      "id": "apollo15-post-eva",
+      "title": "The site after the final moonwalk",
+      "caption": "An Apollo 15 surface view after the crew’s third moonwalk.",
+      "alt": "The site after the final moonwalk",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_7_post_eva3_1_as15-88-11936hr_0.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_7_post_eva3_1_as15-88-11936hr_0.jpg",
       "width": 985,
       "height": 993
+    },
+    {
+      "id": "apollo15-endeavour",
+      "title": "Endeavour seen from Falcon",
+      "caption": "The Apollo 15 command and service module photographed from the lunar module.",
+      "alt": "Endeavour seen from Falcon",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_17_endeavour_from_falcon_as15-88-11973.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/08/apollo_15_return_to_earth_17_endeavour_from_falcon_as15-88-11973.jpg",
+      "width": 985,
+      "height": 985
+    }
+  ],
+  [
+    {
+      "id": "apollo15-site-map",
+      "title": "Apollo 15 landing site from orbit",
+      "caption": "An annotated map locates the lander, parked rover and other features at Hadley-Apennine.",
+      "alt": "Apollo 15 landing site from orbit",
+      "credit": "NASA / LROC / Arizona State University",
+      "sourceUrl": "https://lroc.im-ldi.com/ckeditor_assets/pictures/1068/content_A15_site_map2.png",
+      "src": "https://lroc.im-ldi.com/ckeditor_assets/pictures/1068/content_A15_site_map2.png",
+      "width": 1100,
+      "height": 699
     }
   ],
   null

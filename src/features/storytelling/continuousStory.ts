@@ -29,7 +29,7 @@ export function terrainId(id: string) { return id.startsWith('apollo-') ? `apoll
 function evidenceGalleries(rows: readonly (typeof apollo11Evidence[number] | null)[]) {
   return rows.map(entries => entries?.map((image): StoryEvidenceMedia => ({
     ...image,
-    kind: (image.kind === 'Illustration · not a photograph' || image.src.includes('lrv_deployment_art') || image.id === 'apollo17-battery' || image.src.startsWith('/images/apollo11-evidence/')) ? 'Illustration · not a photograph' : 'Photograph',
+    kind: image.kind === 'Video frame · actual mission footage' ? image.kind : (image.kind === 'Illustration · not a photograph' || image.src.includes('lrv_deployment_art') || image.id === 'apollo17-battery' || image.src.startsWith('/images/apollo11-evidence/')) ? 'Illustration · not a photograph' : 'Photograph',
     originalUrl: image.src.startsWith('/images/') ? image.sourceUrl : image.src,
     srcSet: '',
     verifiedOn: '2026-11-13',
@@ -65,6 +65,12 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
       if (story.id === 'apollo-15-rover') {
         gallery = apollo15Galleries[c * 4 + s]
         evidence = gallery ? gallery[0] : apollo15StoryMedia[apollo15SegmentMedia[c][s]]
+        if (c === 3 && s === 3) {
+          evidence = undefined
+          evidenceLabel = 'Apollo 15: Never Been on a Ride like this Before'
+          evidenceSummary = 'Watch NASA’s Apollo 15 footage on YouTube.'
+          source = 'https://youtu.be/1Mqsd0ru_pc?si=W3z5PPmRZB5XqIXZ'
+        }
       }
       else if (story.id === 'apollo-16-rover') {
         gallery = apollo16Galleries[c][s]
