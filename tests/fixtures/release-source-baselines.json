@@ -1,0 +1,33 @@
+{
+  "format": "sha256 of UTF-8 with LF line endings; prefixLength counts JavaScript characters",
+  "approvedVisualReference": "7129c6b",
+  "integratedReference": "b9de4fe",
+  "approvedFiles": {
+    "src/components/storytelling/Apollo15ScrollStory.tsx": "b87157e3f696e2cef7913866b10fe2ad80bd111f4dfe017933bb1379e095b45f",
+    "src/components/storytelling/CinematicStoryLayout.module.css": "5476e40b77215b6dd2e4af47cddb3f9d80a3b9fe3fb96893d27210e0e88e646d"
+  },
+  "approvedPrefixes": {
+    "src/components/storytelling/Apollo15ScrollStory.module.css": {
+      "prefixLength": 10142,
+      "sha256": "867cb411618b3cad3a44e8cc38c1df3b3b2b64696df9522a0a11e955f33893ff"
+    },
+    "src/components/storytelling/StoryPresentation.module.css": {
+      "prefixLength": 3027,
+      "sha256": "ec62a0bc5358927b6d850192fd56cd558c14400c63ad943f062a81f50ee4201e"
+    }
+  },
+  "integrationFiles": {
+    "src/features/storytelling/storyCatalog.ts": "bfebb0315e54279f5178a9326e2d565939783eb26ff126323818a567c0a0c6cb",
+    "src/components/MachineStoryPage.tsx": "7eb8f7b9450bf5514dd726e4c6cbd637a1860cfc4b4aba70cfbdba6fb708f48e",
+    "src/features/storytelling/reviewMediaPolicy.ts": "e6df6e2ca2be96e20ae4360a0f1b814fa2d80ea2f32d7b41e802d037256cd10b",
+    "src/components/storytelling/ReviewStoryRecording.tsx": "cd87604d1485f961b7219eb27fed9460cd95de0c4dbffd5a939a3ed562385b51",
+    "src/store.ts": "5301c83ba9e9b1ef7675137062c53e81dbcebb386bc887bdc91d3d0483add0e4"
+  },
+  "marsLegacyReference": "b146db0",
+  "marsLegacyObjects": {
+    "sojourner": "d41eb8848e09764f7deb79f443b4a7630aa01dfda7008c042881979c83a35d05",
+    "opportunity": "0af46ad43b4e0befb1380dd09d17d956e2f7aa7c6cb9f8f61b7a174bac538bb4",
+    "viking-1": "d0cb3a47f5648caeb835c28a8d98b36046548795cfe5b0adaba31d9465fe4585"
+  },
+  "marsLegacyHardware": "575659888785d397f430d428ac58875c18df1e9132992ad0270f663decf475af"
+}

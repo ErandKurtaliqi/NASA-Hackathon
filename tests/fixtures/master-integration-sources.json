@@ -1,0 +1,94 @@
+{
+  "feature": "ddb458657e1fa5fca0bd117f265e95b444090712",
+  "master": "3b45e8f2324e8af85e55d81a1020306e95e1706e",
+  "files": [
+    {
+      "path": "package.json",
+      "integratedSha256": "3e3fbc6076f46ab6987ee687f38d96c7b6d17abcf8f2209c0788b4d4fc4655cf"
+    },
+    {
+      "path": "scripts/localStoryMedia.mjs",
+      "integratedSha256": "b2e8a3d17c0e366858c7aa991ee79e27d70e95c5877e72ac90d57c98336277fd"
+    },
+    {
+      "path": "src/App.tsx",
+      "integratedSha256": "862d134fe84b58fedce5edd404845ebd9e2df0370cece22c0e45bfc5a7bb5915"
+    },
+    {
+      "path": "src/components/LunarRoverScene.tsx",
+      "integratedSha256": "3b6b8d56fe0a0cb00c19888df66481a8a71d3a13c04b18e8d3a56cb214f82725"
+    },
+    {
+      "path": "src/components/MachineStoryPage.tsx",
+      "integratedSha256": "6fc1b44b7b412afba1e41d16a82b20512a1c91d112deb61573adccea58a04815"
+    },
+    {
+      "path": "src/components/MissionDashboard.tsx",
+      "integratedSha256": "c23dd02012bcc7e1cca6e264205efa470b66693f52850532a5ddce138405ac20"
+    },
+    {
+      "path": "src/components/PlanetMap.tsx",
+      "integratedSha256": "79c56759f4485e63e5f5f647811437070a614a9c8e2d3f28c1e977c7a4359259"
+    },
+    {
+      "path": "src/components/PlanetScene.tsx",
+      "integratedSha256": "d7a818e53fcf9dfc9ac9985609c326fe7c5730b33d6f4fb386767ab2b0f77d5a"
+    },
+    {
+      "path": "src/components/RoverScene.tsx",
+      "integratedSha256": "e545d67c073fc2b6754144883d8e66f2c83253230b2ed8ed16006aff127efcf8"
+    },
+    {
+      "path": "src/components/explorer/MachineDetails.tsx",
+      "integratedSha256": "10d6dca2046812cd6454b8617ca5f1e78a052eb686e3ee2eb34cd0468613d2ac"
+    },
+    {
+      "path": "src/components/explorer/PlanetViewport.tsx",
+      "integratedSha256": "c55d2cd156572f072745b6a106107eeaecce81ca8b22a49748ffcaffd363e54c"
+    },
+    {
+      "path": "src/components/home/PlanetGateway.tsx",
+      "integratedSha256": "373b77205ed5cc236cf3becd31585b6a5ee273b7550169fa53a62b9574b72f5c"
+    },
+    {
+      "path": "src/components/storytelling/Apollo16Quiz.tsx",
+      "integratedSha256": "a31b8ccab2797065b3f9f055ae914bd5793f152fc43c8a402b95e4ebf21c106a"
+    },
+    {
+      "path": "src/components/storytelling/ContinuousStoryPage.tsx",
+      "integratedSha256": "84346b1a233b0c8d1d95458b23eaa21f1f6b12988b2ec79efa540d6e9d63c34d"
+    },
+    {
+      "path": "src/data.ts",
+      "integratedSha256": "d169bc354559b423d6896241ca562d94103c1fa45c6a0ef8cf2fc53b9a20c500"
+    },
+    {
+      "path": "src/index.css",
+      "integratedSha256": "38ec3048bbb61380d4e520a90baa58009159ea6acb366873112ec5f396b327f2"
+    },
+    {
+      "path": "src/machineStories.ts",
+      "integratedSha256": "b5481aad2411253613a37614f2822e65e375d990653429d1b6568f834184f2b2"
+    },
+    {
+      "path": "src/pages/ExplorerPage.module.css",
+      "integratedSha256": "3204691c0997ecd13c52c206659412869171f2dcc1bf6a4d82e1617a469de1f2"
+    },
+    {
+      "path": "src/pages/ExplorerPage.tsx",
+      "integratedSha256": "58d30f9e8bd9c8479ed769c18fd2203da17331879c1b1ab09726b592f6f84254"
+    },
+    {
+      "path": "src/pages/HomePage.module.css",
+      "integratedSha256": "044968c4e93ca76393641514aa07dafe461c83459912aaa669fee387bd7907c6"
+    },
+    {
+      "path": "src/pages/HomePage.tsx",
+      "integratedSha256": "91d44669f3fa6fd146966e181367a67cfdbdaede8fe9a58a8a97c918d296785f"
+    },
+    {
+      "path": "src/store.ts",
+      "integratedSha256": "b3dd43ad3093672595ad5206acfc827946c30649b4f6747a52898fd92299a58a"
+    }
+  ]
+}
