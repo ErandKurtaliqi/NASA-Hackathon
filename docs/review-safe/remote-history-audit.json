@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-11",
+  "scope": "Advertised remote heads/tags only; not deleted refs, PRs, forks, CI/deployment artifacts or external copies",
+  "repositoryVisibility": "private, authenticated GitHub API",
+  "refs": [
+    {
+      "ref": "refs/heads/backup/documentation-updates",
+      "sha": "8b3ecbbe5e33d16395c1359eb691b78a684ac520",
+      "mp3InTree": 3,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/feat/homepage-redesign",
+      "sha": "d831caa9b9020eea5f2765e302bb9899a9603676",
+      "mp3InTree": 0,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/feat/planetary-explorer-redesign",
+      "sha": "5ffd02211253c960fcf5cc4c634b538e354eebfc",
+      "mp3InTree": 3,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/integration/main-feature-review",
+      "sha": "8120d9ecba6babb9e2c0695c02c6ef96234b359b",
+      "mp3InTree": 22,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/main",
+      "sha": "4d315631dfff74850443ebc8b3276aedc6e80d6e",
+      "mp3InTree": 19,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/master",
+      "sha": "095cd1b5f9662dd22decca4a8e6427a0b4cc6ba2",
+      "mp3InTree": 19,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/review/rover-stories-release-candidate",
+      "sha": "e9573dad6fd9e61f221a0bb7e1d07775c2da8974",
+      "mp3InTree": 22,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/review/workstream-a-audio",
+      "sha": "a6a8629354691655ff632131e49df5607450628e",
+      "mp3InTree": 22,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/review/workstream-b-apollo17",
+      "sha": "f1bd132f202ec0006a0f41674100466b3e84db7d",
+      "mp3InTree": 22,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/review/workstream-c-activity",
+      "sha": "64c046273074e135e3c4759ee56a83b43618b924",
+      "mp3InTree": 22,
+      "pdfInTree": 0
+    },
+    {
+      "ref": "refs/heads/review/workstream-d-map-audit",
+      "sha": "3e8fa5922aaa7718e9c8e57d272ba8fdb9805574",
+      "mp3InTree": 22,
+      "pdfInTree": 0
+    }
+  ],
+  "historicalMediaPaths": {
+    ".mp3": [
+      "public/audio/apollo-15/chapter-1/1.mp3",
+      "public/audio/apollo-15/chapter-1/2.mp3",
+      "public/audio/apollo-15/chapter-1/3.mp3",
+      "public/audio/apollo-15/chapter-1/4.mp3",
+      "public/audio/apollo-15/chapter-2/1.mp3",
+      "public/audio/apollo-15/chapter-2/2.mp3",
+      "public/audio/apollo-15/chapter-2/3.mp3",
+      "public/audio/apollo-15/chapter-2/4.mp3",
+      "public/audio/apollo-15/chapter-3/1.mp3",
+      "public/audio/apollo-15/chapter-3/2.mp3",
+      "public/audio/apollo-15/chapter-3/3.mp3",
+      "public/audio/apollo-15/chapter-3/4.mp3",
+      "public/audio/apollo-15/chapter-4/1.mp3",
+      "public/audio/apollo-15/chapter-4/2.mp3",
+      "public/audio/apollo-15/chapter-4/3.mp3",
+      "public/audio/apollo-15/chapter-4/4.mp3",
+      "public/audio/apollo-15/chapter-5/1.mp3",
+      "public/audio/apollo-15/chapter-5/2.mp3",
+      "public/audio/apollo-15/chapter-5/3.mp3",
+      "public/audio/home/intro.mp3",
+      "public/audio/home/mars.mp3",
+      "public/audio/home/moon.mp3"
+    ],
+    ".pdf": [],
+    ".zip": []
+  },
+  "privateQaRefsPreservedLocally": [
+    "032ce7c",
+    "4f6d380"
+  ],
+  "newMaster": "095cd1b5f9662dd22decca4a8e6427a0b4cc6ba2; objects inspected without updating origin/master",
+  "officeObjectsAvailable": {
+    "814d044": false,
+    "44e6a65": false
+  }
+}

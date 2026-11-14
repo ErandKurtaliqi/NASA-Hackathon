@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-11",
+  "repository": "ErandKurtaliqi/Auroralys",
+  "visibility": "private; authenticated GitHub API verified",
+  "permission": "push true; no visibility/permissions changes",
+  "branch": "review/moon-code-review-safe",
+  "expectedOnlyParent": "e9573dad6fd9e61f221a0bb7e1d07775c2da8974",
+  "excludedPrivateAncestors": [
+    "032ce7c94045c621d92da218dad55449972e0f4f",
+    "4f6d3806e962dfcb3eaed12634d0e9fee9ec974b"
+  ],
+  "reviewedPathCount": 57,
+  "newMediaOrSourcePdf": 0,
+  "knownSecretPatternMatches": [],
+  "scanLimit": "Known token/key patterns plus file types/signatures and manual review; not an exhaustive certification",
+  "protectedRefs": {
+    "integration/main-feature-review": "8120d9ecba6babb9e2c0695c02c6ef96234b359b",
+    "review/moon-storytelling-local-qa": "4f6d3806e962dfcb3eaed12634d0e9fee9ec974b",
+    "review/rover-stories-release-candidate": "e9573dad6fd9e61f221a0bb7e1d07775c2da8974",
+    "backup/documentation-updates": "8b3ecbbe5e33d16395c1359eb691b78a684ac520",
+    "stash@{0}": "784a84c263137d3e4d12d8bd2016f9185b319a31",
+    "main": "a0048e918a7a6549600f5159ab6c8b584d0f59d2",
+    "feat/planetary-explorer-redesign": "5ffd02211253c960fcf5cc4c634b538e354eebfc"
+  },
+  "tests": {
+    "reviewSuite": {
+      "passed": 211,
+      "failed": 0,
+      "skipped": 0
+    },
+    "privateQaIndependent": {
+      "passed": 209,
+      "failed": 0
+    },
+    "typeScript": "passed",
+    "productionBuild": "passed, existing Three.js warning",
+    "browserAndListening": "not verified; no browser host"
+  },
+  "http": {
+    "inheritedAudioBytesAndRange": 22,
+    "newApollo11OfficialRemoteImageHeads": 3,
+    "reviewDistMp3": 22,
+    "reviewDistPdf": 0
+  },
+  "infrastructure": "Existing dependency installation reused via ignored node_modules junction; no backend, dependency install or deployment"
+}
