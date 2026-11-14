@@ -1,0 +1,45 @@
+.environment { position: absolute; inset: 0; z-index: -1; pointer-events: none; --terrain-light: #777980; --terrain-mid: #373d48; }
+.environment[data-world=mars] { --terrain-light: #a16a47; --terrain-mid: #573b32; }
+.environment svg { position: sticky; top: 0; width: 100%; height: max(740px,100svh); display: block; }
+.photographicEnvironment { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.photographicEnvironment img { position: absolute; top: 200px; width: 100%; height: calc(100svh - 240px); min-height: 520px; object-fit: cover; object-position: center top; opacity: .9; }
+.surfaceShade { position: absolute; inset: 0; background: linear-gradient(180deg,#02050b 0px,#02050b00 380px,#050a1590 700px,#040811 100svh),linear-gradient(90deg,#03071000 20%,#03071094 43%,#030710c4 69%,#03071046); }
+.hardware { width: min(100%,360px); margin: 0 auto; text-align: center; position: relative; }
+.hardwareImage { height: clamp(220px,20vw,300px); position: relative; color: #c9d4dc; }
+.diagram { display: block; width: 100%; height: 100%; filter: drop-shadow(0 15px 14px #0009); }
+.hardwareImage::after { content: ''; position: absolute; height: 28px; bottom: 6%; left: 8%; right: 6%; border-radius: 50%; background: #0009; filter: blur(12px); z-index: -1; }
+.hardwareImage img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
+.hardwareImage svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 15px 14px #0009); }
+.hardwareImage .cutout { overflow: visible; filter: drop-shadow(6px 15px 8px #0009); }
+.hardwareImage > p { padding: 36px 20px; color: #b9c8dc; line-height: 1.8; }
+.hardware figcaption { margin: -10px auto 0; position: relative; max-width: 400px; }
+.hardware figcaption strong { display: inline-block; max-width: 100%; padding: 7px 14px; border: 1px solid #b5dbed88; border-radius: 30px; background: #08111dd6; box-shadow: 0 0 16px #6dcfff25; font-size: 12px; font-weight: 500; line-height: 1.5; }
+.hardware figcaption p { color: #e3e9f4; font-size: 14px; line-height: 1.6; margin: 12px 0 5px; }
+.hardware figcaption small { display: block; color: #b6c4d5; font-size: 10px; line-height: 1.7; }
+.hardware figcaption a { display: inline-flex; align-items: center; min-height: 44px; color: #c3dfef; font-size: 11px; gap: 6px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 1100px) { .hardwareImage { height: 250px; } .hardware { max-width: 330px; margin: auto; } }
+@media (max-width: 700px) {
+  .environment svg { height: 900px; }
+  .photographicEnvironment img { top: 160px; height: 650px; min-height: 0; object-position: 40% center; }
+  .surfaceShade { background: linear-gradient(#02050b 150px,#02050b20 300px,#040811 850px); }
+  .hardware { display: block; text-align: center; }
+  .hardwareImage { height: 150px; }
+  .hardware figcaption { margin: 0; }
+  .hardware figcaption strong { font-size: 11px; padding: 7px 10px; }
+  .hardware figcaption p { display: none; }
+  .hardware figcaption small { font-size: 9px; }
+  .hardware figcaption a { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .environment svg { position: static; } }
+
+/* The approved Apollo 15 selectors above are unchanged. Other missions have
+   their own credited surface; uncut portraits remain visibly documentary. */
+.missionEnvironment { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.missionEnvironment img { position: absolute; top: 200px; width: 100%; height: calc(100svh - 240px); min-height: 520px; object-fit: cover; object-position: center top; opacity: .85; }
+.missionSurfaceShade { position: absolute; inset: 0; background: linear-gradient(180deg,#02050b 0px,#02050b00 380px,#050a1590 700px,#040811 100svh),linear-gradient(90deg,#03071000 20%,#03071094 43%,#030710c4 69%,#03071046); }
+.missionEnvironment[data-world=mars] .missionSurfaceShade { background: linear-gradient(180deg,#02050b 80px,#02050b40 380px,#100b09b3 700px,#040811 100svh),linear-gradient(90deg,#1009051a 20%,#0d0807ac 43%,#100a08ce 69%,#10090550); }
+.hardwareImage:has(> img), .hardwareImage:has(> svg[data-photo-detail]) { border: 1px solid #d0e4f530; border-radius: 16px; background: #04080d; box-shadow: 0 18px 40px #0008; overflow: hidden; }
+@media (max-width: 700px) {
+  .missionEnvironment img { top: 160px; height: 700px; min-height: 0; object-position: center; }
+  .missionSurfaceShade { background: linear-gradient(#02050b 150px,#02050b30 300px,#040811 850px); }
+}

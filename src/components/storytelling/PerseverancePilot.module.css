@@ -1,0 +1,83 @@
+.pilot { --reading-offset: 108px; color: #e8edf7; }
+.pilot *, .pilot *::before, .pilot *::after { box-sizing: border-box; }
+.pilot button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; min-width: 44px; padding: 10px 14px; border: 1px solid #6b8eb65c; border-radius: 10px; background: #101c2d; color: #deebfa; font: 600 13px Manrope, system-ui, sans-serif; cursor: pointer; }
+.pilot button:hover:not(:disabled) { background: #1b3049; border-color: #a4d7fc; }
+.pilot button:disabled { opacity: .45; cursor: default; }
+.pilot button:focus-visible, .pilot a:focus-visible, .card:focus { outline: 2px solid #a4dcff; outline-offset: 4px; }
+.pilot svg { flex-shrink: 0; }
+.introduction { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr); gap: 26px; align-items: start; margin-bottom: 24px; }
+.eyebrow { font-size: 10px; letter-spacing: .16em; color: #eab18e; }
+.introduction h2 { font-size: clamp(25px, 3vw, 38px); line-height: 1.2; margin: 12px 0; letter-spacing: -.03em; }
+.introduction p, .visualHint, .endNote { margin: 8px 0; color: #acbbd1; font-size: 13px; line-height: 1.8; }
+.preferences { display: flex; flex-wrap: wrap; gap: 8px; }
+.preferences p { flex-basis: 100%; margin: 0; font-size: 12px; }
+.readingControls, .bottomControls { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px; border: 1px solid #6583ab50; border-radius: 14px; background: #0b1425; }
+.readingControls { position: sticky; top: 8px; z-index: 8; box-shadow: 0 10px 30px #0005; }
+.readingControls p, .bottomControls p { flex: 1; min-width: 0; margin: 0; text-align: center; }
+.readingControls p span, .bottomControls p span { display: block; font-size: 10px; letter-spacing: .1em; color: #8ec9f1; }
+.readingControls p b, .bottomControls p b { display: block; margin-top: 4px; font-size: 13px; line-height: 1.45; }
+.stepIndex { margin: 14px 0 24px; }
+.stepIndex ol { display: flex; flex-wrap: wrap; list-style: none; gap: 7px; padding: 0; margin: 0; }
+.stepIndex li { flex: 1; }
+.stepIndex button { width: 100%; height: 100%; font-size: 11px; text-align: left; justify-content: start; }
+.stepIndex button[aria-current='step'] { border-color: #8ad8ff; background: #1c3851; color: #fff; }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr); gap: clamp(18px, 3vw, 42px); align-items: start; }
+.roverPanel { position: sticky; top: var(--reading-offset); min-width: 0; }
+.visualLabel { margin: 0 0 12px; font-size: 10px; letter-spacing: .13em; color: #a0b8d6; }
+.scene { position: relative; height: clamp(300px, 53svh, 530px); border: 1px solid #809bc13b; border-radius: 18px; overflow: hidden; background: radial-gradient(ellipse at 50% 70%, #271b1d, #03050a 70%); }
+.scene :global(.rover-wrap) { position: relative; width: 100%; height: 100%; }
+.scene :global(.rover-controls) button, .landingSlot :global(.landing-actions) button { width: 44px; height: 44px; min-width: 44px; border-radius: 0; padding: 0; }
+.scene :global(.hotspot-html) button { min-height: 44px; font-size: 11px; }
+.sceneLocked, .sceneLocked * { pointer-events: none !important; touch-action: pan-y !important; }
+.sceneMessage { position: absolute; inset: 0; display: grid; align-content: center; margin: 0; padding: 30px; color: #b7c7dd; font-size: 14px; line-height: 1.8; text-align: center; }
+.roverPanel > button { margin-top: 12px; }
+.visualHint { font-size: 12px; }
+.credit { color: #99aec9; font-size: 10px; line-height: 1.8; }
+.steps { display: grid; gap: 24px; min-width: 0; }
+.card { display: flex; flex-direction: column; justify-content: center; min-height: clamp(270px, 53svh, 480px); padding: clamp(22px, 3vw, 40px); border: 1px solid #809bc13b; border-radius: 18px; background: #0b1220; scroll-margin-block: var(--reading-offset) 24px; }
+.activeCard { border-color: #8dbedb; box-shadow: inset 3px 0 0 #8bd6ff; background: linear-gradient(145deg, #122138, #0b1220 75%); }
+.cardMeta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: #a5cde8; font-size: 10px; letter-spacing: .08em; line-height: 1.7; }
+.card h3 { margin: 18px 0; font-size: clamp(25px, 2.8vw, 38px); letter-spacing: -.03em; line-height: 1.2; }
+.card > p { margin: 0; color: #c0cddd; font-size: 16px; line-height: 1.85; }
+.card dl { margin: 0; }
+.card dl > div + div { margin-top: 22px; }
+.card dt { font-size: 10px; letter-spacing: .09em; color: #93b6d4; }
+.card dd { margin: 7px 0 0; color: #e0e9f5; font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+.landingChoice { margin-top: 24px; }
+.landingChoice > p { color: #a9bad0; font-size: 12px; line-height: 1.7; }
+.landingSlot { position: relative; margin-top: 18px; min-height: 160px; }
+.landingSlot :global(.landing-canvas) { height: 330px; min-height: 280px; }
+/* The reconstruction has no canvas gestures; keep its native buttons usable. */
+.landingSlot canvas { pointer-events: none !important; touch-action: pan-y !important; }
+.landingSlot :global(.stage-buttons) { grid-template-columns: 1fr; }
+.landingSlot :global(.landing-narration) { grid-template-columns: 1fr; gap: 7px; }
+.bottomControls { margin-top: 28px; }
+.endNote { margin: 15px 0 0; text-align: center; font-size: 12px; }
+/* Preserve the shared chapter UI elsewhere; enlarge its targets only for this pilot. */
+:global(.machine-story-page):has(.pilot) :global(.machine-story-bottom) > button { min-height: 44px; font-size: 12px; }
+:global(.machine-story-page):has(.pilot) :global(.machine-story-sources) a { min-height: 44px; font-size: 12px; line-height: 1.7; }
+/* Scope the existing shell's clipping change to this pilot alone, so sticky
+   reading controls work without creating a second scroll container. */
+@supports (overflow: clip) {
+  :global(.app-shell):has(.pilot) { overflow: clip; }
+}
+@media (max-width: 980px) {
+  .introduction { grid-template-columns: 1fr; gap: 16px; }
+  .layout { grid-template-columns: 1fr; }
+  .roverPanel { position: static; }
+  .scene { height: min(50svh, 380px); min-height: 270px; }
+  .stepIndex button span { display: none; }
+  .stepIndex button { justify-content: center; }
+  .card { min-height: 300px; }
+}
+@media (max-width: 480px) {
+  .readingControls, .bottomControls { gap: 7px; padding: 8px; }
+  .readingControls button, .bottomControls button { padding: 9px; gap: 5px; font-size: 12px; }
+  .readingControls p b, .bottomControls p b { font-size: 11px; }
+  .readingControls p span, .bottomControls p span { font-size: 9px; }
+  .card { padding: 24px; }
+  .card > p, .card dd { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pilot *, .pilot *::before, .pilot *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

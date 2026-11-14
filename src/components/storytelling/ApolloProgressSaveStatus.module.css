@@ -1,0 +1,10 @@
+.record { margin: 0 5vw 24px; padding: 20px; border: 1px solid #8fa6d366; border-radius: 12px; background: #0b1220; color: #e8edf7; overflow-wrap: anywhere; }
+.record h2 { margin: 0 0 10px; font-size: clamp(22px, 3vw, 28px); line-height: 1.4; }
+.record p { margin: 8px 0; font-size: 15px; line-height: 1.8; color: #bdcde1; }
+.record [role='status'] { color: #e0ecfb; }
+.warning { margin-top: 16px; padding: 16px; border: 1px solid #e4ba77; border-radius: 10px; background: #302418; }
+.warning h3 { margin: 0 0 8px; font-size: 18px; line-height: 1.5; color: #ffe0ab; }
+.warning p { color: #f4e4ce; }
+.record button { min-height: 44px; max-width: 100%; padding: 12px 18px; border: 1px solid #94c7e6; border-radius: 10px; background: #204866; color: #e0ecfb; font: 600 14px Manrope, system-ui, sans-serif; line-height: 1.6; overflow-wrap: anywhere; cursor: pointer; }
+.record button:focus-visible, .record h2:focus { outline: 2px solid #a4dcff; outline-offset: 4px; }
+@media (max-width: 600px) { .record { margin: 0 14px 20px; padding: 16px; } .record button { width: 100%; } }

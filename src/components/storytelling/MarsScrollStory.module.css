@@ -1,0 +1,8 @@
+.page a { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+.page { --cyan: #ffc28e; }
+.page article a, .page [aria-label="NASA evidence"] a { display: inline-flex; align-items: center; min-height: 44px; }
+.page a:focus-visible, .page button:focus-visible, .page summary:focus-visible { outline: 2px solid #67e2ff; outline-offset: 4px; }
+@media (max-width: 700px) {
+  /* Keep long original scripts and evidence reachable on short touch screens. */
+  .readingControls { position: static; }
+}

@@ -1,0 +1,15 @@
+.reading { margin-bottom: 24px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: #080b14; }
+.heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.heading h2 { margin: 0; font-size: 22px; }
+.heading label { display: grid; gap: 6px; max-width: 100%; font-size: 13px; color: #c4cbd7; }
+.heading select { width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: #101827; color: #edf5ff; font: inherit; }
+.reading h3 { margin: 20px 0 10px; color: var(--cyan); font-size: 18px; }
+.reading p { max-width: 80ch; margin: 0; color: #c4cbd7; font-size: 16px; line-height: 1.8; }
+.player { margin: 16px 0; }
+.player audio { display: block; width: 100%; max-width: 540px; }
+.player p { margin: 10px 0; color: #ffdab8; font-size: 14px; line-height: 1.6; }
+.player button { min-height: 44px; padding: 8px; color: #edf5ff; text-decoration: underline; background: transparent; border: 1px solid var(--line); border-radius: 6px; }
+.sources { display: flex; flex-wrap: wrap; gap: 12px; }
+.sources a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; color: var(--cyan); font-size: 12px; overflow-wrap: anywhere; }
+.reading select:focus-visible, .player audio:focus-visible, .player button:focus-visible, .sources a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+@media (max-width: 600px) { .reading { padding: 16px; } .heading label { width: 100%; } .reading p { font-size: 15px; } }

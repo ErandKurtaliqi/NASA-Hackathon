@@ -1,0 +1,119 @@
+.page { position: relative; isolation: isolate; scroll-margin-top: 78px; padding: clamp(18px,2.5vw,40px); background: #02050b; color: #edf3fc; }
+/* Decorative CSS stars, not a photograph or a scientific planetary surface. */
+.page::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+  background-image: radial-gradient(circle at 17px 29px,#cadfff99 0 1px,transparent 1.5px),radial-gradient(circle at 89px 71px,#b5c5db66 0 .7px,transparent 1.3px),radial-gradient(circle at 136px 141px,#eaf2ff66 0 .8px,transparent 1.4px);
+  background-size: 223px 211px,307px 283px,389px 331px; }
+:global(.app-shell):has(.page) { overflow: clip; }
+/* Scope larger shared-shell tap targets to these story routes only. */
+:global(.app-shell):has(.page) :global(.topbar .brand), :global(.app-shell):has(.page) :global(footer a) { min-height: 44px; }
+:global(.app-shell):has(.page) :global(.menu-button) { min-width: 44px; min-height: 44px; }
+.page h1, .page h2, .page h3, .page p { overflow-wrap: anywhere; }
+.header { max-width: 1600px; margin: auto auto 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; font-size: 13px; }
+.header > a { display: inline-flex; align-items: center; min-height: 44px; color: #d2e2ee; padding: 10px 0; line-height: 1.4; }
+.header > a:last-child { margin-left: auto; border: 1px solid #91c6e744; border-radius: 24px; padding: 10px 16px; }
+.backIcon { display: inline-grid; place-items: center; width: 36px; height: 36px; margin-right: 10px; flex-shrink: 0; border: 1px solid #c9daee55; border-radius: 50%; font-size: 18px; }
+.header > p { color: #acbbcd; line-height: 1.7; }
+.header h1 { margin: 10px 0; font-size: clamp(38px,5vw,72px); line-height: 1.1; letter-spacing: -.04em; }
+.header h1 span { display: block; margin-top: 12px; font-size: .42em; color: #b9c6d7; letter-spacing: -.02em; }
+.header h1:focus, .card:focus { outline: 2px solid var(--cyan); outline-offset: 6px; }
+.missionIntro > p:first-child { display: inline-block; margin: 0 0 12px; padding: 7px 12px; border: 1px solid #c9daee55; border-radius: 24px; color: #d5e0ed; font-size: 11px; letter-spacing: .04em; }
+.missionIntro h1 { margin: 0; font-size: clamp(40px,4.4vw,68px); font-weight: 600; line-height: 1.05; letter-spacing: -.045em; color: #f8fbff; }
+.missionIntro h1 span { display: block; margin-top: 12px; font-size: .4em; line-height: 1.3; letter-spacing: -.02em; color: #b7c5da; }
+.missionSubtitle { color: #b7c5da; font-size: clamp(18px,1.7vw,25px); line-height: 1.4; margin: 6px 0 0; }
+.missionIntro h1 .chapterHeading, .card:first-of-type > h2, .card:first-of-type > small { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
+.missionIntro > p:last-of-type { padding-top: 12px; border-top: 1px solid #ffffff24; margin: 16px 0; font-size: 16px; line-height: 1.65; color: #e2e8f2; }
+.chapters { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 4px; margin: 24px 0 8px; }
+.chapters a, .chapters > span { position: relative; min-width: 0; min-height: 48px; padding: 15px 2px 8px; border: 0; border-top: 1px solid #93a5c344; border-radius: 0; font-size: 11px; line-height: 1.5; text-align: center; overflow-wrap: normal; }
+.chapters a::before, .chapters > span::before { content: ''; position: absolute; top: -5px; left: calc(50% - 4px); width: 8px; height: 8px; border-radius: 50%; background: #69738a; }
+.chapters > span { color: #9da7b7; }
+.chapters [aria-current] { border-color: var(--cyan); color: #dbf7ff; background: transparent; }
+.chapters [aria-current]::before { background: var(--cyan); box-shadow: 0 0 12px #67e2ffb0; }
+.eyebrow { color: #b1c8dd; letter-spacing: .12em; font-size: 11px; }
+.roverTag { border: 1px solid #67e2ff50; border-radius: 24px; padding: 12px; text-align: center; color: var(--cyan); }
+.readingControls { position: sticky; top: 12px; z-index: 2; background: #080e19f5; padding: 14px; border: 1px solid #b7d1eb40; border-radius: 18px; box-shadow: 0 16px 40px #0004; }
+.readingControls > p { margin: 0 0 10px; font-size: 13px; line-height: 1.6; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.segmentLinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.segmentLinks button { min-width: 44px; border: 1px solid #9cb5ca44; border-radius: 50%; background: transparent; color: #b4c8dc; padding: 6px; font-size: 12px; text-align: center; }
+.segmentLinks [aria-current] { color: var(--cyan); border-color: var(--cyan); }
+.page button, .page summary { min-height: 44px; cursor: pointer; }
+.controls button, .chapterActions button { color: #e4eef8; background: #132432cc; border: 1px solid #9bcce05c; border-radius: 24px; padding: 11px 16px; font-size: 12px; }
+.controls button:hover:not(:disabled), .chapterActions button:hover:not(:disabled) { background: #254256; border-color: #a5e7ff; }
+.recording .controls button:nth-child(2) { color: #07111c; background: #b8eaff; border-color: #b8eaff; font-weight: 600; min-width: 80px; }
+.page button:disabled { cursor: default; opacity: .5; }
+.controls [aria-pressed=true] { border-color: var(--cyan); }
+.recording { padding-top: 12px; }
+.recording > p { font-size: 13px; line-height: 1.6; margin: 10px 0; }
+.recording small { display: block; font-size: 11px; line-height: 1.6; color: #aebdd0; }
+.recording audio { display: none; }
+.recording [role=alert] { color: #ffd99b; }
+.card { scroll-margin-top: 300px; margin: 22px 0 30px; padding: 24px 20px; min-height: 0; border: 1px solid #ffffff14; border-left: 2px solid #ffffff30; border-radius: 0 16px 16px 0; background: #050a12c9; }
+.card.active { border-left-color: var(--cyan); background: #0a1421e8; box-shadow: 0 12px 40px #0002; }
+.card small { font: 11px 'DM Mono',monospace; color: #a9bdd2; }
+.card h2, .activities h2 { font-size: clamp(22px,2.2vw,30px); line-height: 1.25; }
+.card p, .activities p, .activities summary { font-size: 16px; line-height: 1.8; }
+.card:first-of-type { margin: 0 0 12px; padding: 8px 0 10px; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.card:first-of-type > p:first-of-type { font-size: clamp(17px,1.3vw,20px); line-height: 1.65; color: #f0f3f8; }
+.card:first-of-type > p:first-of-type { margin-top: 0; }
+.card:first-of-type > h2 { font-size: 20px; margin: 10px 0; }
+.scienceNote { padding: 14px; background: #ffffff05; color: #b8c9dc; font-size: 14px !important; }
+.activities { margin-top: 24px; padding: 20px; border: 1px solid #ffffff30; border-radius: 18px; background: #080e19ed; }
+.activities details { padding: 12px 0; }
+.activities a { display: inline-flex; align-items: center; min-height: 44px; }
+.activities :global(.discovery-bank) { padding: 0; }
+.footer { margin: 40px 0 20px; }
+.footer label { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 13px; line-height: 1.6; }
+.footer input { width: 22px; height: 22px; flex-shrink: 0; }
+.boundary { padding: 32px 0; color: #b8c7d8; }
+.chapterActions { display: flex; justify-content: space-between; align-items: center; gap: 16px; border-top: 1px solid #ffffff25; padding: 20px 0; }
+.chapterActions > span { font-size: 11px; color: #bbd2e1; }
+.sources { display: flex; flex-wrap: wrap; gap: 16px; border-top: 1px solid #ffffff25; padding: 22px 0; }
+.sources a { display: inline-flex; align-items: center; min-height: 44px; color: #bcd9ed; text-decoration: underline; font-size: 12px; line-height: 1.7; }
+.sources:focus, .missionIntro h1:focus { outline: 2px solid var(--cyan); outline-offset: 6px; }
+.page :focus-visible { outline: 3px solid #91e8ff; outline-offset: 4px; }
+.page :global(.quiz-experience), .page :global(.quiz-reward) { padding: 20px 12px; }
+.page :global(.quiz-reward h2) { font-size: clamp(26px,3vw,40px); }
+.page :global(.quiz-explanation) { display: flex; flex-wrap: wrap; }
+.page :global(.quiz-explanation) > p { flex: 1; min-width: 150px; }
+/* The same mission line remains beside the hardware. Leave room for the
+   actual narrative and audio in the initial desktop viewport. */
+@media (min-width: 1101px) { .missionIntro > p:last-of-type { display: none; } }
+.readingControls .recording > p:not([role=alert]):not([aria-label]) { display: none; }
+.readingControls .recording { padding: 0 0 12px; margin-bottom: 10px; border-bottom: 1px solid #9bcce026; }
+.readingControls .recording small { margin-top: 8px; }
+@media (max-width: 700px) {
+  .header { gap: 8px 18px; margin-bottom: 20px; }
+  .header > a:last-child { margin-left: 0; }
+  .missionIntro h1 { font-size: clamp(40px,10vw,56px); }
+  .missionIntro > p:last-of-type { font-size: 15px; margin-bottom: 12px; }
+  .readingControls { position: static; padding: 12px; }
+  .readingControls > p { font-size: 12px; line-height: 1.5; margin-bottom: 6px; }
+  /* Previous/Next retain all navigation; segment headings remain in the story. */
+  .segmentLinks { display: none; }
+  .recording { padding-top: 8px; }
+  .recording > p:not([role=alert]):not([aria-label]) { display: none; }
+  .recording small { font-size: 10px; line-height: 1.4; }
+  .card { min-height: 0; scroll-margin-top: 240px; padding: 20px 12px; }
+  .chapterActions { flex-wrap: wrap; }
+  .chapterActions > span { order: 3; width: 100%; }
+  .chapters { gap: 6px; }
+  .chapters a, .chapters > span { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Immersive story routes only. Keep the shared navigation/menu functional. */
+:global(.app-shell):has(.page) :global(.topbar) { height: 68px; border-color: #ffffff0c; background: #02050b; backdrop-filter: none; }
+:global(.app-shell):has(.page) :global(.topbar nav a) { display: inline-flex; align-items: center; min-height: 44px; }
+:global(.app-shell):has(.page) :global(.status-pill) { min-height: 44px; }
+.page { padding-top: 18px; }
+.header { margin-bottom: 0; }
+.missionIntro h1:focus { outline: none; }
+.missionIntro h1:focus-visible { outline: none; }
+
+:global(.app-shell):has(.page) :global(.topbar nav a) { min-width: 44px; justify-content: center; }
+
+.reviewRecording { padding: 12px; border-left: 3px solid #ffd99b; color: #ffe2b4; font-size: 14px; line-height: 1.7; }
+
+.scienceNote a { display: inline-flex; align-items: center; min-height: 44px; }

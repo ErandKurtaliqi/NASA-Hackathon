@@ -1,0 +1,30 @@
+.panel { position: sticky; top: var(--reading-offset); min-width: 0; }
+.media { margin: 0; overflow: hidden; border: 1px solid #809bc14d; border-radius: 18px; background: #080e19; box-shadow: 0 20px 60px #0004; }
+.frame { position: relative; height: clamp(220px, 42svh, 440px); background: radial-gradient(ellipse at center, #192c41, #03050a); }
+.image { display: block; width: 100%; height: 100%; object-fit: contain; opacity: 0; }
+.ready { opacity: 1; }
+.motion { transition: opacity 240ms ease-out; }
+.message { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 12px; margin: 0; padding: 22px; color: #c0cddd; text-align: center; font-size: 13px; line-height: 1.6; }
+.message p { margin: 0; }
+.caption { padding: 18px 22px; border-top: 1px solid #809bc133; }
+.kind { color: #efba91; font-size: 10px; line-height: 1.6; letter-spacing: .06em; }
+.caption h3 { margin: 7px 0; font-size: clamp(19px, 2vw, 26px); line-height: 1.2; color: #eef4ff; }
+.caption p { margin: 0; font-size: 13px; line-height: 1.65; color: #b9c8dc; }
+.attribution { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; margin-top: 8px; color: #a9bdd5; font-size: 11px; line-height: 1.5; }
+.attribution a { display: inline-flex; align-items: center; min-height: 44px; color: #a4dcff; text-underline-offset: 4px; }
+@media (max-width: 980px) {
+  /* Keep the current evidence in view while the narrative scrolls naturally. */
+  .panel { z-index: 5; margin-bottom: 0; }
+  .frame { height: clamp(90px, 16svh, 150px); }
+  .caption { padding: 10px 14px; }
+  /* The narrative already names the step. Keep type, credit and source visible;
+     retain the fuller caption for assistive technology without covering cards. */
+  .caption h3, .caption p { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); }
+  .attribution { margin-top: 2px; }
+}
+/* Short viewports need room for the story and reconstruction controls. */
+@media (max-height: 650px) {
+  .panel { position: static; }
+  .caption h3, .caption p { position: static; width: auto; height: auto; margin: 7px 0; overflow: visible; clip-path: none; }
+}
+@media (prefers-reduced-motion: reduce) { .motion { transition: none; } }

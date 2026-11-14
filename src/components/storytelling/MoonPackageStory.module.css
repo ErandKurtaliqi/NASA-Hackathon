@@ -1,0 +1,12 @@
+.page { max-width: 1800px; margin: auto; }
+.page article { min-height: 0; }
+.page label { display: block; line-height: 1.7; }
+.page input[type=range] { display: block; width: min(100%,400px); min-height: 44px; }
+.page :focus-visible { outline: 3px solid #91e8ff; outline-offset: 4px; }
+.page .pending { border-left: 3px solid #ffd99b; padding: 12px; font-size: 14px; line-height: 1.7; color: #ffe2b4; }
+.page .sources { display: flex; flex-direction: column; gap: 12px; line-height: 1.7; }
+.page .sources a { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+.reviewNotice { margin: -10px 0 18px; color: #e5cea8; font-size: 12px; }
+.reviewNotice summary { display: list-item; width: fit-content; max-width: 100%; padding: 12px 0; min-height: 44px; }
+.reviewNotice .pending { max-width: 900px; margin: 0 0 12px; }
+@media (max-width: 700px), (max-height: 650px) { .page .reading { position: static; } }
