@@ -10,7 +10,7 @@ import MachineList from '../components/explorer/MachineList'
 import MachineDetails from '../components/explorer/MachineDetails'
 import PlanetViewport, { type ExplorerView } from '../components/explorer/PlanetViewport'
 import ScientificLocations from '../components/explorer/ScientificLocations'
-import { storyMapLocations } from '../features/explorer/storyMapLocations'
+import { getPlanetLocations, getSelectedLocation } from '../features/explorer/storyMapLocations'
 import { explorerHardware as hardware } from '../features/explorer/integratedStoryEntry'
 import { getExplorerStoryEntry as getStoryEntry } from '../features/explorer/integratedStoryEntry'
 import { useProgress } from '../store'
@@ -24,16 +24,17 @@ export default function ExplorerPage() {
   // Preserve the existing route fallback for unsupported planet parameters.
   const planet: PlanetId = raw === 'moon' ? 'moon' : 'mars'
   const machines = hardware.filter(machine => machine.planet === planet)
-  const locations = storyMapLocations.filter(location => location.planet === planet)
+  const locations = getPlanetLocations(planet)
   const [machineId, setMachineId] = useState('')
   const [locationId, setLocationId] = useState('')
+  const [focusRequest, setFocusRequest] = useState(0)
   const [mode, setMode] = useState<ExplorerView>(entryMode)
   const intro = useExplorerIntro(planet)
   const reducedMotion = !!useReducedMotion()
   const viewport = useRef<HTMLDivElement>(null)
   const exploreLocation = useProgress(state => state.exploreLocation)
   const machine = machines.find(item => item.id === machineId) || machines.find(item => getStoryEntry(item)) || machines[0]
-  const location = locations.find(item => item.id === locationId) || locations[0]
+  const location = getSelectedLocation(planet, locationId)
   const world = planet === 'mars' ? 'Mars' : 'Moon'
 
   useEffect(() => {
@@ -52,7 +53,9 @@ export default function ExplorerPage() {
   }
 
   const viewMap = (id = location.id) => {
+    if (!locations.some(item => item.id === id)) return
     selectLocation(id)
+    setFocusRequest(value => value + 1)
     setMode('map')
     viewport.current?.focus({ preventScroll: true })
     viewport.current?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' })
@@ -71,7 +74,7 @@ export default function ExplorerPage() {
           <MachineDetails machine={machine} />
           <p className={styles.srOnly} role="status">{machine.name} selected. {getStoryEntry(machine) ? 'A story is available in the machine information panel.' : 'Its mission profile is available in the machine information panel.'}</p>
         </div>
-        <PlanetViewport planet={planet} mode={mode} onModeChange={setMode} focusId={locationId || undefined} viewportRef={viewport} />
+        <PlanetViewport planet={planet} mode={mode} onModeChange={setMode} focusId={location.id} focusRequest={focusRequest} viewportRef={viewport} />
       </div>
       <div className={styles.heroBottom}>
         <div className={styles.worldSignature}><Globe2 size={23} aria-hidden="true" /><b>{world}</b><span>Real missions. Lasting legacies.</span></div>

@@ -158,17 +158,25 @@
 .locationList button[aria-pressed='true'] { color: #b9e4ff; background: #7eafe71a; box-shadow: inset 2px 0 0 #94d7ff; }
 .locationList button:hover { background: #c7e0ff0d; }
 .locationList button b, .locationList button small { display: block; }
-.locationList button b { font-size: 12px; font-weight: 600; color: #cbd8ec; }
-.locationList button small { margin-top: 4px; font-size: 10px; line-height: 1.5; color: #8da0bd; }
+.locationList button b { font-size: 14px; font-weight: 600; color: #cbd8ec; }
+.locationList button small { margin-top: 4px; font-size: 12px; line-height: 1.5; color: #8da0bd; }
+.locationList button > span { min-width: 0; overflow-wrap: anywhere; }
+.locationList button > svg { flex-shrink: 0; }
 .locationList button:focus-visible { outline-offset: -5px; }
 .locationDetails { padding: clamp(24px, 3vw, 44px); border: 1px solid var(--line); border-radius: 18px; background: #08111f; }
 .locationDetails h3 { margin: 10px 0 18px; font-size: clamp(25px, 2.8vw, 38px); line-height: 1.2; letter-spacing: -.035em; font-weight: 500; }
 .locationDetails > p { margin-bottom: 26px; max-width: 590px; color: #9eafc7; font-size: 14px; line-height: 1.9; }
-.coordinates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.coordinates { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .coordinates dt { color: #8297b5; font-size: 10px; line-height: 1.5; }
 .coordinates dd { margin: 6px 0 0; font-size: 17px; color: #c8e5fc; overflow-wrap: anywhere; }
 .coordinates > div:last-child { grid-column: 1 / -1; }
-.coordinates > div:last-child dd { font-size: 13px; text-transform: capitalize; }
+.locationNote { font-size: 13px; line-height: 1.8; color: #9eafc7; }
+.locationActions .sourceLink { min-height: 44px; overflow-wrap: anywhere; }
+.mapFocusNotice { flex: 0 0 auto; width: 100%; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #08111f; color: #dcecff; overflow-wrap: anywhere; }
+.mapFocusNotice b, .mapFocusNotice span, .mapFocusNotice small { display: block; }
+.mapFocusNotice b { font-size: 14px; }
+.mapFocusNotice span { margin-top: 4px; font-size: 13px; line-height: 1.5; }
+.mapFocusNotice small { margin-top: 4px; font-size: 12px; line-height: 1.5; color: #a9bed8; }
 .locationActions { display: flex; flex-direction: column; align-items: start; gap: 8px; margin-top: 25px; }
 .outlineButton { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 46px; padding: 12px 17px; border-radius: 24px; border: 1px solid #95c5ee5c; background: #112139; color: #dcecff; font-size: 12px; }
 .outlineButton:hover { background: #1c3354; border-color: #afd9fa; }
