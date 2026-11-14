@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict'
+
+const memory = new Map()
+globalThis.localStorage = { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value), removeItem: key => memory.delete(key) }
+globalThis.window = { localStorage: globalThis.localStorage }
+const { useProgress } = await import('../src/store.ts')
+const state = () => useProgress.getState()
+const id = 'apollo-15-rover'
+state().reset()
+state().awardBadge('previous-achievement')
+state().finishRoverJourney(id)
+assert.equal(state().badges.length, 1, 'Cannot earn a documentary badge without starting')
+state().visitRoverChapter(id, 'not-a-chapter')
+assert.equal(state().roverJourneys[id], undefined)
+for (const chapter of ['meet', 'journey', 'discoveries', 'challenge', 'legacy']) state().visitRoverChapter(id, chapter)
+state().visitRoverChapter(id, 'meet')
+assert.equal(state().roverJourneys[id].visited.length, 5, 'Revisits do not duplicate progress')
+state().finishRoverJourney(id)
+assert.equal(state().roverJourneys[id].completedAt, null, 'Challenge is required')
+state().solveRoverChallenge(id)
+state().finishRoverJourney(id)
+const completedAt = state().roverJourneys[id].completedAt
+assert.ok(!Number.isNaN(Date.parse(completedAt)))
+assert.deepEqual(state().badges, ['previous-achievement', `${id}-documentary`])
+assert.equal(state().storyProgress[id].completed.includes('quiz'), false, 'Documentary never fabricates a completed quiz')
+assert.equal(state().storyProgress[id].lastChapter, 5, 'The original quiz becomes accessible')
+state().finishRoverJourney(id)
+assert.equal(state().roverJourneys[id].completedAt, completedAt)
+assert.equal(state().badges.filter(badge => badge === `${id}-documentary`).length, 1)
+await useProgress.persist.rehydrate()
+assert.equal(state().roverJourneys[id].completedAt, completedAt, 'Completion survives storage rehydration')
+state().solveRoverChallenge('follow-perseverance')
+state().finishRoverJourney('follow-perseverance')
+assert.equal(state().roverJourneys['follow-perseverance'].completedAt, null, 'The challenge alone is insufficient')
+state().reset()
+assert.deepEqual(state().roverJourneys, {})
+memory.set('beyond-earth-progress', JSON.stringify({ state: { badges: ['old-badge'], storyProgress: {}, completedChapters: [], exploredLocations: [], inspectedInstruments: [] }, version: 0 }))
+await useProgress.persist.rehydrate()
+assert.deepEqual(state().roverJourneys, {}, 'Pre-documentary saves receive the default journey state')
+assert.deepEqual(state().badges, ['old-badge'])
+console.log('PASS: completion gates, duplicate protection, quiz compatibility, persistence, old saves and reset')
+
