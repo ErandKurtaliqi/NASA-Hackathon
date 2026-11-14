@@ -1,0 +1,251 @@
+[
+  [
+    {
+      "id": "apollo15-p2-1",
+      "title": "LRV-1 on the Moon",
+      "caption": "The Apollo 15 rover on the lunar surface.",
+      "alt": "LRV-1 on the Moon",
+      "credit": "NASA",
+      "sourceUrl": "https://images-assets.nasa.gov/image/as15-88-11901/as15-88-11901~medium.jpg",
+      "src": "https://images-assets.nasa.gov/image/as15-88-11901/as15-88-11901~medium.jpg",
+      "width": 1224,
+      "height": 1280
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p2-2",
+      "title": "Apollo landing sites",
+      "caption": "A map provides context for the choice of Hadley-Apennine.",
+      "alt": "Apollo landing sites",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2019/07/edu_srch_celebrate_the_50th_anniversary_apollo11.jpg?resize=2000,1560",
+      "src": "https://www.nasa.gov/wp-content/uploads/2019/07/edu_srch_celebrate_the_50th_anniversary_apollo11.jpg?resize=2000,1560",
+      "width": 2000,
+      "height": 1560
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p2-4",
+      "title": "Preparing the lunar rover",
+      "caption": "Apollo 15 rover preparations on Earth.",
+      "alt": "Preparing the lunar rover",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/04/apollo_15_l-3_months_2_apr_21_1971_s71-30542.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/04/apollo_15_l-3_months_2_apr_21_1971_s71-30542.jpg",
+      "width": 985,
+      "height": 1187
+    },
+    {
+      "id": "apollo15-p2-5",
+      "title": "Crew with the lunar rover",
+      "caption": "The Apollo 15 crew poses with a rover before the mission.",
+      "alt": "Crew with the lunar rover",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/04/apollo_15_l-3_months_1_crew_posing_w_rover_mar_1971_s71-22407.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/04/apollo_15_l-3_months_1_crew_posing_w_rover_mar_1971_s71-22407.jpg",
+      "width": 985,
+      "height": 835
+    }
+  ],
+  [],
+  [
+    {
+      "id": "apollo15-p3-2",
+      "title": "Apollo 15 launch",
+      "caption": "The Saturn V carries Apollo 15 into flight.",
+      "alt": "Apollo 15 launch",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_launch_9_as15-0542-71hc-1107.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_launch_9_as15-0542-71hc-1107.jpg",
+      "width": 985,
+      "height": 302
+    },
+    {
+      "id": "apollo15-p3-6",
+      "title": "Apollo 15 on the lunar surface",
+      "caption": "A mission photograph from the crew’s time at Hadley-Apennine.",
+      "alt": "Apollo 15 on the lunar surface",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/as15-88-11866orig.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/03/as15-88-11866orig.jpg",
+      "width": 1041,
+      "height": 1041
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p3-7",
+      "title": "Apollo 15 lunar traverses",
+      "caption": "Routes driven across Hadley-Apennine, marked on orbital imagery.",
+      "alt": "Apollo 15 lunar traverses",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_14_lunar_traverses_on_lroc_image.png",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_14_lunar_traverses_on_lroc_image.png",
+      "width": 697,
+      "height": 716
+    },
+    {
+      "id": "apollo15-p3-8",
+      "title": "The rover on lunar terrain",
+      "caption": "A surface photograph shows LRV-1 in its working environment.",
+      "alt": "The rover on lunar terrain",
+      "credit": "NASA",
+      "sourceUrl": "https://images-assets.nasa.gov/image/as15-88-11901/as15-88-11901~medium.jpg",
+      "src": "https://images-assets.nasa.gov/image/as15-88-11901/as15-88-11901~medium.jpg",
+      "width": 1224,
+      "height": 1280
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p3-9",
+      "title": "The Apollo 15 lunar rover",
+      "caption": "The vehicle that carried the crew and their tools in lunar gravity.",
+      "alt": "The Apollo 15 lunar rover",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/apollo15lunarrover2.jpeg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/03/apollo15lunarrover2.jpeg",
+      "width": 1041,
+      "height": 710
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p3-10",
+      "title": "Exploring Hadley-Apennine",
+      "caption": "A view from the Apollo 15 surface expedition.",
+      "alt": "Exploring Hadley-Apennine",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/as15-85-11514.jpg?w=1019",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/03/as15-85-11514.jpg?w=1019",
+      "width": 1019,
+      "height": 1023
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p4-1",
+      "title": "LRV-1 during Apollo 15",
+      "caption": "The rover that the crew drove using rear steering on their first traverse.",
+      "alt": "LRV-1 during Apollo 15",
+      "credit": "NASA",
+      "sourceUrl": "https://images-assets.nasa.gov/image/as15-85-11451/as15-85-11451~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+      "src": "https://images-assets.nasa.gov/image/as15-85-11451/as15-85-11451~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+      "width": 1920,
+      "height": 1920
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p4-2",
+      "title": "The lunar far side",
+      "caption": "Orbital terrain photographed by Apollo 15. This shows lunar terrain context.",
+      "alt": "The lunar far side",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_2_lunar_farside_rev_1_tbc_as15-91-12380_0.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_2_lunar_farside_rev_1_tbc_as15-91-12380_0.jpg",
+      "width": 985,
+      "height": 995
+    },
+    {
+      "id": "apollo15-p4-3",
+      "title": "Tsiolkovsky crater",
+      "caption": "An orbital view of the crater’s central peak, away from the rover’s traverse.",
+      "alt": "Tsiolkovsky crater",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_3_tsiolkovsky_showing_central_peak_as15-91-12383_0.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_3_tsiolkovsky_showing_central_peak_as15-91-12383_0.jpg",
+      "width": 985,
+      "height": 999
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p4-4",
+      "title": "Genesis Rock at Spur Crater",
+      "caption": "Apollo 15 photographed the sample before collecting it.",
+      "alt": "Genesis Rock at Spur Crater",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_26_eva2_station_7_genesis_rock_as15-86-11671hr.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_26_eva2_station_7_genesis_rock_as15-86-11671hr.jpg",
+      "width": 985,
+      "height": 983
+    },
+    {
+      "id": "apollo15-p4-5",
+      "title": "Genesis Rock after collection",
+      "caption": "A close view of the Apollo 15 sample.",
+      "alt": "Genesis Rock after collection",
+      "credit": "NASA",
+      "sourceUrl": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/s71-43477.jpg?w=1536&h=1004&fit=crop&crop=faces%2Cfocalpoint",
+      "src": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/s71-43477.jpg?w=1536&h=1004&fit=crop&crop=faces%2Cfocalpoint",
+      "width": 1536,
+      "height": 1003
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p4-6",
+      "title": "Aiming the high-gain antenna",
+      "caption": "Dave Scott aims the rover antenna during fieldwork.",
+      "alt": "Aiming the high-gain antenna",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_25_eva2_station_7_scott_aiming_the_hga_as15-90-12219hr.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_25_eva2_station_7_scott_aiming_the_hga_as15-90-12219hr.jpg",
+      "width": 985,
+      "height": 995
+    },
+    {
+      "id": "apollo15-p4-7",
+      "title": "Apollo 15 television record",
+      "caption": "A frame from the mission’s television coverage.",
+      "alt": "Apollo 15 television record",
+      "credit": "NASA",
+      "sourceUrl": "https://images-assets.nasa.gov/image/S71-41509/S71-41509~large.jpg?w=1920&h=1299&fit=clip&crop=faces%2Cfocalpoint",
+      "src": "https://images-assets.nasa.gov/image/S71-41509/S71-41509~large.jpg?w=1920&h=1299&fit=clip&crop=faces%2Cfocalpoint",
+      "width": 1920,
+      "height": 1299
+    }
+  ],
+  [
+    {
+      "id": "apollo15-p5-1",
+      "title": "Hammer and feather demonstration",
+      "caption": "Dave Scott holds the hammer and feather during the lunar gravity demonstration.",
+      "alt": "Hammer and feather demonstration",
+      "credit": "NASA",
+      "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/thumbnail/as15_hfd_1.gif",
+      "src": "https://nssdc.gsfc.nasa.gov/planetary/thumbnail/as15_hfd_1.gif",
+      "width": 400,
+      "height": 307
+    },
+    {
+      "id": "apollo15-p5-2",
+      "title": "Hammer and feather drop",
+      "caption": "A second view from the lunar gravity demonstration.",
+      "alt": "Hammer and feather drop",
+      "credit": "NASA",
+      "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/thumbnail/as15_hfd_2.gif",
+      "src": "https://nssdc.gsfc.nasa.gov/planetary/thumbnail/as15_hfd_2.gif",
+      "width": 400,
+      "height": 307
+    }
+  ],
+  null,
+  [
+    {
+      "id": "apollo15-p5-5",
+      "title": "Falcon and the parked rover",
+      "caption": "A final surface photograph shows Falcon and LRV-1 in the distance.",
+      "alt": "Falcon and the parked rover",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_34_eva3_final_surface_photo_lm_and_rover_in_distance_as15-88-11930hr.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2021/07/apollo_15_moon_landing_34_eva3_final_surface_photo_lm_and_rover_in_distance_as15-88-11930hr.jpg",
+      "width": 985,
+      "height": 993
+    }
+  ],
+  null
+]

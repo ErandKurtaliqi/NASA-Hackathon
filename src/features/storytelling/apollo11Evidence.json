@@ -1,0 +1,273 @@
+[
+  [
+    {
+      "id": "apollo11-meet",
+      "title": "Apollo 11 mission insignia",
+      "caption": "The Apollo 11 emblem shows an eagle above the lunar surface.",
+      "alt": "Apollo 11 mission insignia",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgY5YD4JVQtS0Die5JMkg9u6JL8321id3RWcMyEn_LSA&s=10",
+      "width": 554,
+      "height": 554
+    }
+  ],
+  [
+    {
+      "id": "apollo11-lm",
+      "title": "Lunar module assembly",
+      "caption": "Eagle being fitted into the spacecraft adapter before launch.",
+      "alt": "Lunar module assembly",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2019/04/apollo_11_lm_sla_mating_apr_4_1969_s69-32394.jpg",
+      "width": 985,
+      "height": 1234
+    },
+    {
+      "id": "apollo11-csm",
+      "title": "Command module assembly",
+      "caption": "The command and service modules being joined to the adapter.",
+      "alt": "Command module assembly",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2019/04/apollo_11_csm_sla_mating_apr_11_1969_s69-32369.jpg",
+      "width": 985,
+      "height": 1230
+    }
+  ],
+  [
+    {
+      "id": "apollo11-simple-job",
+      "title": "How lunar laser ranging works",
+      "caption": "A diagram shows how a pulse travels from Earth to a reflector and back.",
+      "alt": "How lunar laser ranging works",
+      "credit": "NASA slide supplied in the project PDF",
+      "sourceUrl": "https://www.jpl.nasa.gov/news/the-apollo-experiment-that-keeps-on-giving/",
+      "src": "/images/apollo11-evidence/simple-job.jpg",
+      "width": 1320,
+      "height": 739
+    }
+  ],
+  [
+    {
+      "id": "apollo11-greater-purpose",
+      "title": "Measuring the Moon with light",
+      "caption": "A research slide illustrates how laser ranging helps scientists study the Moon.",
+      "alt": "Measuring the Moon with light",
+      "credit": "Project PDF, TMO/OCTL slide",
+      "sourceUrl": "https://www.jpl.nasa.gov/news/the-apollo-experiment-that-keeps-on-giving/",
+      "src": "/images/apollo11-evidence/greater-purpose.jpg",
+      "width": 1044,
+      "height": 655
+    }
+  ],
+  [
+    {
+      "id": "apollo11-launch1",
+      "title": "The crew heads to the launch pad",
+      "caption": "Apollo 11 astronauts in their suits before liftoff.",
+      "alt": "The crew heads to the launch pad",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/03/624241main_1969-07-16-1_full.jpg?w=1024",
+      "width": 1024,
+      "height": 834
+    },
+    {
+      "id": "apollo11-launch2",
+      "title": "Saturn V lifts off",
+      "caption": "Apollo 11 lifts off from Kennedy Space Center on July 16, 1969.",
+      "alt": "Saturn V lifts off",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/03/s69-39529orig.jpg?w=1024",
+      "width": 1024,
+      "height": 1002
+    },
+    {
+      "id": "apollo11-launch3",
+      "title": "Apollo 11 climbs skyward",
+      "caption": "The Saturn V rises past an American flag.",
+      "alt": "Apollo 11 climbs skyward",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/03/624217main_1969-07-16-7_full.jpg?w=793",
+      "width": 793,
+      "height": 1023
+    }
+  ],
+  [
+    {
+      "id": "apollo11-land1",
+      "title": "Apollo 11 landing site",
+      "caption": "A reference image of the landing site supplied in the story package.",
+      "alt": "Apollo 11 landing site",
+      "credit": "Project PDF, linked thumbnail",
+      "sourceUrl": "https://www.nasa.gov/history/alsj/a11/a11.lrrr.html",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvXdkW8CsHAdtQEkWB65mEUtvY3qZd9b3YZOtv-3dfBQ&s=10",
+      "width": 678,
+      "height": 452
+    },
+    {
+      "id": "apollo11-land2",
+      "title": "Eagle on the lunar surface",
+      "caption": "An astronaut descends the ladder after Eagle landed.",
+      "alt": "Eagle on the lunar surface",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/history/alsj/a11/a11.lrrr.html",
+      "src": "https://images-assets.nasa.gov/image/6900937/6900937~large.jpg?w=1854&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+      "width": 1854,
+      "height": 1920
+    },
+    {
+      "id": "apollo11-land3",
+      "title": "Tranquility Base panorama",
+      "caption": "A panorama of the landscape around the Apollo 11 landing site.",
+      "alt": "Tranquility Base panorama",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/history/alsj/a11/a11.lrrr.html",
+      "src": "https://images-assets.nasa.gov/image/jsc2008e040725/jsc2008e040725~orig.jpg",
+      "width": 15634,
+      "height": 4460
+    }
+  ],
+  [
+    {
+      "id": "apollo11-carried",
+      "title": "Carrying the experiments",
+      "caption": "Buzz Aldrin carries the experiment packages across the Moon.",
+      "alt": "Carrying the experiments",
+      "credit": "NASA / Neil Armstrong",
+      "sourceUrl": "https://www.nasa.gov/history/alsj/a11/a11.lrrr.html",
+      "src": "https://images-assets.nasa.gov/image/as11-40-5942/as11-40-5942~large.jpg?w=1873&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+      "width": 1873,
+      "height": 1920
+    },
+    {
+      "id": "apollo11-reflector",
+      "title": "Apollo 11 reflector",
+      "caption": "The reflector sits on the lunar surface after deployment.",
+      "alt": "Apollo 11 reflector",
+      "credit": "NASA / Wikimedia Commons",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/08/Apollo_11_Lunar_Laser_Ranging_Experiment.jpg",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/0/08/Apollo_11_Lunar_Laser_Ranging_Experiment.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
+      "width": 2349,
+      "height": 2373
+    }
+  ],
+  [
+    {
+      "id": "apollo11-placed",
+      "title": "Experiments at Tranquility Base",
+      "caption": "The experiment packages and Eagle on the lunar surface.",
+      "alt": "Experiments at Tranquility Base",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/history/alsj/a11/a11.lrrr.html",
+      "src": "https://images-assets.nasa.gov/image/as11-40-5948/as11-40-5948~orig.jpg",
+      "width": 3904,
+      "height": 3904
+    }
+  ],
+  [
+    {
+      "id": "apollo11-first-echoes",
+      "title": "Lick Observatory’s first observations",
+      "caption": "A report excerpt shows the equipment and observatory used in early laser ranging.",
+      "alt": "Lick Observatory’s first observations",
+      "credit": "Report excerpt supplied in the project PDF",
+      "sourceUrl": "https://news.ucsc.edu/2019/07/lunar-laser-ranging/",
+      "src": "/images/apollo11-evidence/first-echoes.jpg",
+      "width": 776,
+      "height": 956
+    }
+  ],
+  [
+    {
+      "id": "apollo11-fading-echo",
+      "title": "Lunar retroreflector locations",
+      "caption": "A map shows the lunar arrays discussed in research on weaker returns.",
+      "alt": "Lunar retroreflector locations",
+      "credit": "NASA slide supplied in the project PDF",
+      "sourceUrl": "https://arxiv.org/abs/1003.0713",
+      "src": "/images/apollo11-evidence/fading-echo.jpg",
+      "width": 1372,
+      "height": 777
+    }
+  ],
+  [
+    {
+      "id": "apollo11-moon",
+      "title": "The Moon seen by Apollo 11",
+      "caption": "A view of the Moon. Repeated laser-ranging measurements track its gradual change in distance.",
+      "alt": "The Moon seen by Apollo 11",
+      "credit": "NASA",
+      "sourceUrl": "https://www.jpl.nasa.gov/news/the-apollo-experiment-that-keeps-on-giving/",
+      "src": "https://images-assets.nasa.gov/image/as11-44-6665/as11-44-6665~orig.jpg",
+      "width": 4282,
+      "height": 4282
+    }
+  ],
+  [
+    {
+      "id": "apollo11-rise1",
+      "title": "Eagle in lunar orbit",
+      "caption": "Eagle’s ascent stage approaches the command module over the Moon.",
+      "alt": "Eagle in lunar orbit",
+      "credit": "NASA / Michael Collins",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/as11_44_6642.jpg?w=1744&h=1684&fit=crop&crop=faces%2Cfocalpoint",
+      "width": 1744,
+      "height": 1683
+    },
+    {
+      "id": "apollo11-rise2",
+      "title": "Recovery after splashdown",
+      "caption": "The Apollo 11 crew is recovered in the Pacific Ocean.",
+      "alt": "Recovery after splashdown",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2019/07/apollo11-command-module-gpn-2000-001212-4x3-2.jpg?resize=2000,1503",
+      "width": 2000,
+      "height": 1503
+    },
+    {
+      "id": "apollo11-rise3",
+      "title": "The crew in quarantine",
+      "caption": "The three astronauts greet visitors from their mobile quarantine facility.",
+      "alt": "The crew in quarantine",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/03/464422main_S69-21365_full.jpg?w=1024",
+      "width": 1024,
+      "height": 1024
+    }
+  ],
+  [
+    {
+      "id": "apollo11-enduring",
+      "title": "Apollo 11 experiments on the Moon",
+      "caption": "The passive reflector remains available for laser ranging after the crew left.",
+      "alt": "Apollo 11 experiments on the Moon",
+      "credit": "NASA / JPL",
+      "sourceUrl": "https://www.apo.nmsu.edu/mainpage/apollo/apollolrrr/",
+      "src": "https://d2pn8kiwq2w21t.cloudfront.net/images/imagesapollo11-browse.width-640.jpg",
+      "width": 640,
+      "height": 480
+    }
+  ],
+  [
+    {
+      "id": "apollo11-legacy-in-light",
+      "title": "International Laser Ranging Service stations",
+      "caption": "The map shows the broader laser-ranging network, including stations that range to the Moon.",
+      "alt": "International Laser Ranging Service stations",
+      "credit": "NASA / ILRS",
+      "sourceUrl": "https://ilrs.gsfc.nasa.gov/",
+      "src": "/images/apollo11-evidence/legacy-in-light.jpg",
+      "width": 1282,
+      "height": 722
+    }
+  ],
+  []
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "viking-model",
+    "src": "/images/mars-stories/viking-model.jpg",
+    "originalUrl": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA09703.jpg",
+    "sourceUrl": "https://www.jpl.nasa.gov/images/pia09703-viking-lander-model/",
+    "width": 3300,
+    "height": 2661,
+    "bytes": 1174735,
+    "sha256": "ff62acf430c9cd6f2a350dc0d6a55ce8934097473a0fa732ecf47dd9622c0f3b"
+  },
+  {
+    "id": "sojourner-yogi",
+    "src": "/images/mars-stories/sojourner-yogi.jpg",
+    "originalUrl": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia00/pia00766/PIA00766.jpg?w=900",
+    "sourceUrl": "https://science.nasa.gov/photojournal/sojourner-and-yogi/",
+    "width": 900,
+    "height": 675,
+    "bytes": 63355,
+    "sha256": "8454e40616d2635ffaad748adb55132f4d086e07890f91b78be9aabb0676f00a"
+  },
+  {
+    "id": "opportunity-assembly",
+    "src": "/images/mars-stories/opportunity-assembly.jpg",
+    "originalUrl": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA04418.jpg",
+    "sourceUrl": "https://www.jpl.nasa.gov/images/pia04418-rover-2-assembly/",
+    "width": 3008,
+    "height": 1960,
+    "bytes": 821655,
+    "sha256": "6218288f3af01664e376fe935f4f04bbd89e039c8ae5edda449170c916bb713c"
+  },
+  {
+    "id": "opportunity-last",
+    "src": "/images/mars-stories/opportunity-last.jpg",
+    "originalUrl": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA22929.jpg",
+    "sourceUrl": "https://www.jpl.nasa.gov/images/pia22929-opportunitys-last-message/",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 314160,
+    "sha256": "db99314d10489da0937c3fb3ef67a89e087aca11deedafde39a67e27a79f794f"
+  },
+  {
+    "id": "viking-orbiter",
+    "src": "/images/mars-stories/viking-orbiter.jpg",
+    "originalUrl": "https://science.nasa.gov/wp-content/uploads/2024/03/261003main-02-viking1-full.jpg?resize=900,675",
+    "sourceUrl": "https://science.nasa.gov/mission/viking-1/",
+    "width": 900,
+    "height": 675,
+    "bytes": 22072,
+    "sha256": "a584ac6b9b5076142862b7de4c811f1879d9c4b7da4eee3c0fa2f2a7236f6435"
+  },
+  {
+    "id": "viking-first",
+    "src": "/images/mars-stories/viking-first.jpg",
+    "originalUrl": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/2305_Mars-Viking1-Lander-1st-Image-PIA00381-full2.jpg?w=900",
+    "sourceUrl": "https://science.nasa.gov/mission/viking-1/",
+    "width": 900,
+    "height": 320,
+    "bytes": 79152,
+    "sha256": "891e62bfbb47f9a396c936056280fccc55b963ddde48377f0209b649aac9a327"
+  }
+]

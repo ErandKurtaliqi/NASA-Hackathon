@@ -1,0 +1,367 @@
+{
+  "sojourner": {
+    "chapters": [
+      [
+        {
+          "title": "Meet Me, I'm Sojourner",
+          "text": "Mars was waiting to be explored, but no wheeled explorer had ever touched its surface. I was sent to change that, I'm Sojourner—the little pioneer who opened the road to Mars! Small, curious, and ready for adventure.",
+          "audio": "/audio/sojourner/chapter-1/1.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 1
+        },
+        {
+          "title": "Small but Mighty",
+          "text": "Don't let my tiny size fool you! I was only about 65 cm long and weighed around 10.5 kilograms. Yet I carried cameras and scientific tools to investigate an entire new world!",
+          "audio": "/audio/sojourner/chapter-1/2.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 2
+        },
+        {
+          "title": "Who Built Me?",
+          "text": "Engineers at NASA's Jet Propulsion Laboratory in California built me small and clever. I ran on sunshine, with six sturdy wheels on a rocking frame that helped me climb over rocks.",
+          "audio": "/audio/sojourner/chapter-1/3.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 3
+        },
+        {
+          "title": "My Partner, Pathfinder",
+          "text": "I never explored alone! Pathfinder carried me to Mars and relayed my messages to Earth. I travelled over 100 meters in total, exploring nearby rocks while staying close to my trusted partner!",
+          "audio": "/audio/sojourner/chapter-1/4.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "My Trip to Mars",
+          "text": "Earth was my home, but Mars was waiting! On December 4, 1996, a mighty Delta II rocket thundered skyward, carrying me and my partner, Pathfinder, toward a world no wheeled explorer had ever explored!",
+          "audio": "/audio/sojourner/chapter-2/1.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 1
+        },
+        {
+          "title": "The Bouncy Landing",
+          "text": "After seven months in space, July 4, 1997, was finally here! I had reached Mars! Wrapped in giant airbags, my partner Pathfinder struck the ground and bounced like a giant ball—at least 15 times! At last, we came to rest on the Red Planet!",
+          "audio": "/audio/sojourner/chapter-2/2.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 2
+        },
+        {
+          "title": "A Flower Opens",
+          "text": "After the airbags finally deflated, my home began to unfold. Three metal petals opened like a giant flower, revealing the Martian world around me. I was still waiting on my lander, but my new home was ready to welcome me.",
+          "audio": "/audio/sojourner/chapter-2/3.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 3
+        },
+        {
+          "title": "First Wheels on Another Planet",
+          "text": "At first, one of Pathfinder's airbags blocked my exit! My team carefully prepared the ramp. Then, on July 6, 1997(UTC), I unfolded my six wheels and slowly rolled backwards onto Martian soil. My very first steps on another world!",
+          "audio": "/audio/sojourner/chapter-2/4.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "The Messages that Broke",
+          "text": "I was ready to explore, but something went wrong! My first messages weren't coming through completely. Pathfinder couldn't understand me! My team discovered a problem in its modem and fixed it the very next day!",
+          "audio": "/audio/sojourner/chapter-3/1.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 1
+        },
+        {
+          "title": "Two Rocks, Two Stories",
+          "text": "Two strange rocks caught my attention: Barnacle Bill and Yogi! I pressed my special science instrument against them, uncovering different chemical secrets hidden inside these Martian rocks!",
+          "audio": "/audio/sojourner/chapter-3/2.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 2
+        },
+        {
+          "title": "Clues of Ancient Water",
+          "text": "What if I told you Mars once had flowing rivers? I spotted strange, rounded pebbles and rocks that looked like they had been carried by water. Could these tiny stones reveal a lost watery world?",
+          "audio": "/audio/sojourner/chapter-3/3.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 3
+        },
+        {
+          "title": "Secrets Beneath the Soil",
+          "text": "I thought Mars was hiding nothing beneath my wheels. But near Yogi, I dug deeper and uncovered a mysterious white material! Scientists found its chemistry almost matched a nearby rock called Scooby-Doo. Mars still had secrets!",
+          "audio": "/audio/sojourner/chapter-3/4.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "Seven Days Became Eighty-Three",
+          "text": "I was built to explore Mars for just 07 days. But I refused to stop there! I kept exploring for 83 Martian days—nearly twelve times longer than my planned mission!",
+          "audio": "/audio/sojourner/chapter-4/1.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 1
+        },
+        {
+          "title": "The Rovers Who Followed Me",
+          "text": "Spirit and Opportunity, who landed in 2004, used airbags like mine, carried a tool like my APXS, and rolled on the same kind of rocking wheel frame. My design became the standard for Mars rovers.",
+          "audio": "/audio/sojourner/chapter-4/2.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 2
+        },
+        {
+          "title": "My Last Message Home",
+          "text": "On September 27, 1997, my last full data reached Earth through the lander. After that came only empty signals, like a phone ringing with nobody speaking.",
+          "audio": "/audio/sojourner/chapter-4/3.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 3
+        },
+        {
+          "title": "The Long Goodbye",
+          "text": "I sent my last successful data on September 27, 1997. My partner Pathfinder fell silent, too. After five months of trying to reach us, NASA officially ended our mission on March 10, 1998. My journey on Mars had come to an end. I still rest in Ares Vallis beside Pathfinder.",
+          "audio": "/audio/sojourner/chapter-4/4.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 4
+        }
+      ]
+    ]
+  },
+  "opportunity": {
+    "chapters": [
+      [
+        {
+          "title": "Meet Me, I'm Opportunity",
+          "text": "Could water once have flowed across Mars? That was the mystery I was sent to investigate. I'm Opportunity, a robotic geologist designed to investigate the secrets of Mars. I was about the size of a golf cart, but I was built for a much bigger mission! And I was ready.",
+          "audio": "/audio/opportunity/chapter-1/1.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 1
+        },
+        {
+          "title": "Who Built Me?",
+          "text": "Engineers at NASA's Jet Propulsion Laboratory in California designed and built me. They equipped me with six wheels, cameras, and a robotic arm carrying special tools to examine Martian rocks and soil.",
+          "audio": "/audio/opportunity/chapter-1/2.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 2
+        },
+        {
+          "title": "Why Was I Created?",
+          "text": "But I wasn’t sent to Mars just for an adventure! My mission was to search for clues of ancient water on Mars. Scientists wanted to discover whether Mars once had environments that could support tiny forms of life.",
+          "audio": "/audio/opportunity/chapter-1/3.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 3
+        },
+        {
+          "title": "I Have a Twin",
+          "text": "Guess what? I had a twin! Her name was Spirit, and she landed on the opposite side of Mars. We explored different places, but shared the same big mission: searching for signs of ancient water. Two little explorers, one big mystery!",
+          "audio": "/audio/opportunity/chapter-1/4.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "My Trip to Mars",
+          "text": "Then came the big day! On July 7, 2003, a powerful Delta II Heavy rocket carried me away from Cape Canaveral, Florida. Six months later, I finally reached Mars. My adventure was about to begin!",
+          "audio": "/audio/opportunity/chapter-2/1.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 1
+        },
+        {
+          "title": "A Hole in One",
+          "text": "Hold on tight! My landing was quite a ride! Tucked safely inside my airbag-wrapped lander, I bounced across Mars at least 26 times before rolling to a stop inside a small crater. It was called Eagle Crater, and my team called it a HOLE IN ONE!",
+          "audio": "/audio/opportunity/chapter-2/2.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 2
+        },
+        {
+          "title": "The Long Drive",
+          "text": "From Eagle Crater, I travelled across Mars, exploring crater after crater. In 2008, I set out for distant Endeavour Crater and reached its rim in 2011. By 2015, my wheels had rolled more than a marathon: 26.2 miles!",
+          "audio": "/audio/opportunity/chapter-2/3.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 3
+        },
+        {
+          "title": "My Final Valley",
+          "text": "In 2017, I reached Perseverance Valley on Endeavour Crater's western rim. I explored its rocky slopes, searching for clues about its past. Little did I know, this would become my final home on Mars.",
+          "audio": "/audio/opportunity/chapter-2/4.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "The Blueberries",
+          "text": "Just weeks after landing, I spotted tiny, round formations embedded in the bedrock. My team nicknamed them blueberries! They were rich in hematite, a mineral often associated with liquid water. On March 2, 2004, NASA announced strong evidence that this part of Mars was once soaking wet!",
+          "audio": "/audio/opportunity/chapter-3/1.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 1
+        },
+        {
+          "title": "A Rock From Another World",
+          "text": "Near my discarded heat shield, I spotted a basketball-sized rock! In January 2005, my instruments revealed it was made mostly of iron and nickel. It was a meteorite—the first ever identified on another planet!",
+          "audio": "/audio/opportunity/chapter-3/2.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 2
+        },
+        {
+          "title": "Trapped in the Sand",
+          "text": "Ah! In 2005, I got stuck in Purgatory Dune! My wheels sank deep into soft sand. Engineers tested escape moves on Earth, then carefully guided me free after more than five weeks.",
+          "audio": "/audio/opportunity/chapter-3/3.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 3
+        },
+        {
+          "title": "Gentler Water",
+          "text": "But wait, explorers… I found something even more exciting! Bright white lines ran through the rocks—signs of ancient water! And the clay minerals revealed an even bigger secret: Mars once had gentler water, with conditions friendlier to tiny life!",
+          "audio": "/audio/opportunity/chapter-3/4.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "Ninety Days Became Fifteen Years",
+          "text": "Here is my secret. I was built to work for only 90 Martian days, about three Earth months. But I kept going, and going, and going! I explored Mars for almost 15 years.",
+          "audio": "/audio/opportunity/chapter-4/1.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 1
+        },
+        {
+          "title": "The Great Storm",
+          "text": "Then, something terrible happened! In June 2018, a giant dust storm swallowed the Martian sky. Dust blocked sunlight from reaching my solar panels. On June 10, I sent my final message—a dark, unfinished picture of the Sun. Then… silence.",
+          "audio": "/audio/opportunity/chapter-4/2.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 2
+        },
+        {
+          "title": "A Thousand Wake-Up Calls",
+          "text": "My friends on Earth wouldn't give up! They sent me over 1,000 messages, hoping I'd answer. But I stayed silent. On February 13, 2019, NASA finally declared my mission complete. My incredible adventure had come to an end.",
+          "audio": "/audio/opportunity/chapter-4/3.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 3
+        },
+        {
+          "title": "The Record and the Trail",
+          "text": "I still rest in Perseverance Valley. My wheels travelled 45.16 kms across Mars—a record that stood for years! In 2026, Perseverance finally passed me. But my greatest legacy wasn't distance. It was helping the world discover Mars's watery past!",
+          "audio": "/audio/opportunity/chapter-4/4.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 4
+        }
+      ]
+    ]
+  },
+  "viking-1": {
+    "chapters": [
+      [
+        {
+          "title": "Meet Me.",
+          "text": "Imagine being sent millions of miles to explore a world no human had ever stood on! I'm Viking 1, a robot explorer sent to Mars with one extraordinary mission: to investigate the Red Planet and search for signs of life!",
+          "audio": "/audio/viking-1/chapter-1/1.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 1
+        },
+        {
+          "title": "Staying Still Was My Job",
+          "text": "Staying still was my special job. From one lonely spot on Mars, I took the first close-up pictures, watched the weather, and dug into the soil—uncovering the mysteries of Mars.",
+          "audio": "/audio/viking-1/chapter-1/2.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 2
+        },
+        {
+          "title": "My Partner in the Sky",
+          "text": "But I wasn't alone! My partner, the Viking 1 Orbiter, circled Mars high above me. It studied the planet and helped send my all discoveries back to Earth. What a team we made!",
+          "audio": "/audio/viking-1/chapter-1/3.mp3",
+          "sourceChapter": 1,
+          "sourceSegment": 3
+        }
+      ],
+      [
+        {
+          "title": "Blast Off",
+          "text": "Ready for the greatest journey of my life? On August 20, 1975, a mighty Titan IIIE-Centaur rocket lifted me from Cape Canaveral. My destination? Mars! I was finally on my way to the Red Planet!",
+          "audio": "/audio/viking-1/chapter-2/1.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 1
+        },
+        {
+          "title": "The Birthday That Almost Was",
+          "text": "I was supposed to land on July 4, 1976, America's 200th birthday! But pictures revealed dangerous, rocky ground. My team searched for a safer spot, so my landing had to wait!",
+          "audio": "/audio/viking-1/chapter-2/2.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 2
+        },
+        {
+          "title": "Touchdown",
+          "text": "At last, Mars was beneath me! On July 20, 1976, I touched down safely on Chryse Planitia. After travelling millions of miles, I finally reached my new home!",
+          "audio": "/audio/viking-1/chapter-2/3.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 3
+        },
+        {
+          "title": "My First Day at Work",
+          "text": "Imagine opening your eyes on new world for the very first time! Just 25 seconds after landing, I began taking pictures. And then… I sent Earth something extraordinary: humanity's very first photograph from the surface of Mars!",
+          "audio": "/audio/viking-1/chapter-2/4.mp3",
+          "sourceChapter": 2,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "My first picture of Mars",
+          "text": "Look closely! What a strange world I had landed on! My pictures revealed rocks, dusty ground, and even marks left by my landing. Every little detail was a clue waiting to be discovered!",
+          "audio": "/audio/viking-1/chapter-3/1.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 1
+        },
+        {
+          "title": "My Laboratory in a Box",
+          "text": "Inside me, sat a tiny biology laboratory. My robotic arm fed it scoops of Martian soil. Three experiments watched the soil give off gases, change gases, and build new chemicals, hunting for signs of living things.",
+          "audio": "/audio/viking-1/chapter-3/2.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 2
+        },
+        {
+          "title": "The Puzzle of the Soil",
+          "text": "One test reacted as if something in the soil was alive. But my other instrument found no organic molecules it could confirm, the building blocks of life. So scientists call my answer a puzzle, not a yes and not a no.",
+          "audio": "/audio/viking-1/chapter-3/3.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 3
+        },
+        {
+          "title": "Weather Watcher",
+          "text": "Season after season, my weather instruments measured temperature, pressure, and wind. Year after year, I sent home reports, building the first long weather record from the surface of Mars.",
+          "audio": "/audio/viking-1/chapter-3/4.mp3",
+          "sourceChapter": 3,
+          "sourceSegment": 4
+        }
+      ],
+      [
+        {
+          "title": "A New Name",
+          "text": "On January 7, 1981, I received a new name: Thomas A. Mutch Memorial Station! It honored the leader of my imaging team, whose work helped bring the mysterious world of Mars into view.",
+          "audio": "/audio/viking-1/chapter-4/1.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 1
+        },
+        {
+          "title": "Six Years of Viking-1",
+          "text": "I was designed to work for just 90 days, but I survived for 2,307 Earth days—more than six years! I held Mars's longest-running lander record until 2010!",
+          "audio": "/audio/viking-1/chapter-4/2.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 2
+        },
+        {
+          "title": "My Partner Falls Silent",
+          "text": "My orbiter partner watched over me until August 7, 1980, when its steering propellant ran out and it was shut down. I kept working on the surface for more than two years after that.",
+          "audio": "/audio/viking-1/chapter-4/3.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 3
+        },
+        {
+          "title": "The last message, Then Silence",
+          "text": "In November 1982, a faulty command from Earth interrupted my communications. Engineers sent command after command, hoping I would answer. But after months of trying, Earth could no longer hear me.",
+          "audio": "/audio/viking-1/chapter-4/4.mp3",
+          "sourceChapter": 4,
+          "sourceSegment": 4
+        }
+      ]
+    ]
+  }
+}

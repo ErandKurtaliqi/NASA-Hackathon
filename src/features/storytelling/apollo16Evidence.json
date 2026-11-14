@@ -1,0 +1,313 @@
+[
+  [
+    [
+      {
+        "id": "apollo16-p1-1",
+        "title": "Apollo 16 mission photograph",
+        "caption": "Apollo 16 mission photograph.",
+        "alt": "Apollo 16 mission photograph",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S71-56246/S71-56246~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "src": "https://images-assets.nasa.gov/image/S71-56246/S71-56246~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "width": 1920,
+        "height": 1920
+      },
+      {
+        "id": "apollo16-p1-2",
+        "title": "Apollo 16 rover reference",
+        "caption": "Apollo 16 rover reference.",
+        "alt": "Apollo 16 rover reference",
+        "credit": "Linked image from the supplied Apollo 16 PDF",
+        "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3WwbW5RTH8yKU4PNL2BoZixtnkFmNn4dfH5zEhSreh5qcKD177760OEE&s=10",
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3WwbW5RTH8yKU4PNL2BoZixtnkFmNn4dfH5zEhSreh5qcKD177760OEE&s=10",
+        "width": 675,
+        "height": 454
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p1-3",
+        "title": "Apollo landing sites",
+        "caption": "Apollo landing sites.",
+        "alt": "Apollo landing sites",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_1_landing_site_with_all_others.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_1_landing_site_with_all_others.jpg",
+        "width": 985,
+        "height": 971
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p2-1",
+        "title": "Apollo 16 hardware preparation",
+        "caption": "Apollo 16 hardware preparation.",
+        "alt": "Apollo 16 hardware preparation",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_8_as16-0037b-271c-1778-8.24.71.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_8_as16-0037b-271c-1778-8.24.71.jpg",
+        "width": 985,
+        "height": 1009
+      },
+      {
+        "id": "apollo16-p2-2",
+        "title": "Saturn V stage inspection",
+        "caption": "Saturn V stage inspection.",
+        "alt": "Saturn V stage inspection",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_9_as16-0052-71p-519-sic_inspection_in_vab-9.22.71.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_9_as16-0052-71p-519-sic_inspection_in_vab-9.22.71.jpg",
+        "width": 985,
+        "height": 779
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p2-4",
+        "title": "Geology training near Taos",
+        "caption": "Geology training near Taos.",
+        "alt": "Geology training near Taos",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_5_geology_training_taos_nm_sep_1971_s71-51612.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_5_geology_training_taos_nm_sep_1971_s71-51612.jpg",
+        "width": 985,
+        "height": 397
+      },
+      {
+        "id": "apollo16-p2-5",
+        "title": "Geology training at Mono Craters",
+        "caption": "Geology training at Mono Craters.",
+        "alt": "Geology training at Mono Craters",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_3_geol_field_trip_mono_craters_ca_jun_10_1971_s71-36834.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_3_geol_field_trip_mono_craters_ca_jun_10_1971_s71-36834.jpg",
+        "width": 985,
+        "height": 686
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "id": "apollo16-p3-1",
+        "title": "Apollo 16 launch reference",
+        "caption": "Apollo 16 launch reference.",
+        "alt": "Apollo 16 launch reference",
+        "credit": "Linked image from the supplied Apollo 16 PDF",
+        "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm7SXmrkGLXJSV-i0LIM-CDIwyQ_CLo3IXNu-oEKhD6w&s=10",
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm7SXmrkGLXJSV-i0LIM-CDIwyQ_CLo3IXNu-oEKhD6w&s=10",
+        "width": 738,
+        "height": 375
+      },
+      {
+        "id": "apollo16-p3-3",
+        "title": "Descartes landing site",
+        "caption": "Descartes landing site.",
+        "alt": "Descartes landing site",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_2_landing_site_closeup.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2021/06/apollo_16_2_landing_site_closeup.jpg",
+        "width": 985,
+        "height": 711
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p3-5",
+        "title": "Apollo 16 surface panorama",
+        "caption": "Apollo 16 surface panorama.",
+        "alt": "Apollo 16 surface panorama",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_47_pano.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_47_pano.jpg",
+        "width": 985,
+        "height": 467
+      },
+      {
+        "id": "apollo16-p3-6",
+        "title": "Apollo 16 surface operations",
+        "caption": "Apollo 16 surface operations.",
+        "alt": "Apollo 16 surface operations",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/as16-113-18339.jpg?w=1024",
+        "src": "https://www.nasa.gov/wp-content/uploads/2023/03/as16-113-18339.jpg?w=1024",
+        "width": 1024,
+        "height": 1024
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p3-9",
+        "title": "John Young with the rover and Orion",
+        "caption": "John Young with the rover and Orion.",
+        "alt": "John Young with the rover and Orion",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_37_eva3_lm_w_rover_and_young_as16-116-18578.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_37_eva3_lm_w_rover_and_young_as16-116-18578.jpg",
+        "width": 985,
+        "height": 985
+      },
+      {
+        "id": "apollo16-p3-10",
+        "title": "Orion and the surface terrain",
+        "caption": "Orion and the surface terrain.",
+        "alt": "Orion and the surface terrain",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_31_eva2_lm_pano_as16-107-17436.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_31_eva2_lm_pano_as16-107-17436.jpg",
+        "width": 985,
+        "height": 1020
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p4-1",
+        "title": "The Lunar Rover Grand Prix",
+        "caption": "The Lunar Rover Grand Prix.",
+        "alt": "The Lunar Rover Grand Prix",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_30_eva1_lrv_grand_prix_still_from_movie_apr_21_1972_s72-37002.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_30_eva1_lrv_grand_prix_still_from_movie_apr_21_1972_s72-37002.jpg",
+        "width": 985,
+        "height": 678
+      },
+      {
+        "id": "apollo16-p4-2",
+        "title": "Apollo 16 rover driving test",
+        "caption": "Apollo 16 rover driving test.",
+        "alt": "Apollo 16 rover driving test",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/s72-36970.jpg?w=1024",
+        "src": "https://www.nasa.gov/wp-content/uploads/2023/03/s72-36970.jpg?w=1024",
+        "width": 1024,
+        "height": 710
+      }
+    ]
+  ],
+  [
+    null,
+    [
+      {
+        "id": "apollo16-p4-3",
+        "title": "View from the Apollo 16 rover",
+        "caption": "View from the Apollo 16 rover.",
+        "alt": "View from the Apollo 16 rover",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_28_eva1_from_rover_as16-109-17849.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_28_eva1_from_rover_as16-109-17849.jpg",
+        "width": 985,
+        "height": 985
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p5-1",
+        "title": "Charles Duke at Plum Crater",
+        "caption": "Charles Duke at Plum Crater.",
+        "alt": "Charles Duke at Plum Crater",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_25_eva1_sta_1_duke_and_crater_as16-114-18423.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_25_eva1_sta_1_duke_and_crater_as16-114-18423.jpg",
+        "width": 985,
+        "height": 985
+      },
+      {
+        "id": "apollo16-p5-2",
+        "title": "Collecting Big Muley",
+        "caption": "Collecting Big Muley.",
+        "alt": "Collecting Big Muley",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_26_eva1_sta_1_duke_collecting_big_muley.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_landing_26_eva1_sta_1_duke_collecting_big_muley.jpg",
+        "width": 270,
+        "height": 235
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "id": "apollo16-p5-10",
+        "title": "Apollo 16 rover preparations",
+        "caption": "Apollo 16 rover preparations.",
+        "alt": "Apollo 16 rover preparations",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/s71-51261.jpg?resize=812,1024",
+        "src": "https://www.nasa.gov/wp-content/uploads/2023/03/s71-51261.jpg?resize=812,1024",
+        "width": 812,
+        "height": 1024
+      },
+      {
+        "id": "apollo16-p5-11",
+        "title": "Apollo 16 rover documentation",
+        "caption": "Apollo 16 rover documentation.",
+        "alt": "Apollo 16 rover documentation",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S71-51289/S71-51289~large.jpg?w=819&h=1024&fit=crop&crop=faces%2Cfocalpoint",
+        "src": "https://images-assets.nasa.gov/image/S71-51289/S71-51289~large.jpg?w=819&h=1024&fit=crop&crop=faces%2Cfocalpoint",
+        "width": 1536,
+        "height": 1920
+      }
+    ],
+    [
+      {
+        "id": "apollo16-p5-12",
+        "title": "The Moon-based ultraviolet telescope",
+        "caption": "The Moon-based ultraviolet telescope.",
+        "alt": "The Moon-based ultraviolet telescope",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2019/07/moon-based-telescope.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2019/07/moon-based-telescope.jpg",
+        "width": 985,
+        "height": 985
+      },
+      {
+        "id": "apollo16-p6-1",
+        "title": "Earth’s geocorona and aurorae in ultraviolet",
+        "caption": "Earth’s geocorona and aurorae in ultraviolet.",
+        "alt": "Earth’s geocorona and aurorae in ultraviolet",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2019/07/earth-geocorona-and-aurorae_0.jpg?resize=1200,994",
+        "src": "https://www.nasa.gov/wp-content/uploads/2019/07/earth-geocorona-and-aurorae_0.jpg?resize=1200,994",
+        "width": 1200,
+        "height": 994
+      }
+    ],
+    [],
+    [
+      {
+        "id": "apollo16-p6-4",
+        "title": "Orion’s lunar liftoff",
+        "caption": "Orion’s lunar liftoff.",
+        "alt": "Orion’s lunar liftoff",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_7_s72-35613.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_7_s72-35613.jpg",
+        "width": 985,
+        "height": 746
+      },
+      {
+        "id": "apollo16-p6-6",
+        "title": "Orion approaches in lunar orbit",
+        "caption": "Orion approaches in lunar orbit.",
+        "alt": "Orion approaches in lunar orbit",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_9_lm_approach_rev_53_as16-122-19530.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_return_to_earth_9_lm_approach_rev_53_as16-122-19530.jpg",
+        "width": 985,
+        "height": 985
+      },
+      {
+        "id": "apollo16-p6-7",
+        "title": "Apollo 16 splashdown recovery",
+        "caption": "Apollo 16 splashdown recovery.",
+        "alt": "Apollo 16 splashdown recovery",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_4_as16-0545c-s72-36291-4.27.72.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/04/apollo_16_splashdown_4_as16-0545c-s72-36291-4.27.72.jpg",
+        "width": 985,
+        "height": 985
+      }
+    ]
+  ]
+]

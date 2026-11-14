@@ -1,0 +1,374 @@
+[
+  [
+    [
+      {
+        "id": "apollo17-p1-1",
+        "title": "Apollo 17 mission insignia",
+        "caption": "The emblem used for the final Apollo lunar landing mission.",
+        "alt": "Apollo 17 mission insignia",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/s72-49079/s72-49079~large.jpg?w=400&h=400&fit=crop&crop=faces%2Cfocalpoint",
+        "src": "https://images-assets.nasa.gov/image/s72-49079/s72-49079~large.jpg?w=400&h=400&fit=crop&crop=faces%2Cfocalpoint",
+        "width": 1920,
+        "height": 1920
+      },
+      {
+        "id": "apollo17-p1-2",
+        "title": "Apollo 17 on the lunar surface",
+        "caption": "Apollo 17 on the lunar surface.",
+        "alt": "Apollo 17 on the lunar surface",
+        "credit": "NASA",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/image/as17_146_22367.jpg",
+        "src": "https://nssdc.gsfc.nasa.gov/planetary/image/as17_146_22367.jpg",
+        "width": 3000,
+        "height": 3000
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p2-2",
+        "title": "NASA and General Motors",
+        "caption": "The agency and company logos accompany the rover engineering story.",
+        "alt": "NASA and General Motors",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/r2-nasagm.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/03/r2-nasagm.jpg",
+        "width": 635,
+        "height": 222
+      },
+      {
+        "id": "apollo17-p2-3",
+        "title": "Boeing and NASA",
+        "caption": "The company and agency logos accompany the rover development story.",
+        "alt": "Boeing and NASA",
+        "credit": "Linked image from the Apollo 17 storytelling PDF",
+        "sourceUrl": "https://media.licdn.com/dms/image/v2/D5612AQGO7D37lVXVeA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1687172806274?e=1795651200&v=beta&t=H2b2vUVCk_6ipNHSYeEsimT9OGC5g06UiAiEMyASjQQ",
+        "src": "https://media.licdn.com/dms/image/v2/D5612AQGO7D37lVXVeA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1687172806274?e=1795651200&v=beta&t=H2b2vUVCk_6ipNHSYeEsimT9OGC5g06UiAiEMyASjQQ",
+        "width": 850,
+        "height": 478
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p2-5",
+        "title": "Wire-mesh lunar rover tire",
+        "caption": "Wire-mesh lunar rover tire.",
+        "alt": "Wire-mesh lunar rover tire",
+        "credit": "Armagh Observatory and Planetarium",
+        "sourceUrl": "https://armaghplanet.com/wp-content/uploads/2013/01/image_of-wiremesh-tyre.jpg",
+        "src": "https://armaghplanet.com/wp-content/uploads/2013/01/image_of-wiremesh-tyre.jpg",
+        "width": 564,
+        "height": 480
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p2-7",
+        "title": "The Apollo 17 crew",
+        "caption": "The Apollo 17 crew.",
+        "alt": "The Apollo 17 crew",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S72-50438/S72-50438~large.jpg?w=1920&h=1441&fit=clip&crop=faces%2Cfocalpoint",
+        "src": "https://images-assets.nasa.gov/image/S72-50438/S72-50438~large.jpg?w=1920&h=1441&fit=clip&crop=faces%2Cfocalpoint",
+        "width": 1920,
+        "height": 1441
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "id": "apollo17-p3-2",
+        "title": "Apollo 17 launch preparations",
+        "caption": "Apollo 17 launch preparations.",
+        "alt": "Apollo 17 launch preparations",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_launch_6_as17-476b-72hc-881-12.6.72.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_launch_6_as17-476b-72hc-881-12.6.72.jpg",
+        "width": 985,
+        "height": 699
+      },
+      {
+        "id": "apollo17-p3-4",
+        "title": "Apollo 17 lifts off at night",
+        "caption": "Apollo 17 lifts off at night.",
+        "alt": "Apollo 17 lifts off at night",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S72-55070/S72-55070~orig.jpg",
+        "src": "https://images-assets.nasa.gov/image/S72-55070/S72-55070~orig.jpg",
+        "width": 8277,
+        "height": 5133
+      },
+      {
+        "id": "apollo17-p3-5",
+        "title": "Apollo 17 on its journey to the Moon",
+        "caption": "Apollo 17 on its journey to the Moon.",
+        "alt": "Apollo 17 on its journey to the Moon",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_launch_18_as17-148-22682.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_launch_18_as17-148-22682.jpg",
+        "width": 985,
+        "height": 984
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p3-7",
+        "title": "Taurus-Littrow landing region",
+        "caption": "Taurus-Littrow landing region.",
+        "alt": "Taurus-Littrow landing region",
+        "credit": "NASA",
+        "sourceUrl": "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/10/STScI-01EVVM8G4DDXHQ715C9SCKQ1RP.jpg?w=2000&h=1600&fit=crop&crop=faces%2Cfocalpoint",
+        "src": "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/10/STScI-01EVVM8G4DDXHQ715C9SCKQ1RP.jpg?w=2000&h=1600&fit=crop&crop=faces%2Cfocalpoint",
+        "width": 2000,
+        "height": 1600
+      },
+      {
+        "id": "apollo17-p3-8",
+        "title": "Apollo 14 lunar module",
+        "caption": "A lunar surface photograph of Apollo 14’s Antares, included as context for Apollo landers.",
+        "alt": "Apollo 14 lunar module",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/as14-66-09277/as14-66-09277~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "src": "https://images-assets.nasa.gov/image/as14-66-09277/as14-66-09277~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "width": 1920,
+        "height": 1920
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p4-2",
+        "title": "Illustration of lunar rover deployment",
+        "caption": "Illustration of lunar rover deployment.",
+        "alt": "Illustration of lunar rover deployment",
+        "credit": "NASA",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/image/lrv_deployment_art.jpg",
+        "src": "https://nssdc.gsfc.nasa.gov/planetary/image/lrv_deployment_art.jpg",
+        "width": 629,
+        "height": 477
+      },
+      {
+        "id": "apollo17-p4-3",
+        "title": "Apollo 17 fieldwork on the Moon",
+        "caption": "Apollo 17 fieldwork on the Moon.",
+        "alt": "Apollo 17 fieldwork on the Moon",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/as17-134-20382/as17-134-20382~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "src": "https://images-assets.nasa.gov/image/as17-134-20382/as17-134-20382~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+        "width": 1920,
+        "height": 1920
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p4-5",
+        "title": "Eugene Cernan and Apollo 17 surface operations",
+        "caption": "Eugene Cernan and Apollo 17 surface operations.",
+        "alt": "Eugene Cernan and Apollo 17 surface operations",
+        "credit": "NASA",
+        "sourceUrl": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/eugene_cernan-full-a.jpg?w=2000&h=1070&fit=crop&crop=faces%2Cfocalpoint",
+        "src": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/eugene_cernan-full-a.jpg?w=2000&h=1070&fit=crop&crop=faces%2Cfocalpoint",
+        "width": 1999,
+        "height": 1070
+      },
+      {
+        "id": "apollo17-p4-6",
+        "title": "Cernan test-drives LRV-3",
+        "caption": "Cernan test-drives LRV-3.",
+        "alt": "Cernan test-drives LRV-3",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_19_eva1_cernan_test_driving_lrv_as17-147-22526.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_19_eva1_cernan_test_driving_lrv_as17-147-22526.jpg",
+        "width": 985,
+        "height": 985
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "id": "apollo17-p4-7",
+        "title": "A repaired rover fender",
+        "caption": "A close-up shows the wheel and the improvised fender extension.",
+        "alt": "A repaired rover fender",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/7040032/7040032~medium.jpg",
+        "src": "https://images-assets.nasa.gov/image/7040032/7040032~medium.jpg",
+        "width": 1265,
+        "height": 1280
+      },
+      {
+        "id": "apollo17-p4-8",
+        "title": "Fender repair reference",
+        "caption": "A historical photograph included alongside the fender repair account.",
+        "alt": "Fender repair reference",
+        "credit": "NASA",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S72-55170/S72-55170~orig.jpg",
+        "src": "https://images-assets.nasa.gov/image/S72-55170/S72-55170~orig.jpg",
+        "width": 2643,
+        "height": 4019
+      }
+    ],
+    [
+      {
+        "id": "apollo17-battery",
+        "title": "LRV battery layout",
+        "caption": "The diagram identifies both rover batteries and their covers.",
+        "alt": "LRV battery layout",
+        "credit": "Image supplied in the Apollo 17 storytelling PDF",
+        "sourceUrl": "https://www.nasa.gov/missions/apollo/apollo-17-mission-details/",
+        "src": "/images/apollo17-evidence/battery.jpg",
+        "width": 735,
+        "height": 572
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p5-2",
+        "title": "Orange soil at Shorty Crater",
+        "caption": "Orange soil at Shorty Crater.",
+        "alt": "Orange soil at Shorty Crater",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_35_eva2_sta_4_orange_soil_near_shorty_as17-137-20990.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_35_eva2_sta_4_orange_soil_near_shorty_as17-137-20990.jpg",
+        "width": 985,
+        "height": 1064
+      },
+      {
+        "id": "apollo17-p5-3",
+        "title": "A lunar glass bead",
+        "caption": "A close-up of lunar sample material accompanying the orange-soil discovery.",
+        "alt": "A lunar glass bead",
+        "credit": "NASA",
+        "sourceUrl": "https://ares.jsc.nasa.gov/interaction/lmdp/images/disks/EDDISK%2080_Page_4_Image_0001.jpg",
+        "src": "https://ares.jsc.nasa.gov/interaction/lmdp/images/disks/EDDISK%2080_Page_4_Image_0001.jpg",
+        "width": 1643,
+        "height": 2190
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p6-1",
+        "title": "Deep core sampling area",
+        "caption": "Deep core sampling area.",
+        "alt": "Deep core sampling area",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_27_eva1_deep_core_sample_area_as17-136-20720.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_27_eva1_deep_core_sample_area_as17-136-20720.jpg",
+        "width": 985,
+        "height": 998
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "id": "apollo17-p6-5",
+        "title": "LRV-3 parked at its final site",
+        "caption": "LRV-3 parked at its final site.",
+        "alt": "LRV-3 parked at its final site",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_43_eva3_closeout_rover_parked_at_vip_site_as17-143-21932hr.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_43_eva3_closeout_rover_parked_at_vip_site_as17-143-21932hr.jpg",
+        "width": 985,
+        "height": 989
+      },
+      {
+        "id": "apollo17-p6-6",
+        "title": "Orbital view of Apollo 17 surface traces",
+        "caption": "Orbital view of Apollo 17 surface traces.",
+        "alt": "Orbital view of Apollo 17 surface traces",
+        "credit": "NASA",
+        "sourceUrl": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_LRO-litho6-viewing-traces-1.jpg?w=800&h=665&fit=crop&crop=faces%2Cfocalpoint",
+        "src": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_LRO-litho6-viewing-traces-1.jpg?w=800&h=665&fit=crop&crop=faces%2Cfocalpoint",
+        "width": 800,
+        "height": 665
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p7-1",
+        "title": "Apollo 17 after the final moonwalk",
+        "caption": "Apollo 17 after the final moonwalk.",
+        "alt": "Apollo 17 after the final moonwalk",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_1_post_eva3_as17-145-22224.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_1_post_eva3_as17-145-22224.jpg",
+        "width": 985,
+        "height": 985
+      },
+      {
+        "id": "apollo17-p7-2",
+        "title": "Inside Challenger after the final moonwalk",
+        "caption": "Inside Challenger after the final moonwalk.",
+        "alt": "Inside Challenger after the final moonwalk",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_2_post_eva3_as17-145-22228.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_2_post_eva3_as17-145-22228.jpg",
+        "width": 985,
+        "height": 985
+      }
+    ],
+    [
+      {
+        "id": "apollo17-p7-5",
+        "title": "Challenger lifts off from the Moon",
+        "caption": "Challenger lifts off from the Moon.",
+        "alt": "Challenger lifts off from the Moon",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_7_lm_liftoff_still_from_video.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_7_lm_liftoff_still_from_video.jpg",
+        "width": 861,
+        "height": 630
+      },
+      {
+        "id": "apollo17-p7-6",
+        "title": "Equipment left at Taurus-Littrow",
+        "caption": "Surface equipment remains behind when the crew departs.",
+        "alt": "Equipment left at Taurus-Littrow",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_4_plss_on_moon_as17-145-22196.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_4_plss_on_moon_as17-145-22196.jpg",
+        "width": 985,
+        "height": 988
+      },
+      {
+        "id": "apollo17-p7-7",
+        "title": "Challenger approaches America for docking",
+        "caption": "Challenger approaches America for docking.",
+        "alt": "Challenger approaches America for docking",
+        "credit": "NASA",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_9_lm_from_cm_during_docking_cernan_visible_as17-149-22859.jpg",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_return_to_earth_9_lm_from_cm_during_docking_cernan_visible_as17-149-22859.jpg",
+        "width": 985,
+        "height": 989
+      }
+    ],
+    [
+      {
+        "id": "apollo17-inspiration",
+        "title": "The Apollo 15, 16 and 17 lunar rovers",
+        "caption": "The Apollo 15, 16 and 17 lunar rovers.",
+        "alt": "The Apollo 15, 16 and 17 lunar rovers",
+        "credit": "Image supplied in the Apollo 17 storytelling PDF",
+        "sourceUrl": "https://www.nasa.gov/missions/apollo/apollo-17-mission-details/",
+        "src": "/images/apollo17-evidence/inspiration.jpg",
+        "width": 729,
+        "height": 974
+      }
+    ],
+    [
+      {
+        "id": "apollo17-young-explorers",
+        "title": "Young explorers drive a human-powered rover",
+        "caption": "Young explorers drive a human-powered rover.",
+        "alt": "Young explorers drive a human-powered rover",
+        "credit": "Image supplied in the Apollo 17 storytelling PDF",
+        "sourceUrl": "https://www.nasa.gov/missions/apollo/apollo-17-mission-details/",
+        "src": "/images/apollo17-evidence/young-explorers.jpg",
+        "width": 720,
+        "height": 405
+      }
+    ]
+  ]
+]

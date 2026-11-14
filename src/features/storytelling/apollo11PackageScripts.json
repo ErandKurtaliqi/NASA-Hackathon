@@ -1,0 +1,100 @@
+[
+  [
+    {
+      "chapter": 1,
+      "segment": 1,
+      "title": "Meet Me",
+      "text": "1. Meet Me \"The Moon was about to welcome its first human explorers, and I was going along with them! I'm Apollo 11's Laser Ranging Retroreflector\u2014a little reflector with a mission reaching all the way back to Earth!"
+    },
+    {
+      "chapter": 1,
+      "segment": 2,
+      "title": "Who Built Me",
+      "text": "The Bendix Corporation built me under NASA's Goddard Space Flight Center, and the University of Maryland science team, led by Dr. Carroll Alley, designed my work. I was built with 100 tiny fused-silica glass corner-cube reflectors, carefully arranged to send laser light back toward its source."
+    },
+    {
+      "chapter": 1,
+      "segment": 3,
+      "title": "My One Simple Job",
+      "text": "Here is my one simple job. Observatories on Earth send laser pulses toward me, and my tiny mirrors reflect the light back toward its source. No power, no moving parts\u2014just light finding its way home."
+    },
+    {
+      "chapter": 1,
+      "segment": 4,
+      "title": "My Greater Purpose",
+      "text": "Every returning pulse helps scientists measure the distance between Earth and the Moon with remarkable precision. By studying these measurements over time, they can uncover the secrets of our ever-changing lunar relationship."
+    }
+  ],
+  [
+    {
+      "chapter": 2,
+      "segment": 1,
+      "title": "Launch Day",
+      "text": "July 16, 1969! From Launch Pad 39A at Kennedy Space Center, Florida, mighty Saturn V carried me skyward with Apollo 11. Three astronauts, one historic mission\u2014and my journey to the Moon had begun!"
+    },
+    {
+      "chapter": 2,
+      "segment": 2,
+      "title": "Landing at Tranquility",
+      "text": "July 20, 1969! Eagle descended toward the Sea of Tranquility. Alarms sounded, and a crater filled with boulders blocked our path. Neil Armstrong took control. Then came the words that changed history: 'The Eagle has landed!'"
+    },
+    {
+      "chapter": 2,
+      "segment": 3,
+      "title": "Carried Out by Hand",
+      "text": "Humanity had taken its first steps, now it\u2019s my turn! on July 21, 1969, Buzz carried me from Eagle, and Neil carefully deployed me on the lunar surface. At last, I had found my place among the stars!"
+    },
+    {
+      "chapter": 2,
+      "segment": 4,
+      "title": "Set Down Once, Forever",
+      "text": "Neil gently placed me about 14 meters from Eagle, checked my level, and aimed me toward Earth. My astronauts would soon leave, and no one would be beside me to make things right. This little spot would be my home forever."
+    }
+  ],
+  [
+    {
+      "chapter": 3,
+      "segment": 1,
+      "title": "The First Echoes",
+      "text": "For days, Earth searched for me. Thousands of laser pulses crossed the darkness, but none returned. Then, on August 1, 1969, Lick Observatory's mighty 120-inch telescope caught my first faint echoes. At last, Earth had found me!"
+    },
+    {
+      "chapter": 3,
+      "segment": 2,
+      "title": "The Fading Echo",
+      "text": "Decades have passed, but I still answer Earth's laser calls. Yet my echoes have grown faint. Scientists believe lunar dust may be covering my tiny mirrors, dimming the light I send home. Still, I have not fallen silent"
+    },
+    {
+      "chapter": 3,
+      "segment": 3,
+      "title": "The Moon Is Drifting Away",
+      "text": "Timing my light for more than 55 years showed the Moon drifting away from Earth by about 3.8 centimeters a year, roughly the speed fingernails grow. Earth's ocean tides slow Earth's spin and push the Moon outward."
+    }
+  ],
+  [
+    {
+      "chapter": 4,
+      "segment": 1,
+      "title": "When Eagle Rose",
+      "text": "July 21, 1969. The Moon was about to say goodbye to its first visitors. Eagle began to rise, carrying Neil Armstrong and Buzz Aldrin away from the lunar world. Michael Collins waited above. Their footsteps stayed behind\u2026 and so did I. I watched them disappear into the darkness, never knowing when\u2014or if\u2014I would hear from Earth again."
+    },
+    {
+      "chapter": 4,
+      "segment": 2,
+      "title": "The Mission That Never Ended",
+      "text": "The astronauts went home, but I stayed. No batteries, no wires, no moving parts. Yet, for more than five decades, I have continued answering Earth's calls. They left me behind, but they never left my mission behind."
+    },
+    {
+      "chapter": 4,
+      "segment": 3,
+      "title": "A Legacy Written in Light",
+      "text": "From observatories across the world, scientists continued sending laser pulses to the Moon. Together, measurements from lunar reflectors became one of the most powerful ways to test Einstein's theory of gravity. My little mirrors had become part of something much bigger!"
+    },
+    {
+      "chapter": 4,
+      "segment": 4,
+      "title": "More Than a Mirror",
+      "text": "At Tranquility Base, about 14 meters from Eagle, I remain. I am a little mirror, sending Earth's laser light back home. More than five decades have passed, yet I still serve science. The astronauts left the Moon, but a part of their dream never left me."
+    }
+  ]
+]
