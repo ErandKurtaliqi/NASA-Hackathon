@@ -1,0 +1,259 @@
+{
+  "archive": "INGENUITY Final.zip",
+  "archiveBytes": 5169369,
+  "archiveSha256": "a2b61dd8fb35681250f0a35adf2fb2d171ae259c8deebdf4fb56a9eb8289f54f",
+  "pdfPages": 7,
+  "chapterAudioCounts": [
+    4,
+    4,
+    4,
+    4,
+    3
+  ],
+  "files": [
+    {
+      "original": "INGENUITY Final/CH-1 audios/1. Meet Me.mp3",
+      "bytes": 302821,
+      "sha256": "0930c22293dd67a7885f348b07ae56cfd920c0a5203fb7b9f480d94d80410ef7",
+      "chapter": 1,
+      "segment": 1,
+      "path": "/audio/ingenuity/chapter-1/1.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 17.86775
+    },
+    {
+      "original": "INGENUITY Final/CH-1 audios/2. Who Built Me.mp3",
+      "bytes": 271056,
+      "sha256": "8d6ff6352046369303af03348d0c8bdc609cfd6f4fbdef7cdad18c467e7b0b5f",
+      "chapter": 1,
+      "segment": 2,
+      "path": "/audio/ingenuity/chapter-1/2.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 15.8824375
+    },
+    {
+      "original": "INGENUITY Final/CH-1 audios/3. Why Was I Created.mp3",
+      "bytes": 289028,
+      "sha256": "10910e16ad6e89497f41e2437cfc9dedc781a50231ddf186336fe9eb0899d064",
+      "chapter": 1,
+      "segment": 3,
+      "path": "/audio/ingenuity/chapter-1/3.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 17.005708333333335
+    },
+    {
+      "original": "INGENUITY Final/CH-1 audios/4. My Partner.mp3",
+      "bytes": 205854,
+      "sha256": "e4e586c2bfdcdbc9f85088a655743cb2eadcbc08c5603bb794f3ab0a0fc11de0",
+      "chapter": 1,
+      "segment": 4,
+      "path": "/audio/ingenuity/chapter-1/4.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 11.807333333333334
+    },
+    {
+      "original": "INGENUITY Final/CH-2 audios/1. My Launch.mp3",
+      "bytes": 204600,
+      "sha256": "9627e4f7d882dcf4bbba433a75ab024461d9464ca6693c7426bc867bd0404d41",
+      "chapter": 2,
+      "segment": 1,
+      "path": "/audio/ingenuity/chapter-2/1.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 11.728979166666667
+    },
+    {
+      "original": "INGENUITY Final/CH-2 audios/2. Touchdown.mp3",
+      "bytes": 246814,
+      "sha256": "f3383d8bd7cadb2a32929cdbab75b37cf8ef119769deda37bc8ba28c061af59b",
+      "chapter": 2,
+      "segment": 2,
+      "path": "/audio/ingenuity/chapter-2/2.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 14.367333333333333
+    },
+    {
+      "original": "INGENUITY Final/CH-2 audios/3. First steps.mp3",
+      "bytes": 259353,
+      "sha256": "af63dd6db4eb9975ca83e019beaea93279c3384b4bd3ccfee6eb4e40cfae3472",
+      "chapter": 2,
+      "segment": 3,
+      "path": "/audio/ingenuity/chapter-2/3.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 15.151
+    },
+    {
+      "original": "INGENUITY Final/CH-2 audios/4. I Flew.mp3",
+      "bytes": 273563,
+      "sha256": "4a9e22cac1e40b73d3f5629ca8b51fd0f637f707a09a01cba13d7ab575a4bb02",
+      "chapter": 2,
+      "segment": 4,
+      "path": "/audio/ingenuity/chapter-2/4.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 16.039166666666667
+    },
+    {
+      "original": "INGENUITY Final/CH-3 audios/1. Harsh Winter.mp3",
+      "bytes": 346706,
+      "sha256": "08d1a934b8ebd8473b09a1cf4c53f706051cd40fac10f4ec756aba08c3cbf0cb",
+      "chapter": 3,
+      "segment": 1,
+      "path": "/audio/ingenuity/chapter-3/1.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 20.61060416666667
+    },
+    {
+      "original": "INGENUITY Final/CH-3 audios/2. A Flight.mp3",
+      "bytes": 283594,
+      "sha256": "3f8c7a1572401f10a42cefb705c3218009f516e4034f9f1b8787ddca85fc91de",
+      "chapter": 3,
+      "segment": 2,
+      "path": "/audio/ingenuity/chapter-3/2.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 16.666104166666667
+    },
+    {
+      "original": "INGENUITY Final/CH-3 audios/3. My Eyes.mp3",
+      "bytes": 263114,
+      "sha256": "92f2aad36201605cab1bfcaf124bc127ca9cc94915823f9ad9961d8b2606f677",
+      "chapter": 3,
+      "segment": 3,
+      "path": "/audio/ingenuity/chapter-3/3.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 15.386104166666666
+    },
+    {
+      "original": "INGENUITY Final/CH-3 audios/4. 72 Flights.mp3",
+      "bytes": 261861,
+      "sha256": "c8869e25cb8869fd46326bd0575d0422e1e91776ece566697408a1eb6b71a35d",
+      "chapter": 3,
+      "segment": 4,
+      "path": "/audio/ingenuity/chapter-3/4.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 15.30775
+    },
+    {
+      "original": "INGENUITY Final/CH-4 audios/1. My Last Flight.mp3",
+      "bytes": 290282,
+      "sha256": "2e6269862e87969b132349b65496f1471529643a4ce1493ad7abff9486512f51",
+      "chapter": 4,
+      "segment": 1,
+      "path": "/audio/ingenuity/chapter-4/1.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 17.0840625
+    },
+    {
+      "original": "INGENUITY Final/CH-4 audios/2. When my Wings.mp3",
+      "bytes": 276071,
+      "sha256": "1cc3c8a5b5cb07c13dedac4a01b66379c1966f3d7d44002928b1d728359e8598",
+      "chapter": 4,
+      "segment": 2,
+      "path": "/audio/ingenuity/chapter-4/2.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 16.195916666666665
+    },
+    {
+      "original": "INGENUITY Final/CH-4 audios/3. My Dream.mp3",
+      "bytes": 268548,
+      "sha256": "6a885308ad12cf3ccf515da2a3701824910a1372ddaadffa13a750be5eb8389e",
+      "chapter": 4,
+      "segment": 3,
+      "path": "/audio/ingenuity/chapter-4/3.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 15.725708333333333
+    },
+    {
+      "original": "INGENUITY Final/CH-4 audios/4. I Opened.mp3",
+      "bytes": 246814,
+      "sha256": "68c19ae327371a2b00e8f194501791c76b18f7d0dead880d68089cefde83629a",
+      "chapter": 4,
+      "segment": 4,
+      "path": "/audio/ingenuity/chapter-4/4.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 14.367333333333333
+    },
+    {
+      "original": "INGENUITY Final/CH-5 audios/Q-1.mp3",
+      "bytes": 70017,
+      "sha256": "91174f46baad745a3c2760a6d5bde934091aa542cef2d4c9d9fa99b1ba9adf9b",
+      "chapter": 5,
+      "segment": 1,
+      "path": "/audio/ingenuity/chapter-5/1.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 3.3175416666666666
+    },
+    {
+      "original": "INGENUITY Final/CH-5 audios/Q-2.mp3",
+      "bytes": 95513,
+      "sha256": "1ddf244a2156757631e845daecf3c724999aaa55968d8ff38b132ef69ed0890b",
+      "chapter": 5,
+      "segment": 2,
+      "path": "/audio/ingenuity/chapter-5/2.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 4.911
+    },
+    {
+      "original": "INGENUITY Final/CH-5 audios/Q-3.mp3",
+      "bytes": 68763,
+      "sha256": "f8d6cef6a28e9c9d4541376280d8d68ee88e74c4d93ef1d732e8d92e76924693",
+      "chapter": 5,
+      "segment": 3,
+      "path": "/audio/ingenuity/chapter-5/3.mp3",
+      "mapping": "filename-and-pdf",
+      "listening": "pending",
+      "timing": "pending",
+      "decodedDurationSeconds": 3.2391666666666667
+    },
+    {
+      "original": "INGENUITY Final/INGENUITY Storytelling.pdf",
+      "bytes": 894995,
+      "sha256": "493c9370ad02461bd7145fa598ce9958446b50afc8bb0cdd209a3d7923ca9932"
+    }
+  ],
+  "excludedSources": [
+    "Google thumbnail URLs: original authorship and rights unverified",
+    "Third-party landing PNG: use NASA mission evidence instead"
+  ],
+  "publication": "No binary resources copied into the integration worktree. Redistribution permission pending.",
+  "audioValidation": {
+    "method": "Real Chrome AudioContext.decodeAudioData on all 19 original files, outside the repository",
+    "totalDecodedSeconds": 262.661,
+    "humanListening": "pending",
+    "captionCueAlignment": "pending; recording durations are not caption timestamps"
+  }
+}

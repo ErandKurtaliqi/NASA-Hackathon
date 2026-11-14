@@ -1,0 +1,89 @@
+{
+  "base": "8a77514",
+  "excluded": [
+    "all new MP3/PDF/ZIP and binary assets",
+    "E/F parent histories",
+    "raw PDF extractions",
+    "original worktree changes"
+  ],
+  "files": [
+    {
+      "sourceCommit": "44e6a65982e86d050a5305a708bb945f1669c13b",
+      "path": "src/components/storytelling/Apollo16ScrollStory.tsx",
+      "sourceBlob": "4fd3b7f3942adf7b9281f364394a7a4d9e0b4fac",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "44e6a65982e86d050a5305a708bb945f1669c13b",
+      "path": "src/components/storytelling/Apollo16Quiz.tsx",
+      "sourceBlob": "7d7004d40ef53cdb4102f50145fcb65034dfb2d2",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "44e6a65982e86d050a5305a708bb945f1669c13b",
+      "path": "src/features/storytelling/apollo16Story.ts",
+      "sourceBlob": "cb776c940ebbe5dfe11fa0b5d6b5e544dbdb0908",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "44e6a65982e86d050a5305a708bb945f1669c13b",
+      "path": "src/features/storytelling/apollo16Recordings.ts",
+      "sourceBlob": "75bdeae5d79abe1027a581f4353db381f44a99de",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "44e6a65982e86d050a5305a708bb945f1669c13b",
+      "path": "src/features/storytelling/apollo16StoryMedia.ts",
+      "sourceBlob": "694477aaa889da9b3b7b40982753b005458e939d",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "44e6a65982e86d050a5305a708bb945f1669c13b",
+      "path": "src/features/storytelling/apollo16AudioManifest.json",
+      "sourceBlob": "78b4056a94e771a488abc17305d5c3cd72b3832b",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "44e6a65982e86d050a5305a708bb945f1669c13b",
+      "path": "src/features/storytelling/apollo16ImageManifest.json",
+      "sourceBlob": "6ffdb37d52ff73f34d5f0085e1ba2449d48b09bf",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "814d0443f65c77164635bc43b643a2aea2799d5f",
+      "path": "src/components/storytelling/MarsScrollStory.tsx",
+      "sourceBlob": "3822185f5491f9234ad5f7d9ddf89faa71d0fc20",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "814d0443f65c77164635bc43b643a2aea2799d5f",
+      "path": "src/components/storytelling/MarsScrollStory.module.css",
+      "sourceBlob": "ef20a4f68b547ebef2c7734b9a6f8d9d580c88ca",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "814d0443f65c77164635bc43b643a2aea2799d5f",
+      "path": "src/features/storytelling/marsStories.ts",
+      "sourceBlob": "a472eeb07cfaf7a66e4ccc00af58366f48f2d1ea",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "814d0443f65c77164635bc43b643a2aea2799d5f",
+      "path": "src/features/storytelling/marsStoryContent.json",
+      "sourceBlob": "8de7672c928e6dfcc7c0829e5024aae2308e920f",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "814d0443f65c77164635bc43b643a2aea2799d5f",
+      "path": "src/features/storytelling/marsStoryMedia.ts",
+      "sourceBlob": "4e2b20829cdc88a4a149523bb1e226912c697fac",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    },
+    {
+      "sourceCommit": "814d0443f65c77164635bc43b643a2aea2799d5f",
+      "path": "src/features/storytelling/marsMediaFiles.json",
+      "sourceBlob": "9476cd55afb9679ab08171417525ccbaee2fc0bb",
+      "transfer": "text only; presentation/media adapters reviewed separately"
+    }
+  ]
+}
