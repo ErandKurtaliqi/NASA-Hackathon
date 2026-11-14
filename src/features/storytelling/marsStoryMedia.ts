@@ -1,12 +1,13 @@
-import type { StoryEvidenceMedia } from '../../components/storytelling/StoryMedia'
+import type { DocumentaryGalleryItem, StoryEvidenceMedia } from '../../components/storytelling/StoryMedia'
 import type { MarsStoryId } from './marsStories'
+import { ingenuityEvidence } from './ingenuityEvidence'
 
 export type MarsSegmentEvidence = {
   label: string
   summary: string
   sourceUrl: string
   media?: StoryEvidenceMedia
-  gallery?: readonly StoryEvidenceMedia[]
+  gallery?: readonly DocumentaryGalleryItem[]
   video?: string
   optionalVideo?: { url: string; label: string }
 }
@@ -140,9 +141,17 @@ const ingenuity: readonly MarsSegmentEvidence[][] = [
     image('ingenuity-4-1', 'Ingenuity after Flight 72', 'The supplied final-flight evidence shows the helicopter after its hard landing.', 'https://d2pn8kiwq2w21t.cloudfront.net/images/jpegPIA26482.width-1600.jpg'),
     image('ingenuity-4-2', 'Damaged rotor-blade shadow', 'The supplied image shows the shadow evidence used to assess blade damage.', 'https://d2pn8kiwq2w21t.cloudfront.net/images/e1-PIA26243-Ingenuity_Spots_the_Shadow_of_its.width-1600.jpg'),
     image('ingenuity-4-3', 'Skyfall helicopter concept', 'The supplied artist concept shows the future helicopter generation discussed in this section.', 'https://d2pn8kiwq2w21t.cloudfront.net/images/PIA26760.width-1600.jpg', undefined, 'Illustration · not a photograph'),
-    source('Ingenuity legacy sources', 'The PDF supplies official mission-end and legacy references for the new path Ingenuity opened in planetary exploration.', 'https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/'),
+    source('I Opened the Sky', 'A summary of Ingenuity’s achievements and legacy.', 'https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/'),
   ],
 ]
+
+function ingenuityGallery(chapter: number, segment: number): DocumentaryGalleryItem[] | undefined {
+  const items = ingenuityEvidence[`${chapter + 1}-${segment + 1}`]
+  return items?.map((item): DocumentaryGalleryItem => {
+    if ('type' in item) return item
+    return { ...item, kind: item.kind ?? 'Photograph', originalUrl: item.src, srcSet: '', ...usage }
+  })
+}
 
 export const marsSegmentEvidence: Record<MarsStoryId, readonly MarsSegmentEvidence[][]> = {
   sojourner, opportunity, 'viking-1': viking, ingenuity,
@@ -153,7 +162,11 @@ export const marsStoryMedia = Object.fromEntries(
 ) as Record<string, StoryEvidenceMedia>
 
 export function marsEvidenceFor(id: MarsStoryId, chapter: number, segment: number) {
-  return marsSegmentEvidence[id][chapter][segment]
+  const record = marsSegmentEvidence[id][chapter][segment]
+  const gallery = id === 'ingenuity' ? ingenuityGallery(chapter, segment) : undefined
+  if (!gallery) return record
+  const media = gallery.find((item): item is StoryEvidenceMedia => 'src' in item)
+  return { ...record, gallery, media }
 }
 
 export const marsHeroMedia: Record<MarsStoryId, string> = {

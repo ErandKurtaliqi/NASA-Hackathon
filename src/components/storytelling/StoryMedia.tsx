@@ -6,6 +6,7 @@ export type StoryEvidenceMedia = Omit<StoryImageMedia, 'kind'> & { kind: StoryIm
 
 export type DocumentaryGalleryItem = StoryEvidenceMedia
   | { type: 'video'; url: string; label: string }
+  | { type: 'link'; url: string; label: string }
   | { type: 'youtube'; url: string; label: string; videoId: string }
 
 function ImageFrame({ media, motionEnabled }: { media: StoryEvidenceMedia; motionEnabled: boolean }) {

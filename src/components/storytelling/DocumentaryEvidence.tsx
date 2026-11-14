@@ -65,7 +65,8 @@ export default function DocumentaryEvidence({ media: primary, gallery, video, yo
           referrerPolicy="strict-origin-when-cross-origin"
           style={{ display: 'block', width: '100%', height: '100%', border: 0 }}
         />}
-        {!media && !videoSrc && !embedId && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p></div>}
+        {selectedVideo?.type === 'link' && <div data-source-evidence><a href={selectedVideo.url} target="_blank" rel="noreferrer">{selectedVideo.label} ↗</a></div>}
+        {!media && !videoSrc && !embedId && !selectedVideo && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p></div>}
         {media && !shown && <p>{failed ? 'Selected image could not load. The exact source remains available.' : 'Loading the selected evidence.'}</p>}
       </div>
       <figcaption>
