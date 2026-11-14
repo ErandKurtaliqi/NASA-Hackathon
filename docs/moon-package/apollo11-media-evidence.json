@@ -1,0 +1,65 @@
+[
+  {
+    "id": "as11-37-5551",
+    "metadata": {
+      "center": "JSC",
+      "date_created": "1969-07-20T00:00:00Z",
+      "description": "AS11-37-5551 (20 July 1969) --- Two components of the Early Apollo Scientific Experiments Package (EASEP) are seen deployed on the lunar surface in this view photographed from inside the Lunar Module (LM).  In the far background is the Passive Seismic Experiment Package (PSEP); and to the right and closer to the camera is the Laser Ranging Retro-Reflector (LR-3).  The footprints of Apollo 11 astronauts Neil A. Armstrong and Edwin E. Aldrin Jr. are very distinct in the lunar soil.",
+      "keywords": [
+        "APOLLO 11",
+        "APOLLO PROJECT",
+        "FOOTPRINTS",
+        "LASER RANGE FINDERS",
+        "LUNAR SOIL",
+        "LUNAR SURFACE",
+        "PHOTOGRAPHY",
+        "SEISMOGRAPHS",
+        "SPACEBORNE EXPERIMENTS"
+      ],
+      "media_type": "image",
+      "nasa_id": "as11-37-5551",
+      "title": "Components of the Early Apollo Scientific Experiments Package (EASEP)"
+    },
+    "url": "https://images-assets.nasa.gov/image/as11-37-5551/as11-37-5551~medium.jpg",
+    "local": "public/images/apollo11-story/as11-37-5551.jpg",
+    "sha256": "6c9b92a5daf1cff1b526fe04bdb3a93c03e1f11ca642f141fa35cceb11a1ca08"
+  },
+  {
+    "id": "AS11-40-5942",
+    "metadata": {
+      "center": "JSC",
+      "date_created": "1969-07-20T00:00:00Z",
+      "description": "Astronaut Edwin E. Aldrin Jr., lunar module pilot, moves toward a position to deploy two components of the Early Apollo Scientific Experiments Package (EASEP) on the surface of the Moon during the Apollo 11 extravehicular activity. The Passive Seismic Experiments Package (PSEP) is in his left hand; and in his right hand is the Laser Ranging Retro-Reflector (LR3). Astronaut Neil A. Armstrong, commander, took this photograph with a 70mm lunar surface camera.",
+      "keywords": [
+        "APOLLO 11",
+        "APOLLO PROJECT",
+        "ASTRONAUTS",
+        "EXTRAVEHICULAR ACTIVITY",
+        "LUNAR MODULE LUNAR PHOTOGRAPHY",
+        "LUNAR SURFACE",
+        "PHOTOGRAPHY",
+        "SEISMOGRAPHS SPACEBORNE EXPERIMENTS"
+      ],
+      "media_type": "image",
+      "nasa_id": "as11-40-5942",
+      "title": "Astronaut Edwin Aldrin prepares to deploy EASEP on surface of moon"
+    },
+    "url": "https://images-assets.nasa.gov/image/as11-40-5942/as11-40-5942~medium.jpg",
+    "local": "public/images/apollo11-story/as11-40-5942.jpg",
+    "sha256": "0e92de2049fd7fd6bb1c919b18e65f03f331b8b9aaf05180e87672b9d1ff71f8"
+  },
+  {
+    "id": "S69-39529",
+    "metadata": {
+      "center": "JSC",
+      "date_created": "1969-07-16T00:00:00Z",
+      "description": "S69-39529 (16 July 1969) --- The huge, 363-feet tall Apollo 11 (Spacecraft 107/Lunar Module 5/Saturn 506) space vehicle is launched from Pad A, Launch Complex 39, Kennedy Space Center (KSC), at 9:32 a.m. (EDT), July 16, 1969. Onboard the Apollo 11 spacecraft were astronauts Neil A. Armstrong, commander; Michael Collins, command module pilot; and Edwin E. Aldrin Jr., lunar module pilot.  Apollo 11 is the United States first lunar landing mission. While astronauts Armstrong and Aldrin descend in the Lunar Module (LM) \"Eagle\" to explore the Sea of Tranquility region of the moon, astronaut Collins will remain with the Command and Service Modules (CSM) \"Columbia\" in lunar orbit.",
+      "media_type": "image",
+      "nasa_id": "S69-39529",
+      "title": "APOLLO XI - LAUNCH - PAD 39A - KSC"
+    },
+    "url": "https://images-assets.nasa.gov/image/S69-39529/S69-39529~medium.jpg",
+    "local": "public/images/apollo11-story/s69-39529.jpg",
+    "sha256": "5baec3321e7ff0ee7089a242998bf41ff607270746e388a88226c87678ebf02c"
+  }
+]

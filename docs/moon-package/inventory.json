@@ -1,0 +1,720 @@
+{
+  "archive": "MOON Final.zip",
+  "archiveSha256": "246d6359a7ca41ec34366ad3e50472e6f604d1f2d78e62535229a2c36c9f80b5",
+  "files": [
+    {
+      "entry": "MOON Final/APOLLO-11 Final/APOLLO-11 Stroytelling.pdf",
+      "bytes": 1274134,
+      "sha256": "569db81cd3d6c0b122aeaa8f24bb9c24bd3bf1e9ab7d66e7b90b387babd08334",
+      "mission": "11",
+      "local": "docs/moon-package/apollo-11-source.pdf",
+      "pages": 11
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-1 audios/1. Meet Me.mp3",
+      "bytes": 235111,
+      "sha256": "68fbcb5b6a361658b93154ed75bff0b71f95bdc8f5a1d4fc6e4a37167364a91a",
+      "mission": "11",
+      "chapter": 1,
+      "segment": 1,
+      "local": "public/audio/apollo-11/chapter-1/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-1 audios/2. Who Built Me.mp3",
+      "bytes": 313270,
+      "sha256": "bb87645ce30d4c31be5341f4f2a9cee604e69e5f617375d81a0bc88b906a4f77",
+      "mission": "11",
+      "chapter": 1,
+      "segment": 2,
+      "local": "public/audio/apollo-11/chapter-1/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-1 audios/3. My One Simple Job.mp3",
+      "bytes": 277325,
+      "sha256": "3398ad2b1bb68b9d173e5b119a3a91fdf353ef38e22e0814d666291033cf5869",
+      "mission": "11",
+      "chapter": 1,
+      "segment": 3,
+      "local": "public/audio/apollo-11/chapter-1/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-1 audios/4.\u00a0My Greater Purpose.mp3",
+      "bytes": 244306,
+      "sha256": "d53c2a3b3cfd2eaeee11a5e69d37312265ea76b8cdd2d2f4ad1c3683c2159389",
+      "mission": "11",
+      "chapter": 1,
+      "segment": 4,
+      "local": "public/audio/apollo-11/chapter-1/4.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-2 audios/1. Launch Day.mp3",
+      "bytes": 308254,
+      "sha256": "6d40eec556f9c3caa52f9b02aa294178831d13ad3dbc202b0734ba61964671b1",
+      "mission": "11",
+      "chapter": 2,
+      "segment": 1,
+      "local": "public/audio/apollo-11/chapter-2/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-2 audios/2. Landing.mp3",
+      "bytes": 340019,
+      "sha256": "d93780ba3147d4a7a550770eedd23f0bfacbb99281e772c9cb57828ce3aee00f",
+      "mission": "11",
+      "chapter": 2,
+      "segment": 2,
+      "local": "public/audio/apollo-11/chapter-2/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-2 audios/3. Carried.mp3",
+      "bytes": 295297,
+      "sha256": "d93c30a9d98f9a1134e9312e1f471a9f7d04a91a5005305d0ef9ff0955494a96",
+      "mission": "11",
+      "chapter": 2,
+      "segment": 3,
+      "local": "public/audio/apollo-11/chapter-2/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-2 audios/4. Set Down.mp3",
+      "bytes": 256845,
+      "sha256": "3e312660649f703cc7d4dbdde40cf6a5ca601ecbd2ef88e1c932d3a54cd98689",
+      "mission": "11",
+      "chapter": 2,
+      "segment": 4,
+      "local": "public/audio/apollo-11/chapter-2/4.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-3 audios/1. First Echoes.mp3",
+      "bytes": 333750,
+      "sha256": "4d8cc040e13eb21bf481c7328076742d66d9404a017788dc97cd6d2556148a42",
+      "mission": "11",
+      "chapter": 3,
+      "segment": 1,
+      "local": "public/audio/apollo-11/chapter-3/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-3 audios/2. The fading.mp3",
+      "bytes": 286520,
+      "sha256": "e1520593347a372fd70b3e1702384b1a924a8a1deafafa961132d506ff18d03a",
+      "mission": "11",
+      "chapter": 3,
+      "segment": 2,
+      "local": "public/audio/apollo-11/chapter-3/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-3 audios/3. The Moon Is Drifting Away.mp3",
+      "bytes": 266040,
+      "sha256": "da31ac5236b07a01ab638cbc056f96accdcd7989cbdffad3c99753dfb0532664",
+      "mission": "11",
+      "chapter": 3,
+      "segment": 3,
+      "local": "public/audio/apollo-11/chapter-3/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-4 audios/1. When Eagle Rose.mp3",
+      "bytes": 473348,
+      "sha256": "357009f5812e0fb5971b9949e0901ba6d8f945527b56e2d6aa7e434ecf5d8671",
+      "mission": "11",
+      "chapter": 4,
+      "segment": 1,
+      "local": "public/audio/apollo-11/chapter-4/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-4 audios/2. The Mission.mp3",
+      "bytes": 289028,
+      "sha256": "c73150d558a1aa5ab7b4a6967ef3e4ebe4a03c3ddbc671732de4ee6d652b8c69",
+      "mission": "11",
+      "chapter": 4,
+      "segment": 2,
+      "local": "public/audio/apollo-11/chapter-4/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-4 audios/3. A Legacy.mp3",
+      "bytes": 297805,
+      "sha256": "50e6e2ee8a80623f2a53b1482e22bbe2e7edda6bbdb296135aa4fc0a81538d25",
+      "mission": "11",
+      "chapter": 4,
+      "segment": 3,
+      "local": "public/audio/apollo-11/chapter-4/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-4 audios/4. More.mp3",
+      "bytes": 326226,
+      "sha256": "4166f8c94a0b51b81bc113f1c81c31f6fc39c67621d76eda5eaabc3283d47bc4",
+      "mission": "11",
+      "chapter": 4,
+      "segment": 4,
+      "local": "public/audio/apollo-11/chapter-4/4.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-5 audios/Q-1.mp3",
+      "bytes": 103454,
+      "sha256": "333a132a8bd6cc1c07045cf28e4b9dbb5587e3fb8174f37487b0a82d5c4b53c6",
+      "mission": "11",
+      "chapter": 5,
+      "segment": 1,
+      "local": "public/audio/apollo-11/chapter-5/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-5 audios/Q-2.mp3",
+      "bytes": 99274,
+      "sha256": "71716aa48d9a83355f2190c45f1b292fafd62b710b8c1252a965c7c3a92b9d33",
+      "mission": "11",
+      "chapter": 5,
+      "segment": 2,
+      "local": "public/audio/apollo-11/chapter-5/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-11 Final/CH-5 audios/Q-3.mp3",
+      "bytes": 102200,
+      "sha256": "6030fee21c8b79aa1b926b29c1cf6ccda67c902629389e444eceb6f6ce31a9ed",
+      "mission": "11",
+      "chapter": 5,
+      "segment": 3,
+      "local": "public/audio/apollo-11/chapter-5/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/APOLLO 15 .pdf",
+      "bytes": 108691,
+      "sha256": "33178de069f6144c6362504ac57448cc694076f7f559370745e2ae638c590b68",
+      "mission": "15",
+      "local": "docs/moon-package/apollo-15-source.pdf",
+      "pages": 6
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 1 AUDIOS/1.Hook & Machine intro.mp3",
+      "bytes": 287774,
+      "sha256": "d29c885891be6018c7f7b9a65a18a64d85dffa83fbfdfb09eb1e6f349c1cd60a",
+      "mission": "15",
+      "chapter": 1,
+      "segment": 1,
+      "existingSha256": "d29c885891be6018c7f7b9a65a18a64d85dffa83fbfdfb09eb1e6f349c1cd60a",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 1 AUDIOS/2.Developed & Destination.mp3",
+      "bytes": 282341,
+      "sha256": "4f85e8bdd448cc00646c0dc8a5f035b6a354f10a86fed4983c0f85134e4d38a6",
+      "mission": "15",
+      "chapter": 1,
+      "segment": 2,
+      "existingSha256": "4f85e8bdd448cc00646c0dc8a5f035b6a354f10a86fed4983c0f85134e4d38a6",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 1 AUDIOS/3.Who built me.mp3",
+      "bytes": 156953,
+      "sha256": "18b0a7715f813468019b7eb3c547a2545d2de8eb19cca4c35dd6cc9d1394b8d5",
+      "mission": "15",
+      "chapter": 1,
+      "segment": 3,
+      "existingSha256": "18b0a7715f813468019b7eb3c547a2545d2de8eb19cca4c35dd6cc9d1394b8d5",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 1 AUDIOS/4.Designed to Accomplish.mp3",
+      "bytes": 242634,
+      "sha256": "71f2f2180e079eb293ca383ec7f7d593decb32253870afc80bdfdf066c8c75b5",
+      "mission": "15",
+      "chapter": 1,
+      "segment": 4,
+      "existingSha256": "71f2f2180e079eb293ca383ec7f7d593decb32253870afc80bdfdf066c8c75b5",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 2 AUDIOS/1.Launch & Landing.mp3",
+      "bytes": 368440,
+      "sha256": "0772ffb2349fca1e9af4bc1b64d35ad10d9683681e41105f8ec016323693f06a",
+      "mission": "15",
+      "chapter": 2,
+      "segment": 1,
+      "existingSha256": "0772ffb2349fca1e9af4bc1b64d35ad10d9683681e41105f8ec016323693f06a",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 2 AUDIOS/2.Lunar Environment & Controls.mp3",
+      "bytes": 384741,
+      "sha256": "d551062158c3867956011120bcfd413050c597c12516b1e48e3c1d0f0d76157e",
+      "mission": "15",
+      "chapter": 2,
+      "segment": 2,
+      "existingSha256": "d551062158c3867956011120bcfd413050c597c12516b1e48e3c1d0f0d76157e",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 2 AUDIOS/3.One-sixth Gravity.mp3",
+      "bytes": 282341,
+      "sha256": "e47cae50e3ba3cba3ebf2d4fdd6b3744a99ed291f24851f075a0d4e1536cfdbd",
+      "mission": "15",
+      "chapter": 2,
+      "segment": 3,
+      "existingSha256": "e47cae50e3ba3cba3ebf2d4fdd6b3744a99ed291f24851f075a0d4e1536cfdbd",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 2 AUDIOS/4.Milestones.mp3",
+      "bytes": 302821,
+      "sha256": "7773c0f02dc72bec8614c230679419867d96366fcc85f48197058a6b1a36b0a9",
+      "mission": "15",
+      "chapter": 2,
+      "segment": 4,
+      "existingSha256": "7773c0f02dc72bec8614c230679419867d96366fcc85f48197058a6b1a36b0a9",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 3 AUDIOS/1.steering scare.mp3",
+      "bytes": 297805,
+      "sha256": "ffdca803c311fef308dcfe71679b37f408674eb62fbb6e45e562cee912ee5e24",
+      "mission": "15",
+      "chapter": 3,
+      "segment": 1,
+      "existingSha256": "ffdca803c311fef308dcfe71679b37f408674eb62fbb6e45e562cee912ee5e24",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 3 AUDIOS/2.Steep slopes, heat & Lunar dust.mp3",
+      "bytes": 349214,
+      "sha256": "459cbbc0349dcb592f8bc5bf267f8da6316cdaa42287ed28b79d99a3e307cc09",
+      "mission": "15",
+      "chapter": 3,
+      "segment": 2,
+      "existingSha256": "459cbbc0349dcb592f8bc5bf267f8da6316cdaa42287ed28b79d99a3e307cc09",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 3 AUDIOS/3.Genesis rock.mp3",
+      "bytes": 315777,
+      "sha256": "22931af75e7b6792e04be55958d0cf4a7d9619cd2affd6fb03f7eda5c40e5070",
+      "mission": "15",
+      "chapter": 3,
+      "segment": 3,
+      "existingSha256": "22931af75e7b6792e04be55958d0cf4a7d9619cd2affd6fb03f7eda5c40e5070",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 3 AUDIOS/4.Observations.mp3",
+      "bytes": 260607,
+      "sha256": "9c0a1aee5bc6689e219a637a3fd8f62ba3b05fbb7ae4cee738c3e13a84641e69",
+      "mission": "15",
+      "chapter": 3,
+      "segment": 4,
+      "existingSha256": "9c0a1aee5bc6689e219a637a3fd8f62ba3b05fbb7ae4cee738c3e13a84641e69",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 4 AUDIOS/1.Final moment.mp3",
+      "bytes": 231350,
+      "sha256": "eca2f5ed786b2755961b54e7b82ce0eebe2d996627195bd889b532ead8ef81c5",
+      "mission": "15",
+      "chapter": 4,
+      "segment": 1,
+      "existingSha256": "eca2f5ed786b2755961b54e7b82ce0eebe2d996627195bd889b532ead8ef81c5",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 4 AUDIOS/2.Filming Liftoff.mp3",
+      "bytes": 269802,
+      "sha256": "ecb9991a512c745d9ef8f0874c67fba78c265c4417cf4e149da5d7f5140b8361",
+      "mission": "15",
+      "chapter": 4,
+      "segment": 2,
+      "existingSha256": "ecb9991a512c745d9ef8f0874c67fba78c265c4417cf4e149da5d7f5140b8361",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 4 AUDIOS/3.Current Status.mp3",
+      "bytes": 304074,
+      "sha256": "7fc4605daabf74ee22617df0a352a346aff2d1076b281b925e8ebef4b3272217",
+      "mission": "15",
+      "chapter": 4,
+      "segment": 3,
+      "existingSha256": "7fc4605daabf74ee22617df0a352a346aff2d1076b281b925e8ebef4b3272217",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 4 AUDIOS/4.Reflection.mp3",
+      "bytes": 290282,
+      "sha256": "eb93db016e92d810171547df2527d2d3e22483f5179478be21acdac7752d1102",
+      "mission": "15",
+      "chapter": 4,
+      "segment": 4,
+      "existingSha256": "eb93db016e92d810171547df2527d2d3e22483f5179478be21acdac7752d1102",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 5 AUDIOS/Q-1.mp3",
+      "bytes": 93005,
+      "sha256": "0bce91e78cf12e2cafb54245e832dc6aa6b2b9f72065fc3f880c85d28bf8bef6",
+      "mission": "15",
+      "chapter": 5,
+      "segment": 1,
+      "existingSha256": "0bce91e78cf12e2cafb54245e832dc6aa6b2b9f72065fc3f880c85d28bf8bef6",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 5 AUDIOS/Q-2.mp3",
+      "bytes": 137727,
+      "sha256": "7f4b13669a3888551a642bcf524d8014ea8cfa052c85bb90bb7dd7ee2126bbba",
+      "mission": "15",
+      "chapter": 5,
+      "segment": 2,
+      "existingSha256": "7f4b13669a3888551a642bcf524d8014ea8cfa052c85bb90bb7dd7ee2126bbba",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/CH 5 AUDIOS/Q-3.mp3",
+      "bytes": 196659,
+      "sha256": "b81d6da002a15a4a98db2740a701f5b8f6dd4dd3d77dc3f0e17e378f987927c1",
+      "mission": "15",
+      "chapter": 5,
+      "segment": 3,
+      "existingSha256": "b81d6da002a15a4a98db2740a701f5b8f6dd4dd3d77dc3f0e17e378f987927c1",
+      "identical": true
+    },
+    {
+      "entry": "MOON Final/APOLLO-15 Final/~$OLLO 15 .pdf",
+      "bytes": 162,
+      "sha256": "6ef6d722edab305c05fba75457c8434c34782091fc10fb623feeb5d69e1bfecf",
+      "mission": "15"
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/APOLLO-16 Storytelling.pdf",
+      "bytes": 701924,
+      "sha256": "6aa6a074a76987a74f3695d884c6c7a898cf6f61ac29dc94461c32c319ee13d6",
+      "mission": "16",
+      "local": "docs/moon-package/apollo-16-source.pdf",
+      "pages": 8
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-1 audios/1. Meet Me.mp3",
+      "bytes": 264786,
+      "sha256": "1a36be8e244af7811115d201a4274f030a7a08e358f2e39204e4ca1a4e9d4582",
+      "mission": "16",
+      "chapter": 1,
+      "segment": 1
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-1 audios/2. Why I Was Developed.mp3",
+      "bytes": 225080,
+      "sha256": "42f968b36355dfabfb137b0cd23a79dc57b2f2bd0aea9ced047d3fa3b2e266fa",
+      "mission": "16",
+      "chapter": 1,
+      "segment": 2
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-1 audios/3. Who Built Me.mp3",
+      "bytes": 194151,
+      "sha256": "0202a1ae0d354d42dca2424a9a2ad6a415f2e445518c442eb7d453d6e4ac8a05",
+      "mission": "16",
+      "chapter": 1,
+      "segment": 3
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-1 audios/4. What I Was Designed .mp3",
+      "bytes": 261861,
+      "sha256": "bb94d5aa951fe3c75e47243fd23d5968a45b8333b0103b73c55af5a3b13a610a",
+      "mission": "16",
+      "chapter": 1,
+      "segment": 4
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-2 audios/1. Launch.mp3",
+      "bytes": 328734,
+      "sha256": "6042ec35d893ddb2618a17189921c798e80151f65ea6b839673be1ad27845346",
+      "mission": "16",
+      "chapter": 2,
+      "segment": 1
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-2 audios/2. The Lunar Environment .mp3",
+      "bytes": 241381,
+      "sha256": "efc791f074b57e1fdc2624dcdad9d8a212a4f2411f38aea5d1f307cb0c2c4113",
+      "mission": "16",
+      "chapter": 2,
+      "segment": 2
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-2 audios/3. Three Surface .mp3",
+      "bytes": 294043,
+      "sha256": "2a393df2ad924ddfdc5a6025711d73cfb6bad803b0a52e575adf6041925690c2",
+      "mission": "16",
+      "chapter": 2,
+      "segment": 3
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-2 audios/4. Grand Prix.mp3",
+      "bytes": 248068,
+      "sha256": "e3e3e5c377134dacac9d3e7fc799a4b78f269caf2db1a1c2128ffc3ddbc6b6db",
+      "mission": "16",
+      "chapter": 2,
+      "segment": 4
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-3 audios/1. Fender.mp3",
+      "bytes": 253083,
+      "sha256": "5b9430d06737cd80b891068266763bf1d23a59ba8aa977875a2251ee0dcdc4ff",
+      "mission": "16",
+      "chapter": 3,
+      "segment": 1
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-3 audios/2. The Climb.mp3",
+      "bytes": 278579,
+      "sha256": "3f9597932b2218677377fa7ef6d7302d62af497c798f6c9fd9f61955177c8095",
+      "mission": "16",
+      "chapter": 3,
+      "segment": 2
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-3 audios/3. Big Discoveries.mp3",
+      "bytes": 289028,
+      "sha256": "e08edcdba9b5202f0ab115835933786a149cc6b233254fe39ca07ef59b69a4c5",
+      "mission": "16",
+      "chapter": 3,
+      "segment": 3
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-4 audios/1. Proving the Rover.mp3",
+      "bytes": 250576,
+      "sha256": "f77f69209591895e4222b446ae92a1e25fb7ec2062070394b49f85444d7916eb",
+      "mission": "16",
+      "chapter": 4,
+      "segment": 1
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-4 audios/2. Window.mp3",
+      "bytes": 236365,
+      "sha256": "3105d8a3259b6ad60344978e120118c49ba88689db243addcc52fdc2506ea524",
+      "mission": "16",
+      "chapter": 4,
+      "segment": 2
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-4 audios/3. Final Parking.mp3",
+      "bytes": 189136,
+      "sha256": "2b8968ccae518f560bdc30379dd980846f4ef6db0be13cd59bd689f835f0f738",
+      "mission": "16",
+      "chapter": 4,
+      "segment": 3
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-4 audios/4. Liftoff.mp3",
+      "bytes": 310762,
+      "sha256": "5d2001b58446e2cf299688df4a57169ae06ff21dfc0df8d00c0ae9cf108457cc",
+      "mission": "16",
+      "chapter": 4,
+      "segment": 4
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-5 audios/Q-1.mp3",
+      "bytes": 66256,
+      "sha256": "c456c88fed122af3ccacd6cf7c18f5773d076e791f5ac2d1eeeb7b69d76dbf2d",
+      "mission": "16",
+      "chapter": 5,
+      "segment": 1
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-5 audios/Q-2.mp3",
+      "bytes": 80466,
+      "sha256": "42afd2af45d0ba67cd24afd51f6f4189b32160081bb1c292935363912b1f44a5",
+      "mission": "16",
+      "chapter": 5,
+      "segment": 2
+    },
+    {
+      "entry": "MOON Final/APOLLO-16 Final/CH-5 audios/Q-3.mp3",
+      "bytes": 99274,
+      "sha256": "5b64415e6d9a06669f7376170686af529990406aa56812ea3b521da67a028c43",
+      "mission": "16",
+      "chapter": 5,
+      "segment": 3
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/Apollo-17-Storytelling.pdf",
+      "bytes": 859120,
+      "sha256": "161d8604d418ac0dc59649f6144a9166798360353e734ab7639b639516490448",
+      "mission": "17",
+      "local": "docs/moon-package/apollo-17-source.pdf",
+      "pages": 11
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-1 audios/1. Meet Me.mp3",
+      "bytes": 320793,
+      "sha256": "6fcd6b9f897c4d20d216660caa7cef4cb1b9b7f9d7b85d3988fe7a4526443aed",
+      "mission": "17",
+      "chapter": 1,
+      "segment": 1,
+      "local": "public/audio/apollo-17/chapter-1/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-1 audios/2. Who Built Me.mp3",
+      "bytes": 251830,
+      "sha256": "716f81d9e20f6d82f79315d22ea9b050ffb68f132ea7e435f83434df12a5e3d2",
+      "mission": "17",
+      "chapter": 1,
+      "segment": 2,
+      "local": "public/audio/apollo-17/chapter-1/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-1 audios/3. What Makes.mp3",
+      "bytes": 244306,
+      "sha256": "e1b8c46752116377082b5f2b275d1b14cb7ed52dabdd762ad910b972ad986f0e",
+      "mission": "17",
+      "chapter": 1,
+      "segment": 3,
+      "local": "public/audio/apollo-17/chapter-1/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-1 audios/4. Meet My Team.mp3",
+      "bytes": 274817,
+      "sha256": "42a5b425c9c48e8843419ff4d4ed1e30f2066e764346eea9615082356c4db506",
+      "mission": "17",
+      "chapter": 1,
+      "segment": 4,
+      "local": "public/audio/apollo-17/chapter-1/4.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-2 audios/1. Blast Off.mp3",
+      "bytes": 253083,
+      "sha256": "10e5f3cb20bbb56058db87a634b0546f39391cf6858f48157597c6df62d966b3",
+      "mission": "17",
+      "chapter": 2,
+      "segment": 1,
+      "local": "public/audio/apollo-17/chapter-2/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-2 audios/2. Touchdown.mp3",
+      "bytes": 327480,
+      "sha256": "46adccb000ffb7cdbd791ecae6203474df8102501b3bd45e6ad92ebbbd4d68b4",
+      "mission": "17",
+      "chapter": 2,
+      "segment": 2,
+      "local": "public/audio/apollo-17/chapter-2/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-2 audios/3. First Step.mp3",
+      "bytes": 282341,
+      "sha256": "2205e3b29b3d729ce828e57a7a764fb6b3af669b54405744e44063b047f92ba7",
+      "mission": "17",
+      "chapter": 2,
+      "segment": 3,
+      "local": "public/audio/apollo-17/chapter-2/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-2 audios/4. Three journeys.mp3",
+      "bytes": 301567,
+      "sha256": "bb7c552d17fbc9560e2e7185210f55d1e8ce2970095980ac7332be91fabfb935",
+      "mission": "17",
+      "chapter": 2,
+      "segment": 4,
+      "local": "public/audio/apollo-17/chapter-2/4.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-3 audios/1. My Fender.mp3",
+      "bytes": 289028,
+      "sha256": "3291218039820d860f9da32dfa636bd97854458cca56f2a8b28e9045ed36eba9",
+      "mission": "17",
+      "chapter": 3,
+      "segment": 1,
+      "local": "public/audio/apollo-17/chapter-3/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-3 audios/2. A Warning.mp3",
+      "bytes": 200421,
+      "sha256": "fb948c4e26aaa95e5f31ee9c70a98a2d51f808c4d4bd79588230a85cb490df19",
+      "mission": "17",
+      "chapter": 3,
+      "segment": 2,
+      "local": "public/audio/apollo-17/chapter-3/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-3 audios/3. Mystery.mp3",
+      "bytes": 251830,
+      "sha256": "11e94734da411667e9c1c528797695bf295b664c7cf31c4e44276e049ac4edf4",
+      "mission": "17",
+      "chapter": 3,
+      "segment": 3,
+      "local": "public/audio/apollo-17/chapter-3/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-3 audios/4. Moon Rock.mp3",
+      "bytes": 204600,
+      "sha256": "1a0199ea5d170d2211f29ef0c55543e264e926ac834871d438565a499a8ec03f",
+      "mission": "17",
+      "chapter": 3,
+      "segment": 4,
+      "local": "public/audio/apollo-17/chapter-3/4.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-4 audios/1. My Final.mp3",
+      "bytes": 305746,
+      "sha256": "3597a3efdcbb07d793d481e7deae2ff8f8484b0b42e4f1f6ea994b44d6b2669a",
+      "mission": "17",
+      "chapter": 4,
+      "segment": 1,
+      "local": "public/audio/apollo-17/chapter-4/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-4 audios/2. The Last.mp3",
+      "bytes": 253083,
+      "sha256": "c9e1de40adc8d8641594bca2d6cc00f472550f3e9e46bf2bcf995cf73f9e4a06",
+      "mission": "17",
+      "chapter": 4,
+      "segment": 2,
+      "local": "public/audio/apollo-17/chapter-4/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-4 audios/3. Lift-off.mp3",
+      "bytes": 289028,
+      "sha256": "dfc5cc76118f7cd03dda84dcd51adc5f9b4c61a770e097e85e32bf202a522c30",
+      "mission": "17",
+      "chapter": 4,
+      "segment": 3,
+      "local": "public/audio/apollo-17/chapter-4/3.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-4 audios/4. Inspiration.mp3",
+      "bytes": 282341,
+      "sha256": "3ba326644acba2b2990db3e04f693032689a8ac8715af316112ecade4f64bb57",
+      "mission": "17",
+      "chapter": 4,
+      "segment": 4,
+      "local": "public/audio/apollo-17/chapter-4/4.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-4 audios/5. Young Explorers.mp3",
+      "bytes": 279833,
+      "sha256": "b218ab27319a8407c3dafd1522f3f3b046adaeabb1225f2d509efe3516b6266e",
+      "mission": "17",
+      "chapter": 4,
+      "segment": 5,
+      "local": "public/audio/apollo-17/chapter-4/5.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-5 audios/Q-1.mp3",
+      "bytes": 81720,
+      "sha256": "fb1a1c3430722e27e7b681bfa03a8259365247552c80b8842d4ed4087122cf50",
+      "mission": "17",
+      "chapter": 5,
+      "segment": 1,
+      "local": "public/audio/apollo-17/chapter-5/1.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-5 audios/Q-2.mp3",
+      "bytes": 77541,
+      "sha256": "050ef10ab02dc0504990c6e5ede3f978dabb59953023fb62ed70f6059b2b20b5",
+      "mission": "17",
+      "chapter": 5,
+      "segment": 2,
+      "local": "public/audio/apollo-17/chapter-5/2.mp3"
+    },
+    {
+      "entry": "MOON Final/APOLLO-17 Final/CH-5 audios/Q-3.mp3",
+      "bytes": 76287,
+      "sha256": "86a2197a216f02d43e8f72c1d4f5e8bc8637a91f34cca9d085570064e9de7852",
+      "mission": "17",
+      "chapter": 5,
+      "segment": 3,
+      "local": "public/audio/apollo-17/chapter-5/3.mp3"
+    }
+  ]
+}
