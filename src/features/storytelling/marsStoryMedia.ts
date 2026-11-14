@@ -37,7 +37,7 @@ const sojournerWaterEvidence = [
 
 const sojournerIntro = image('sojourner-1-1', 'Sojourner on Mars', 'The Pathfinder mission image supplied for Sojourner\'s introduction.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/0/PIA01551-1.jpg?w=1099&h=572&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/mars-pathfinder/')
 
-function withSojournerGallery(
+function withEvidenceGallery(
   primary: MarsSegmentEvidence & { media: StoryEvidenceMedia },
   entries: (primary: MarsSegmentEvidence & { media: StoryEvidenceMedia }) => readonly DocumentaryGalleryItem[],
 ): MarsSegmentEvidence {
@@ -54,27 +54,27 @@ const sojourner: readonly MarsSegmentEvidence[][] = [
       ],
     },
     image('sojourner-small-but-mighty', 'Sojourner’s instruments and hardware', 'A labeled diagram shows the solar panel, antenna, science instruments and six-wheel suspension.', '/images/sojourner-evidence/small-but-mighty.png', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph', 'Image supplied for this section'),
-    withSojournerGallery(image('sojourner-1-3', 'Sojourner engineering view', 'A supplied Pathfinder image showing the small six-wheeled rover and its engineering form.', 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia04/pia04421/PIA04421.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
+    withEvidenceGallery(image('sojourner-1-3', 'Sojourner engineering view', 'A supplied Pathfinder image showing the small six-wheeled rover and its engineering form.', 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia04/pia04421/PIA04421.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
         image('sojourner-rover-rotation', 'Sojourner from multiple angles', 'An animated view shows the compact rover and its six wheels.', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Sojourner.gif/330px-Sojourner.gif?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Supplied Wikimedia Commons image').media,
         image('sojourner-lander-preparations', 'Pathfinder lander preparations', 'Technicians prepare the lander before folding it for launch.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_2_lander_preparations_about_to_be_folded_up_oct_2_1996-1.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'NASA/JPL-Caltech').media,
         primary.media,
     ]),
-    withSojournerGallery(image('sojourner-1-4', 'Pathfinder lander instruments', 'A diagram identifies the instruments and hardware on Sojourner’s partner lander.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_4_instruments.jpg', 'https://www.jpl.nasa.gov/news/new-nasa-orbiter-sees-details-of-1997-pathfinder-site/', 'Illustration · not a photograph'), primary => [
+    withEvidenceGallery(image('sojourner-1-4', 'Pathfinder lander instruments', 'A diagram identifies the instruments and hardware on Sojourner’s partner lander.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_4_instruments.jpg', 'https://www.jpl.nasa.gov/news/new-nasa-orbiter-sees-details-of-1997-pathfinder-site/', 'Illustration · not a photograph'), primary => [
         primary.media,
         image('sojourner-pathfinder-concept', 'Mars Pathfinder and Sojourner', 'An artist’s concept shows the lander and its rover on Mars.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/a/pathfinder-concept_1280.jpg?w=1280&h=1183&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph', 'NASA/JPL-Caltech').media,
     ]),
   ],
   [
-    withSojournerGallery(image('sojourner-2-1', 'Pathfinder launch', 'A launch photograph accompanies the December 1996 departure for Mars.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwwj5fQV2mtqpmrb7TZZkv03e46qKVZVUfUlV31loxae2xDtV5y_JEzAet&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Image link supplied in the Sojourner PDF'), primary => [
+    withEvidenceGallery(image('sojourner-2-1', 'Pathfinder launch', 'A launch photograph accompanies the December 1996 departure for Mars.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwwj5fQV2mtqpmrb7TZZkv03e46qKVZVUfUlV31loxae2xDtV5y_JEzAet&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Image link supplied in the Sojourner PDF'), primary => [
         { type: 'youtube', url: 'https://youtu.be/1rVH0YlcKyY?si=iquQEK07lQkRjIAc', videoId: '1rVH0YlcKyY', label: 'JPL and the Space Age: The Pathfinders' },
         primary.media,
     ]),
-    withSojournerGallery(image('sojourner-2-2', 'Pathfinder entry, descent and landing', 'The supplied sequence diagrams the airbag landing described in this section.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_5_edl_sequence_of_events.png', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph'), primary => [
+    withEvidenceGallery(image('sojourner-2-2', 'Pathfinder entry, descent and landing', 'The supplied sequence diagrams the airbag landing described in this section.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_5_edl_sequence_of_events.png', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph'), primary => [
         primary.media,
         { type: 'youtube', url: 'https://youtu.be/JXZa8cmab1g?si=yb9fYvEUk_fk7tPo', videoId: 'JXZa8cmab1g', label: 'NASA at Mars: 20 years of 24/7 exploration' },
         image('sojourner-landing-reference', 'Mars Pathfinder landing reference', 'The supplied image accompanies Pathfinder’s airbag landing.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFgAK8ChQCBW6Qthzo0dN8RScN5-47-c6ofJfFqaoFXs3XPMQ7QKPITkcu&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph', 'Supplied image').media,
     ]),
-    withSojournerGallery(image('sojourner-2-3', 'Pathfinder opened on Mars', 'The supplied mission image shows Pathfinder deployed with its petals open.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_7_pathfinder_and_sojourner_on_mars.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
+    withEvidenceGallery(image('sojourner-2-3', 'Pathfinder opened on Mars', 'The supplied mission image shows Pathfinder deployed with its petals open.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_7_pathfinder_and_sojourner_on_mars.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
         image('sojourner-lander-site-orbit', 'Pathfinder landing site from orbit', 'Mars Global Surveyor imaged the landing area after the mission.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_6_lander_site_from_mgs_apr_1998.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'NASA/JPL-Caltech').media,
         primary.media,
     ]),
@@ -82,7 +82,7 @@ const sojourner: readonly MarsSegmentEvidence[][] = [
   ],
   [
     { ...source('The Messages that Broke', '', 'https://science.nasa.gov/mission/mars-pathfinder/'), gallery: [] },
-    withSojournerGallery(image('sojourner-3-2', 'Sojourner using APXS on Yogi', 'The supplied mission photograph shows the rover examining Yogi with its science instrument.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_11_sojourner_apxs_on_yogi_rock_1997.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
+    withEvidenceGallery(image('sojourner-3-2', 'Sojourner using APXS on Yogi', 'The supplied mission photograph shows the rover examining Yogi with its science instrument.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_11_sojourner_apxs_on_yogi_rock_1997.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
         image('sojourner-rock-reference', 'Sojourner at a Martian rock', 'A supplied image accompanies the rover’s examination of Martian rocks.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxYgE_J9eMY2LT0gQdgF4LJ7lhicB47XFOi3mnvRIO_Q&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Supplied image').media,
         primary.media,
     ]),
@@ -100,26 +100,46 @@ const sojourner: readonly MarsSegmentEvidence[][] = [
 const opportunity: readonly MarsSegmentEvidence[][] = [
   [
     image('opportunity-1-1', 'Meet Opportunity', 'An illustration of the Mars Exploration Rover design used by Opportunity.', 'https://d2pn8kiwq2w21t.cloudfront.net/original_images/missionswebmer_cMTGwaG.jpg', 'https://science.nasa.gov/mission/mer-opportunity/','Illustration · not a photograph'),
-    image('opportunity-1-2', 'Opportunity during assembly', 'The supplied JPL evidence shows the rover, its wheels and robotic arm during assembly.', 'https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA04418.jpg', 'https://www.jpl.nasa.gov/images/pia04418-rover-2-assembly/'),
-    source('Opportunity science objective', 'The supplied mission record describes the search for evidence of past liquid water.', 'https://science.nasa.gov/mission/mer-opportunity/'),
-    image('opportunity-1-4', 'Spirit and Opportunity', 'The supplied image represents the twin-rover mission described in this section.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/internal_resources/477.jpeg?w=1400&h=1021&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/resource/opportunity-nasa-rover-completes-mars-mission/'),
+    withEvidenceGallery(image('opportunity-1-2', 'Opportunity during assembly', 'The supplied JPL evidence shows the rover, its wheels and robotic arm during assembly.', 'https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA04418.jpg', 'https://www.jpl.nasa.gov/images/pia04418-rover-2-assembly/'), primary => [
+      primary.media,
+      image("opportunity-assembly-extra", "Mars Exploration Rover assembly", "A NASA engineering image adds another view of the rover hardware.", "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia04/pia04425/PIA04425.jpg").media,
+    ]),
+    image("opportunity-1-3", "Why Opportunity was created", "The supplied excerpt explains how Spirit and Opportunity searched rocks and soils for evidence of past water.", "/images/opportunity-mission-objective.png", "https://science.nasa.gov/mission/mer-opportunity/", "Illustration · not a photograph", "Image supplied for this section"),
+    withEvidenceGallery(image('opportunity-1-4', 'Spirit and Opportunity', 'The supplied image represents the twin-rover mission described in this section.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/internal_resources/477.jpeg?w=1400&h=1021&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/resource/opportunity-nasa-rover-completes-mars-mission/'), primary => [
+      primary.media,
+      { type: 'link', url: 'https://science.nasa.gov/resource/opportunity-nasa-rover-completes-mars-mission/', label: 'NASA: Opportunity rover completes its Mars mission' },
+    ]),
   ],
   [
     image('opportunity-2-1', 'Opportunity launch', 'The supplied NASA launch image accompanies Opportunity\'s July 2003 departure for Mars.', 'https://www.nasa.gov/wp-content/uploads/2023/03/03pp2099.jpg', 'https://science.nasa.gov/mission/mer-opportunity/'),
-    image('opportunity-2-2', 'Curiosity’s sky-crane landing concept', 'This illustration shows Curiosity’s landing system. Opportunity landed in Eagle Crater using airbags.', 'https://science.nasa.gov/wp-content/uploads/2024/08/pia14839-artists-concept-of-mars-curiosity-sky-crane.jpg?resize=2000,1125', 'https://science.nasa.gov/planetary-science/programs/mars-exploration/mission-timeline/how-we-land-on-mars/', 'Illustration · not a photograph'),
-    image('opportunity-2-3', 'Opportunity marathon traverse', 'The supplied traverse map documents the long route from Eagle Crater toward Endeavour.', 'https://d2pn8kiwq2w21t.cloudfront.net/images/jpegPIA19154.width-1600.jpg', 'https://www.jpl.nasa.gov/images/pia19154-opportunity-rovers-full-marathon-length-traverse/', 'Illustration · not a photograph'),
+    withEvidenceGallery(image('opportunity-2-2', 'Curiosity’s sky-crane landing concept', 'This illustration shows Curiosity’s landing system. Opportunity landed in Eagle Crater using airbags.', 'https://science.nasa.gov/wp-content/uploads/2024/08/pia14839-artists-concept-of-mars-curiosity-sky-crane.jpg?resize=2000,1125', 'https://science.nasa.gov/planetary-science/programs/mars-exploration/mission-timeline/how-we-land-on-mars/', 'Illustration · not a photograph'), primary => [
+      primary.media,
+      { type: 'youtube', url: 'https://youtu.be/BsB1Ecczghc?si=nY8fL8dyiMkVIdSZ', videoId: 'BsB1Ecczghc', label: 'Mars in a Minute: How Do You Choose a Landing Site?' },
+    ]),
+    withEvidenceGallery(image('opportunity-2-3', 'Opportunity marathon traverse', 'The supplied traverse map documents the long route from Eagle Crater toward Endeavour.', 'https://d2pn8kiwq2w21t.cloudfront.net/images/jpegPIA19154.width-1600.jpg', 'https://www.jpl.nasa.gov/images/pia19154-opportunity-rovers-full-marathon-length-traverse/', 'Illustration · not a photograph'), primary => [
+      primary.media,
+      image("opportunity-marathon-2", "Opportunity’s marathon traverse", "A supplementary view of Opportunity’s marathon-length route.", "https://d2pn8kiwq2w21t.cloudfront.net/images/imagesmer2015-03-24pia19158-16.width-1320.jpg", undefined, "Illustration · not a photograph").media,
+      image("opportunity-marathon-3", "Opportunity’s marathon traverse", "A second supplementary view of the distance Opportunity covered on Mars.", "https://d2pn8kiwq2w21t.cloudfront.net/images/imagesmer2015-03-24pia19157-16.width-1320.jpg", undefined, "Illustration · not a photograph").media,
+    ]),
     image('opportunity-2-4', 'Perseverance Valley panorama', 'The supplied final panorama shows Opportunity\'s last exploration area on Endeavour Crater\'s rim.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/-/PIA-22908-LegacyPan-ANNOTATED-NASA.jpg?w=2048&h=457&fit=clip&crop=faces%2Cfocalpoint', 'https://solarsystem.nasa.gov/resources/2303/opportunity-rovers-final-mars-images/'),
   ],
   [
     image('opportunity-3-1', 'Martian blueberries', 'The supplied close-up shows the hematite-rich concretions nicknamed blueberries.', 'https://d2pn8kiwq2w21t.cloudfront.net/images/jpegPIA19113.width-1280.jpg', 'https://www.jpl.nasa.gov/images/pia19113-martian-concretions-near-fram-crater/'),
     image('opportunity-3-2', 'Heat Shield Rock meteorite', 'The supplied NASA image documents the iron-nickel meteorite found near Opportunity\'s heat shield.', 'https://www.nasa.gov/wp-content/uploads/2023/03/107041main_image_feature_257_ajhfull.jpg', 'https://science.nasa.gov/mission/mer-opportunity/'),
-    image('opportunity-3-3', 'Opportunity trapped in Purgatory Dune', 'The supplied mission image shows the wheel tracks and sand trap from the 2005 incident.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/5874_Sol456_to_464_Rub_al_Khali-PIA07216-full2.jpg?w=396&h=279&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/missions/mer/six-things-to-know-about-nasas-opportunity-rover/'),
-    source('Endeavour water evidence', 'The supplied Opportunity mission record covers the gypsum veins and clay minerals described in this section.', 'https://science.nasa.gov/mission/mer-opportunity/'),
+    withEvidenceGallery(image('opportunity-3-3', 'Opportunity trapped in Purgatory Dune', 'The supplied mission image shows the wheel tracks and sand trap from the 2005 incident.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/5874_Sol456_to_464_Rub_al_Khali-PIA07216-full2.jpg?w=396&h=279&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/missions/mer/six-things-to-know-about-nasas-opportunity-rover/'), primary => [
+      primary.media,
+      image("opportunity-sand-escape", "Tracks after the escape", "Opportunity’s wheel tracks mark the route out of the sand trap.", "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/5855_Sol491B-PIA07999-full2.jpg?w=394&h=396&fit=clip&crop=faces%2Cfocalpoint").media,
+    ]),
+    withEvidenceGallery(image("opportunity-water-1", "Gypsum vein at Endeavour Crater", "A light vein is evidence of water moving through fractures.", "https://d2pn8kiwq2w21t.cloudfront.net/images/jpegPIA15034.width-1024.jpg"), primary => [
+      primary.media,
+      image("opportunity-water-2", "Clay-bearing rock at Esperance", "Opportunity studied this rock for evidence of past water and clay minerals.", "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia17/pia17074/PIA17074.jpg?w=1024&h=1024&fit=clip&crop=faces%2Cfocalpoint", "https://science.nasa.gov/photojournal/esperance-target-examined-by-opportunity/").media,
+      image("opportunity-water-3", "Mineral plot from Esperance", "The plot shows how the measured composition changed as Opportunity ground deeper into the rock.", "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/3/37506_pia17757_RA5.jpg", "https://science.nasa.gov/photojournal/mineral-plot-from-esperance-target/", "Illustration · not a photograph").media,
+    ]),
   ],
   [
     image('opportunity-4-1', 'Shadow of a Martian robot', 'The supplied image accompanies the contrast between a 90-sol plan and almost 15 years of work.', 'https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2019/february/marsshadow_opportunity_1024.jpg?w=1024&h=1024&fit=crop&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/image-article/apod-2019-february-17-shadow-of-a-martian-robot/'),
     image('opportunity-4-2', 'Opportunity\'s final transmission', 'The supplied incomplete Sun-filter image was transmitted during the 2018 dust storm.', 'https://d2pn8kiwq2w21t.cloudfront.net/images/jpegPIA22929.width-1024.jpg', 'https://www.jpl.nasa.gov/images/pia22929-opportunitys-last-message/'),
-    source('Opportunity mission completion', 'The supplied NASA record documents the recovery campaign and the February 2019 mission-complete announcement.', 'https://science.nasa.gov/resource/opportunity-nasa-rover-completes-mars-mission/'),
+    image("opportunity-4-3", "Opportunity mission completion", "The supplied image accompanies the final recovery effort and the mission’s close.", "https://d2pn8kiwq2w21t.cloudfront.net/original_images/imagesmer20190213mer20190213-16.jpg", "https://science.nasa.gov/resource/opportunity-nasa-rover-completes-mars-mission/"),
     image('opportunity-4-4', 'Off-world driving distance record', 'The supplied NASA graphic compares total off-world driving distance after Perseverance passed Opportunity\'s record.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/mars2020/2026/JPL_DrivingDistanceRecord_GraphicRecreation_August2026_v3.png?w=1152&h=2048&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/blogs/perseverance-mars-rover/2026/10/12/nasas-perseverance-sets-offworld-record-for-total-distance-driven/', 'Illustration · not a photograph'),
   ],
 ]
