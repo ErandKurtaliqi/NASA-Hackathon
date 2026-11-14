@@ -12,12 +12,9 @@ import styles from './HomePage.module.css'
 const artwork = { logo: '/images/home/auroralys-mark.svg', astronaut: '/images/home/astronaut-guide.png' }
 
 const navigation = [
-  { to: '/explore/mars', label: 'Explore' },
-  { to: '/story/apollo-15-rover/1', label: 'Story' },
   { to: '/hardware', label: 'Spacecraft & rovers' },
   { to: '/dashboard', label: 'Mission control' },
   { to: '/sources', label: 'Science & sources' },
-  { to: '/discover', label: 'Mission guide' },
 ]
 
 function Brand() {

@@ -110,6 +110,15 @@ test('homepage renders only the cinematic hero, original assets and both world l
   } finally { f.dispose() }
 })
 
+test('the home menu lists only the three highlighted destinations', () => {
+  const f = fixture()
+  try {
+    f.click('Open navigation')
+    const menu = f.all(n => n.type === 'nav' && n.props.id === 'home-navigation')[0]
+    assert.deepEqual(f.all(n => n.type === 'a', menu).map(n => n.props.href), ['/hardware', '/dashboard', '/sources'])
+  } finally { f.dispose() }
+})
+
 test('both public planet scenes, touch interaction, guide feedback, motion pause and essential menu remain functional', () => {
   const f = fixture()
   try {
@@ -121,7 +130,6 @@ test('both public planet scenes, touch interaction, guide feedback, motion pause
     f.click('Pause ambient motion'); assert.equal(f.all(n => n.type === 'planet-scene').length, 0)
     assert.equal(f.all(n => n.type === 'a' && /^Explore (Moon|Mars)$/.test(n.props['aria-label'])).length, 2)
     f.click('Resume ambient motion'); assert.equal(f.all(n => n.type === 'planet-scene').length, 2)
-    for (const to of ['/story/apollo-15-rover/1', '/hardware', '/dashboard', '/sources']) assert.ok(f.all(n => n.type === 'a' && n.props.href === to).length)
     f.update(() => f.all(n => n.type === 'nav')[0].props.onKeyDown({ key: 'Escape' }))
     assert.equal(f.all(n => n.type === 'nav').length, 0); assert.equal(f.focused(), 'home-menu-toggle')
   } finally { f.dispose() }
