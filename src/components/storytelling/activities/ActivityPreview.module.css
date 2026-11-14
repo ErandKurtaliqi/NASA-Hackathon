@@ -1,0 +1,4 @@
+.preview { padding: clamp(16px,4vw,48px); }
+.preview > header { max-width: 780px; margin: 0 auto 28px; }
+.preview > header p { font-size: 13px; line-height: 1.7; color: #b6c7d9; }
+.preview h1 { font-size: clamp(28px,5vw,46px); line-height: 1.15; }
