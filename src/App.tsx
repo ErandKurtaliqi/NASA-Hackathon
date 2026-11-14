@@ -49,7 +49,7 @@ function Shell({children}:{children:React.ReactNode}){
     }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))setOpen(false)}}>
       <Link className="brand" to="/" aria-label="Auroralys home"><img src="/images/home/auroralys-mark.svg" width="34" height="34" alt="" style={{ flexShrink: 0 }} /><span><b>AURORALYS</b><small>MOON & MARS EXPLORER</small></span></Link>
       <nav id="internal-navigation" ref={navigation} className={open?'open':''} aria-label="Main navigation">
-        <NavLink to="/explore/mars" onClick={closeMenu}>Explore</NavLink><NavLink to="/story/apollo-15-rover/1" onClick={closeMenu}>Story</NavLink><NavLink to="/hardware" onClick={closeMenu}>Hardware</NavLink><NavLink to="/dashboard" onClick={closeMenu}>Mission control</NavLink><NavLink to="/sources" onClick={closeMenu}>Sources</NavLink>
+        <NavLink to="/hardware" onClick={closeMenu}>Hardware</NavLink><NavLink to="/dashboard" onClick={closeMenu}>Mission control</NavLink><NavLink to="/sources" onClick={closeMenu}>Sources</NavLink>
       </nav>
       <div className="top-actions"><button className="motion-toggle" aria-pressed={calm} onClick={toggleMotion}>{calm?'Animations off':'Animations on'}</button><Link className="status-pill" to="/dashboard"><span/>MISSION ONLINE</Link><button type="button" ref={menuToggle} className="menu-button" onClick={()=>{if(open)closeMenu();else setOpen(true)}} aria-label={open?'Close navigation':'Open navigation'} aria-expanded={open} aria-controls="internal-navigation">{open?<X aria-hidden="true"/>:<Menu aria-hidden="true"/>}</button></div>
     </header>}

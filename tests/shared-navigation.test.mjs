@@ -121,9 +121,9 @@ test('opening reaches the first link; Escape closes and restores focus; Tab and 
 test('each existing navigation link closes the mobile menu and restores focus even on the current route', () => {
   const f = fixture()
   try {
-    const expected = ['/explore/mars', '/story/apollo-15-rover/1', '/hardware', '/dashboard', '/sources']
+    const expected = ['/hardware', '/dashboard', '/sources']
     assert.deepEqual(nodes(f.navigation(), n => n.type === 'a').map(n => n.props.to), expected)
-    assert.deepEqual(nodes(f.navigation(), n => n.type === 'a').map(text), ['Explore', 'Story', 'Hardware', 'Mission control', 'Sources'])
+    assert.deepEqual(nodes(f.navigation(), n => n.type === 'a').map(text), ['Hardware', 'Mission control', 'Sources'])
     for (const path of expected) {
       f.clickToggle()
       nodes(f.navigation(), n => n.type === 'a' && n.props.to === path)[0].props.onClick(); f.render()
