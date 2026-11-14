@@ -35,33 +35,65 @@ const sojournerWaterEvidence = [
   image('sojourner-3-3-detail', 'Rocky terrain at the Pathfinder site', 'A second view gives context for the observations of rounded rocks.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/8/8648_PIA01133-full2.jpg?w=288&h=288&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/mars-pathfinder/'),
 ]
 
+const sojournerIntro = image('sojourner-1-1', 'Sojourner on Mars', 'The Pathfinder mission image supplied for Sojourner\'s introduction.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/0/PIA01551-1.jpg?w=1099&h=572&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/mars-pathfinder/')
+
+function withSojournerGallery(
+  primary: MarsSegmentEvidence & { media: StoryEvidenceMedia },
+  entries: (primary: MarsSegmentEvidence & { media: StoryEvidenceMedia }) => readonly DocumentaryGalleryItem[],
+): MarsSegmentEvidence {
+  return { ...primary, gallery: entries(primary) }
+}
+
 const sojourner: readonly MarsSegmentEvidence[][] = [
   [
-    image('sojourner-1-1', 'Sojourner on Mars', 'The Pathfinder mission image supplied for Sojourner\'s introduction.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/0/PIA01551-1.jpg?w=1099&h=572&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/mars-pathfinder/'),
-    image('sojourner-1-2', 'Sojourner close-up', 'A close-up shows the small rover and its six wheels on Mars.', 'https://www.nasa.gov/wp-content/uploads/2022/07/2-pia01122-sojourner_closeup_already_in_pj.jpg?resize=1200,1105', 'https://www.jpl.nasa.gov/news/nasa-names-first-rover-to-explore-the-surface-of-mars/'),
-    image('sojourner-1-3', 'Sojourner engineering view', 'A supplied Pathfinder image showing the small six-wheeled rover and its engineering form.', 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia04/pia04421/PIA04421.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg', 'https://science.nasa.gov/mission/mars-pathfinder/'),
-    image('sojourner-1-4', 'Pathfinder lander instruments', 'A diagram identifies the instruments and hardware on Sojourner’s partner lander.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_4_instruments.jpg', 'https://www.jpl.nasa.gov/news/new-nasa-orbiter-sees-details-of-1997-pathfinder-site/', 'Illustration · not a photograph'),
+    {
+      ...sojournerIntro,
+      gallery: [
+        image('sojourner-intro-supplied', 'Sojourner rover', 'The first image supplied for the rover introduction.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu4c1ayYJcfVpW_dZu3gfCwkEOq4vc_KFLP9CS1gEaJVJnrHDHVsmEO7tv&s=10', undefined, 'Photograph', 'Supplied image').media,
+        sojournerIntro.media,
+      ],
+    },
+    image('sojourner-small-but-mighty', 'Sojourner’s instruments and hardware', 'A labeled diagram shows the solar panel, antenna, science instruments and six-wheel suspension.', '/images/sojourner-evidence/small-but-mighty.png', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph', 'Image supplied for this section'),
+    withSojournerGallery(image('sojourner-1-3', 'Sojourner engineering view', 'A supplied Pathfinder image showing the small six-wheeled rover and its engineering form.', 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia04/pia04421/PIA04421.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
+        image('sojourner-rover-rotation', 'Sojourner from multiple angles', 'An animated view shows the compact rover and its six wheels.', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Sojourner.gif/330px-Sojourner.gif?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Supplied Wikimedia Commons image').media,
+        image('sojourner-lander-preparations', 'Pathfinder lander preparations', 'Technicians prepare the lander before folding it for launch.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_2_lander_preparations_about_to_be_folded_up_oct_2_1996-1.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'NASA/JPL-Caltech').media,
+        primary.media,
+    ]),
+    withSojournerGallery(image('sojourner-1-4', 'Pathfinder lander instruments', 'A diagram identifies the instruments and hardware on Sojourner’s partner lander.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_4_instruments.jpg', 'https://www.jpl.nasa.gov/news/new-nasa-orbiter-sees-details-of-1997-pathfinder-site/', 'Illustration · not a photograph'), primary => [
+        primary.media,
+        image('sojourner-pathfinder-concept', 'Mars Pathfinder and Sojourner', 'An artist’s concept shows the lander and its rover on Mars.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/a/pathfinder-concept_1280.jpg?w=1280&h=1183&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph', 'NASA/JPL-Caltech').media,
+    ]),
   ],
   [
-    {
-      ...image('sojourner-2-1', 'Pathfinder launch', 'A launch photograph accompanies the December 1996 departure for Mars.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwwj5fQV2mtqpmrb7TZZkv03e46qKVZVUfUlV31loxae2xDtV5y_JEzAet&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Image link supplied in the Sojourner PDF'),
-      optionalVideo: { url: 'https://youtu.be/1rVH0YlcKyY?si=iquQEK07lQkRjIAc', label: 'Mars Pathfinder launch · YouTube link supplied in the Sojourner PDF' },
-    },
-    image('sojourner-2-2', 'Pathfinder entry, descent and landing', 'The supplied sequence diagrams the airbag landing described in this section.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_5_edl_sequence_of_events.png', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph'),
-    image('sojourner-2-3', 'Pathfinder opened on Mars', 'The supplied mission image shows Pathfinder deployed with its petals open.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_7_pathfinder_and_sojourner_on_mars.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'),
+    withSojournerGallery(image('sojourner-2-1', 'Pathfinder launch', 'A launch photograph accompanies the December 1996 departure for Mars.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwwj5fQV2mtqpmrb7TZZkv03e46qKVZVUfUlV31loxae2xDtV5y_JEzAet&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Image link supplied in the Sojourner PDF'), primary => [
+        { type: 'youtube', url: 'https://youtu.be/1rVH0YlcKyY?si=iquQEK07lQkRjIAc', videoId: '1rVH0YlcKyY', label: 'JPL and the Space Age: The Pathfinders' },
+        primary.media,
+    ]),
+    withSojournerGallery(image('sojourner-2-2', 'Pathfinder entry, descent and landing', 'The supplied sequence diagrams the airbag landing described in this section.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_5_edl_sequence_of_events.png', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph'), primary => [
+        primary.media,
+        { type: 'youtube', url: 'https://youtu.be/JXZa8cmab1g?si=yb9fYvEUk_fk7tPo', videoId: 'JXZa8cmab1g', label: 'NASA at Mars: 20 years of 24/7 exploration' },
+        image('sojourner-landing-reference', 'Mars Pathfinder landing reference', 'The supplied image accompanies Pathfinder’s airbag landing.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFgAK8ChQCBW6Qthzo0dN8RScN5-47-c6ofJfFqaoFXs3XPMQ7QKPITkcu&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Illustration · not a photograph', 'Supplied image').media,
+    ]),
+    withSojournerGallery(image('sojourner-2-3', 'Pathfinder opened on Mars', 'The supplied mission image shows Pathfinder deployed with its petals open.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_7_pathfinder_and_sojourner_on_mars.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
+        image('sojourner-lander-site-orbit', 'Pathfinder landing site from orbit', 'Mars Global Surveyor imaged the landing area after the mission.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_6_lander_site_from_mgs_apr_1998.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'NASA/JPL-Caltech').media,
+        primary.media,
+    ]),
     image('sojourner-2-4', 'First wheels on Mars panorama', 'The supplied Pathfinder panorama documents the surface setting for Sojourner\'s deployment.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_9_panorama_large.jpg', 'https://www.nasa.gov/image-article/nasas-first-rover-red-planet/'),
   ],
   [
-    source('Supplied review source for the modem account', 'The PDF names the Sojourner and Yogi record, but it does not provide a context-matching modem image; no unrelated photograph is substituted.', 'https://science.nasa.gov/photojournal/sojourner-and-yogi/'),
-    image('sojourner-3-2', 'Sojourner using APXS on Yogi', 'The supplied mission photograph shows the rover examining Yogi with its science instrument.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_11_sojourner_apxs_on_yogi_rock_1997.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'),
+    { ...source('The Messages that Broke', '', 'https://science.nasa.gov/mission/mars-pathfinder/'), gallery: [] },
+    withSojournerGallery(image('sojourner-3-2', 'Sojourner using APXS on Yogi', 'The supplied mission photograph shows the rover examining Yogi with its science instrument.', 'https://www.nasa.gov/wp-content/uploads/2021/12/mars_pathfinder_11_sojourner_apxs_on_yogi_rock_1997.jpg', 'https://science.nasa.gov/mission/mars-pathfinder/'), primary => [
+        image('sojourner-rock-reference', 'Sojourner at a Martian rock', 'A supplied image accompanies the rover’s examination of Martian rocks.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxYgE_J9eMY2LT0gQdgF4LJ7lhicB47XFOi3mnvRIO_Q&s=10', 'https://science.nasa.gov/mission/mars-pathfinder/', 'Photograph', 'Supplied image').media,
+        primary.media,
+    ]),
     { ...sojournerWaterEvidence[0], gallery: sojournerWaterEvidence.map(item => item.media) },
     image('sojourner-3-4', 'Pathfinder surface view', 'The rocky landing site provides context for the soil investigation.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjoKiF6NDVVHYTx9wQN9rpeSWz6CfUNMYmmKDAd6qO7g&s=10', 'https://www.jpl.nasa.gov/news/new-nasa-orbiter-sees-details-of-1997-pathfinder-site/', 'Photograph', 'Image link supplied in the Sojourner PDF'),
   ],
   [
-    source('Pathfinder mission duration record', 'NASA\'s supplied mission history covers the seven-sol plan and the extended 83-sol rover mission.', 'https://science.nasa.gov/solar-system/mars-pathfinder-winds-down-after-phenomenal-mission/'),
+    image('sojourner-seven-days-became-eighty-three', 'Mission duration report', 'The abstract records the seven-day primary mission and 83 sols of rover operations.', '/images/sojourner-evidence/seven-days-became-eighty-three.png', 'https://science.nasa.gov/solar-system/mars-pathfinder-winds-down-after-phenomenal-mission/', 'Illustration · not a photograph', 'Image supplied for this section'),
     image('sojourner-4-2', 'Mars Exploration Rover twins', 'The supplied image shows Spirit and Opportunity, the rover generation that followed Sojourner.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/22356_MER_twins_white_cyc-web.jpg?w=1600&h=891&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/mer-spirit/'),
-    source('Pathfinder landing-site record', 'The supplied landing-site record accompanies the final full data transmission and present-day site context.', 'https://science.nasa.gov/photojournal/mars-pathfinder-landing-site-and-surroundings/'),
-    source('Pathfinder mission closeout', 'The supplied NASA mission history documents the long communications effort and formal mission ending.', 'https://science.nasa.gov/solar-system/mars-pathfinder-winds-down-after-phenomenal-mission/'),
+    image('sojourner-my-last-message-home', 'Pathfinder’s final contact', 'The highlighted passage records final contact on September 27, 1997.', '/images/sojourner-evidence/my-last-message-home.png', 'https://science.nasa.gov/solar-system/mars-pathfinder-winds-down-after-phenomenal-mission/', 'Illustration · not a photograph', 'Image supplied for this section'),
+    { ...source('The Long Goodbye', '', 'https://science.nasa.gov/solar-system/mars-pathfinder-winds-down-after-phenomenal-mission/'), gallery: [] },
   ],
 ]
 
