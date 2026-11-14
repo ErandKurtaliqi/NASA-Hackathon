@@ -1,0 +1,51 @@
+{
+  "totalLocalOriginals": 112,
+  "manifestHashesChecked": 56,
+  "missions": [
+    {
+      "mission": "apollo-15",
+      "recordings": 19,
+      "developmentByteHashesAndRanges": true,
+      "productionAudioAvailable": true
+    },
+    {
+      "mission": "apollo-16",
+      "recordings": 18,
+      "developmentByteHashesAndRanges": true,
+      "productionAudioAvailable": false
+    },
+    {
+      "mission": "sojourner",
+      "recordings": 19,
+      "developmentByteHashesAndRanges": true,
+      "productionAudioAvailable": false
+    },
+    {
+      "mission": "opportunity",
+      "recordings": 19,
+      "developmentByteHashesAndRanges": true,
+      "productionAudioAvailable": false
+    },
+    {
+      "mission": "viking-1",
+      "recordings": 18,
+      "developmentByteHashesAndRanges": true,
+      "productionAudioAvailable": false
+    },
+    {
+      "mission": "ingenuity",
+      "recordings": 19,
+      "developmentByteHashesAndRanges": true,
+      "productionAudioAvailable": false
+    }
+  ],
+  "missingOriginalMissions": [
+    "apollo-11",
+    "apollo-17"
+  ],
+  "externalOriginalsAddedToGitOrDist": 0,
+  "developmentOriginMethodRangeChecks": "passed",
+  "productionExternalAudioIsolation": "passed, including with the development environment variable set",
+  "browserPlaybackVerified": false,
+  "limitation": "HTTP integrity and range checks do not verify audible playback, synchronization, layout or physical devices."
+}

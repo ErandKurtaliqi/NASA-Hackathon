@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-12",
+  "master": "3b45e8f2324e8af85e55d81a1020306e95e1706e",
+  "storytelling": "ddb458657e1fa5fca0bd117f265e95b444090712",
+  "branch": "integration/haroon-master-continuous-storytelling",
+  "commitIdentity": "The two-parent merge commit containing this validation record; inspect git log -1 --format=%H",
+  "automatedTests": {
+    "passed": 286,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "masterRoverTests": "passed",
+  "typescript": "passed",
+  "productionBuild": "passed with existing chunk size warning",
+  "browserQA": {
+    "userApproved": {
+      "browser": "Chrome",
+      "mission": "apollo-15-rover",
+      "scope": "compact continuous-storytelling design",
+      "exactViewportsRecorded": false
+    },
+    "agentRealBrowserTestsExecuted": 0,
+    "agentEnvironment": "apps: []; browsers: []",
+    "allMissionAndViewportBrowserMatrix": "pending mandatory QA before merging into master"
+  },
+  "safariAndPhysicalDevices": "not available",
+  "securityAudit": "passed within known-pattern, path, binary hash and ancestry scope",
+  "mediaIntegrity": {
+    "localOriginalRecordings": 112,
+    "inventoryHashesChecked": 56,
+    "privateExternalOriginalsAdded": 0,
+    "trackedExistingMp3": 22,
+    "missingOriginalMissions": [
+      "Apollo 11",
+      "Apollo 17"
+    ]
+  },
+  "integrationBranchReadyForReview": true,
+  "masterMergeReady": false,
+  "reason": "User authorizes completing and publishing the existing integration; full browser QA remains mandatory before the final master merge",
+  "mergeState": "Finalized by the two-parent merge commit containing this record",
+  "requestedPublication": {
+    "onlyBranch": "integration/haroon-master-continuous-storytelling",
+    "pullRequestBase": "master",
+    "draftUntilMandatoryQAComplete": true,
+    "directMasterPush": false,
+    "forcePush": false,
+    "mainUpdate": false
+  }
+}

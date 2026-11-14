@@ -1,0 +1,16 @@
+{
+  "master": "3b45e8f2324e8af85e55d81a1020306e95e1706e",
+  "feature": "ddb458657e1fa5fca0bd117f265e95b444090712",
+  "common": "a0048e918a7a6549600f5159ab6c8b584d0f59d2",
+  "incomingCommits": 27,
+  "workingFiles": 325,
+  "knownSecretMatches": [],
+  "personalPathLocations": [],
+  "unauthorizedMedia": [],
+  "prohibitedPaths": [],
+  "importedPrivateAncestors": [],
+  "trackedAudioCount": 22,
+  "trackedPdfZipCount": 0,
+  "passed": true,
+  "limitation": "Known key/token patterns, filesystem-path patterns, binary hashes and ancestry checks; not an exhaustive credential or licensing certification."
+}

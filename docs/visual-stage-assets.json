@@ -1,0 +1,49 @@
+{
+  "usagePolicyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+  "endorsement": "No NASA endorsement implied",
+  "scene": "Photographic composition, explicitly labelled; not a geographic reconstruction or a single historical photograph",
+  "resources": [
+    {
+      "nasaId": "as15-88-11901",
+      "role": "vehicle photograph, hand-traced presentation mask",
+      "url": "https://images-assets.nasa.gov/image/as15-88-11901/as15-88-11901~large.jpg",
+      "sourceUrl": "https://images.nasa.gov/details/as15-88-11901",
+      "metadataUrl": "https://images-api.nasa.gov/search?nasa_id=as15-88-11901",
+      "credit": "NASA",
+      "width": 1836,
+      "height": 1920,
+      "bytes": 481844,
+      "sha256": "6d314d8a4f75c086439d9f1297968330ab55d53b5635b1d34632ca6154a70354",
+      "verifiedOn": "2026-11-11",
+      "gitResource": "URL and metadata only; downloaded inspection file stays outside the worktree"
+    },
+    {
+      "nasaId": "jsc2011e118360",
+      "role": "surface panorama used only for Apollo 15",
+      "url": "https://images-assets.nasa.gov/image/jsc2011e118360/jsc2011e118360~large.jpg",
+      "sourceUrl": "https://images.nasa.gov/details/jsc2011e118360",
+      "metadataUrl": "https://images-api.nasa.gov/search?nasa_id=jsc2011e118360",
+      "credit": "NASA",
+      "width": 1920,
+      "height": 747,
+      "bytes": 225651,
+      "sha256": "b2d4f5fb0db24898c51541e3c9b60b774be4f2cd3e20d74328f7ce1126628f1d",
+      "verifiedOn": "2026-11-11",
+      "gitResource": "URL and metadata only; downloaded inspection file stays outside the worktree"
+    },
+    {
+      "nasaId": "S71-41356",
+      "role": "documentary evidence of actual launch",
+      "url": "https://images-assets.nasa.gov/image/S71-41356/S71-41356~large.jpg",
+      "sourceUrl": "https://images.nasa.gov/details/S71-41356",
+      "metadataUrl": "https://images-api.nasa.gov/search?nasa_id=S71-41356",
+      "credit": "NASA",
+      "width": 903,
+      "height": 1920,
+      "bytes": 131672,
+      "sha256": "9b685bb49bea37ae055e39508967df6f468a0d1bab9921c81bbc5b0d6dadb0e9",
+      "verifiedOn": "2026-11-11",
+      "gitResource": "URL and metadata only; downloaded inspection file stays outside the worktree"
+    }
+  ]
+}

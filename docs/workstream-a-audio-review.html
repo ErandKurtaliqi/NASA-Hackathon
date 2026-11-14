@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Apollo 15 — local listening review</title>
+<style>
+body{margin:0;background:#08111d;color:#edf4fb;font:16px/1.6 system-ui;overflow-wrap:anywhere}main{max-width:1100px;padding:24px;margin:auto}h1{font-size:clamp(26px,5vw,42px)}h2{font-size:22px}button,input,select,textarea{font:inherit;color:inherit;background:#132337;border:1px solid #71849a;border-radius:6px;padding:10px;box-sizing:border-box}button{min-height:44px;cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #67e2ff;outline-offset:3px}audio,textarea,select{width:100%}textarea{min-height:150px}label{display:block;margin:12px 0}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.row label{flex:1;min-width:150px}.panel{padding:20px;margin:20px 0;border:1px solid #60758d;border-radius:12px}.notice{color:#ffdc9d}.muted{color:#b9cadb}a{color:#9de1ff}#clock{font-variant-numeric:tabular-nums}#cues>article{border-top:1px solid #60758d;padding:18px 0}#cues textarea{min-height:90px}figure{margin:16px 0}img{max-width:100%;max-height:300px;object-fit:contain}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}input[type=checkbox]{width:22px;height:22px;vertical-align:middle}#review-check{display:flex;gap:12px;align-items:flex-start}#review-check input{flex-shrink:0}button.danger{color:#ffd2cb}fieldset{border:1px solid #60758d}legend{padding:0 8px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style></head>
+<body><main>
+<h1>Apollo 15 — listen, transcribe, time</h1>
+<p class="notice">Local editorial tool, not a student activity. These are original project narration recordings, not NASA mission audio. No sentence timestamps have been verified. Script text is a candidate, not a certified transcript.</p>
+<p>Listen to each original file. Correct its words, select a sentence, add a cue, then capture its start and end from the player while listening. You can seek and replay. Nothing uploads and nothing writes mission progress or localStorage.</p>
+<label>Original recording <select id="recording"></select></label>
+<div class="row"><button id="previous" type="button">Previous recording</button><button id="next" type="button">Next recording</button></div>
+<section class="panel" aria-labelledby="recording-title"><h2 id="recording-title" tabindex="-1"></h2><p id="metadata" class="muted"></p>
+<audio id="audio" controls preload="none" aria-label="Original Apollo 15 narration"></audio><p id="clock">Playback time: 0.000 seconds</p>
+<p id="audio-error" role="alert" hidden>Audio could not load. All review text remains available. Press Play to retry or check that this file is beside the repository's public directory.</p>
+<p id="question-context"></p>
+<label>Working transcript — check every word against the audio <textarea id="transcript" spellcheck="true"></textarea></label>
+<p id="script-status" class="notice"></p><button id="add-cue" type="button">Add cue from selected transcript text</button>
+<button id="load-asr" type="button">Load local ASR draft — unreviewed</button>
+<p class="muted">No text selected? An empty cue is added for manual transcription. No timing is inferred from sentence length or silence.</p>
+<details><summary>Original script references (not automatically verified evidence)</summary><div id="script-sources"></div></details>
+</section>
+<section class="panel" aria-labelledby="cue-title"><h2 id="cue-title">Sentence cues</h2><div id="cues"></div></section>
+<section class="panel" aria-labelledby="evidence-title"><h2 id="evidence-title">Existing verified visual evidence</h2><p>Use a contextual photo only when its caption honestly describes what it shows. Not every spoken action has a matching image.</p><label>Preview evidence <select id="evidence"></select></label><figure><img id="image" alt=""><figcaption id="credit"></figcaption></figure></section>
+<section class="panel" aria-labelledby="export-title"><h2 id="export-title">Review and export this recording</h2>
+<label>Reviewer name <input id="reviewer" autocomplete="name"></label>
+<label id="review-check"><input type="checkbox" id="reviewed"><span>I listened to this entire original recording, corrected the transcript and checked every cue boundary, sentence and image against the actual recording and evidence. I accept responsibility for this manual review.</span></label>
+<p id="validation" role="status"></p><div class="row"><button type="button" id="export-draft">Download draft review</button><button type="button" id="export-reviewed" disabled>Download reviewed cues</button></div>
+<p class="notice">Working edits live only in this tab. Download a draft before closing or refreshing. Reviewed exports still require code review and regression tests before adding them to the application.</p>
+</section>
+<p><a href="workstream-a-audio.md">Scope, limitations and integration instructions</a></p>
+</main><script src="workstream-a-audio-review-data.js"></script><script src="workstream-a-audio-review.js"></script></body></html>

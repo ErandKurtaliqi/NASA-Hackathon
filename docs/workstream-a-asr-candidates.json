@@ -1,0 +1,5840 @@
+{
+  "status": "candidates-only-not-runtime-captions",
+  "generatedOn": "2026-11-08",
+  "method": "Fully local whisper.cpp inference against unchanged original MP3 files, then sentence grouping using returned token offsets. No script-based timestamp interpolation and no human listening certification.",
+  "engine": {
+    "name": "whisper.cpp",
+    "release": "b5454",
+    "binaryArchiveUrl": "https://github.com/ggml-org/whisper.cpp/releases/download/b5454/whisper-bin-x64.zip",
+    "binaryArchiveSha256": "6ba69e3482d7826214f90a6a9c84ca07782aec1e1d0c6a7c30c994fd5d816ccb",
+    "cliSha256": "331dba46d6427105d2b802cdbc7eae916ea1c5abf9b0d3b5cfe460d8db8e4366",
+    "licenseUrl": "https://github.com/ggml-org/whisper.cpp/blob/master/LICENSE"
+  },
+  "model": {
+    "name": "ggml-tiny.en-q5_1.bin",
+    "sourceUrl": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.en-q5_1.bin",
+    "bytes": 32166155,
+    "sha256": "c77c5766f1cef09b6b7d47f21b546cbddd4157886b3b5d6d4f709e91e66c7c2b",
+    "licenseUrl": "https://github.com/openai/whisper/blob/main/LICENSE"
+  },
+  "commandPattern": "whisper-cli.exe -m MODEL -f ORIGINAL_MP3 -l en -t 4 -ng -ojf -otxt -of OUTPUT_PREFIX",
+  "limitations": [
+    "Tiny quantized ASR is fallible, especially proper names and numeric language.",
+    "Token offsets and sentence grouping require human listening review.",
+    "No candidate is registered as verified in the application.",
+    "No recording was uploaded to an external transcription service."
+  ],
+  "recordings": [
+    {
+      "recordingPath": "/audio/apollo-15/chapter-1/1.mp3",
+      "recordingSha256": "d29c885891be6018c7f7b9a65a18a64d85dffa83fbfdfb09eb1e6f349c1cd60a",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "Imagine a car that folds like a suitcase, rides a rocket, and drives where there are no roads, and no air. I'm LRV1, the Apollo 15 Moon Buggy, the first vehicle astronauts ever drove on another world.",
+      "sentenceCandidates": [
+        {
+          "start": 0.13,
+          "end": 8.08,
+          "text": "Imagine a car that folds like a suitcase, rides a rocket, and drives where there are no roads, and no air.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 9.2,
+          "end": 16.72,
+          "text": "I'm LRV1, the Apollo 15 Moon Buggy, the first vehicle astronauts ever drove on another world.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " Imagine",
+          "startMs": 130,
+          "endMs": 740,
+          "probability": 0.927191
+        },
+        {
+          "text": " a",
+          "startMs": 740,
+          "endMs": 840,
+          "probability": 0.997695
+        },
+        {
+          "text": " car",
+          "startMs": 840,
+          "endMs": 1150,
+          "probability": 0.999178
+        },
+        {
+          "text": " that",
+          "startMs": 1150,
+          "endMs": 1550,
+          "probability": 0.993383
+        },
+        {
+          "text": " folds",
+          "startMs": 1810,
+          "endMs": 2100,
+          "probability": 0.991899
+        },
+        {
+          "text": " like",
+          "startMs": 2100,
+          "endMs": 2520,
+          "probability": 0.99799
+        },
+        {
+          "text": " a",
+          "startMs": 2520,
+          "endMs": 2620,
+          "probability": 0.99846
+        },
+        {
+          "text": " suitcase",
+          "startMs": 2620,
+          "endMs": 3160,
+          "probability": 0.986988
+        },
+        {
+          "text": ",",
+          "startMs": 3610,
+          "endMs": 3690,
+          "probability": 0.94393
+        },
+        {
+          "text": " rides",
+          "startMs": 3690,
+          "endMs": 4180,
+          "probability": 0.897678
+        },
+        {
+          "text": " a",
+          "startMs": 4180,
+          "endMs": 4250,
+          "probability": 0.995031
+        },
+        {
+          "text": " rocket",
+          "startMs": 4250,
+          "endMs": 4540,
+          "probability": 0.986734
+        },
+        {
+          "text": ",",
+          "startMs": 4880,
+          "endMs": 4880,
+          "probability": 0.76607
+        },
+        {
+          "text": " and",
+          "startMs": 5010,
+          "endMs": 5130,
+          "probability": 0.993098
+        },
+        {
+          "text": " drives",
+          "startMs": 5130,
+          "endMs": 5620,
+          "probability": 0.99557
+        },
+        {
+          "text": " where",
+          "startMs": 5650,
+          "endMs": 6060,
+          "probability": 0.992377
+        },
+        {
+          "text": " there",
+          "startMs": 6060,
+          "endMs": 6430,
+          "probability": 0.99814
+        },
+        {
+          "text": " are",
+          "startMs": 6690,
+          "endMs": 6730,
+          "probability": 0.995873
+        },
+        {
+          "text": " no",
+          "startMs": 6730,
+          "endMs": 6890,
+          "probability": 0.998028
+        },
+        {
+          "text": " roads",
+          "startMs": 6900,
+          "endMs": 7360,
+          "probability": 0.998277
+        },
+        {
+          "text": ",",
+          "startMs": 7360,
+          "endMs": 7500,
+          "probability": 0.46852
+        },
+        {
+          "text": " and",
+          "startMs": 7500,
+          "endMs": 7720,
+          "probability": 0.891574
+        },
+        {
+          "text": " no",
+          "startMs": 7720,
+          "endMs": 7860,
+          "probability": 0.994122
+        },
+        {
+          "text": " air",
+          "startMs": 7860,
+          "endMs": 8030,
+          "probability": 0.990744
+        },
+        {
+          "text": ".",
+          "startMs": 8070,
+          "endMs": 8080,
+          "probability": 0.60735
+        },
+        {
+          "text": " I",
+          "startMs": 9200,
+          "endMs": 9200,
+          "probability": 0.968494
+        },
+        {
+          "text": "'m",
+          "startMs": 9200,
+          "endMs": 9200,
+          "probability": 0.977663
+        },
+        {
+          "text": " LR",
+          "startMs": 9330,
+          "endMs": 9470,
+          "probability": 0.365046
+        },
+        {
+          "text": "V",
+          "startMs": 9470,
+          "endMs": 9700,
+          "probability": 0.953308
+        },
+        {
+          "text": "1",
+          "startMs": 9700,
+          "endMs": 10390,
+          "probability": 0.917629
+        },
+        {
+          "text": ",",
+          "startMs": 10390,
+          "endMs": 10750,
+          "probability": 0.928362
+        },
+        {
+          "text": " the",
+          "startMs": 11010,
+          "endMs": 11130,
+          "probability": 0.921452
+        },
+        {
+          "text": " Apollo",
+          "startMs": 11130,
+          "endMs": 11640,
+          "probability": 0.997642
+        },
+        {
+          "text": " 15",
+          "startMs": 11640,
+          "endMs": 12150,
+          "probability": 0.964323
+        },
+        {
+          "text": " Moon",
+          "startMs": 12150,
+          "endMs": 12360,
+          "probability": 0.703297
+        },
+        {
+          "text": " Bug",
+          "startMs": 12460,
+          "endMs": 12690,
+          "probability": 0.431846
+        },
+        {
+          "text": "gy",
+          "startMs": 12820,
+          "endMs": 12910,
+          "probability": 0.878439
+        },
+        {
+          "text": ",",
+          "startMs": 12910,
+          "endMs": 13090,
+          "probability": 0.868477
+        },
+        {
+          "text": " the",
+          "startMs": 13130,
+          "endMs": 13360,
+          "probability": 0.790361
+        },
+        {
+          "text": " first",
+          "startMs": 13360,
+          "endMs": 13740,
+          "probability": 0.983914
+        },
+        {
+          "text": " vehicle",
+          "startMs": 14190,
+          "endMs": 14220,
+          "probability": 0.958896
+        },
+        {
+          "text": " astronauts",
+          "startMs": 14220,
+          "endMs": 14880,
+          "probability": 0.96348
+        },
+        {
+          "text": " ever",
+          "startMs": 14880,
+          "endMs": 15120,
+          "probability": 0.946137
+        },
+        {
+          "text": " drove",
+          "startMs": 15120,
+          "endMs": 15600,
+          "probability": 0.939224
+        },
+        {
+          "text": " on",
+          "startMs": 15600,
+          "endMs": 15670,
+          "probability": 0.951308
+        },
+        {
+          "text": " another",
+          "startMs": 15670,
+          "endMs": 15950,
+          "probability": 0.915311
+        },
+        {
+          "text": " world",
+          "startMs": 16100,
+          "endMs": 16720,
+          "probability": 0.98194
+        },
+        {
+          "text": ".",
+          "startMs": 16720,
+          "endMs": 16720,
+          "probability": 0.92912
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "Imagine a car that folds like a suitcase, rides a rocket,",
+          "offsetsMs": {
+            "from": 0,
+            "to": 4880
+          }
+        },
+        {
+          "text": "and drives where there are no roads, and no air.",
+          "offsetsMs": {
+            "from": 4880,
+            "to": 8320
+          }
+        },
+        {
+          "text": "I'm LRV1, the Apollo 15 Moon Buggy, the first vehicle astronauts ever drove on another world.",
+          "offsetsMs": {
+            "from": 9200,
+            "to": 16720
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "e0456af2c687f77705874e7697aae99d4c9e331a38e58d0584368dd1652631ce"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-1/2.mp3",
+      "recordingSha256": "4f85e8bdd448cc00646c0dc8a5f035b6a354f10a86fed4983c0f85134e4d38a6",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "Before me, astronauts could only walk a short way from their lander. So back on Earth, NASA and its scientists chose a bold destination for Apollo 15. Hadley Apanine, with towering mountains and a giant canyon called Hadley Rill.",
+      "sentenceCandidates": [
+        {
+          "start": 0.27,
+          "end": 5,
+          "text": "Before me, astronauts could only walk a short way from their lander.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 5.1,
+          "end": 11.44,
+          "text": "So back on Earth, NASA and its scientists chose a bold destination for Apollo 15.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 11.71,
+          "end": 16.4,
+          "text": "Hadley Apanine, with towering mountains and a giant canyon called Hadley Rill.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " Before",
+          "startMs": 270,
+          "endMs": 490,
+          "probability": 0.819668
+        },
+        {
+          "text": " me",
+          "startMs": 490,
+          "endMs": 650,
+          "probability": 0.988946
+        },
+        {
+          "text": ",",
+          "startMs": 650,
+          "endMs": 810,
+          "probability": 0.867291
+        },
+        {
+          "text": " astronauts",
+          "startMs": 810,
+          "endMs": 1630,
+          "probability": 0.994012
+        },
+        {
+          "text": " could",
+          "startMs": 1630,
+          "endMs": 2010,
+          "probability": 0.997
+        },
+        {
+          "text": " only",
+          "startMs": 2050,
+          "endMs": 2370,
+          "probability": 0.995959
+        },
+        {
+          "text": " walk",
+          "startMs": 2370,
+          "endMs": 2690,
+          "probability": 0.997912
+        },
+        {
+          "text": " a",
+          "startMs": 2700,
+          "endMs": 2780,
+          "probability": 0.973956
+        },
+        {
+          "text": " short",
+          "startMs": 2780,
+          "endMs": 3160,
+          "probability": 0.990516
+        },
+        {
+          "text": " way",
+          "startMs": 3190,
+          "endMs": 3460,
+          "probability": 0.983072
+        },
+        {
+          "text": " from",
+          "startMs": 3530,
+          "endMs": 3810,
+          "probability": 0.981057
+        },
+        {
+          "text": " their",
+          "startMs": 3810,
+          "endMs": 4210,
+          "probability": 0.991724
+        },
+        {
+          "text": " land",
+          "startMs": 4210,
+          "endMs": 4400,
+          "probability": 0.953693
+        },
+        {
+          "text": "er",
+          "startMs": 4400,
+          "endMs": 4720,
+          "probability": 0.951918
+        },
+        {
+          "text": ".",
+          "startMs": 4950,
+          "endMs": 5000,
+          "probability": 0.904763
+        },
+        {
+          "text": " So",
+          "startMs": 5100,
+          "endMs": 5160,
+          "probability": 0.990131
+        },
+        {
+          "text": " back",
+          "startMs": 5270,
+          "endMs": 5490,
+          "probability": 0.970741
+        },
+        {
+          "text": " on",
+          "startMs": 5490,
+          "endMs": 5650,
+          "probability": 0.998456
+        },
+        {
+          "text": " Earth",
+          "startMs": 5650,
+          "endMs": 5870,
+          "probability": 0.828615
+        },
+        {
+          "text": ",",
+          "startMs": 5870,
+          "endMs": 6220,
+          "probability": 0.934033
+        },
+        {
+          "text": " NASA",
+          "startMs": 6400,
+          "endMs": 6560,
+          "probability": 0.983931
+        },
+        {
+          "text": " and",
+          "startMs": 6560,
+          "endMs": 6810,
+          "probability": 0.989019
+        },
+        {
+          "text": " its",
+          "startMs": 6810,
+          "endMs": 7050,
+          "probability": 0.989834
+        },
+        {
+          "text": " scientists",
+          "startMs": 7080,
+          "endMs": 7900,
+          "probability": 0.990665
+        },
+        {
+          "text": " chose",
+          "startMs": 7900,
+          "endMs": 8320,
+          "probability": 0.984699
+        },
+        {
+          "text": " a",
+          "startMs": 8320,
+          "endMs": 8400,
+          "probability": 0.988355
+        },
+        {
+          "text": " bold",
+          "startMs": 8400,
+          "endMs": 8730,
+          "probability": 0.945669
+        },
+        {
+          "text": " destination",
+          "startMs": 8730,
+          "endMs": 9270,
+          "probability": 0.974473
+        },
+        {
+          "text": " for",
+          "startMs": 9900,
+          "endMs": 9900,
+          "probability": 0.986485
+        },
+        {
+          "text": " Apollo",
+          "startMs": 9970,
+          "endMs": 10400,
+          "probability": 0.994982
+        },
+        {
+          "text": " 15",
+          "startMs": 10400,
+          "endMs": 10930,
+          "probability": 0.940134
+        },
+        {
+          "text": ".",
+          "startMs": 11280,
+          "endMs": 11440,
+          "probability": 0.682983
+        },
+        {
+          "text": " Had",
+          "startMs": 11710,
+          "endMs": 12030,
+          "probability": 0.892524
+        },
+        {
+          "text": "ley",
+          "startMs": 12030,
+          "endMs": 12320,
+          "probability": 0.694047
+        },
+        {
+          "text": " Ap",
+          "startMs": 12840,
+          "endMs": 13020,
+          "probability": 0.7848
+        },
+        {
+          "text": "an",
+          "startMs": 13020,
+          "endMs": 13120,
+          "probability": 0.104606
+        },
+        {
+          "text": "ine",
+          "startMs": 13140,
+          "endMs": 13300,
+          "probability": 0.975321
+        },
+        {
+          "text": ",",
+          "startMs": 13300,
+          "endMs": 13360,
+          "probability": 0.87169
+        },
+        {
+          "text": " with",
+          "startMs": 13410,
+          "endMs": 13620,
+          "probability": 0.983528
+        },
+        {
+          "text": " towering",
+          "startMs": 13670,
+          "endMs": 14080,
+          "probability": 0.973584
+        },
+        {
+          "text": " mountains",
+          "startMs": 14080,
+          "endMs": 14590,
+          "probability": 0.987982
+        },
+        {
+          "text": " and",
+          "startMs": 14590,
+          "endMs": 14760,
+          "probability": 0.977909
+        },
+        {
+          "text": " a",
+          "startMs": 14760,
+          "endMs": 14810,
+          "probability": 0.983374
+        },
+        {
+          "text": " giant",
+          "startMs": 14810,
+          "endMs": 15090,
+          "probability": 0.994901
+        },
+        {
+          "text": " canyon",
+          "startMs": 15090,
+          "endMs": 15430,
+          "probability": 0.990811
+        },
+        {
+          "text": " called",
+          "startMs": 15430,
+          "endMs": 15710,
+          "probability": 0.985571
+        },
+        {
+          "text": " Had",
+          "startMs": 15760,
+          "endMs": 15930,
+          "probability": 0.926212
+        },
+        {
+          "text": "ley",
+          "startMs": 15930,
+          "endMs": 16110,
+          "probability": 0.994344
+        },
+        {
+          "text": " R",
+          "startMs": 16110,
+          "endMs": 16160,
+          "probability": 0.247165
+        },
+        {
+          "text": "ill",
+          "startMs": 16390,
+          "endMs": 16400,
+          "probability": 0.289881
+        },
+        {
+          "text": ".",
+          "startMs": 16400,
+          "endMs": 16400,
+          "probability": 0.886252
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "Before me, astronauts could only walk a short way from their lander.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 5000
+          }
+        },
+        {
+          "text": "So back on Earth, NASA and its scientists chose a bold destination for Apollo 15.",
+          "offsetsMs": {
+            "from": 5000,
+            "to": 11440
+          }
+        },
+        {
+          "text": "Hadley Apanine, with towering mountains and a giant canyon called Hadley Rill.",
+          "offsetsMs": {
+            "from": 11440,
+            "to": 16400
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "9aebe4a346ec79710f659f095c47b999afeeb16a39113fb57d403b25e00dbcff"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-1/3.mp3",
+      "recordingSha256": "18b0a7715f813468019b7eb3c547a2545d2de8eb19cca4c35dd6cc9d1394b8d5",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "NASA's Marshall Space Flight Center managed my design, and Boeing built me in about 17 months. General Motors made my wheels.",
+      "sentenceCandidates": [
+        {
+          "start": 0.07,
+          "end": 6.64,
+          "text": "NASA's Marshall Space Flight Center managed my design, and Boeing built me in about 17 months.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 6.71,
+          "end": 8.64,
+          "text": "General Motors made my wheels.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " NASA",
+          "startMs": 70,
+          "endMs": 260,
+          "probability": 0.976439
+        },
+        {
+          "text": "'s",
+          "startMs": 260,
+          "endMs": 390,
+          "probability": 0.995399
+        },
+        {
+          "text": " Marshall",
+          "startMs": 390,
+          "endMs": 920,
+          "probability": 0.884253
+        },
+        {
+          "text": " Space",
+          "startMs": 920,
+          "endMs": 1200,
+          "probability": 0.926166
+        },
+        {
+          "text": " Flight",
+          "startMs": 1280,
+          "endMs": 1650,
+          "probability": 0.94448
+        },
+        {
+          "text": " Center",
+          "startMs": 1650,
+          "endMs": 2080,
+          "probability": 0.974889
+        },
+        {
+          "text": " managed",
+          "startMs": 2080,
+          "endMs": 2740,
+          "probability": 0.834202
+        },
+        {
+          "text": " my",
+          "startMs": 2740,
+          "endMs": 2920,
+          "probability": 0.996016
+        },
+        {
+          "text": " design",
+          "startMs": 2920,
+          "endMs": 3390,
+          "probability": 0.998496
+        },
+        {
+          "text": ",",
+          "startMs": 3580,
+          "endMs": 3580,
+          "probability": 0.487496
+        },
+        {
+          "text": " and",
+          "startMs": 3650,
+          "endMs": 3820,
+          "probability": 0.995683
+        },
+        {
+          "text": " Boeing",
+          "startMs": 3820,
+          "endMs": 4300,
+          "probability": 0.964952
+        },
+        {
+          "text": " built",
+          "startMs": 4300,
+          "endMs": 4700,
+          "probability": 0.998051
+        },
+        {
+          "text": " me",
+          "startMs": 4700,
+          "endMs": 4780,
+          "probability": 0.999678
+        },
+        {
+          "text": " in",
+          "startMs": 4860,
+          "endMs": 5020,
+          "probability": 0.990002
+        },
+        {
+          "text": " about",
+          "startMs": 5020,
+          "endMs": 5420,
+          "probability": 0.998129
+        },
+        {
+          "text": " 17",
+          "startMs": 5420,
+          "endMs": 5900,
+          "probability": 0.973098
+        },
+        {
+          "text": " months",
+          "startMs": 5900,
+          "endMs": 6380,
+          "probability": 0.998253
+        },
+        {
+          "text": ".",
+          "startMs": 6380,
+          "endMs": 6640,
+          "probability": 0.938802
+        },
+        {
+          "text": " General",
+          "startMs": 6710,
+          "endMs": 7130,
+          "probability": 0.992515
+        },
+        {
+          "text": " Motors",
+          "startMs": 7130,
+          "endMs": 7550,
+          "probability": 0.980263
+        },
+        {
+          "text": " made",
+          "startMs": 7550,
+          "endMs": 7830,
+          "probability": 0.998624
+        },
+        {
+          "text": " my",
+          "startMs": 7830,
+          "endMs": 7970,
+          "probability": 0.998919
+        },
+        {
+          "text": " wheels",
+          "startMs": 7970,
+          "endMs": 8390,
+          "probability": 0.996443
+        },
+        {
+          "text": ".",
+          "startMs": 8390,
+          "endMs": 8640,
+          "probability": 0.960005
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "NASA's Marshall Space Flight Center managed my design,",
+          "offsetsMs": {
+            "from": 0,
+            "to": 3580
+          }
+        },
+        {
+          "text": "and Boeing built me in about 17 months.",
+          "offsetsMs": {
+            "from": 3580,
+            "to": 6640
+          }
+        },
+        {
+          "text": "General Motors made my wheels.",
+          "offsetsMs": {
+            "from": 6640,
+            "to": 8640
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "49b17a182d8da72fc9ea5b9f530978e2e3698361b392074904b0f06337096855"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-1/4.mp3",
+      "recordingSha256": "71f2f2180e079eb293ca383ec7f7d593decb32253870afc80bdfdf066c8c75b5",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "I fold like origami inside the lander falcon, and pop open when Dave Scott and Jim Irwin pull my tapes. I can carry more than twice my own weight. And I was built to stay on the moon forever.",
+      "sentenceCandidates": [
+        {
+          "start": 0.08,
+          "end": 7,
+          "text": "I fold like origami inside the lander falcon, and pop open when Dave Scott and Jim Irwin pull my tapes.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 7.09,
+          "end": 10,
+          "text": "I can carry more than twice my own weight.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 10.1,
+          "end": 14,
+          "text": "And I was built to stay on the moon forever.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " I",
+          "startMs": 80,
+          "endMs": 80,
+          "probability": 0.951695
+        },
+        {
+          "text": " fold",
+          "startMs": 100,
+          "endMs": 410,
+          "probability": 0.954296
+        },
+        {
+          "text": " like",
+          "startMs": 410,
+          "endMs": 740,
+          "probability": 0.990682
+        },
+        {
+          "text": " orig",
+          "startMs": 740,
+          "endMs": 1070,
+          "probability": 0.523507
+        },
+        {
+          "text": "ami",
+          "startMs": 1070,
+          "endMs": 1320,
+          "probability": 0.998237
+        },
+        {
+          "text": " inside",
+          "startMs": 1320,
+          "endMs": 1820,
+          "probability": 0.995963
+        },
+        {
+          "text": " the",
+          "startMs": 1820,
+          "endMs": 2070,
+          "probability": 0.992629
+        },
+        {
+          "text": " land",
+          "startMs": 2070,
+          "endMs": 2400,
+          "probability": 0.477412
+        },
+        {
+          "text": "er",
+          "startMs": 2400,
+          "endMs": 2480,
+          "probability": 0.992171
+        },
+        {
+          "text": " fal",
+          "startMs": 2560,
+          "endMs": 2810,
+          "probability": 0.872974
+        },
+        {
+          "text": "con",
+          "startMs": 2810,
+          "endMs": 2990,
+          "probability": 0.899889
+        },
+        {
+          "text": ",",
+          "startMs": 3180,
+          "endMs": 3240,
+          "probability": 0.402716
+        },
+        {
+          "text": " and",
+          "startMs": 3240,
+          "endMs": 3460,
+          "probability": 0.67778
+        },
+        {
+          "text": " pop",
+          "startMs": 3460,
+          "endMs": 3680,
+          "probability": 0.980329
+        },
+        {
+          "text": " open",
+          "startMs": 3680,
+          "endMs": 3990,
+          "probability": 0.992704
+        },
+        {
+          "text": " when",
+          "startMs": 3990,
+          "endMs": 4270,
+          "probability": 0.926242
+        },
+        {
+          "text": " Dave",
+          "startMs": 4270,
+          "endMs": 4540,
+          "probability": 0.965415
+        },
+        {
+          "text": " Scott",
+          "startMs": 4540,
+          "endMs": 4860,
+          "probability": 0.838691
+        },
+        {
+          "text": " and",
+          "startMs": 4880,
+          "endMs": 5030,
+          "probability": 0.975483
+        },
+        {
+          "text": " Jim",
+          "startMs": 5070,
+          "endMs": 5360,
+          "probability": 0.957312
+        },
+        {
+          "text": " Irwin",
+          "startMs": 5360,
+          "endMs": 5680,
+          "probability": 0.549064
+        },
+        {
+          "text": " pull",
+          "startMs": 5680,
+          "endMs": 5840,
+          "probability": 0.683872
+        },
+        {
+          "text": " my",
+          "startMs": 5840,
+          "endMs": 6150,
+          "probability": 0.928741
+        },
+        {
+          "text": " tapes",
+          "startMs": 6150,
+          "endMs": 6570,
+          "probability": 0.976058
+        },
+        {
+          "text": ".",
+          "startMs": 6990,
+          "endMs": 7000,
+          "probability": 0.934409
+        },
+        {
+          "text": " I",
+          "startMs": 7090,
+          "endMs": 7090,
+          "probability": 0.997173
+        },
+        {
+          "text": " can",
+          "startMs": 7100,
+          "endMs": 7360,
+          "probability": 0.994074
+        },
+        {
+          "text": " carry",
+          "startMs": 7360,
+          "endMs": 7800,
+          "probability": 0.998595
+        },
+        {
+          "text": " more",
+          "startMs": 7880,
+          "endMs": 8140,
+          "probability": 0.997474
+        },
+        {
+          "text": " than",
+          "startMs": 8200,
+          "endMs": 8520,
+          "probability": 0.996071
+        },
+        {
+          "text": " twice",
+          "startMs": 8530,
+          "endMs": 8980,
+          "probability": 0.996658
+        },
+        {
+          "text": " my",
+          "startMs": 9020,
+          "endMs": 9160,
+          "probability": 0.994272
+        },
+        {
+          "text": " own",
+          "startMs": 9160,
+          "endMs": 9430,
+          "probability": 0.994437
+        },
+        {
+          "text": " weight",
+          "startMs": 9430,
+          "endMs": 9990,
+          "probability": 0.995632
+        },
+        {
+          "text": ".",
+          "startMs": 10000,
+          "endMs": 10000,
+          "probability": 0.498669
+        },
+        {
+          "text": " And",
+          "startMs": 10100,
+          "endMs": 10250,
+          "probability": 0.887043
+        },
+        {
+          "text": " I",
+          "startMs": 10350,
+          "endMs": 10460,
+          "probability": 0.96154
+        },
+        {
+          "text": " was",
+          "startMs": 10460,
+          "endMs": 10800,
+          "probability": 0.998224
+        },
+        {
+          "text": " built",
+          "startMs": 10880,
+          "endMs": 11390,
+          "probability": 0.990384
+        },
+        {
+          "text": " to",
+          "startMs": 11390,
+          "endMs": 11610,
+          "probability": 0.995687
+        },
+        {
+          "text": " stay",
+          "startMs": 11620,
+          "endMs": 12090,
+          "probability": 0.996137
+        },
+        {
+          "text": " on",
+          "startMs": 12090,
+          "endMs": 12320,
+          "probability": 0.995215
+        },
+        {
+          "text": " the",
+          "startMs": 12320,
+          "endMs": 12660,
+          "probability": 0.996231
+        },
+        {
+          "text": " moon",
+          "startMs": 12660,
+          "endMs": 12990,
+          "probability": 0.874293
+        },
+        {
+          "text": " forever",
+          "startMs": 13210,
+          "endMs": 13990,
+          "probability": 0.933282
+        },
+        {
+          "text": ".",
+          "startMs": 13990,
+          "endMs": 14000,
+          "probability": 0.949617
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "I fold like origami inside the lander falcon, and pop open when Dave Scott and Jim Irwin pull my tapes.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 7000
+          }
+        },
+        {
+          "text": "I can carry more than twice my own weight.",
+          "offsetsMs": {
+            "from": 7000,
+            "to": 10000
+          }
+        },
+        {
+          "text": "And I was built to stay on the moon forever.",
+          "offsetsMs": {
+            "from": 10000,
+            "to": 14000
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "d50b80e1aebf53262dcfb9284fef733feeb76f7959039c6f64cc02e871620b39"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-2/1.mp3",
+      "recordingSha256": "0772ffb2349fca1e9af4bc1b64d35ad10d9683681e41105f8ec016323693f06a",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "on July 26th, 1971. I felt the roar of a giant Saturn V rocket! For four dark days, I rode folded inside our lander Falcon. To where we touched down at Hadley Apanine on July 30th, and on July 31st, wheels finally kissed the sunlit moon.",
+      "sentenceCandidates": [
+        {
+          "start": 0.17,
+          "end": 4.26,
+          "text": "on July 26th, 1971.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 4.27,
+          "end": 8.43,
+          "text": "I felt the roar of a giant Saturn V rocket!",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 8.43,
+          "end": 11.92,
+          "text": "For four dark days, I rode folded inside our lander Falcon.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 11.92,
+          "end": 21.67,
+          "text": "To where we touched down at Hadley Apanine on July 30th, and on July 31st, wheels finally kissed the sunlit moon.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " on",
+          "startMs": 170,
+          "endMs": 280,
+          "probability": 0.14686
+        },
+        {
+          "text": " July",
+          "startMs": 280,
+          "endMs": 850,
+          "probability": 0.976612
+        },
+        {
+          "text": " 26",
+          "startMs": 850,
+          "endMs": 1700,
+          "probability": 0.993964
+        },
+        {
+          "text": "th",
+          "startMs": 1700,
+          "endMs": 1960,
+          "probability": 0.39309
+        },
+        {
+          "text": ",",
+          "startMs": 2210,
+          "endMs": 2260,
+          "probability": 0.870642
+        },
+        {
+          "text": " 1971",
+          "startMs": 2260,
+          "endMs": 4000,
+          "probability": 0.968325
+        },
+        {
+          "text": ".",
+          "startMs": 4000,
+          "endMs": 4260,
+          "probability": 0.811851
+        },
+        {
+          "text": " I",
+          "startMs": 4270,
+          "endMs": 4360,
+          "probability": 0.53585
+        },
+        {
+          "text": " felt",
+          "startMs": 4360,
+          "endMs": 4690,
+          "probability": 0.986929
+        },
+        {
+          "text": " the",
+          "startMs": 4790,
+          "endMs": 4990,
+          "probability": 0.99826
+        },
+        {
+          "text": " roar",
+          "startMs": 5030,
+          "endMs": 5360,
+          "probability": 0.996358
+        },
+        {
+          "text": " of",
+          "startMs": 5360,
+          "endMs": 5580,
+          "probability": 0.98641
+        },
+        {
+          "text": " a",
+          "startMs": 5580,
+          "endMs": 5670,
+          "probability": 0.979817
+        },
+        {
+          "text": " giant",
+          "startMs": 5800,
+          "endMs": 6200,
+          "probability": 0.980106
+        },
+        {
+          "text": " Saturn",
+          "startMs": 6270,
+          "endMs": 7120,
+          "probability": 0.833724
+        },
+        {
+          "text": " V",
+          "startMs": 7230,
+          "endMs": 7310,
+          "probability": 0.775615
+        },
+        {
+          "text": " rocket",
+          "startMs": 7310,
+          "endMs": 7700,
+          "probability": 0.971955
+        },
+        {
+          "text": "!",
+          "startMs": 8350,
+          "endMs": 8430,
+          "probability": 0.494475
+        },
+        {
+          "text": " For",
+          "startMs": 8430,
+          "endMs": 8520,
+          "probability": 0.639252
+        },
+        {
+          "text": " four",
+          "startMs": 8650,
+          "endMs": 8880,
+          "probability": 0.761732
+        },
+        {
+          "text": " dark",
+          "startMs": 8880,
+          "endMs": 9120,
+          "probability": 0.816401
+        },
+        {
+          "text": " days",
+          "startMs": 9120,
+          "endMs": 9520,
+          "probability": 0.972472
+        },
+        {
+          "text": ",",
+          "startMs": 9520,
+          "endMs": 9520,
+          "probability": 0.382511
+        },
+        {
+          "text": " I",
+          "startMs": 9560,
+          "endMs": 9570,
+          "probability": 0.993779
+        },
+        {
+          "text": " rode",
+          "startMs": 9690,
+          "endMs": 9850,
+          "probability": 0.925789
+        },
+        {
+          "text": " folded",
+          "startMs": 9850,
+          "endMs": 10260,
+          "probability": 0.856901
+        },
+        {
+          "text": " inside",
+          "startMs": 10260,
+          "endMs": 10670,
+          "probability": 0.990231
+        },
+        {
+          "text": " our",
+          "startMs": 10670,
+          "endMs": 10870,
+          "probability": 0.982028
+        },
+        {
+          "text": " land",
+          "startMs": 10870,
+          "endMs": 11140,
+          "probability": 0.773649
+        },
+        {
+          "text": "er",
+          "startMs": 11140,
+          "endMs": 11230,
+          "probability": 0.937219
+        },
+        {
+          "text": " Falcon",
+          "startMs": 11300,
+          "endMs": 11630,
+          "probability": 0.765583
+        },
+        {
+          "text": ".",
+          "startMs": 11730,
+          "endMs": 11920,
+          "probability": 0.535235
+        },
+        {
+          "text": " To",
+          "startMs": 11920,
+          "endMs": 11960,
+          "probability": 0.931175
+        },
+        {
+          "text": " where",
+          "startMs": 12030,
+          "endMs": 12170,
+          "probability": 0.978504
+        },
+        {
+          "text": " we",
+          "startMs": 12170,
+          "endMs": 12240,
+          "probability": 0.996098
+        },
+        {
+          "text": " touched",
+          "startMs": 12240,
+          "endMs": 12490,
+          "probability": 0.708591
+        },
+        {
+          "text": " down",
+          "startMs": 12490,
+          "endMs": 12630,
+          "probability": 0.960118
+        },
+        {
+          "text": " at",
+          "startMs": 12630,
+          "endMs": 12700,
+          "probability": 0.90602
+        },
+        {
+          "text": " Had",
+          "startMs": 12700,
+          "endMs": 12810,
+          "probability": 0.892454
+        },
+        {
+          "text": "ley",
+          "startMs": 12810,
+          "endMs": 12910,
+          "probability": 0.909752
+        },
+        {
+          "text": " Ap",
+          "startMs": 12910,
+          "endMs": 13020,
+          "probability": 0.610465
+        },
+        {
+          "text": "an",
+          "startMs": 13020,
+          "endMs": 13860,
+          "probability": 0.0787536
+        },
+        {
+          "text": "ine",
+          "startMs": 13860,
+          "endMs": 15120,
+          "probability": 0.938042
+        },
+        {
+          "text": " on",
+          "startMs": 15120,
+          "endMs": 15190,
+          "probability": 0.934479
+        },
+        {
+          "text": " July",
+          "startMs": 15320,
+          "endMs": 15600,
+          "probability": 0.983448
+        },
+        {
+          "text": " 30",
+          "startMs": 15600,
+          "endMs": 16310,
+          "probability": 0.923597
+        },
+        {
+          "text": "th",
+          "startMs": 16430,
+          "endMs": 16640,
+          "probability": 0.937371
+        },
+        {
+          "text": ",",
+          "startMs": 16640,
+          "endMs": 16640,
+          "probability": 0.607676
+        },
+        {
+          "text": " and",
+          "startMs": 16810,
+          "endMs": 16930,
+          "probability": 0.776896
+        },
+        {
+          "text": " on",
+          "startMs": 16930,
+          "endMs": 17120,
+          "probability": 0.846863
+        },
+        {
+          "text": " July",
+          "startMs": 17120,
+          "endMs": 17490,
+          "probability": 0.99823
+        },
+        {
+          "text": " 31",
+          "startMs": 17550,
+          "endMs": 18080,
+          "probability": 0.997815
+        },
+        {
+          "text": "st",
+          "startMs": 18080,
+          "endMs": 18270,
+          "probability": 0.948594
+        },
+        {
+          "text": ",",
+          "startMs": 18270,
+          "endMs": 18460,
+          "probability": 0.803665
+        },
+        {
+          "text": " wheels",
+          "startMs": 18460,
+          "endMs": 19040,
+          "probability": 0.784427
+        },
+        {
+          "text": " finally",
+          "startMs": 19040,
+          "endMs": 19720,
+          "probability": 0.996293
+        },
+        {
+          "text": " kissed",
+          "startMs": 19720,
+          "endMs": 20210,
+          "probability": 0.967866
+        },
+        {
+          "text": " the",
+          "startMs": 20590,
+          "endMs": 20590,
+          "probability": 0.948154
+        },
+        {
+          "text": " sun",
+          "startMs": 20610,
+          "endMs": 20820,
+          "probability": 0.49747
+        },
+        {
+          "text": "lit",
+          "startMs": 20880,
+          "endMs": 21090,
+          "probability": 0.921277
+        },
+        {
+          "text": " moon",
+          "startMs": 21200,
+          "endMs": 21600,
+          "probability": 0.938611
+        },
+        {
+          "text": ".",
+          "startMs": 21600,
+          "endMs": 21670,
+          "probability": 0.718302
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "on July 26th, 1971. I felt the roar of a giant Saturn V rocket! For four dark days,",
+          "offsetsMs": {
+            "from": 0,
+            "to": 9520
+          }
+        },
+        {
+          "text": "I rode folded inside our lander Falcon. To where we touched down at Hadley Apanine on July 30th,",
+          "offsetsMs": {
+            "from": 9520,
+            "to": 16640
+          }
+        },
+        {
+          "text": "and on July 31st, wheels finally kissed the sunlit moon.",
+          "offsetsMs": {
+            "from": 16640,
+            "to": 21680
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "9a12fe18d5762d9b1d1518a489a1f7cc36261f73e4bae96988b70f8e8cc91b20"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-2/2.mp3",
+      "recordingSha256": "d551062158c3867956011120bcfd413050c597c12516b1e48e3c1d0f0d76157e",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "Out here, there's no air, blinding sunlight, and clingy gray dust everywhere! Bulky spacesuit gloves couldn't grip a steering wheel. So grab a T-shaped joystick with Dave Scott. Push forward, wake up my two 36-volt batteries and four-wheel motors, and let's roll!",
+      "sentenceCandidates": [
+        {
+          "start": 0.2,
+          "end": 8.88,
+          "text": "Out here, there's no air, blinding sunlight, and clingy gray dust everywhere!",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 9.08,
+          "end": 12.72,
+          "text": "Bulky spacesuit gloves couldn't grip a steering wheel.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 12.9,
+          "end": 16,
+          "text": "So grab a T-shaped joystick with Dave Scott.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 16.2,
+          "end": 23.04,
+          "text": "Push forward, wake up my two 36-volt batteries and four-wheel motors, and let's roll!",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " Out",
+          "startMs": 200,
+          "endMs": 480,
+          "probability": 0.737246
+        },
+        {
+          "text": " here",
+          "startMs": 540,
+          "endMs": 1010,
+          "probability": 0.982836
+        },
+        {
+          "text": ",",
+          "startMs": 1280,
+          "endMs": 1330,
+          "probability": 0.53532
+        },
+        {
+          "text": " there",
+          "startMs": 1580,
+          "endMs": 2030,
+          "probability": 0.964948
+        },
+        {
+          "text": "'s",
+          "startMs": 2030,
+          "endMs": 2300,
+          "probability": 0.971039
+        },
+        {
+          "text": " no",
+          "startMs": 2300,
+          "endMs": 2570,
+          "probability": 0.995431
+        },
+        {
+          "text": " air",
+          "startMs": 2570,
+          "endMs": 2990,
+          "probability": 0.97604
+        },
+        {
+          "text": ",",
+          "startMs": 2990,
+          "endMs": 3270,
+          "probability": 0.218003
+        },
+        {
+          "text": " blinding",
+          "startMs": 3610,
+          "endMs": 4240,
+          "probability": 0.609172
+        },
+        {
+          "text": " sunlight",
+          "startMs": 4240,
+          "endMs": 4820,
+          "probability": 0.994016
+        },
+        {
+          "text": ",",
+          "startMs": 5200,
+          "endMs": 5300,
+          "probability": 0.610716
+        },
+        {
+          "text": " and",
+          "startMs": 5500,
+          "endMs": 5760,
+          "probability": 0.673188
+        },
+        {
+          "text": " cling",
+          "startMs": 5760,
+          "endMs": 6310,
+          "probability": 0.921452
+        },
+        {
+          "text": "y",
+          "startMs": 6340,
+          "endMs": 6440,
+          "probability": 0.97773
+        },
+        {
+          "text": " gray",
+          "startMs": 6440,
+          "endMs": 6900,
+          "probability": 0.242776
+        },
+        {
+          "text": " dust",
+          "startMs": 6900,
+          "endMs": 7220,
+          "probability": 0.954887
+        },
+        {
+          "text": " everywhere",
+          "startMs": 7430,
+          "endMs": 8180,
+          "probability": 0.949084
+        },
+        {
+          "text": "!",
+          "startMs": 8880,
+          "endMs": 8880,
+          "probability": 0.471702
+        },
+        {
+          "text": " Bul",
+          "startMs": 9080,
+          "endMs": 9120,
+          "probability": 0.376339
+        },
+        {
+          "text": "ky",
+          "startMs": 9120,
+          "endMs": 9270,
+          "probability": 0.471906
+        },
+        {
+          "text": " spaces",
+          "startMs": 9270,
+          "endMs": 9740,
+          "probability": 0.35606
+        },
+        {
+          "text": "uit",
+          "startMs": 9740,
+          "endMs": 9900,
+          "probability": 0.983038
+        },
+        {
+          "text": " gloves",
+          "startMs": 9960,
+          "endMs": 10440,
+          "probability": 0.987634
+        },
+        {
+          "text": " couldn",
+          "startMs": 10460,
+          "endMs": 10910,
+          "probability": 0.994524
+        },
+        {
+          "text": "'t",
+          "startMs": 10910,
+          "endMs": 11010,
+          "probability": 0.999112
+        },
+        {
+          "text": " grip",
+          "startMs": 11110,
+          "endMs": 11380,
+          "probability": 0.979744
+        },
+        {
+          "text": " a",
+          "startMs": 11380,
+          "endMs": 11460,
+          "probability": 0.991747
+        },
+        {
+          "text": " steering",
+          "startMs": 11460,
+          "endMs": 12030,
+          "probability": 0.997239
+        },
+        {
+          "text": " wheel",
+          "startMs": 12390,
+          "endMs": 12560,
+          "probability": 0.998079
+        },
+        {
+          "text": ".",
+          "startMs": 12560,
+          "endMs": 12720,
+          "probability": 0.671253
+        },
+        {
+          "text": " So",
+          "startMs": 12900,
+          "endMs": 12900,
+          "probability": 0.97174
+        },
+        {
+          "text": " grab",
+          "startMs": 12920,
+          "endMs": 13160,
+          "probability": 0.921589
+        },
+        {
+          "text": " a",
+          "startMs": 13270,
+          "endMs": 13350,
+          "probability": 0.997826
+        },
+        {
+          "text": " T",
+          "startMs": 13350,
+          "endMs": 13440,
+          "probability": 0.731738
+        },
+        {
+          "text": "-",
+          "startMs": 13440,
+          "endMs": 13530,
+          "probability": 0.917315
+        },
+        {
+          "text": "shaped",
+          "startMs": 13530,
+          "endMs": 13740,
+          "probability": 0.70746
+        },
+        {
+          "text": " joystick",
+          "startMs": 14300,
+          "endMs": 14790,
+          "probability": 0.992761
+        },
+        {
+          "text": " with",
+          "startMs": 14790,
+          "endMs": 15150,
+          "probability": 0.99475
+        },
+        {
+          "text": " Dave",
+          "startMs": 15150,
+          "endMs": 15460,
+          "probability": 0.962712
+        },
+        {
+          "text": " Scott",
+          "startMs": 15460,
+          "endMs": 15990,
+          "probability": 0.937627
+        },
+        {
+          "text": ".",
+          "startMs": 16000,
+          "endMs": 16000,
+          "probability": 0.891878
+        },
+        {
+          "text": " Push",
+          "startMs": 16200,
+          "endMs": 16340,
+          "probability": 0.946198
+        },
+        {
+          "text": " forward",
+          "startMs": 16340,
+          "endMs": 16890,
+          "probability": 0.974238
+        },
+        {
+          "text": ",",
+          "startMs": 16920,
+          "endMs": 17060,
+          "probability": 0.936379
+        },
+        {
+          "text": " wake",
+          "startMs": 17080,
+          "endMs": 17400,
+          "probability": 0.985069
+        },
+        {
+          "text": " up",
+          "startMs": 17550,
+          "endMs": 17610,
+          "probability": 0.990378
+        },
+        {
+          "text": " my",
+          "startMs": 17610,
+          "endMs": 17780,
+          "probability": 0.984821
+        },
+        {
+          "text": " two",
+          "startMs": 17780,
+          "endMs": 18030,
+          "probability": 0.806181
+        },
+        {
+          "text": " 36",
+          "startMs": 18030,
+          "endMs": 18540,
+          "probability": 0.928049
+        },
+        {
+          "text": "-",
+          "startMs": 18540,
+          "endMs": 18620,
+          "probability": 0.777382
+        },
+        {
+          "text": "volt",
+          "startMs": 18620,
+          "endMs": 18960,
+          "probability": 0.984812
+        },
+        {
+          "text": " batteries",
+          "startMs": 19600,
+          "endMs": 19760,
+          "probability": 0.995524
+        },
+        {
+          "text": " and",
+          "startMs": 19760,
+          "endMs": 20010,
+          "probability": 0.862166
+        },
+        {
+          "text": " four",
+          "startMs": 20010,
+          "endMs": 20340,
+          "probability": 0.781689
+        },
+        {
+          "text": "-",
+          "startMs": 20340,
+          "endMs": 20420,
+          "probability": 0.668356
+        },
+        {
+          "text": "wheel",
+          "startMs": 20420,
+          "endMs": 20810,
+          "probability": 0.989608
+        },
+        {
+          "text": " motors",
+          "startMs": 20810,
+          "endMs": 21180,
+          "probability": 0.974566
+        },
+        {
+          "text": ",",
+          "startMs": 21500,
+          "endMs": 21550,
+          "probability": 0.589796
+        },
+        {
+          "text": " and",
+          "startMs": 21550,
+          "endMs": 21840,
+          "probability": 0.850118
+        },
+        {
+          "text": " let",
+          "startMs": 21840,
+          "endMs": 22130,
+          "probability": 0.927398
+        },
+        {
+          "text": "'s",
+          "startMs": 22130,
+          "endMs": 22310,
+          "probability": 0.99976
+        },
+        {
+          "text": " roll",
+          "startMs": 22320,
+          "endMs": 22650,
+          "probability": 0.994243
+        },
+        {
+          "text": "!",
+          "startMs": 22840,
+          "endMs": 23040,
+          "probability": 0.830748
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "Out here, there's no air, blinding sunlight, and clingy gray dust everywhere!",
+          "offsetsMs": {
+            "from": 0,
+            "to": 8880
+          }
+        },
+        {
+          "text": "Bulky spacesuit gloves couldn't grip a steering wheel.",
+          "offsetsMs": {
+            "from": 8880,
+            "to": 12720
+          }
+        },
+        {
+          "text": "So grab a T-shaped joystick with Dave Scott.",
+          "offsetsMs": {
+            "from": 12720,
+            "to": 16000
+          }
+        },
+        {
+          "text": "Push forward, wake up my two 36-volt batteries and four-wheel motors, and let's roll!",
+          "offsetsMs": {
+            "from": 16000,
+            "to": 23040
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "ae4e4377076717eefec2eec1aec6163e07c252fb6a77391cbb4202f093fe0fe2"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-2/3.mp3",
+      "recordingSha256": "e47cae50e3ba3cba3ebf2d4fdd6b3744a99ed291f24851f075a0d4e1536cfdbd",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "In the moon's weak one-sixth gravity, I weighed only 77 pounds. Dave and Jim buckled their seat belts as we bounced past craters, while my built-in gyroscope computer always pointed the exact way home to Falcon.",
+      "sentenceCandidates": [
+        {
+          "start": 0.12,
+          "end": 7,
+          "text": "In the moon's weak one-sixth gravity, I weighed only 77 pounds.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 7.12,
+          "end": 16.2,
+          "text": "Dave and Jim buckled their seat belts as we bounced past craters, while my built-in gyroscope computer always pointed the exact way home to Falcon.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " In",
+          "startMs": 120,
+          "endMs": 210,
+          "probability": 0.608274
+        },
+        {
+          "text": " the",
+          "startMs": 210,
+          "endMs": 520,
+          "probability": 0.980411
+        },
+        {
+          "text": " moon",
+          "startMs": 520,
+          "endMs": 940,
+          "probability": 0.421463
+        },
+        {
+          "text": "'s",
+          "startMs": 940,
+          "endMs": 1150,
+          "probability": 0.993019
+        },
+        {
+          "text": " weak",
+          "startMs": 1150,
+          "endMs": 1570,
+          "probability": 0.380095
+        },
+        {
+          "text": " one",
+          "startMs": 1570,
+          "endMs": 1870,
+          "probability": 0.641281
+        },
+        {
+          "text": "-",
+          "startMs": 1870,
+          "endMs": 1960,
+          "probability": 0.624914
+        },
+        {
+          "text": "six",
+          "startMs": 2020,
+          "endMs": 2290,
+          "probability": 0.904739
+        },
+        {
+          "text": "th",
+          "startMs": 2290,
+          "endMs": 2490,
+          "probability": 0.984921
+        },
+        {
+          "text": " gravity",
+          "startMs": 2490,
+          "endMs": 2890,
+          "probability": 0.980744
+        },
+        {
+          "text": ",",
+          "startMs": 3280,
+          "endMs": 3320,
+          "probability": 0.678431
+        },
+        {
+          "text": " I",
+          "startMs": 3400,
+          "endMs": 3400,
+          "probability": 0.89232
+        },
+        {
+          "text": " weighed",
+          "startMs": 3420,
+          "endMs": 3990,
+          "probability": 0.163394
+        },
+        {
+          "text": " only",
+          "startMs": 4000,
+          "endMs": 4720,
+          "probability": 0.908916
+        },
+        {
+          "text": " 77",
+          "startMs": 4720,
+          "endMs": 5790,
+          "probability": 0.811863
+        },
+        {
+          "text": " pounds",
+          "startMs": 5790,
+          "endMs": 6200,
+          "probability": 0.924392
+        },
+        {
+          "text": ".",
+          "startMs": 6980,
+          "endMs": 7000,
+          "probability": 0.310143
+        },
+        {
+          "text": " Dave",
+          "startMs": 7120,
+          "endMs": 7260,
+          "probability": 0.743988
+        },
+        {
+          "text": " and",
+          "startMs": 7260,
+          "endMs": 7450,
+          "probability": 0.988329
+        },
+        {
+          "text": " Jim",
+          "startMs": 7450,
+          "endMs": 7640,
+          "probability": 0.985701
+        },
+        {
+          "text": " buck",
+          "startMs": 7640,
+          "endMs": 7890,
+          "probability": 0.889698
+        },
+        {
+          "text": "led",
+          "startMs": 7890,
+          "endMs": 8090,
+          "probability": 0.994818
+        },
+        {
+          "text": " their",
+          "startMs": 8090,
+          "endMs": 8410,
+          "probability": 0.997375
+        },
+        {
+          "text": " seat",
+          "startMs": 8410,
+          "endMs": 8670,
+          "probability": 0.994814
+        },
+        {
+          "text": " belts",
+          "startMs": 8670,
+          "endMs": 8960,
+          "probability": 0.742756
+        },
+        {
+          "text": " as",
+          "startMs": 9020,
+          "endMs": 9200,
+          "probability": 0.900495
+        },
+        {
+          "text": " we",
+          "startMs": 9250,
+          "endMs": 9420,
+          "probability": 0.99863
+        },
+        {
+          "text": " bounced",
+          "startMs": 9420,
+          "endMs": 9840,
+          "probability": 0.974087
+        },
+        {
+          "text": " past",
+          "startMs": 10410,
+          "endMs": 10560,
+          "probability": 0.994662
+        },
+        {
+          "text": " cr",
+          "startMs": 10560,
+          "endMs": 10760,
+          "probability": 0.771121
+        },
+        {
+          "text": "aters",
+          "startMs": 10760,
+          "endMs": 11320,
+          "probability": 0.990444
+        },
+        {
+          "text": ",",
+          "startMs": 11320,
+          "endMs": 11360,
+          "probability": 0.284707
+        },
+        {
+          "text": " while",
+          "startMs": 11360,
+          "endMs": 11550,
+          "probability": 0.772252
+        },
+        {
+          "text": " my",
+          "startMs": 11550,
+          "endMs": 11640,
+          "probability": 0.991836
+        },
+        {
+          "text": " built",
+          "startMs": 11640,
+          "endMs": 11940,
+          "probability": 0.952356
+        },
+        {
+          "text": "-",
+          "startMs": 11940,
+          "endMs": 11990,
+          "probability": 0.955046
+        },
+        {
+          "text": "in",
+          "startMs": 11990,
+          "endMs": 12120,
+          "probability": 0.994966
+        },
+        {
+          "text": " gy",
+          "startMs": 12120,
+          "endMs": 12260,
+          "probability": 0.819581
+        },
+        {
+          "text": "ro",
+          "startMs": 12260,
+          "endMs": 12400,
+          "probability": 0.943428
+        },
+        {
+          "text": "scope",
+          "startMs": 12400,
+          "endMs": 12760,
+          "probability": 0.972446
+        },
+        {
+          "text": " computer",
+          "startMs": 12880,
+          "endMs": 13380,
+          "probability": 0.993686
+        },
+        {
+          "text": " always",
+          "startMs": 13380,
+          "endMs": 13840,
+          "probability": 0.994129
+        },
+        {
+          "text": " pointed",
+          "startMs": 13840,
+          "endMs": 14380,
+          "probability": 0.989999
+        },
+        {
+          "text": " the",
+          "startMs": 14380,
+          "endMs": 14610,
+          "probability": 0.993267
+        },
+        {
+          "text": " exact",
+          "startMs": 14610,
+          "endMs": 14960,
+          "probability": 0.995433
+        },
+        {
+          "text": " way",
+          "startMs": 15010,
+          "endMs": 15220,
+          "probability": 0.994594
+        },
+        {
+          "text": " home",
+          "startMs": 15220,
+          "endMs": 15520,
+          "probability": 0.995848
+        },
+        {
+          "text": " to",
+          "startMs": 15520,
+          "endMs": 15670,
+          "probability": 0.994632
+        },
+        {
+          "text": " Falcon",
+          "startMs": 15670,
+          "endMs": 16180,
+          "probability": 0.901301
+        },
+        {
+          "text": ".",
+          "startMs": 16180,
+          "endMs": 16200,
+          "probability": 0.950664
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "In the moon's weak one-sixth gravity, I weighed only 77 pounds.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 7000
+          }
+        },
+        {
+          "text": "Dave and Jim buckled their seat belts as we bounced past craters, while my built-in gyroscope",
+          "offsetsMs": {
+            "from": 7000,
+            "to": 12760
+          }
+        },
+        {
+          "text": "computer always pointed the exact way home to Falcon.",
+          "offsetsMs": {
+            "from": 12760,
+            "to": 16200
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "03276ff04c98cbd932a9545067e16e6f2ef9b0b7e031ee365d09cd65ec8946ee"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-2/4.mp3",
+      "recordingSha256": "7773c0f02dc72bec8614c230679419867d96366fcc85f48197058a6b1a36b0a9",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "Across three thrilling moonwalks, I bounced 27.8 kilometers along the edge of giant Hadley-Rill and climbed steep Mount Hadley Delta, and we found something amazing! But that's my next story!",
+      "sentenceCandidates": [
+        {
+          "start": 0.08,
+          "end": 5.12,
+          "text": "Across three thrilling moonwalks, I bounced 27.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 5.19,
+          "end": 15.76,
+          "text": "8 kilometers along the edge of giant Hadley-Rill and climbed steep Mount Hadley Delta, and we found something amazing!",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 15.84,
+          "end": 17.68,
+          "text": "But that's my next story!",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " Across",
+          "startMs": 80,
+          "endMs": 500,
+          "probability": 0.51368
+        },
+        {
+          "text": " three",
+          "startMs": 650,
+          "endMs": 970,
+          "probability": 0.883095
+        },
+        {
+          "text": " thrilling",
+          "startMs": 1180,
+          "endMs": 2050,
+          "probability": 0.981995
+        },
+        {
+          "text": " moon",
+          "startMs": 2050,
+          "endMs": 2400,
+          "probability": 0.779977
+        },
+        {
+          "text": "wal",
+          "startMs": 2500,
+          "endMs": 2570,
+          "probability": 0.715722
+        },
+        {
+          "text": "ks",
+          "startMs": 3000,
+          "endMs": 3000,
+          "probability": 0.998136
+        },
+        {
+          "text": ",",
+          "startMs": 3100,
+          "endMs": 3190,
+          "probability": 0.842313
+        },
+        {
+          "text": " I",
+          "startMs": 3190,
+          "endMs": 3250,
+          "probability": 0.543559
+        },
+        {
+          "text": " bounced",
+          "startMs": 3290,
+          "endMs": 3820,
+          "probability": 0.976217
+        },
+        {
+          "text": " 27",
+          "startMs": 4160,
+          "endMs": 4760,
+          "probability": 0.869098
+        },
+        {
+          "text": ".",
+          "startMs": 4760,
+          "endMs": 5120,
+          "probability": 0.972058
+        },
+        {
+          "text": "8",
+          "startMs": 5190,
+          "endMs": 5450,
+          "probability": 0.998605
+        },
+        {
+          "text": " kilometers",
+          "startMs": 5650,
+          "endMs": 6740,
+          "probability": 0.440342
+        },
+        {
+          "text": " along",
+          "startMs": 6810,
+          "endMs": 7200,
+          "probability": 0.618567
+        },
+        {
+          "text": " the",
+          "startMs": 7200,
+          "endMs": 7400,
+          "probability": 0.962605
+        },
+        {
+          "text": " edge",
+          "startMs": 7570,
+          "endMs": 8080,
+          "probability": 0.975913
+        },
+        {
+          "text": " of",
+          "startMs": 8080,
+          "endMs": 8320,
+          "probability": 0.89987
+        },
+        {
+          "text": " giant",
+          "startMs": 8430,
+          "endMs": 8800,
+          "probability": 0.64118
+        },
+        {
+          "text": " Had",
+          "startMs": 8880,
+          "endMs": 10980,
+          "probability": 0.53659
+        },
+        {
+          "text": "ley",
+          "startMs": 10980,
+          "endMs": 13180,
+          "probability": 0.915716
+        },
+        {
+          "text": "-",
+          "startMs": 13180,
+          "endMs": 13920,
+          "probability": 0.25114
+        },
+        {
+          "text": "R",
+          "startMs": 13920,
+          "endMs": 13920,
+          "probability": 0.378774
+        },
+        {
+          "text": "ill",
+          "startMs": 13920,
+          "endMs": 13920,
+          "probability": 0.874211
+        },
+        {
+          "text": " and",
+          "startMs": 13960,
+          "endMs": 13960,
+          "probability": 0.815314
+        },
+        {
+          "text": " climbed",
+          "startMs": 13990,
+          "endMs": 14000,
+          "probability": 0.985635
+        },
+        {
+          "text": " steep",
+          "startMs": 14010,
+          "endMs": 14050,
+          "probability": 0.960761
+        },
+        {
+          "text": " Mount",
+          "startMs": 14050,
+          "endMs": 14090,
+          "probability": 0.690559
+        },
+        {
+          "text": " Had",
+          "startMs": 14090,
+          "endMs": 14110,
+          "probability": 0.977887
+        },
+        {
+          "text": "ley",
+          "startMs": 14110,
+          "endMs": 14130,
+          "probability": 0.995748
+        },
+        {
+          "text": " Delta",
+          "startMs": 14130,
+          "endMs": 14170,
+          "probability": 0.517035
+        },
+        {
+          "text": ",",
+          "startMs": 14170,
+          "endMs": 14180,
+          "probability": 0.151728
+        },
+        {
+          "text": " and",
+          "startMs": 14180,
+          "endMs": 14200,
+          "probability": 0.962647
+        },
+        {
+          "text": " we",
+          "startMs": 14200,
+          "endMs": 14210,
+          "probability": 0.989079
+        },
+        {
+          "text": " found",
+          "startMs": 14210,
+          "endMs": 14250,
+          "probability": 0.978075
+        },
+        {
+          "text": " something",
+          "startMs": 14250,
+          "endMs": 14250,
+          "probability": 0.995623
+        },
+        {
+          "text": " amazing",
+          "startMs": 14450,
+          "endMs": 15760,
+          "probability": 0.969231
+        },
+        {
+          "text": "!",
+          "startMs": 15760,
+          "endMs": 15760,
+          "probability": 0.494059
+        },
+        {
+          "text": " But",
+          "startMs": 15840,
+          "endMs": 16040,
+          "probability": 0.976839
+        },
+        {
+          "text": " that",
+          "startMs": 16040,
+          "endMs": 16420,
+          "probability": 0.97211
+        },
+        {
+          "text": "'s",
+          "startMs": 16420,
+          "endMs": 16610,
+          "probability": 0.98337
+        },
+        {
+          "text": " my",
+          "startMs": 16610,
+          "endMs": 16730,
+          "probability": 0.995262
+        },
+        {
+          "text": " next",
+          "startMs": 16940,
+          "endMs": 17180,
+          "probability": 0.997474
+        },
+        {
+          "text": " story",
+          "startMs": 17180,
+          "endMs": 17670,
+          "probability": 0.997014
+        },
+        {
+          "text": "!",
+          "startMs": 17680,
+          "endMs": 17680,
+          "probability": 0.475768
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "Across three thrilling moonwalks, I bounced 27.8 kilometers along the edge of giant",
+          "offsetsMs": {
+            "from": 0,
+            "to": 8800
+          }
+        },
+        {
+          "text": "Hadley-Rill and climbed steep Mount Hadley Delta, and we found something amazing!",
+          "offsetsMs": {
+            "from": 8800,
+            "to": 15760
+          }
+        },
+        {
+          "text": "But that's my next story!",
+          "offsetsMs": {
+            "from": 15760,
+            "to": 17680
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "009e1d3feb5263fc663216db99dc7546ebd33c4edfd5c577f5938204ca0e5b08"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-3/1.mp3",
+      "recordingSha256": "ffdca803c311fef308dcfe71679b37f408674eb62fbb6e45e562cee912ee5e24",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "On July 31st, my front steering stopped working. Even resetting my circuit breakers couldn't fix it. Did I quit? Never! My backup rear wheels guided us through day one. And by day two, my front steering was working again.",
+      "sentenceCandidates": [
+        {
+          "start": 0.11,
+          "end": 4.84,
+          "text": "On July 31st, my front steering stopped working.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 4.95,
+          "end": 8.52,
+          "text": "Even resetting my circuit breakers couldn't fix it.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 8.63,
+          "end": 9.56,
+          "text": "Did I quit?",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 9.56,
+          "end": 10.68,
+          "text": "Never!",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 10.79,
+          "end": 14.2,
+          "text": "My backup rear wheels guided us through day one.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 14.31,
+          "end": 17.49,
+          "text": "And by day two, my front steering was working again.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " On",
+          "startMs": 110,
+          "endMs": 240,
+          "probability": 0.880606
+        },
+        {
+          "text": " July",
+          "startMs": 240,
+          "endMs": 720,
+          "probability": 0.997172
+        },
+        {
+          "text": " 31",
+          "startMs": 720,
+          "endMs": 1420,
+          "probability": 0.996721
+        },
+        {
+          "text": "st",
+          "startMs": 1420,
+          "endMs": 1560,
+          "probability": 0.822604
+        },
+        {
+          "text": ",",
+          "startMs": 1820,
+          "endMs": 1820,
+          "probability": 0.67502
+        },
+        {
+          "text": " my",
+          "startMs": 1840,
+          "endMs": 1970,
+          "probability": 0.931827
+        },
+        {
+          "text": " front",
+          "startMs": 1970,
+          "endMs": 2340,
+          "probability": 0.724511
+        },
+        {
+          "text": " steering",
+          "startMs": 2340,
+          "endMs": 2930,
+          "probability": 0.980621
+        },
+        {
+          "text": " stopped",
+          "startMs": 2930,
+          "endMs": 3450,
+          "probability": 0.991128
+        },
+        {
+          "text": " working",
+          "startMs": 3450,
+          "endMs": 3860,
+          "probability": 0.995505
+        },
+        {
+          "text": ".",
+          "startMs": 3980,
+          "endMs": 4840,
+          "probability": 0.545055
+        },
+        {
+          "text": " Even",
+          "startMs": 4950,
+          "endMs": 5160,
+          "probability": 0.990082
+        },
+        {
+          "text": " reset",
+          "startMs": 5160,
+          "endMs": 5560,
+          "probability": 0.962049
+        },
+        {
+          "text": "ting",
+          "startMs": 5560,
+          "endMs": 5870,
+          "probability": 0.997392
+        },
+        {
+          "text": " my",
+          "startMs": 5870,
+          "endMs": 6030,
+          "probability": 0.997931
+        },
+        {
+          "text": " circuit",
+          "startMs": 6030,
+          "endMs": 6360,
+          "probability": 0.991338
+        },
+        {
+          "text": " break",
+          "startMs": 6680,
+          "endMs": 6980,
+          "probability": 0.923042
+        },
+        {
+          "text": "ers",
+          "startMs": 6980,
+          "endMs": 7210,
+          "probability": 0.999024
+        },
+        {
+          "text": " couldn",
+          "startMs": 7210,
+          "endMs": 7680,
+          "probability": 0.988555
+        },
+        {
+          "text": "'t",
+          "startMs": 7680,
+          "endMs": 7810,
+          "probability": 0.996846
+        },
+        {
+          "text": " fix",
+          "startMs": 7850,
+          "endMs": 8070,
+          "probability": 0.998748
+        },
+        {
+          "text": " it",
+          "startMs": 8080,
+          "endMs": 8230,
+          "probability": 0.998513
+        },
+        {
+          "text": ".",
+          "startMs": 8230,
+          "endMs": 8520,
+          "probability": 0.949657
+        },
+        {
+          "text": " Did",
+          "startMs": 8630,
+          "endMs": 8800,
+          "probability": 0.980598
+        },
+        {
+          "text": " I",
+          "startMs": 8800,
+          "endMs": 8890,
+          "probability": 0.997219
+        },
+        {
+          "text": " quit",
+          "startMs": 8890,
+          "endMs": 9260,
+          "probability": 0.996063
+        },
+        {
+          "text": "?",
+          "startMs": 9260,
+          "endMs": 9560,
+          "probability": 0.979245
+        },
+        {
+          "text": " Never",
+          "startMs": 9560,
+          "endMs": 10040,
+          "probability": 0.644672
+        },
+        {
+          "text": "!",
+          "startMs": 10360,
+          "endMs": 10680,
+          "probability": 0.74047
+        },
+        {
+          "text": " My",
+          "startMs": 10790,
+          "endMs": 10860,
+          "probability": 0.988301
+        },
+        {
+          "text": " backup",
+          "startMs": 10860,
+          "endMs": 11400,
+          "probability": 0.721572
+        },
+        {
+          "text": " rear",
+          "startMs": 11400,
+          "endMs": 11760,
+          "probability": 0.993593
+        },
+        {
+          "text": " wheels",
+          "startMs": 11760,
+          "endMs": 12190,
+          "probability": 0.991507
+        },
+        {
+          "text": " guided",
+          "startMs": 12520,
+          "endMs": 12840,
+          "probability": 0.990669
+        },
+        {
+          "text": " us",
+          "startMs": 12840,
+          "endMs": 13020,
+          "probability": 0.999049
+        },
+        {
+          "text": " through",
+          "startMs": 13020,
+          "endMs": 13650,
+          "probability": 0.988189
+        },
+        {
+          "text": " day",
+          "startMs": 13650,
+          "endMs": 13910,
+          "probability": 0.949474
+        },
+        {
+          "text": " one",
+          "startMs": 13920,
+          "endMs": 14190,
+          "probability": 0.824216
+        },
+        {
+          "text": ".",
+          "startMs": 14200,
+          "endMs": 14200,
+          "probability": 0.899355
+        },
+        {
+          "text": " And",
+          "startMs": 14310,
+          "endMs": 14480,
+          "probability": 0.989704
+        },
+        {
+          "text": " by",
+          "startMs": 14480,
+          "endMs": 14670,
+          "probability": 0.974301
+        },
+        {
+          "text": " day",
+          "startMs": 14670,
+          "endMs": 14950,
+          "probability": 0.990357
+        },
+        {
+          "text": " two",
+          "startMs": 14950,
+          "endMs": 15230,
+          "probability": 0.915725
+        },
+        {
+          "text": ",",
+          "startMs": 15230,
+          "endMs": 15440,
+          "probability": 0.879573
+        },
+        {
+          "text": " my",
+          "startMs": 15440,
+          "endMs": 15540,
+          "probability": 0.954094
+        },
+        {
+          "text": " front",
+          "startMs": 15540,
+          "endMs": 15720,
+          "probability": 0.993085
+        },
+        {
+          "text": " steering",
+          "startMs": 16040,
+          "endMs": 16370,
+          "probability": 0.99911
+        },
+        {
+          "text": " was",
+          "startMs": 16370,
+          "endMs": 16550,
+          "probability": 0.996978
+        },
+        {
+          "text": " working",
+          "startMs": 16550,
+          "endMs": 16990,
+          "probability": 0.997933
+        },
+        {
+          "text": " again",
+          "startMs": 16990,
+          "endMs": 17290,
+          "probability": 0.998365
+        },
+        {
+          "text": ".",
+          "startMs": 17300,
+          "endMs": 17490,
+          "probability": 0.683986
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "On July 31st, my front steering stopped working.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 4840
+          }
+        },
+        {
+          "text": "Even resetting my circuit breakers couldn't fix it.",
+          "offsetsMs": {
+            "from": 4840,
+            "to": 8520
+          }
+        },
+        {
+          "text": "Did I quit? Never!",
+          "offsetsMs": {
+            "from": 8520,
+            "to": 10680
+          }
+        },
+        {
+          "text": "My backup rear wheels guided us through day one.",
+          "offsetsMs": {
+            "from": 10680,
+            "to": 14200
+          }
+        },
+        {
+          "text": "And by day two, my front steering was working again.",
+          "offsetsMs": {
+            "from": 14200,
+            "to": 17520
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "122e48e447d440f7a9158899495bca54391c23778ddb050b76ed38bd0f543b28"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-3/2.mp3",
+      "recordingSha256": "459cbbc0349dcb592f8bc5bf267f8da6316cdaa42287ed28b79d99a3e307cc09",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "*sigh* The moon wasn't easy. My woven piano wire wheels struggled for traction on steep mount Hadley Delta. *cough* Lunar dust also covered my cooling surfaces. *sigh* Dave even had to brush dust from my television camera's radiator when it started getting hot.",
+      "sentenceCandidates": [
+        {
+          "start": 0.15,
+          "end": 3.42,
+          "text": "*sigh* The moon wasn't easy.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 3.57,
+          "end": 9.09,
+          "text": "My woven piano wire wheels struggled for traction on steep mount Hadley Delta.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 9.25,
+          "end": 13.66,
+          "text": "*cough* Lunar dust also covered my cooling surfaces.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 13.81,
+          "end": 20.76,
+          "text": "*sigh* Dave even had to brush dust from my television camera's radiator when it started getting hot.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " *",
+          "startMs": 150,
+          "endMs": 150,
+          "probability": 0.333856
+        },
+        {
+          "text": "s",
+          "startMs": 170,
+          "endMs": 320,
+          "probability": 0.448313
+        },
+        {
+          "text": "igh",
+          "startMs": 320,
+          "endMs": 790,
+          "probability": 0.980854
+        },
+        {
+          "text": "*",
+          "startMs": 810,
+          "endMs": 990,
+          "probability": 0.834818
+        },
+        {
+          "text": " The",
+          "startMs": 1150,
+          "endMs": 1330,
+          "probability": 0.70513
+        },
+        {
+          "text": " moon",
+          "startMs": 1330,
+          "endMs": 1770,
+          "probability": 0.73441
+        },
+        {
+          "text": " wasn",
+          "startMs": 1770,
+          "endMs": 2210,
+          "probability": 0.982345
+        },
+        {
+          "text": "'t",
+          "startMs": 2210,
+          "endMs": 2420,
+          "probability": 0.999397
+        },
+        {
+          "text": " easy",
+          "startMs": 2420,
+          "endMs": 2700,
+          "probability": 0.991526
+        },
+        {
+          "text": ".",
+          "startMs": 3420,
+          "endMs": 3420,
+          "probability": 0.687025
+        },
+        {
+          "text": " My",
+          "startMs": 3570,
+          "endMs": 3570,
+          "probability": 0.917512
+        },
+        {
+          "text": " woven",
+          "startMs": 3580,
+          "endMs": 3990,
+          "probability": 0.876098
+        },
+        {
+          "text": " piano",
+          "startMs": 3990,
+          "endMs": 4380,
+          "probability": 0.938426
+        },
+        {
+          "text": " wire",
+          "startMs": 4570,
+          "endMs": 4730,
+          "probability": 0.862707
+        },
+        {
+          "text": " wheels",
+          "startMs": 4730,
+          "endMs": 5220,
+          "probability": 0.760774
+        },
+        {
+          "text": " struggled",
+          "startMs": 5220,
+          "endMs": 5970,
+          "probability": 0.971089
+        },
+        {
+          "text": " for",
+          "startMs": 5970,
+          "endMs": 6170,
+          "probability": 0.976684
+        },
+        {
+          "text": " traction",
+          "startMs": 6200,
+          "endMs": 6280,
+          "probability": 0.99631
+        },
+        {
+          "text": " on",
+          "startMs": 6930,
+          "endMs": 6930,
+          "probability": 0.87098
+        },
+        {
+          "text": " steep",
+          "startMs": 7000,
+          "endMs": 7420,
+          "probability": 0.879372
+        },
+        {
+          "text": " mount",
+          "startMs": 7420,
+          "endMs": 7910,
+          "probability": 0.317988
+        },
+        {
+          "text": " Had",
+          "startMs": 7910,
+          "endMs": 8200,
+          "probability": 0.69329
+        },
+        {
+          "text": "ley",
+          "startMs": 8200,
+          "endMs": 8480,
+          "probability": 0.895553
+        },
+        {
+          "text": " Delta",
+          "startMs": 8480,
+          "endMs": 9020,
+          "probability": 0.829861
+        },
+        {
+          "text": ".",
+          "startMs": 9020,
+          "endMs": 9090,
+          "probability": 0.895454
+        },
+        {
+          "text": " *",
+          "startMs": 9250,
+          "endMs": 9250,
+          "probability": 0.937051
+        },
+        {
+          "text": "c",
+          "startMs": 9270,
+          "endMs": 9400,
+          "probability": 0.571614
+        },
+        {
+          "text": "ough",
+          "startMs": 9400,
+          "endMs": 9900,
+          "probability": 0.98884
+        },
+        {
+          "text": "*",
+          "startMs": 9990,
+          "endMs": 10160,
+          "probability": 0.597114
+        },
+        {
+          "text": " Lunar",
+          "startMs": 10250,
+          "endMs": 10590,
+          "probability": 0.420646
+        },
+        {
+          "text": " dust",
+          "startMs": 10590,
+          "endMs": 10940,
+          "probability": 0.742482
+        },
+        {
+          "text": " also",
+          "startMs": 10940,
+          "endMs": 11290,
+          "probability": 0.983933
+        },
+        {
+          "text": " covered",
+          "startMs": 11290,
+          "endMs": 11660,
+          "probability": 0.998114
+        },
+        {
+          "text": " my",
+          "startMs": 11880,
+          "endMs": 11930,
+          "probability": 0.997023
+        },
+        {
+          "text": " cooling",
+          "startMs": 12670,
+          "endMs": 12680,
+          "probability": 0.995351
+        },
+        {
+          "text": " surfaces",
+          "startMs": 12680,
+          "endMs": 13370,
+          "probability": 0.994019
+        },
+        {
+          "text": ".",
+          "startMs": 13370,
+          "endMs": 13660,
+          "probability": 0.933401
+        },
+        {
+          "text": " *",
+          "startMs": 13810,
+          "endMs": 13810,
+          "probability": 0.891902
+        },
+        {
+          "text": "s",
+          "startMs": 13830,
+          "endMs": 13980,
+          "probability": 0.680048
+        },
+        {
+          "text": "igh",
+          "startMs": 13980,
+          "endMs": 14450,
+          "probability": 0.990601
+        },
+        {
+          "text": "*",
+          "startMs": 14470,
+          "endMs": 14650,
+          "probability": 0.981734
+        },
+        {
+          "text": " Dave",
+          "startMs": 14810,
+          "endMs": 14950,
+          "probability": 0.735728
+        },
+        {
+          "text": " even",
+          "startMs": 14950,
+          "endMs": 15240,
+          "probability": 0.994624
+        },
+        {
+          "text": " had",
+          "startMs": 15240,
+          "endMs": 15460,
+          "probability": 0.998203
+        },
+        {
+          "text": " to",
+          "startMs": 15460,
+          "endMs": 15600,
+          "probability": 0.993062
+        },
+        {
+          "text": " brush",
+          "startMs": 15600,
+          "endMs": 15960,
+          "probability": 0.973819
+        },
+        {
+          "text": " dust",
+          "startMs": 15960,
+          "endMs": 16210,
+          "probability": 0.99862
+        },
+        {
+          "text": " from",
+          "startMs": 16210,
+          "endMs": 16470,
+          "probability": 0.964505
+        },
+        {
+          "text": " my",
+          "startMs": 16500,
+          "endMs": 16520,
+          "probability": 0.910593
+        },
+        {
+          "text": " television",
+          "startMs": 17200,
+          "endMs": 17200,
+          "probability": 0.978465
+        },
+        {
+          "text": " camera",
+          "startMs": 17240,
+          "endMs": 17760,
+          "probability": 0.740642
+        },
+        {
+          "text": "'s",
+          "startMs": 17760,
+          "endMs": 17940,
+          "probability": 0.994042
+        },
+        {
+          "text": " radiator",
+          "startMs": 17940,
+          "endMs": 18700,
+          "probability": 0.990705
+        },
+        {
+          "text": " when",
+          "startMs": 18700,
+          "endMs": 19000,
+          "probability": 0.563796
+        },
+        {
+          "text": " it",
+          "startMs": 19000,
+          "endMs": 19100,
+          "probability": 0.94838
+        },
+        {
+          "text": " started",
+          "startMs": 19100,
+          "endMs": 19580,
+          "probability": 0.957479
+        },
+        {
+          "text": " getting",
+          "startMs": 19580,
+          "endMs": 20290,
+          "probability": 0.707014
+        },
+        {
+          "text": " hot",
+          "startMs": 20290,
+          "endMs": 20580,
+          "probability": 0.989688
+        },
+        {
+          "text": ".",
+          "startMs": 20620,
+          "endMs": 20760,
+          "probability": 0.919617
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "*sigh* The moon wasn't easy.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 3420
+          }
+        },
+        {
+          "text": "My woven piano wire wheels struggled for traction on steep mount Hadley Delta.",
+          "offsetsMs": {
+            "from": 3420,
+            "to": 9100
+          }
+        },
+        {
+          "text": "*cough* Lunar dust also covered my cooling surfaces.",
+          "offsetsMs": {
+            "from": 9100,
+            "to": 13660
+          }
+        },
+        {
+          "text": "*sigh* Dave even had to brush dust from my television camera's radiator when it started getting hot.",
+          "offsetsMs": {
+            "from": 13660,
+            "to": 20760
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "15e0a5ba7cd4c3be3f7ea44564180af081379cbb843cc4b2cf9a2f3370f36173"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-3/3.mp3",
+      "recordingSha256": "22931af75e7b6792e04be55958d0cf4a7d9619cd2affd6fb03f7eda5c40e5070",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "At spur crater, we discovered something extraordinary! The 4 billion-year-old White Genesis Rock revealed clues about the moon's ancient crust. We also found unusual green volcanic glass formed by explosive eruptions deep inside the moon.",
+      "sentenceCandidates": [
+        {
+          "start": 0.11,
+          "end": 4.09,
+          "text": "At spur crater, we discovered something extraordinary!",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 4.43,
+          "end": 10.63,
+          "text": "The 4 billion-year-old White Genesis Rock revealed clues about the moon's ancient crust.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 10.75,
+          "end": 18.54,
+          "text": "We also found unusual green volcanic glass formed by explosive eruptions deep inside the moon.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " At",
+          "startMs": 110,
+          "endMs": 260,
+          "probability": 0.652362
+        },
+        {
+          "text": " spur",
+          "startMs": 260,
+          "endMs": 790,
+          "probability": 0.179427
+        },
+        {
+          "text": " crater",
+          "startMs": 790,
+          "endMs": 1190,
+          "probability": 0.963883
+        },
+        {
+          "text": ",",
+          "startMs": 1720,
+          "endMs": 1730,
+          "probability": 0.852414
+        },
+        {
+          "text": " we",
+          "startMs": 1730,
+          "endMs": 1870,
+          "probability": 0.918648
+        },
+        {
+          "text": " discovered",
+          "startMs": 1870,
+          "endMs": 2560,
+          "probability": 0.981601
+        },
+        {
+          "text": " something",
+          "startMs": 2560,
+          "endMs": 3130,
+          "probability": 0.995854
+        },
+        {
+          "text": " extraordinary",
+          "startMs": 3230,
+          "endMs": 3890,
+          "probability": 0.989534
+        },
+        {
+          "text": "!",
+          "startMs": 3890,
+          "endMs": 4090,
+          "probability": 0.587838
+        },
+        {
+          "text": " The",
+          "startMs": 4430,
+          "endMs": 4560,
+          "probability": 0.971728
+        },
+        {
+          "text": " 4",
+          "startMs": 4570,
+          "endMs": 4800,
+          "probability": 0.695899
+        },
+        {
+          "text": " billion",
+          "startMs": 4800,
+          "endMs": 5340,
+          "probability": 0.883657
+        },
+        {
+          "text": "-",
+          "startMs": 5350,
+          "endMs": 5420,
+          "probability": 0.656353
+        },
+        {
+          "text": "year",
+          "startMs": 5420,
+          "endMs": 5650,
+          "probability": 0.996194
+        },
+        {
+          "text": "-",
+          "startMs": 5800,
+          "endMs": 5800,
+          "probability": 0.958278
+        },
+        {
+          "text": "old",
+          "startMs": 6030,
+          "endMs": 6030,
+          "probability": 0.997759
+        },
+        {
+          "text": " White",
+          "startMs": 6050,
+          "endMs": 6420,
+          "probability": 0.52947
+        },
+        {
+          "text": " Genesis",
+          "startMs": 6460,
+          "endMs": 6940,
+          "probability": 0.972567
+        },
+        {
+          "text": " Rock",
+          "startMs": 7030,
+          "endMs": 7360,
+          "probability": 0.572797
+        },
+        {
+          "text": " revealed",
+          "startMs": 7360,
+          "endMs": 7950,
+          "probability": 0.867977
+        },
+        {
+          "text": " clues",
+          "startMs": 7950,
+          "endMs": 8210,
+          "probability": 0.99681
+        },
+        {
+          "text": " about",
+          "startMs": 8210,
+          "endMs": 8370,
+          "probability": 0.938387
+        },
+        {
+          "text": " the",
+          "startMs": 8720,
+          "endMs": 8720,
+          "probability": 0.972327
+        },
+        {
+          "text": " moon",
+          "startMs": 8790,
+          "endMs": 9010,
+          "probability": 0.373459
+        },
+        {
+          "text": "'s",
+          "startMs": 9100,
+          "endMs": 9200,
+          "probability": 0.999165
+        },
+        {
+          "text": " ancient",
+          "startMs": 9200,
+          "endMs": 9870,
+          "probability": 0.929561
+        },
+        {
+          "text": " crust",
+          "startMs": 9870,
+          "endMs": 10340,
+          "probability": 0.983367
+        },
+        {
+          "text": ".",
+          "startMs": 10340,
+          "endMs": 10630,
+          "probability": 0.897366
+        },
+        {
+          "text": " We",
+          "startMs": 10750,
+          "endMs": 10830,
+          "probability": 0.989157
+        },
+        {
+          "text": " also",
+          "startMs": 10880,
+          "endMs": 11250,
+          "probability": 0.994156
+        },
+        {
+          "text": " found",
+          "startMs": 11250,
+          "endMs": 11750,
+          "probability": 0.999575
+        },
+        {
+          "text": " unusual",
+          "startMs": 11750,
+          "endMs": 12500,
+          "probability": 0.990978
+        },
+        {
+          "text": " green",
+          "startMs": 12500,
+          "endMs": 13010,
+          "probability": 0.943341
+        },
+        {
+          "text": " volcanic",
+          "startMs": 13070,
+          "endMs": 13770,
+          "probability": 0.985109
+        },
+        {
+          "text": " glass",
+          "startMs": 13930,
+          "endMs": 14400,
+          "probability": 0.990907
+        },
+        {
+          "text": " formed",
+          "startMs": 14400,
+          "endMs": 14660,
+          "probability": 0.679597
+        },
+        {
+          "text": " by",
+          "startMs": 15100,
+          "endMs": 15100,
+          "probability": 0.99489
+        },
+        {
+          "text": " explosive",
+          "startMs": 15110,
+          "endMs": 15900,
+          "probability": 0.99088
+        },
+        {
+          "text": " eru",
+          "startMs": 15900,
+          "endMs": 16160,
+          "probability": 0.985723
+        },
+        {
+          "text": "ptions",
+          "startMs": 16160,
+          "endMs": 16690,
+          "probability": 0.98947
+        },
+        {
+          "text": " deep",
+          "startMs": 16710,
+          "endMs": 16950,
+          "probability": 0.848436
+        },
+        {
+          "text": " inside",
+          "startMs": 17080,
+          "endMs": 17530,
+          "probability": 0.98717
+        },
+        {
+          "text": " the",
+          "startMs": 17600,
+          "endMs": 17930,
+          "probability": 0.986926
+        },
+        {
+          "text": " moon",
+          "startMs": 18080,
+          "endMs": 18400,
+          "probability": 0.852741
+        },
+        {
+          "text": ".",
+          "startMs": 18400,
+          "endMs": 18540,
+          "probability": 0.955369
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "At spur crater, we discovered something extraordinary!",
+          "offsetsMs": {
+            "from": 0,
+            "to": 4320
+          }
+        },
+        {
+          "text": "The 4 billion-year-old White Genesis Rock revealed clues about the moon's ancient crust.",
+          "offsetsMs": {
+            "from": 4320,
+            "to": 10640
+          }
+        },
+        {
+          "text": "We also found unusual green volcanic glass formed by explosive eruptions deep inside the moon.",
+          "offsetsMs": {
+            "from": 10640,
+            "to": 18560
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "1608ae32aef015c4c4e3fd9f71affc0509055a205205c897a6effb8a9f64f95c"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-3/4.mp3",
+      "recordingSha256": "9c0a1aee5bc6689e219a637a3fd8f62ba3b05fbb7ae4cee738c3e13a84641e69",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "My color TV camera sent live views of Hadley Real to Earth. And together, we collected 77 kilograms of lunar samples, helping scientists uncover the Moon's ancient geological history.",
+      "sentenceCandidates": [
+        {
+          "start": 0.23,
+          "end": 5.17,
+          "text": "My color TV camera sent live views of Hadley Real to Earth.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 5.55,
+          "end": 15.36,
+          "text": "And together, we collected 77 kilograms of lunar samples, helping scientists uncover the Moon's ancient geological history.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " My",
+          "startMs": 230,
+          "endMs": 230,
+          "probability": 0.871141
+        },
+        {
+          "text": " color",
+          "startMs": 230,
+          "endMs": 800,
+          "probability": 0.647785
+        },
+        {
+          "text": " TV",
+          "startMs": 800,
+          "endMs": 980,
+          "probability": 0.822643
+        },
+        {
+          "text": " camera",
+          "startMs": 1060,
+          "endMs": 1710,
+          "probability": 0.916404
+        },
+        {
+          "text": " sent",
+          "startMs": 1720,
+          "endMs": 2180,
+          "probability": 0.995756
+        },
+        {
+          "text": " live",
+          "startMs": 2180,
+          "endMs": 2640,
+          "probability": 0.981897
+        },
+        {
+          "text": " views",
+          "startMs": 2640,
+          "endMs": 3230,
+          "probability": 0.966492
+        },
+        {
+          "text": " of",
+          "startMs": 3240,
+          "endMs": 3350,
+          "probability": 0.984545
+        },
+        {
+          "text": " Had",
+          "startMs": 3370,
+          "endMs": 3660,
+          "probability": 0.776896
+        },
+        {
+          "text": "ley",
+          "startMs": 3700,
+          "endMs": 3970,
+          "probability": 0.931935
+        },
+        {
+          "text": " Real",
+          "startMs": 3970,
+          "endMs": 4350,
+          "probability": 0.178518
+        },
+        {
+          "text": " to",
+          "startMs": 4440,
+          "endMs": 4580,
+          "probability": 0.979047
+        },
+        {
+          "text": " Earth",
+          "startMs": 4580,
+          "endMs": 4710,
+          "probability": 0.860982
+        },
+        {
+          "text": ".",
+          "startMs": 5020,
+          "endMs": 5170,
+          "probability": 0.519688
+        },
+        {
+          "text": " And",
+          "startMs": 5550,
+          "endMs": 5560,
+          "probability": 0.979539
+        },
+        {
+          "text": " together",
+          "startMs": 5560,
+          "endMs": 6220,
+          "probability": 0.961076
+        },
+        {
+          "text": ",",
+          "startMs": 6220,
+          "endMs": 6400,
+          "probability": 0.669192
+        },
+        {
+          "text": " we",
+          "startMs": 6400,
+          "endMs": 6580,
+          "probability": 0.952903
+        },
+        {
+          "text": " collected",
+          "startMs": 6580,
+          "endMs": 7400,
+          "probability": 0.996554
+        },
+        {
+          "text": " 77",
+          "startMs": 7400,
+          "endMs": 8050,
+          "probability": 0.867936
+        },
+        {
+          "text": " kilograms",
+          "startMs": 8050,
+          "endMs": 9030,
+          "probability": 0.500616
+        },
+        {
+          "text": " of",
+          "startMs": 9030,
+          "endMs": 9250,
+          "probability": 0.993919
+        },
+        {
+          "text": " lunar",
+          "startMs": 9250,
+          "endMs": 9790,
+          "probability": 0.950626
+        },
+        {
+          "text": " samples",
+          "startMs": 9790,
+          "endMs": 10050,
+          "probability": 0.998096
+        },
+        {
+          "text": ",",
+          "startMs": 10800,
+          "endMs": 10800,
+          "probability": 0.742438
+        },
+        {
+          "text": " helping",
+          "startMs": 11030,
+          "endMs": 11340,
+          "probability": 0.994706
+        },
+        {
+          "text": " scientists",
+          "startMs": 11340,
+          "endMs": 12110,
+          "probability": 0.995014
+        },
+        {
+          "text": " uncover",
+          "startMs": 12110,
+          "endMs": 12650,
+          "probability": 0.998195
+        },
+        {
+          "text": " the",
+          "startMs": 12650,
+          "endMs": 12880,
+          "probability": 0.99079
+        },
+        {
+          "text": " Moon",
+          "startMs": 12880,
+          "endMs": 13100,
+          "probability": 0.640204
+        },
+        {
+          "text": "'s",
+          "startMs": 13180,
+          "endMs": 13330,
+          "probability": 0.995106
+        },
+        {
+          "text": " ancient",
+          "startMs": 13330,
+          "endMs": 13870,
+          "probability": 0.98043
+        },
+        {
+          "text": " geological",
+          "startMs": 13870,
+          "endMs": 14640,
+          "probability": 0.944471
+        },
+        {
+          "text": " history",
+          "startMs": 14640,
+          "endMs": 15150,
+          "probability": 0.998277
+        },
+        {
+          "text": ".",
+          "startMs": 15240,
+          "endMs": 15360,
+          "probability": 0.939245
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "My color TV camera sent live views of Hadley Real to Earth.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 5320
+          }
+        },
+        {
+          "text": "And together, we collected 77 kilograms of lunar samples,",
+          "offsetsMs": {
+            "from": 5320,
+            "to": 10800
+          }
+        },
+        {
+          "text": "helping scientists uncover the Moon's ancient geological history.",
+          "offsetsMs": {
+            "from": 10800,
+            "to": 15360
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "5453b2e657a72e0f1e691d557f61139552844a3767b9c2998e3011cb3b2fc2e8"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-4/1.mp3",
+      "recordingSha256": "eca2f5ed786b2755961b54e7b82ce0eebe2d996627195bd889b532ead8ef81c5",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "On August 2nd, Dave Scott dropped a hammer and a falcon feather together to prove that Galileo was right. My camera showed them fall side by side.",
+      "sentenceCandidates": [
+        {
+          "start": 0.09,
+          "end": 10.46,
+          "text": "On August 2nd, Dave Scott dropped a hammer and a falcon feather together to prove that Galileo was right.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 10.94,
+          "end": 13.2,
+          "text": "My camera showed them fall side by side.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " On",
+          "startMs": 90,
+          "endMs": 300,
+          "probability": 0.727651
+        },
+        {
+          "text": " August",
+          "startMs": 300,
+          "endMs": 1220,
+          "probability": 0.987134
+        },
+        {
+          "text": " 2",
+          "startMs": 1220,
+          "endMs": 1410,
+          "probability": 0.964783
+        },
+        {
+          "text": "nd",
+          "startMs": 1970,
+          "endMs": 2000,
+          "probability": 0.979613
+        },
+        {
+          "text": ",",
+          "startMs": 2000,
+          "endMs": 2080,
+          "probability": 0.527913
+        },
+        {
+          "text": " Dave",
+          "startMs": 2210,
+          "endMs": 2580,
+          "probability": 0.971024
+        },
+        {
+          "text": " Scott",
+          "startMs": 2800,
+          "endMs": 3060,
+          "probability": 0.965835
+        },
+        {
+          "text": " dropped",
+          "startMs": 3060,
+          "endMs": 3740,
+          "probability": 0.991993
+        },
+        {
+          "text": " a",
+          "startMs": 3740,
+          "endMs": 3780,
+          "probability": 0.992676
+        },
+        {
+          "text": " hammer",
+          "startMs": 3870,
+          "endMs": 4430,
+          "probability": 0.983966
+        },
+        {
+          "text": " and",
+          "startMs": 4430,
+          "endMs": 4620,
+          "probability": 0.937203
+        },
+        {
+          "text": " a",
+          "startMs": 4620,
+          "endMs": 4690,
+          "probability": 0.883204
+        },
+        {
+          "text": " fal",
+          "startMs": 4690,
+          "endMs": 4780,
+          "probability": 0.556575
+        },
+        {
+          "text": "con",
+          "startMs": 4920,
+          "endMs": 5090,
+          "probability": 0.945745
+        },
+        {
+          "text": " feather",
+          "startMs": 5100,
+          "endMs": 5600,
+          "probability": 0.964926
+        },
+        {
+          "text": " together",
+          "startMs": 5600,
+          "endMs": 6280,
+          "probability": 0.977351
+        },
+        {
+          "text": " to",
+          "startMs": 6280,
+          "endMs": 6410,
+          "probability": 0.383749
+        },
+        {
+          "text": " prove",
+          "startMs": 6970,
+          "endMs": 7730,
+          "probability": 0.970489
+        },
+        {
+          "text": " that",
+          "startMs": 7810,
+          "endMs": 7980,
+          "probability": 0.768925
+        },
+        {
+          "text": " Galileo",
+          "startMs": 8170,
+          "endMs": 9010,
+          "probability": 0.669994
+        },
+        {
+          "text": " was",
+          "startMs": 9130,
+          "endMs": 9480,
+          "probability": 0.985084
+        },
+        {
+          "text": " right",
+          "startMs": 9520,
+          "endMs": 10270,
+          "probability": 0.990048
+        },
+        {
+          "text": ".",
+          "startMs": 10270,
+          "endMs": 10460,
+          "probability": 0.949852
+        },
+        {
+          "text": " My",
+          "startMs": 10940,
+          "endMs": 10940,
+          "probability": 0.606725
+        },
+        {
+          "text": " camera",
+          "startMs": 11010,
+          "endMs": 11350,
+          "probability": 0.246705
+        },
+        {
+          "text": " showed",
+          "startMs": 11440,
+          "endMs": 11660,
+          "probability": 0.984654
+        },
+        {
+          "text": " them",
+          "startMs": 11880,
+          "endMs": 12090,
+          "probability": 0.986884
+        },
+        {
+          "text": " fall",
+          "startMs": 12090,
+          "endMs": 12380,
+          "probability": 0.752854
+        },
+        {
+          "text": " side",
+          "startMs": 12380,
+          "endMs": 12550,
+          "probability": 0.922886
+        },
+        {
+          "text": " by",
+          "startMs": 12670,
+          "endMs": 12810,
+          "probability": 0.809973
+        },
+        {
+          "text": " side",
+          "startMs": 12810,
+          "endMs": 13120,
+          "probability": 0.991508
+        },
+        {
+          "text": ".",
+          "startMs": 13120,
+          "endMs": 13200,
+          "probability": 0.759959
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "On August 2nd, Dave Scott dropped a hammer and a falcon feather together to prove that Galileo",
+          "offsetsMs": {
+            "from": 0,
+            "to": 9040
+          }
+        },
+        {
+          "text": "was right. My camera showed them fall side by side.",
+          "offsetsMs": {
+            "from": 9040,
+            "to": 13200
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "95a849d771f79e1f5aa3f7dbabd822da9fee7459275fbc3ae6ed1975d6b27a5b"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-4/2.mp3",
+      "recordingSha256": "ecb9991a512c745d9ef8f0874c67fba78c265c4417cf4e149da5d7f5140b8361",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "I stayed behind while Falcon's ascent stage lifted my astronauts and their samples toward orbit. My Earth-controlled camera gave the world its first TV view of a liftoff from the moon.",
+      "sentenceCandidates": [
+        {
+          "start": 0.11,
+          "end": 9,
+          "text": "I stayed behind while Falcon's ascent stage lifted my astronauts and their samples toward orbit.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 9.12,
+          "end": 15.5,
+          "text": "My Earth-controlled camera gave the world its first TV view of a liftoff from the moon.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " I",
+          "startMs": 110,
+          "endMs": 110,
+          "probability": 0.354876
+        },
+        {
+          "text": " stayed",
+          "startMs": 120,
+          "endMs": 730,
+          "probability": 0.897697
+        },
+        {
+          "text": " behind",
+          "startMs": 1250,
+          "endMs": 1470,
+          "probability": 0.998599
+        },
+        {
+          "text": " while",
+          "startMs": 1470,
+          "endMs": 2040,
+          "probability": 0.680632
+        },
+        {
+          "text": " Falcon",
+          "startMs": 2040,
+          "endMs": 2720,
+          "probability": 0.225558
+        },
+        {
+          "text": "'s",
+          "startMs": 2720,
+          "endMs": 2880,
+          "probability": 0.976334
+        },
+        {
+          "text": " ascent",
+          "startMs": 2980,
+          "endMs": 3620,
+          "probability": 0.646768
+        },
+        {
+          "text": " stage",
+          "startMs": 3620,
+          "endMs": 4210,
+          "probability": 0.964023
+        },
+        {
+          "text": " lifted",
+          "startMs": 4230,
+          "endMs": 4830,
+          "probability": 0.933653
+        },
+        {
+          "text": " my",
+          "startMs": 5170,
+          "endMs": 5250,
+          "probability": 0.402494
+        },
+        {
+          "text": " astronauts",
+          "startMs": 5250,
+          "endMs": 6220,
+          "probability": 0.955914
+        },
+        {
+          "text": " and",
+          "startMs": 6220,
+          "endMs": 6400,
+          "probability": 0.966389
+        },
+        {
+          "text": " their",
+          "startMs": 6400,
+          "endMs": 6650,
+          "probability": 0.952239
+        },
+        {
+          "text": " samples",
+          "startMs": 6650,
+          "endMs": 7000,
+          "probability": 0.980999
+        },
+        {
+          "text": " toward",
+          "startMs": 7000,
+          "endMs": 7520,
+          "probability": 0.856678
+        },
+        {
+          "text": " orbit",
+          "startMs": 7520,
+          "endMs": 7890,
+          "probability": 0.657413
+        },
+        {
+          "text": ".",
+          "startMs": 7900,
+          "endMs": 9000,
+          "probability": 0.962524
+        },
+        {
+          "text": " My",
+          "startMs": 9120,
+          "endMs": 9150,
+          "probability": 0.99437
+        },
+        {
+          "text": " Earth",
+          "startMs": 9150,
+          "endMs": 9530,
+          "probability": 0.821446
+        },
+        {
+          "text": "-",
+          "startMs": 9530,
+          "endMs": 9600,
+          "probability": 0.823
+        },
+        {
+          "text": "controlled",
+          "startMs": 9600,
+          "endMs": 10360,
+          "probability": 0.997295
+        },
+        {
+          "text": " camera",
+          "startMs": 10360,
+          "endMs": 10790,
+          "probability": 0.995262
+        },
+        {
+          "text": " gave",
+          "startMs": 10840,
+          "endMs": 11120,
+          "probability": 0.989532
+        },
+        {
+          "text": " the",
+          "startMs": 11120,
+          "endMs": 11350,
+          "probability": 0.995592
+        },
+        {
+          "text": " world",
+          "startMs": 11350,
+          "endMs": 11730,
+          "probability": 0.996538
+        },
+        {
+          "text": " its",
+          "startMs": 11730,
+          "endMs": 12000,
+          "probability": 0.949251
+        },
+        {
+          "text": " first",
+          "startMs": 12000,
+          "endMs": 12500,
+          "probability": 0.823322
+        },
+        {
+          "text": " TV",
+          "startMs": 12500,
+          "endMs": 12700,
+          "probability": 0.89042
+        },
+        {
+          "text": " view",
+          "startMs": 12700,
+          "endMs": 13100,
+          "probability": 0.98779
+        },
+        {
+          "text": " of",
+          "startMs": 13100,
+          "endMs": 13300,
+          "probability": 0.991877
+        },
+        {
+          "text": " a",
+          "startMs": 13300,
+          "endMs": 13400,
+          "probability": 0.99437
+        },
+        {
+          "text": " lif",
+          "startMs": 13400,
+          "endMs": 13700,
+          "probability": 0.788616
+        },
+        {
+          "text": "to",
+          "startMs": 13700,
+          "endMs": 13830,
+          "probability": 0.943921
+        },
+        {
+          "text": "ff",
+          "startMs": 13840,
+          "endMs": 13970,
+          "probability": 0.99055
+        },
+        {
+          "text": " from",
+          "startMs": 14180,
+          "endMs": 14500,
+          "probability": 0.985049
+        },
+        {
+          "text": " the",
+          "startMs": 14500,
+          "endMs": 14820,
+          "probability": 0.945503
+        },
+        {
+          "text": " moon",
+          "startMs": 14820,
+          "endMs": 15400,
+          "probability": 0.698306
+        },
+        {
+          "text": ".",
+          "startMs": 15400,
+          "endMs": 15500,
+          "probability": 0.865822
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "I stayed behind while Falcon's ascent stage lifted my astronauts and their samples toward orbit.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 9000
+          }
+        },
+        {
+          "text": "My Earth-controlled camera gave the world its first TV view of a liftoff from the moon.",
+          "offsetsMs": {
+            "from": 9000,
+            "to": 15500
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "04395c58d864abc8a31d918643ed98e8d3ef67c52d961c9af43b6b4d235dbf6e"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-4/3.mp3",
+      "recordingSha256": "7fc4605daabf74ee22617df0a352a346aff2d1076b281b925e8ebef4b3272217",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "My final parking spot is about 26.13 degrees north, 3.64 degrees east. Decades later. NASA's Lunar Reconnaissance Orbiter photographed the tracks. I left behind.",
+      "sentenceCandidates": [
+        {
+          "start": 0.21,
+          "end": 4.26,
+          "text": "My final parking spot is about 26.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 4.26,
+          "end": 7.1,
+          "text": "13 degrees north, 3.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 7.1,
+          "end": 8.97,
+          "text": "64 degrees east.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 10.4,
+          "end": 12.12,
+          "text": "Decades later.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 12.41,
+          "end": 16.26,
+          "text": "NASA's Lunar Reconnaissance Orbiter photographed the tracks.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 16.43,
+          "end": 17.89,
+          "text": "I left behind.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " My",
+          "startMs": 210,
+          "endMs": 240,
+          "probability": 0.932255
+        },
+        {
+          "text": " final",
+          "startMs": 240,
+          "endMs": 830,
+          "probability": 0.996001
+        },
+        {
+          "text": " parking",
+          "startMs": 830,
+          "endMs": 1660,
+          "probability": 0.982763
+        },
+        {
+          "text": " spot",
+          "startMs": 1660,
+          "endMs": 2130,
+          "probability": 0.995778
+        },
+        {
+          "text": " is",
+          "startMs": 2190,
+          "endMs": 2380,
+          "probability": 0.99001
+        },
+        {
+          "text": " about",
+          "startMs": 2380,
+          "endMs": 2980,
+          "probability": 0.992445
+        },
+        {
+          "text": " 26",
+          "startMs": 3000,
+          "endMs": 3840,
+          "probability": 0.842465
+        },
+        {
+          "text": ".",
+          "startMs": 3840,
+          "endMs": 4260,
+          "probability": 0.992634
+        },
+        {
+          "text": "13",
+          "startMs": 4260,
+          "endMs": 5120,
+          "probability": 0.960188
+        },
+        {
+          "text": " degrees",
+          "startMs": 5120,
+          "endMs": 5790,
+          "probability": 0.383565
+        },
+        {
+          "text": " north",
+          "startMs": 5790,
+          "endMs": 6030,
+          "probability": 0.873955
+        },
+        {
+          "text": ",",
+          "startMs": 6480,
+          "endMs": 6480,
+          "probability": 0.729623
+        },
+        {
+          "text": " 3",
+          "startMs": 6590,
+          "endMs": 6790,
+          "probability": 0.865621
+        },
+        {
+          "text": ".",
+          "startMs": 6790,
+          "endMs": 7100,
+          "probability": 0.99866
+        },
+        {
+          "text": "64",
+          "startMs": 7100,
+          "endMs": 7720,
+          "probability": 0.99011
+        },
+        {
+          "text": " degrees",
+          "startMs": 7720,
+          "endMs": 8370,
+          "probability": 0.952169
+        },
+        {
+          "text": " east",
+          "startMs": 8460,
+          "endMs": 8880,
+          "probability": 0.954672
+        },
+        {
+          "text": ".",
+          "startMs": 8880,
+          "endMs": 8970,
+          "probability": 0.847523
+        },
+        {
+          "text": " Dec",
+          "startMs": 10400,
+          "endMs": 10400,
+          "probability": 0.837929
+        },
+        {
+          "text": "ades",
+          "startMs": 10610,
+          "endMs": 10910,
+          "probability": 0.985947
+        },
+        {
+          "text": " later",
+          "startMs": 11140,
+          "endMs": 11990,
+          "probability": 0.972591
+        },
+        {
+          "text": ".",
+          "startMs": 11990,
+          "endMs": 12120,
+          "probability": 0.532312
+        },
+        {
+          "text": " NASA",
+          "startMs": 12410,
+          "endMs": 12500,
+          "probability": 0.952659
+        },
+        {
+          "text": "'s",
+          "startMs": 12500,
+          "endMs": 12650,
+          "probability": 0.995959
+        },
+        {
+          "text": " Lunar",
+          "startMs": 12650,
+          "endMs": 13020,
+          "probability": 0.826532
+        },
+        {
+          "text": " Rec",
+          "startMs": 13020,
+          "endMs": 13240,
+          "probability": 0.915978
+        },
+        {
+          "text": "onnaissance",
+          "startMs": 13240,
+          "endMs": 14060,
+          "probability": 0.990888
+        },
+        {
+          "text": " Orbit",
+          "startMs": 14060,
+          "endMs": 14430,
+          "probability": 0.96396
+        },
+        {
+          "text": "er",
+          "startMs": 14430,
+          "endMs": 14580,
+          "probability": 0.999441
+        },
+        {
+          "text": " photographed",
+          "startMs": 14580,
+          "endMs": 15470,
+          "probability": 0.496188
+        },
+        {
+          "text": " the",
+          "startMs": 15480,
+          "endMs": 15700,
+          "probability": 0.995247
+        },
+        {
+          "text": " tracks",
+          "startMs": 15700,
+          "endMs": 16200,
+          "probability": 0.984736
+        },
+        {
+          "text": ".",
+          "startMs": 16200,
+          "endMs": 16260,
+          "probability": 0.846313
+        },
+        {
+          "text": " I",
+          "startMs": 16430,
+          "endMs": 16430,
+          "probability": 0.987347
+        },
+        {
+          "text": " left",
+          "startMs": 16510,
+          "endMs": 16950,
+          "probability": 0.972965
+        },
+        {
+          "text": " behind",
+          "startMs": 17040,
+          "endMs": 17800,
+          "probability": 0.998984
+        },
+        {
+          "text": ".",
+          "startMs": 17800,
+          "endMs": 17890,
+          "probability": 0.954232
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "My final parking spot is about 26.13 degrees north, 3.64 degrees east.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 9400
+          }
+        },
+        {
+          "text": "Decades later.",
+          "offsetsMs": {
+            "from": 10400,
+            "to": 12200
+          }
+        },
+        {
+          "text": "NASA's Lunar Reconnaissance Orbiter photographed the tracks.",
+          "offsetsMs": {
+            "from": 12200,
+            "to": 16300
+          }
+        },
+        {
+          "text": "I left behind.",
+          "offsetsMs": {
+            "from": 16300,
+            "to": 17900
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "b4866dbe6b2298fce8cbee99385bd3f834e5918c399a5cef996a98a597d31694"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-4/4.mp3",
+      "recordingSha256": "eb93db016e92d810171547df2527d2d3e22483f5179478be21acdac7752d1102",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "My wheels are still, but my tracks remain in the lunar dust. Now, Artemis is building a new generation of moon rovers. I was left behind, but never forgotten.",
+      "sentenceCandidates": [
+        {
+          "start": 0.11,
+          "end": 7.6,
+          "text": "My wheels are still, but my tracks remain in the lunar dust.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 7.7,
+          "end": 13.35,
+          "text": "Now, Artemis is building a new generation of moon rovers.",
+          "status": "asr-candidate-not-reviewed"
+        },
+        {
+          "start": 13.43,
+          "end": 16.79,
+          "text": "I was left behind, but never forgotten.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " My",
+          "startMs": 110,
+          "endMs": 530,
+          "probability": 0.0736882
+        },
+        {
+          "text": " wheels",
+          "startMs": 530,
+          "endMs": 2130,
+          "probability": 0.980413
+        },
+        {
+          "text": " are",
+          "startMs": 2130,
+          "endMs": 2860,
+          "probability": 0.988885
+        },
+        {
+          "text": " still",
+          "startMs": 2930,
+          "endMs": 3410,
+          "probability": 0.995325
+        },
+        {
+          "text": ",",
+          "startMs": 4420,
+          "endMs": 4460,
+          "probability": 0.407418
+        },
+        {
+          "text": " but",
+          "startMs": 4460,
+          "endMs": 4700,
+          "probability": 0.927713
+        },
+        {
+          "text": " my",
+          "startMs": 4750,
+          "endMs": 4910,
+          "probability": 0.995328
+        },
+        {
+          "text": " tracks",
+          "startMs": 4910,
+          "endMs": 5460,
+          "probability": 0.980226
+        },
+        {
+          "text": " remain",
+          "startMs": 5460,
+          "endMs": 6010,
+          "probability": 0.995518
+        },
+        {
+          "text": " in",
+          "startMs": 6010,
+          "endMs": 6190,
+          "probability": 0.994014
+        },
+        {
+          "text": " the",
+          "startMs": 6190,
+          "endMs": 6440,
+          "probability": 0.989162
+        },
+        {
+          "text": " lunar",
+          "startMs": 6440,
+          "endMs": 6740,
+          "probability": 0.706416
+        },
+        {
+          "text": " dust",
+          "startMs": 6940,
+          "endMs": 7280,
+          "probability": 0.992595
+        },
+        {
+          "text": ".",
+          "startMs": 7600,
+          "endMs": 7600,
+          "probability": 0.932871
+        },
+        {
+          "text": " Now",
+          "startMs": 7700,
+          "endMs": 7930,
+          "probability": 0.991824
+        },
+        {
+          "text": ",",
+          "startMs": 7930,
+          "endMs": 8150,
+          "probability": 0.612437
+        },
+        {
+          "text": " Artemis",
+          "startMs": 8150,
+          "endMs": 8740,
+          "probability": 0.985102
+        },
+        {
+          "text": " is",
+          "startMs": 9130,
+          "endMs": 9130,
+          "probability": 0.995478
+        },
+        {
+          "text": " building",
+          "startMs": 9210,
+          "endMs": 10050,
+          "probability": 0.997936
+        },
+        {
+          "text": " a",
+          "startMs": 10130,
+          "endMs": 10170,
+          "probability": 0.994378
+        },
+        {
+          "text": " new",
+          "startMs": 10170,
+          "endMs": 10470,
+          "probability": 0.998115
+        },
+        {
+          "text": " generation",
+          "startMs": 10530,
+          "endMs": 10970,
+          "probability": 0.996058
+        },
+        {
+          "text": " of",
+          "startMs": 11610,
+          "endMs": 11840,
+          "probability": 0.995349
+        },
+        {
+          "text": " moon",
+          "startMs": 12020,
+          "endMs": 12290,
+          "probability": 0.66857
+        },
+        {
+          "text": " ro",
+          "startMs": 12290,
+          "endMs": 12510,
+          "probability": 0.454096
+        },
+        {
+          "text": "vers",
+          "startMs": 12510,
+          "endMs": 12960,
+          "probability": 0.98789
+        },
+        {
+          "text": ".",
+          "startMs": 12960,
+          "endMs": 13350,
+          "probability": 0.890396
+        },
+        {
+          "text": " I",
+          "startMs": 13430,
+          "endMs": 13460,
+          "probability": 0.983753
+        },
+        {
+          "text": " was",
+          "startMs": 13470,
+          "endMs": 13750,
+          "probability": 0.998094
+        },
+        {
+          "text": " left",
+          "startMs": 13760,
+          "endMs": 14160,
+          "probability": 0.99859
+        },
+        {
+          "text": " behind",
+          "startMs": 14160,
+          "endMs": 14560,
+          "probability": 0.998045
+        },
+        {
+          "text": ",",
+          "startMs": 14960,
+          "endMs": 14970,
+          "probability": 0.644308
+        },
+        {
+          "text": " but",
+          "startMs": 14970,
+          "endMs": 15270,
+          "probability": 0.990539
+        },
+        {
+          "text": " never",
+          "startMs": 15270,
+          "endMs": 15770,
+          "probability": 0.998182
+        },
+        {
+          "text": " forgotten",
+          "startMs": 15770,
+          "endMs": 16640,
+          "probability": 0.99772
+        },
+        {
+          "text": ".",
+          "startMs": 16640,
+          "endMs": 16790,
+          "probability": 0.911584
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "My wheels are still, but my tracks remain in the lunar dust.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 7600
+          }
+        },
+        {
+          "text": "Now, Artemis is building a new generation of moon rovers.",
+          "offsetsMs": {
+            "from": 7600,
+            "to": 13360
+          }
+        },
+        {
+          "text": "I was left behind, but never forgotten.",
+          "offsetsMs": {
+            "from": 13360,
+            "to": 16800
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "b91010a9ca12161e88e5f39b487e3f6f6efa0c243e1b3578e855be8fcd4f2001"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-5/1.mp3",
+      "recordingSha256": "0bce91e78cf12e2cafb54245e832dc6aa6b2b9f72065fc3f880c85d28bf8bef6",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "How did the moon buggy fit inside the small Falcon lander?",
+      "sentenceCandidates": [
+        {
+          "start": 0.13,
+          "end": 4.75,
+          "text": "How did the moon buggy fit inside the small Falcon lander?",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " How",
+          "startMs": 130,
+          "endMs": 300,
+          "probability": 0.931122
+        },
+        {
+          "text": " did",
+          "startMs": 300,
+          "endMs": 600,
+          "probability": 0.996751
+        },
+        {
+          "text": " the",
+          "startMs": 600,
+          "endMs": 900,
+          "probability": 0.990809
+        },
+        {
+          "text": " moon",
+          "startMs": 900,
+          "endMs": 1300,
+          "probability": 0.76618
+        },
+        {
+          "text": " buggy",
+          "startMs": 1300,
+          "endMs": 1800,
+          "probability": 0.609223
+        },
+        {
+          "text": " fit",
+          "startMs": 1800,
+          "endMs": 2050,
+          "probability": 0.996556
+        },
+        {
+          "text": " inside",
+          "startMs": 2160,
+          "endMs": 2700,
+          "probability": 0.98871
+        },
+        {
+          "text": " the",
+          "startMs": 2700,
+          "endMs": 3000,
+          "probability": 0.975571
+        },
+        {
+          "text": " small",
+          "startMs": 3000,
+          "endMs": 3500,
+          "probability": 0.889914
+        },
+        {
+          "text": " Falcon",
+          "startMs": 3500,
+          "endMs": 4100,
+          "probability": 0.888797
+        },
+        {
+          "text": " land",
+          "startMs": 4100,
+          "endMs": 4480,
+          "probability": 0.505445
+        },
+        {
+          "text": "er",
+          "startMs": 4480,
+          "endMs": 4600,
+          "probability": 0.991365
+        },
+        {
+          "text": "?",
+          "startMs": 4750,
+          "endMs": 4750,
+          "probability": 0.916179
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "How did the moon buggy fit inside the small Falcon lander?",
+          "offsetsMs": {
+            "from": 0,
+            "to": 4800
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "53ee0e0acbc5e579473f7dfb2b1bbd7f82b27f511904217bbbd333c4aeddef53"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-5/2.mp3",
+      "recordingSha256": "7f4b13669a3888551a642bcf524d8014ea8cfa052c85bb90bb7dd7ee2126bbba",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "What is the famous name of the four billion-year-old gleaming white rock we discovered at Spur Crater?",
+      "sentenceCandidates": [
+        {
+          "start": 0.08,
+          "end": 7.6,
+          "text": "What is the famous name of the four billion-year-old gleaming white rock we discovered at Spur Crater?",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " What",
+          "startMs": 80,
+          "endMs": 330,
+          "probability": 0.944613
+        },
+        {
+          "text": " is",
+          "startMs": 330,
+          "endMs": 490,
+          "probability": 0.995809
+        },
+        {
+          "text": " the",
+          "startMs": 490,
+          "endMs": 740,
+          "probability": 0.995733
+        },
+        {
+          "text": " famous",
+          "startMs": 740,
+          "endMs": 1240,
+          "probability": 0.998443
+        },
+        {
+          "text": " name",
+          "startMs": 1240,
+          "endMs": 1590,
+          "probability": 0.996911
+        },
+        {
+          "text": " of",
+          "startMs": 1600,
+          "endMs": 1770,
+          "probability": 0.965941
+        },
+        {
+          "text": " the",
+          "startMs": 1780,
+          "endMs": 2020,
+          "probability": 0.978176
+        },
+        {
+          "text": " four",
+          "startMs": 2220,
+          "endMs": 2410,
+          "probability": 0.427441
+        },
+        {
+          "text": " billion",
+          "startMs": 2410,
+          "endMs": 3040,
+          "probability": 0.860999
+        },
+        {
+          "text": "-",
+          "startMs": 3040,
+          "endMs": 3130,
+          "probability": 0.377466
+        },
+        {
+          "text": "year",
+          "startMs": 3130,
+          "endMs": 3490,
+          "probability": 0.997788
+        },
+        {
+          "text": "-",
+          "startMs": 3490,
+          "endMs": 3580,
+          "probability": 0.947404
+        },
+        {
+          "text": "old",
+          "startMs": 3580,
+          "endMs": 3860,
+          "probability": 0.998911
+        },
+        {
+          "text": " gle",
+          "startMs": 3960,
+          "endMs": 4160,
+          "probability": 0.963036
+        },
+        {
+          "text": "aming",
+          "startMs": 4160,
+          "endMs": 4620,
+          "probability": 0.977989
+        },
+        {
+          "text": " white",
+          "startMs": 4620,
+          "endMs": 5090,
+          "probability": 0.875012
+        },
+        {
+          "text": " rock",
+          "startMs": 5090,
+          "endMs": 5470,
+          "probability": 0.995676
+        },
+        {
+          "text": " we",
+          "startMs": 5480,
+          "endMs": 5600,
+          "probability": 0.971228
+        },
+        {
+          "text": " discovered",
+          "startMs": 5600,
+          "endMs": 6240,
+          "probability": 0.996022
+        },
+        {
+          "text": " at",
+          "startMs": 6240,
+          "endMs": 6410,
+          "probability": 0.985618
+        },
+        {
+          "text": " Spur",
+          "startMs": 6420,
+          "endMs": 6780,
+          "probability": 0.43263
+        },
+        {
+          "text": " Cr",
+          "startMs": 6780,
+          "endMs": 6960,
+          "probability": 0.375624
+        },
+        {
+          "text": "ater",
+          "startMs": 6960,
+          "endMs": 7320,
+          "probability": 0.965173
+        },
+        {
+          "text": "?",
+          "startMs": 7320,
+          "endMs": 7600,
+          "probability": 0.887514
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "What is the famous name of the four billion-year-old",
+          "offsetsMs": {
+            "from": 0,
+            "to": 3880
+          }
+        },
+        {
+          "text": "gleaming white rock we discovered at Spur Crater?",
+          "offsetsMs": {
+            "from": 3880,
+            "to": 7600
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "5e075cc28a54a381a72353e9c7dde52c3e82098cd6a5628d473288315761c1c8"
+    },
+    {
+      "recordingPath": "/audio/apollo-15/chapter-5/3.mp3",
+      "recordingSha256": "b81d6da002a15a4a98db2740a701f5b8f6dd4dd3d77dc3f0e17e378f987927c1",
+      "status": "asr-candidate-not-reviewed",
+      "transcript": "Before parking me on the east of Falcon, Dave Scott stood in front of my TV camera and dropped a heavy hammer alongside what light object.",
+      "sentenceCandidates": [
+        {
+          "start": 0.13,
+          "end": 10.9,
+          "text": "Before parking me on the east of Falcon, Dave Scott stood in front of my TV camera and dropped a heavy hammer alongside what light object.",
+          "status": "asr-candidate-not-reviewed"
+        }
+      ],
+      "tokenPredictions": [
+        {
+          "text": " Before",
+          "startMs": 130,
+          "endMs": 430,
+          "probability": 0.678257
+        },
+        {
+          "text": " parking",
+          "startMs": 430,
+          "endMs": 940,
+          "probability": 0.951227
+        },
+        {
+          "text": " me",
+          "startMs": 940,
+          "endMs": 1080,
+          "probability": 0.875982
+        },
+        {
+          "text": " on",
+          "startMs": 1080,
+          "endMs": 1220,
+          "probability": 0.998304
+        },
+        {
+          "text": " the",
+          "startMs": 1220,
+          "endMs": 1430,
+          "probability": 0.991083
+        },
+        {
+          "text": " east",
+          "startMs": 1430,
+          "endMs": 1710,
+          "probability": 0.909249
+        },
+        {
+          "text": " of",
+          "startMs": 1860,
+          "endMs": 1860,
+          "probability": 0.995589
+        },
+        {
+          "text": " Falcon",
+          "startMs": 1860,
+          "endMs": 2300,
+          "probability": 0.955252
+        },
+        {
+          "text": ",",
+          "startMs": 2300,
+          "endMs": 2490,
+          "probability": 0.773032
+        },
+        {
+          "text": " Dave",
+          "startMs": 3410,
+          "endMs": 3660,
+          "probability": 0.874614
+        },
+        {
+          "text": " Scott",
+          "startMs": 3660,
+          "endMs": 4140,
+          "probability": 0.90132
+        },
+        {
+          "text": " stood",
+          "startMs": 4140,
+          "endMs": 4640,
+          "probability": 0.987649
+        },
+        {
+          "text": " in",
+          "startMs": 4640,
+          "endMs": 4730,
+          "probability": 0.979731
+        },
+        {
+          "text": " front",
+          "startMs": 4730,
+          "endMs": 4960,
+          "probability": 0.99689
+        },
+        {
+          "text": " of",
+          "startMs": 4960,
+          "endMs": 5040,
+          "probability": 0.952419
+        },
+        {
+          "text": " my",
+          "startMs": 5040,
+          "endMs": 5280,
+          "probability": 0.976226
+        },
+        {
+          "text": " TV",
+          "startMs": 5280,
+          "endMs": 5830,
+          "probability": 0.776558
+        },
+        {
+          "text": " camera",
+          "startMs": 5830,
+          "endMs": 6480,
+          "probability": 0.920112
+        },
+        {
+          "text": " and",
+          "startMs": 6480,
+          "endMs": 7080,
+          "probability": 0.669481
+        },
+        {
+          "text": " dropped",
+          "startMs": 7450,
+          "endMs": 7720,
+          "probability": 0.485931
+        },
+        {
+          "text": " a",
+          "startMs": 7810,
+          "endMs": 8000,
+          "probability": 0.820991
+        },
+        {
+          "text": " heavy",
+          "startMs": 8120,
+          "endMs": 8400,
+          "probability": 0.871244
+        },
+        {
+          "text": " hammer",
+          "startMs": 8400,
+          "endMs": 8800,
+          "probability": 0.799532
+        },
+        {
+          "text": " alongside",
+          "startMs": 8800,
+          "endMs": 9520,
+          "probability": 0.922412
+        },
+        {
+          "text": " what",
+          "startMs": 9520,
+          "endMs": 9860,
+          "probability": 0.905566
+        },
+        {
+          "text": " light",
+          "startMs": 9860,
+          "endMs": 10280,
+          "probability": 0.965677
+        },
+        {
+          "text": " object",
+          "startMs": 10280,
+          "endMs": 10740,
+          "probability": 0.935223
+        },
+        {
+          "text": ".",
+          "startMs": 10790,
+          "endMs": 10900,
+          "probability": 0.767448
+        }
+      ],
+      "rawSegments": [
+        {
+          "text": "Before parking me on the east of Falcon, Dave Scott stood in front of my TV camera and dropped a heavy hammer alongside what light object.",
+          "offsetsMs": {
+            "from": 0,
+            "to": 11040
+          }
+        }
+      ],
+      "requiredReview": [
+        "Listen to the complete original MP3",
+        "Correct all words, proper names, numbers and punctuation",
+        "Check each candidate start/end against actual playback",
+        "Select only directly relevant verified imagery; contextual imagery must retain its caption",
+        "Verify quiz transcripts separately; existing question text is not proof of recorded wording"
+      ],
+      "rawOutputSha256": "c6416146de0189e0ebb57661071a4965c1dad829a42f091e06cf0dbe551c7818"
+    }
+  ]
+}
