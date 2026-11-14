@@ -4,6 +4,10 @@ import styles from './StoryMedia.module.css'
 
 export type StoryEvidenceMedia = Omit<StoryImageMedia, 'kind'> & { kind: StoryImageMedia['kind'] | 'Video frame · actual mission footage' }
 
+export type DocumentaryGalleryItem = StoryEvidenceMedia
+  | { type: 'video'; url: string; label: string }
+  | { type: 'youtube'; url: string; label: string; videoId: string }
+
 function ImageFrame({ media, motionEnabled }: { media: StoryEvidenceMedia; motionEnabled: boolean }) {
   const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading')
   return <>

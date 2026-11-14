@@ -38,14 +38,25 @@
       },
       {
         "id": "apollo17-p2-3",
-        "title": "Boeing and NASA",
-        "caption": "The company and agency logos accompany the rover development story.",
-        "alt": "Boeing and NASA",
-        "credit": "Linked image from the Apollo 17 storytelling PDF",
+        "title": "Boeing and NASA insignia",
+        "caption": "Boeing built the rover for NASA.",
+        "alt": "Boeing and NASA insignia",
+        "credit": "Boeing / NASA logos via supplied image",
         "sourceUrl": "https://media.licdn.com/dms/image/v2/D5612AQGO7D37lVXVeA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1687172806274?e=1795651200&v=beta&t=H2b2vUVCk_6ipNHSYeEsimT9OGC5g06UiAiEMyASjQQ",
         "src": "https://media.licdn.com/dms/image/v2/D5612AQGO7D37lVXVeA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1687172806274?e=1795651200&v=beta&t=H2b2vUVCk_6ipNHSYeEsimT9OGC5g06UiAiEMyASjQQ",
         "width": 850,
         "height": 478
+      },
+      {
+        "id": "apollo17-evidence-1-2-3",
+        "title": "Apollo 17 rover and lunar module training",
+        "alt": "Apollo 17 rover and lunar module training",
+        "caption": "The crew rehearses with rover and lunar module equipment.",
+        "credit": "NASA",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/06/apollo_17_l-6_months_14_as17-150a-72pc-412-8.9.72.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/06/apollo_17_l-6_months_14_as17-150a-72pc-412-8.9.72.jpg",
+        "width": 985,
+        "height": 1250
       }
     ],
     [
@@ -59,6 +70,17 @@
         "src": "https://armaghplanet.com/wp-content/uploads/2013/01/image_of-wiremesh-tyre.jpg",
         "width": 564,
         "height": 480
+      },
+      {
+        "id": "apollo17-evidence-1-3-2",
+        "title": "Rover during Earth training",
+        "alt": "Rover during Earth training",
+        "caption": "An astronaut practices with a lunar rover on Earth.",
+        "credit": "NASA",
+        "src": "https://images-assets.nasa.gov/image/S72-48890/S72-48890~thumb.jpg?as=webp",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S72-48890/S72-48890~thumb.jpg?as=webp",
+        "width": 418,
+        "height": 640
       }
     ],
     [
@@ -72,6 +94,17 @@
         "src": "https://images-assets.nasa.gov/image/S72-50438/S72-50438~large.jpg?w=1920&h=1441&fit=clip&crop=faces%2Cfocalpoint",
         "width": 1920,
         "height": 1441
+      },
+      {
+        "id": "apollo17-evidence-1-4-2",
+        "title": "Apollo 17 crew in spacesuits",
+        "alt": "Apollo 17 crew in spacesuits",
+        "caption": "The three Apollo 17 astronauts pose together before launch.",
+        "credit": "NASA",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/06/apollo_17_l-6_months_27_as17-255-72pc-443-8.28.72.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/06/apollo_17_l-6_months_27_as17-255-72pc-443-8.28.72.jpg",
+        "width": 985,
+        "height": 783
       }
     ]
   ],
@@ -89,10 +122,21 @@
         "height": 699
       },
       {
+        "id": "apollo17-evidence-2-1-2",
+        "title": "Apollo 17 archival image",
+        "alt": "Apollo 17 archival image",
+        "caption": "Apollo 17 archival image.",
+        "credit": "NASA",
+        "src": "https://images-assets.nasa.gov/image/S72-54813/S72-54813~large.jpg?w=1393&h=1919&fit=clip&crop=faces%2Cfocalpoint",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S72-54813/S72-54813~large.jpg?w=1393&h=1919&fit=clip&crop=faces%2Cfocalpoint",
+        "width": 1393,
+        "height": 1919
+      },
+      {
         "id": "apollo17-p3-4",
-        "title": "Apollo 17 lifts off at night",
-        "caption": "Apollo 17 lifts off at night.",
-        "alt": "Apollo 17 lifts off at night",
+        "title": "Saturn V rises into the night",
+        "caption": "Apollo 17 lifts off, illuminating the launch site.",
+        "alt": "Saturn V rises into the night",
         "credit": "NASA",
         "sourceUrl": "https://images-assets.nasa.gov/image/S72-55070/S72-55070~orig.jpg",
         "src": "https://images-assets.nasa.gov/image/S72-55070/S72-55070~orig.jpg",
@@ -257,6 +301,28 @@
         "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_27_eva1_deep_core_sample_area_as17-136-20720.jpg",
         "width": 985,
         "height": 998
+      },
+      {
+        "id": "apollo17-evidence-3-4-2",
+        "title": "Schmitt collects a rake sample",
+        "alt": "Schmitt collects a rake sample",
+        "caption": "Harrison Schmitt uses a rake to collect lunar samples at Station 1.",
+        "credit": "NASA",
+        "src": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_30_eva1_sta_1_schmitt_rake_sample_as17-134-20425.jpg",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/12/apollo_17_moon_landing_30_eva1_sta_1_schmitt_rake_sample_as17-134-20425.jpg",
+        "width": 985,
+        "height": 997
+      },
+      {
+        "id": "apollo17-evidence-3-4-3",
+        "title": "A boulder at Taurus-Littrow",
+        "alt": "A boulder at Taurus-Littrow",
+        "caption": "A boulder on the lunar surface provides geological context for Apollo 17 sampling.",
+        "credit": "NASA",
+        "src": "https://images-assets.nasa.gov/image/S73-22871/S73-22871~orig.jpg",
+        "sourceUrl": "https://images-assets.nasa.gov/image/S73-22871/S73-22871~orig.jpg",
+        "width": 6932,
+        "height": 3982
       }
     ]
   ],

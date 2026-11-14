@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import type { StoryEvidenceMedia } from './StoryMedia'
+import type { DocumentaryGalleryItem, StoryEvidenceMedia } from './StoryMedia'
 
 /** Keep the frame fixed while preloading and smoothly replacing current evidence. */
 export default function DocumentaryEvidence({ media: primary, gallery, video, youtubeVideoId, optionalVideo, source, sourceLabel, sourceSummary }: {
-  gallery?: readonly StoryEvidenceMedia[]
+  gallery?: readonly DocumentaryGalleryItem[]
   video?: string
   youtubeVideoId?: string
   optionalVideo?: { url: string; label: string }
@@ -13,7 +13,12 @@ export default function DocumentaryEvidence({ media: primary, gallery, video, yo
   sourceSummary?: string
 }) {
   const [index, setIndex] = useState(0)
-  const media = gallery?.[index] ?? primary
+  const selected = gallery?.[index]
+  const selectedVideo = selected && 'type' in selected ? selected : undefined
+  const media = selected && 'src' in selected ? selected : selectedVideo ? undefined : primary
+  const videoSrc = selectedVideo?.type === 'video' ? selectedVideo.url : video
+  const embedId = selectedVideo?.type === 'youtube' ? selectedVideo.videoId : youtubeVideoId
+  const label = selectedVideo?.label ?? sourceLabel
   const [loaded, setLoaded] = useState(media)
   const [failedId, setFailedId] = useState<string>()
   const serial = useRef(0)
@@ -50,21 +55,21 @@ export default function DocumentaryEvidence({ media: primary, gallery, video, yo
     <figure aria-busy={pending}>
       <div>
         {shown && <img key={shown.id} src={shown.src} width={shown.width} height={shown.height} alt={shown.alt} decoding="async" />}
-        {video && <video key={video} src={video} controls playsInline preload="metadata" aria-label={sourceLabel} style={{ width: '100%', height: '100%' }} />}
-        {youtubeVideoId && <iframe
-          src={'https://www.youtube.com/embed/' + encodeURIComponent(youtubeVideoId)}
-          title={sourceLabel ?? 'Mission evidence video'}
+        {videoSrc && <video key={videoSrc} src={videoSrc} controls playsInline preload="metadata" aria-label={label} style={{ width: '100%', height: '100%' }} />}
+        {embedId && <iframe
+          src={'https://www.youtube.com/embed/' + encodeURIComponent(embedId)}
+          title={label ?? 'Mission evidence video'}
           allow="encrypted-media; picture-in-picture"
           allowFullScreen
           loading="lazy"
           referrerPolicy="strict-origin-when-cross-origin"
           style={{ display: 'block', width: '100%', height: '100%', border: 0 }}
         />}
-        {!media && !video && !youtubeVideoId && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p></div>}
+        {!media && !videoSrc && !embedId && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p></div>}
         {media && !shown && <p>{failed ? 'Selected image could not load. The exact source remains available.' : 'Loading the selected evidence.'}</p>}
       </div>
       <figcaption>
-        {gallery && gallery.length > 1 && <nav aria-label="Evidence images" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        {gallery && gallery.length > 1 && <nav aria-label="Evidence gallery" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <button type="button" aria-label="Previous evidence image" disabled={index === 0} onClick={() => setIndex(value => value - 1)}>‹</button>
           <span aria-live="polite">{index + 1} / {gallery.length}</span>
           <button type="button" aria-label="Next evidence image" disabled={index === gallery.length - 1} onClick={() => setIndex(value => value + 1)}>›</button>
@@ -72,8 +77,10 @@ export default function DocumentaryEvidence({ media: primary, gallery, video, yo
         {pending && <p role="status">Loading the next section's evidence.</p>}
         {failed && <p role="status">Selected image could not load. The exact source remains available.</p>}
         {shown && <><small>{shown.kind}</small><h3>{shown.title}</h3><p>{shown.caption}</p><p>Credit: {shown.credit}</p><a href={shown.sourceUrl} target="_blank" rel="noreferrer">Image source ↗</a></>}
-        {!media && <><h3>{sourceLabel ?? 'Mission evidence record'}</h3><p>{sourceSummary ?? 'Use the exact source supplied for this narration section.'}</p></>}
-        {video && <a href={video} target="_blank" rel="noreferrer">Open NASA video ↗</a>}
+        {selectedVideo && <h3>{selectedVideo.label}</h3>}
+        {!media && !selectedVideo && <><h3>{sourceLabel ?? 'Mission evidence record'}</h3><p>{sourceSummary ?? 'Use the exact source supplied for this narration section.'}</p></>}
+        {videoSrc && <a href={videoSrc} target="_blank" rel="noreferrer">Open NASA video ↗</a>}
+        {selectedVideo?.type === 'youtube' && <a href={selectedVideo.url} target="_blank" rel="noreferrer">Watch on YouTube ↗</a>}
         {optionalVideo && <p><a href={optionalVideo.url} target="_blank" rel="noreferrer">Optional video · {optionalVideo.label} ↗</a></p>}
         <a href={source} target="_blank" rel="noreferrer">{youtubeVideoId ? 'Watch on YouTube ↗' : "Open this section's evidence ↗"}</a>
       </figcaption>

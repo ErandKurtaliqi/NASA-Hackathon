@@ -11,11 +11,11 @@ import apollo16Evidence from './apollo16Evidence.json'
 import apollo17Evidence from './apollo17Evidence.json'
 import { marsEvidenceFor } from './marsStoryMedia'
 import { moonStoryPresentation, marsStoryPresentation, type StoryPresentation } from './storyPresentation'
-import type { StoryEvidenceMedia } from '../../components/storytelling/StoryMedia'
+import type { DocumentaryGalleryItem, StoryEvidenceMedia } from '../../components/storytelling/StoryMedia'
 
 export type DocumentarySegment = {
   id: string; chapter: number; segment: number; title: string; text: string
-  audio?: string; evidence?: StoryEvidenceMedia; gallery?: readonly StoryEvidenceMedia[]; video?: string; youtubeVideoId?: string; optionalVideo?: { url: string; label: string }; evidenceLabel?: string; evidenceSummary?: string
+  audio?: string; evidence?: StoryEvidenceMedia; gallery?: readonly DocumentaryGalleryItem[]; video?: string; youtubeVideoId?: string; optionalVideo?: { url: string; label: string }; evidenceLabel?: string; evidenceSummary?: string
   note?: string; audioHold?: string
   completion: 'intentional-chapter-action' | 'quiz'; source: string
 }
@@ -41,11 +41,11 @@ const apollo11Galleries = evidenceGalleries(apollo11Evidence)
 const apollo15Galleries = evidenceGalleries(apollo15Evidence)
 const apollo16Galleries = apollo16Evidence.map(evidenceGalleries)
 const apollo17Galleries = apollo17Evidence.map(evidenceGalleries)
-const apollo17Videos: Record<string, { url: string; label: string }> = {
-  '1:1': { url: 'https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004717/apollo17_flyover_1080p30.mp4', label: 'Taurus-Littrow flyover · NASA Scientific Visualization Studio' },
-  '1:2': { url: 'https://youtu.be/NBNhUNROV5U?si=HTq_GbUvXqgmPb-7', label: 'First Step on the Moon · YouTube link supplied in the Apollo 17 PDF' },
-  '3:2': { url: 'https://youtu.be/9HQfauGJaTs?si=ZtNvhBfl0bieWShj', label: 'Apollo 17 lunar liftoff · Smithsonian National Air and Space Museum on YouTube' },
+const apollo17JourneyVideos: Record<number, Extract<DocumentaryGalleryItem, { type: 'video' | 'youtube' }>> = {
+  1: { type: 'video', url: 'https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004717/apollo17_flyover_1080p30.mp4', label: 'Taurus-Littrow flyover · NASA Scientific Visualization Studio' },
+  2: { type: 'youtube', videoId: 'NBNhUNROV5U', url: 'https://youtu.be/NBNhUNROV5U?si=HTq_GbUvXqgmPb-7', label: 'Apollo Lunar Rover Deployment' },
 }
+const apollo17LiftoffVideo = { url: 'https://youtu.be/9HQfauGJaTs?si=ZtNvhBfl0bieWShj', label: 'Apollo 17 lunar liftoff · Smithsonian National Air and Space Museum on YouTube' }
 const apollo11GalleryOffsets = [0, 4, 8, 11]
 
 export function documentarySegments(story: MachineStory): DocumentarySegment[] {
@@ -57,15 +57,16 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
       : isMarsStory(story.id) ? marsStoryContent[story.id].chapters[c] : []
     return tracks.map((track, s) => {
       let evidence: StoryEvidenceMedia | undefined, note: string | undefined, audioHold: string | undefined
-      let optionalVideo = story.id === 'apollo-17-rover' ? apollo17Videos[`${c}:${s}`] : undefined
+      let optionalVideo = story.id === 'apollo-17-rover' && c === 3 && s === 2 ? apollo17LiftoffVideo : undefined
       let video: string | undefined
       let youtubeVideoId: string | undefined
-      let gallery: readonly StoryEvidenceMedia[] | undefined
+      let gallery: readonly DocumentaryGalleryItem[] | undefined
       let evidenceLabel: string | undefined, evidenceSummary: string | undefined
       let source = story.id === 'apollo-16-rover' ? apollo16ChapterRecordings[c][s].note.source.url : story.sources[0].url
       if (story.id === 'apollo-15-rover') {
-        gallery = apollo15Galleries[c * 4 + s]
-        evidence = gallery ? gallery[0] : apollo15StoryMedia[apollo15SegmentMedia[c][s]]
+        const images = apollo15Galleries[c * 4 + s]
+        gallery = images
+        evidence = images ? images[0] : apollo15StoryMedia[apollo15SegmentMedia[c][s]]
         if (c === 3 && s === 3) {
           evidence = undefined
           evidenceLabel = 'Apollo 15: Never Been on a Ride like this Before'
@@ -75,20 +76,24 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
         }
       }
       else if (story.id === 'apollo-16-rover') {
-        gallery = apollo16Galleries[c][s]
-        evidence = gallery ? gallery[0] : apollo16StoryMedia[apollo16SegmentMedia[c][s]]
+        const images = apollo16Galleries[c][s]
+        gallery = images
+        evidence = images ? images[0] : apollo16StoryMedia[apollo16SegmentMedia[c][s]]
         note = apollo16ChapterRecordings[c][s].note.text
       }
       else if (story.id === 'apollo-11-reflector' || story.id === 'apollo-17-rover') {
         const moon = moonRecordings[story.id === 'apollo-11-reflector' ? '11' : '17'][c][s]
         note = moon.review; audioHold = story.id === 'apollo-11-reflector' && moon.playback === 'review-required' ? moon.review : undefined
         if (story.id === 'apollo-11-reflector') {
-          gallery = apollo11Galleries[apollo11GalleryOffsets[c] + s]
-          evidence = gallery?.[0]
+          const images = apollo11Galleries[apollo11GalleryOffsets[c] + s]
+          gallery = images
+          evidence = images?.[0]
         }
         else {
-          gallery = apollo17Galleries[c][s]
-          evidence = gallery?.[0]
+          const images = apollo17Galleries[c][s]
+          const journeyVideo = c === 1 ? apollo17JourneyVideos[s] : undefined
+          gallery = journeyVideo ? [...(images ?? []), journeyVideo] : images
+          evidence = images?.[0]
         }
       } else if (isMarsStory(story.id)) {
         const record = marsEvidenceFor(story.id, c, s)
