@@ -220,14 +220,12 @@
 .mars .orbitAccent{animation-direction:reverse;animation-duration:48s}
 .planetHalo{animation:planet-breathe 8s ease-in-out infinite}
 .mars .planetHalo{animation-delay:-4s}
-.sceneReady{animation:surface-arrive 1.25s cubic-bezier(.16,.8,.3,1) both}
 .gateway:hover .orbitAccent,.gateway:focus-within .orbitAccent{opacity:1;border-color:color-mix(in srgb,var(--glow) 32%,transparent)}
-.still .planetStage,.still .planetHalo,.still .orbitAccent,.still .sceneReady{animation:none;will-change:auto}
+.still .planetStage,.still .planetHalo,.still .orbitAccent{animation:none;will-change:auto}
 @keyframes planet-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes planet-breathe{0%,100%{opacity:.5}50%{opacity:.8}}
 @keyframes orbit-guide{to{transform:rotate(360deg)}}
-@keyframes surface-arrive{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:blur(0)}}
-@media(prefers-reduced-motion:reduce){.planetMotion,.planetStage,.planetHalo,.orbitAccent,.sceneReady{animation:none!important;transition:none!important;will-change:auto}}
+@media(prefers-reduced-motion:reduce){.planetMotion,.planetStage,.planetHalo,.orbitAccent{animation:none!important;transition:none!important;will-change:auto}}
 .gateway:hover .planetStage,.gateway:focus-within .planetStage,.touchInteractive .planetStage{animation-play-state:paused}
 
 @media(max-width:389px){.planetMotion{grid-column:1;grid-row:1 / 3}}

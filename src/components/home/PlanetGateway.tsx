@@ -31,7 +31,11 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
   const [touchActive, setTouchActive] = useState(false)
   const [sceneReady,setSceneReady]=useState(false)
   const ready=useCallback(()=>setSceneReady(true),[])
-  const failed=useCallback(()=>setSceneReady(false),[])
+  const [sceneFailed, setSceneFailed] = useState(false)
+  const failed = useCallback(() => {
+    setSceneReady(false)
+    setSceneFailed(true)
+  }, [])
   const name = planet === 'moon' ? 'Moon' : 'Mars'
   const sceneActive = webgl && visible && documentVisible
 
@@ -45,7 +49,7 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
   }, [])
 
   useEffect(() => {
-    if (!sceneActive) { setTouchActive(false); setSceneReady(false) }
+    if (!sceneActive) { setTouchActive(false); setSceneReady(false); setSceneFailed(false) }
   }, [sceneActive])
 
   return <article
@@ -67,7 +71,7 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
         <div className={styles.planetPoster} aria-hidden="true" hidden={sceneActive&&sceneReady}>
           {planet==='mars'?<img src="/images/mars-nasa-poster.jpg" alt="" width="512" height="512" />:<><img src="/nasa-fallback/moon/west.jpg" alt="" width="256" height="256" /><img src="/nasa-fallback/moon/east.jpg" alt="" width="256" height="256" /></>}
         </div>
-        {sceneActive && <div className={`${styles.scene} ${sceneReady?styles.sceneReady:''}`}>
+        {sceneActive && <div className={styles.scene} style={{ visibility: sceneReady ? 'visible' : 'hidden' }}>
           <PreviewBoundary onError={failed}><Suspense fallback={null}><PlanetScene planet={planet} compact onReady={ready} /></Suspense></PreviewBoundary>
         </div>}
         <div className={styles.planetRim} aria-hidden="true" />
@@ -77,9 +81,9 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
       {planet === 'moon' ? <Moon aria-hidden="true" /> : <Orbit aria-hidden="true" />}
       <span>Explore {name}</span><ArrowRight aria-hidden="true" />
     </Link>
-    <span className={styles.planetHint}>{animated && webgl ? 'Drag to look around' : 'A world of stories awaits'}</span>
+    <span className={styles.planetHint}>{sceneActive && !sceneReady && !sceneFailed ? <span role="status">Loading {name} in 3D…</span> : animated && sceneReady ? 'Drag to look around' : 'A world of stories awaits'}</span>
     <div className={styles.touchControls}>
-      {sceneActive && <button
+      {sceneActive && !sceneFailed && <button
         type="button"
         className={styles.touchToggle}
         aria-label={touchActive ? `Finish interacting with ${name}` : `Rotate and zoom ${name}`}
@@ -88,7 +92,7 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
         onClick={() => { setTouchActive(active => !active); onHighlight(planet); onNarrate(planet) }}
       >{touchActive ? 'Done' : 'Rotate & zoom'}</button>}
       <span className={styles.touchHelp} id={`${planet}-touch-help`}>
-        {sceneActive ? touchActive ? 'Drag to rotate. Pinch to zoom.' : 'Tap above to interact.' : 'A world of stories awaits.'}
+        {sceneActive && !sceneFailed ? touchActive ? 'Drag to rotate. Pinch to zoom.' : 'Tap above to interact.' : 'A world of stories awaits.'}
       </span>
     </div>
   </article>

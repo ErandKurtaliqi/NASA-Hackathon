@@ -99,17 +99,17 @@
 .viewSwitch button[aria-pressed='true'] { background: #b7cee51a; color: #e7f1ff; }
 .fullscreenButton { width: 40px; height: 40px; }
 .viewerContent { order: 1; position: relative; width: 100%; display: grid; place-items: center; }
-.esriSurface { position: relative; width: 100%; height: clamp(360px, 68svh, 620px); overflow: hidden; border-radius: 16px; }
-.esriSurface :global(.esri-mars-view), .esriSurface iframe { height: 100%; min-height: 0; }
+.trekPanel { width: 100%; min-height: 320px; padding: 24px; display: grid; place-content: center; justify-items: center; gap: 14px; text-align: center; border: 1px solid var(--line); border-radius: 16px; background: #081121; color: #c8d4e9; }
+.trekPanel p { margin: 0; }
+.trekPanel a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; color: #e5f1ff; }
 .globeSurface { position: relative; width: min(100%, 70svh, 700px); aspect-ratio: 1; margin: 0 auto 8px; }
 .globeHalo { position: absolute; inset: -8%; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, transparent 56%, color-mix(in srgb, var(--glow) 16%, transparent) 61%, transparent 72%); }
 .staticGlobe { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; display: flex; background: #342c2b; box-shadow: 0 0 6px color-mix(in srgb, var(--glow) 60%, transparent), 0 0 28px color-mix(in srgb, var(--glow) 18%, transparent); }
 .staticGlobe img { width: 50%; height: 100%; object-fit: cover; }
 .staticGlobe::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at 40% 30%, transparent 20%, #03071144 60%, #01020bd9 99%); box-shadow: inset 4px 1px 12px #e3c4a737, inset -12px -5px 28px #0009; }
-.marsPoster { background: transparent; transition: opacity 180ms ease-out; }
-.marsPoster img { width: 100%; }
-.marsPoster::after { content: none; }
-@media (prefers-reduced-motion: reduce) { .marsPoster { transition: none; } }
+.staticGlobe img.marsPoster { width: 100%; }
+.staticGlobe:has(.marsPoster) { background: transparent; }
+.staticGlobe:has(.marsPoster)::after { content: none; }
 .globeScene { position: absolute; inset: -3%; }
 /* Presentation adapters only: public components, datasets, camera, and geometry are unchanged. */
 .globeScene :global(.planet-canvas) { background: transparent; }
@@ -121,6 +121,10 @@
 .previewNotice { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 330px; padding: 9px; border-radius: 12px; background: #050a16d9; color: #b4c7e2; font-size: 10px; line-height: 1.6; text-align: center; }
 .loadingView { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 13px; padding: 20px; color: #bdcbe0; font-size: 12px; text-align: center; }
 .loadingView svg { width: 25px; color: var(--accent); }
+.globeSurface .loadingView { inset: auto auto 8px 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; width: max-content; max-width: 90%; padding: 8px 13px; border-radius: 20px; background: #050a16ed; color: #e5f1ff; }
+.globeSurface .loadingView svg { width: 17px; height: 17px; animation: planetLoading 1.6s linear infinite; }
+@keyframes planetLoading { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .globeSurface .loadingView svg { animation: none; } }
 .viewError { position: absolute; inset: 20%; display: grid; place-content: center; justify-items: center; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 18px; color: #c8d4e9; background: #071020f2; text-align: center; font-size: 13px; line-height: 1.7; }
 .viewError p { margin: 0; }
 .viewError button, .viewError a { padding: 11px; min-height: 44px; border: 1px solid #b1d6ff5c; border-radius: 10px; background: #1b2c46; color: #e5f1ff; font-size: 12px; }

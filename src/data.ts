@@ -2,7 +2,8 @@ import type { HardwareProfile, MissionMarker, Story } from './types'
 
 export const sources = {
   marsVisual: {label:'NASA/JPL — Mars 3D model and visual texture',url:'https://science.nasa.gov/resource/planet-mars-3d-model/'},
-  esriMars: {label:'Esri — Explore Mars: 3D terrain and rover locations',url:'https://explore-mars.esri.com/'},
+  marsTrekExplorer: { label: 'NASA/JPL — Mars Trek', url: 'https://trek.nasa.gov/mars/' },
+  perseveranceLocation: { label: 'NASA Science — Where is Perseverance?', url: 'https://science.nasa.gov/resource/where-is-perseverance-location-map/' },
   perseverance: { label: 'NASA Science — Perseverance', url: 'https://science.nasa.gov/mission/mars-2020-perseverance/' },
   objectives: { label: 'NASA Science — Science Objectives', url: 'https://science.nasa.gov/mission/mars-2020-perseverance/science-objectives/' },
   instruments: { label: 'NASA Science — Perseverance Instruments', url: 'https://science.nasa.gov/mission/mars-2020-perseverance/science-instruments/' },

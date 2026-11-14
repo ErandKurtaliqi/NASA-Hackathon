@@ -21,9 +21,9 @@ async function bundle(contents) {
   return module.exports
 }
 
-test('master GPU, planetary globe, animation, model, challenge and narration implementations remain byte identical', () => {
-  for (const path of ['src/components/PlanetScene.tsx','src/components/PlanetEffects.tsx',
-    'src/components/RoverScene.tsx','src/components/LunarRoverScene.tsx','src/components/EsriMarsView.tsx',
+test('master GPU effects, rover models, animation, challenge and narration implementations remain byte identical', () => {
+  for (const path of ['src/components/PlanetEffects.tsx',
+    'src/components/RoverScene.tsx','src/components/LunarRoverScene.tsx',
     'src/components/MissionAnimations.tsx','src/components/home/HomeEducation.tsx','src/components/rover/CinematicScene.tsx','src/components/rover/NarrationDock.tsx',
     'src/components/rover/RoverChallenge.tsx','src/components/rover/roverExperience.css','src/apollo15Narration.ts']) {
     assert.equal(beforeAllBranches(source(path)), git('show', `${master}:${path}`), path)
@@ -91,10 +91,13 @@ test('master and documentary catalogs retain separate mission data with a single
   const ids = api.explorerHardware.map(h => api.getExplorerStoryEntry(h)?.story.id).filter(Boolean)
   assert.equal(new Set(ids).size, 8)
   assert.ok(!ids.includes('follow-perseverance'))
-  assert.ok(api.sources.esriMars && api.sources.marsVisual)
+  assert.equal(api.sources.marsTrekExplorer.url, 'https://trek.nasa.gov/mars/')
+  assert.ok(api.sources.marsVisual)
   const masterData = await bundle(git('show', `${master}:src/data.ts`).replace("import type { HardwareProfile, MissionMarker, Story } from './types'", ''))
   for (const marker of masterData.markers) assert.deepEqual(api.markers.find(row => row.id === marker.id), marker)
-  for (const [key, value] of Object.entries(masterData.sources)) assert.deepEqual(api.sources[key], value)
+  for (const [key, value] of Object.entries(masterData.sources)) {
+    if (key !== 'esriMars') assert.deepEqual(api.sources[key], value)
+  }
 })
 
 const key = 'beyond-earth-progress'

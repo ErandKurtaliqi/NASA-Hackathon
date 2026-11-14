@@ -58,12 +58,12 @@
 
 .chapter-reading{margin-bottom:32px;max-width:960px}.chapter-reading h2{font-size:26px}.chapter-reading article{padding:22px;margin:16px 0;border:1px solid var(--line);background:#080b14;border-radius:12px}.chapter-reading h3{color:var(--cyan);margin:0 0 12px}.chapter-reading p{font-size:16px;line-height:1.8;color:#c4cbd7}.recorded-narration{margin:16px 0}.recorded-narration audio{display:block;width:100%;max-width:540px}.reading-sources{display:flex;flex-wrap:wrap;gap:16px}.reading-sources a{font-size:12px;color:var(--cyan);display:inline-flex;align-items:center;gap:5px}@media(max-width:600px){.chapter-reading article{padding:16px}.chapter-reading p{font-size:15px}}
 
-.esri-mars-view{position:relative;width:100%;height:100%;min-height:600px;background:#090b12}.esri-mars-view iframe{border:0;width:100%;height:100%;min-height:600px;display:block}.esri-map-help{position:absolute;bottom:28px;left:16px;right:16px;padding:12px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;background:rgba(5,7,17,.92);border:1px solid var(--line);color:#dbe5f2;font-size:12px;pointer-events:auto}.esri-map-help a{display:inline-flex;gap:8px;align-items:center;color:var(--cyan)}.esri-map-help small{flex-basis:100%;font-size:11px;line-height:1.5;color:#b0bbcc}.mode-toggle{flex-wrap:wrap}.esri-mars-view+.visual-note{pointer-events:none}@media(max-width:600px){.mode-toggle button{font-size:8px;padding:9px 7px}.esri-map-help{left:8px;right:8px;font-size:11px}}
+.mode-toggle{flex-wrap:wrap}@media(max-width:600px){.mode-toggle button{font-size:8px;padding:9px 7px}}
 
 /* Transparent WebGL layers preserve the surrounding space at every zoom level. */
 .planet-canvas{background:radial-gradient(ellipse at 49% 85%,#04122e 0,transparent 57%),#02040b}.planet-canvas.compact{background:transparent}
 
-.planet-canvas:focus-visible{outline:2px solid #9cdbf6;outline-offset:4px}.planet-canvas canvas{cursor:grab}.planet-canvas canvas:active{cursor:grabbing}.planet-canvas:not(.compact).planet-surface-ready canvas{animation:planet-scene-reveal 1s ease-out both}.planet-reduced-motion canvas{animation:none!important}@keyframes planet-scene-reveal{from{opacity:.1}to{opacity:1}}@media(prefers-reduced-motion:reduce){.planet-canvas canvas{animation:none!important}}
+.planet-canvas:focus-visible{outline:2px solid #9cdbf6;outline-offset:4px}.planet-canvas canvas{cursor:grab}.planet-canvas canvas:active{cursor:grabbing}
 
 .hardware-planet-group h2 { padding: 12px 24px; margin: 0; color: #a6c7da; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 @media (max-width: 900px) {

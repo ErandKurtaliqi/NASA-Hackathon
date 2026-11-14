@@ -89,11 +89,11 @@ Each supported rover or spacecraft can plug into the same story schema with firs
 - `/story/apollo-17-rover/1`
 - The app has no backend; progress is stored only in the current browser.
 
-## Mars visual colour and Esri exploration
+## Mars visual colour and NASA Trek
 
 The Mars globe uses the original model, materials and UV mapping from NASA/JPL-Caltech's [Mars GLB](https://solarsystem.nasa.gov/gltf_embed/2372/), stored locally as `public/models/mars-nasa.glb`. Neutral white illumination replaces the former warm tint. This is a visual texture, not a claim of calibrated true colour. NASA's MOLA colour hillshade remains in Map View as a topographic visualization; its colours must not be interpreted as surface colour.
 
-The Mars explorer includes an on-demand Esri 3D Map tab embedding [Esri Explore Mars](https://explore-mars.esri.com/), with attribution and a direct external link if embedding or network access fails. Its Locations tool provides rover exploration. Internal pins retain their published landing-site meaning and are not presented as current rover positions. Moon imagery is unchanged. External services require internet access.
+The NASA Mars Trek tab links to the [official terrain and 3D explorer](https://trek.nasa.gov/mars/) and the [Perseverance location map](https://science.nasa.gov/resource/where-is-perseverance-location-map/). Mars Trek opens separately because its frame policy restricts embedding. Map View pins show published landing sites and scientific features.
 
 ## Cinematic rover stories
 

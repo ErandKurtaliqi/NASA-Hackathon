@@ -115,7 +115,9 @@ test('master Perseverance and optional lunar 3D expeditions stay reachable witho
   const guide = await render('/discover')
   assert.ok(guide.includes('Science is a story.') && guide.includes('Perseverance tells') && guide.includes('Three clues. One ancient world.'))
   const mars = await render('/explore/mars'), moon = await render('/explore/moon')
-  assert.ok(mars.includes('Esri 3D map') && !moon.includes('Esri 3D map'))
+  assert.ok(mars.includes('NASA Mars Trek') && !moon.includes('NASA Mars Trek'))
+  assert.match(mars, /Loading Mars in 3D/)
+  assert.match(moon, /Loading the Moon in 3D/)
   for (const path of ['/inspection/__proto__/1','/inspection/constructor/1','/inspection/unknown/1']) {
     const html = await render(path)
     assert.ok(html.includes('Mission not found') && !html.includes('rover-documentary'))

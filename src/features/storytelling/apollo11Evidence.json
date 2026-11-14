@@ -6,10 +6,21 @@
       "caption": "The Apollo 11 emblem shows an eagle above the lunar surface.",
       "alt": "Apollo 11 mission insignia",
       "credit": "NASA",
-      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "sourceUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgY5YD4JVQtS0Die5JMkg9u6JL8321id3RWcMyEn_LSA&s=10",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgY5YD4JVQtS0Die5JMkg9u6JL8321id3RWcMyEn_LSA&s=10",
       "width": 554,
       "height": 554
+    },
+    {
+      "id": "apollo11-meet-smithsonian",
+      "title": "Apollo laser-ranging retroreflector",
+      "caption": "The Smithsonian’s view of the Apollo retroreflector array.",
+      "alt": "Apollo laser-ranging retroreflector",
+      "credit": "Smithsonian National Air and Space Museum",
+      "sourceUrl": "https://share.google/jV9XPAExQBUSpHaTH",
+      "src": "https://airandspace.si.edu/sites/default/files/images/callouts/NASM2020-00364_small.jpg",
+      "width": 8272,
+      "height": 6200
     }
   ],
   [
@@ -34,6 +45,39 @@
       "src": "https://www.nasa.gov/wp-content/uploads/2019/04/apollo_11_csm_sla_mating_apr_11_1969_s69-32369.jpg",
       "width": 985,
       "height": 1230
+    },
+    {
+      "id": "apollo11-saturn-stacking",
+      "title": "Apollo 11 spacecraft stacking",
+      "caption": "The Apollo 11 spacecraft is stacked on its Saturn V launch vehicle.",
+      "alt": "Apollo 11 spacecraft stacking",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2019/04/apollo_11_stacking_w_saturn_v_apr_14_1969_s69-32389.jpg",
+      "width": 985,
+      "height": 1241
+    },
+    {
+      "id": "apollo11-eva-training",
+      "title": "Lunar surface training",
+      "caption": "The Apollo 11 crew rehearses lunar surface work before launch.",
+      "alt": "Lunar surface training",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/mission/apollo-11/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2019/04/apollo_11_lunar_surface_eva_training_bldg_9_apr_18_1969_s69-32249.jpg",
+      "width": 985,
+      "height": 652
+    },
+    {
+      "id": "apollo11-retroreflector-prism",
+      "title": "Corner-cube prism",
+      "caption": "The array uses corner-cube prisms to send laser light back toward its source.",
+      "alt": "Corner-cube prism",
+      "credit": "NASA/JPL-Caltech",
+      "sourceUrl": "https://www.jpl.nasa.gov/news/the-apollo-experiment-that-keeps-on-giving/",
+      "src": "https://d2pn8kiwq2w21t.cloudfront.net/images/imagesretroprism-browse.width-640.jpg",
+      "width": 500,
+      "height": 375
     }
   ],
   [
@@ -130,6 +174,39 @@
       "src": "https://images-assets.nasa.gov/image/jsc2008e040725/jsc2008e040725~orig.jpg",
       "width": 15634,
       "height": 4460
+    },
+    {
+      "id": "apollo11-land4",
+      "title": "Buzz Aldrin beside the flag",
+      "caption": "Aldrin stands beside the deployed U.S. flag at Tranquility Base.",
+      "alt": "Buzz Aldrin beside the flag",
+      "credit": "NASA / Neil Armstrong",
+      "sourceUrl": "https://www.nasa.gov/image-article/apollo-11-moonwalk/",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/05/as11-40-5875large.jpg?w=990",
+      "width": 990,
+      "height": 1024
+    },
+    {
+      "id": "apollo11-land5",
+      "title": "Eagle at Tranquility Base",
+      "caption": "A surface photograph shows the Apollo 11 lunar module at its landing site.",
+      "alt": "Eagle at Tranquility Base",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/history/alsj/a11/a11.lrrr.html",
+      "src": "https://images-assets.nasa.gov/image/as11-40-5927/as11-40-5927~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint",
+      "width": 1920,
+      "height": 1920
+    },
+    {
+      "id": "apollo11-land6",
+      "title": "Buzz Aldrin on the Moon",
+      "caption": "Aldrin stands on the lunar surface during the Apollo 11 moonwalk.",
+      "alt": "Buzz Aldrin on the Moon",
+      "credit": "NASA / Neil Armstrong",
+      "sourceUrl": "https://www.nasa.gov/history/alsj/a11/a11.lrrr.html",
+      "src": "https://www.nasa.gov/wp-content/uploads/2023/06/337294main-pg62-as11-40-5903-full.jpg?w=975",
+      "width": 975,
+      "height": 1023
     }
   ],
   [
@@ -167,6 +244,17 @@
       "src": "https://images-assets.nasa.gov/image/as11-40-5948/as11-40-5948~orig.jpg",
       "width": 3904,
       "height": 3904
+    },
+    {
+      "id": "apollo11-apollo14-reflector",
+      "title": "Apollo 14 reflector on the Moon",
+      "caption": "The cover photo from the Space.com article shows the reflector deployed by Apollo 14.",
+      "alt": "Apollo 14 reflector on the Moon",
+      "credit": "NASA via Space.com",
+      "sourceUrl": "https://www.space.com/nasa-jumping-on-international-moon-landers.html",
+      "src": "https://cdn.mos.cms.futurecdn.net/xe2XEEbUyXFFL3oihxXG6F.jpg",
+      "width": 904,
+      "height": 902
     }
   ],
   [
@@ -206,9 +294,32 @@
       "src": "https://images-assets.nasa.gov/image/as11-44-6665/as11-44-6665~orig.jpg",
       "width": 4282,
       "height": 4282
+    },
+    {
+      "id": "apollo11-ranging-diagram",
+      "title": "Measuring the distance to the Moon",
+      "caption": "The diagram traces laser pulses sent from Earth and reflected from the lunar surface.",
+      "alt": "Measuring the distance to the Moon",
+      "credit": "Supplied illustration via Medium",
+      "sourceUrl": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*-Wd3YyQ_cVmOmvO41EaBWw.png",
+      "src": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*-Wd3YyQ_cVmOmvO41EaBWw.png",
+      "kind": "Illustration · not a photograph",
+      "width": 1100,
+      "height": 498
     }
   ],
   [
+    {
+      "id": "apollo11-rise0",
+      "title": "Apollo 11 bootprint",
+      "caption": "Buzz Aldrin photographed this bootprint during the moonwalk, before Eagle departed.",
+      "alt": "An Apollo 11 bootprint in the lunar soil",
+      "credit": "NASA / Buzz Aldrin",
+      "sourceUrl": "https://science.nasa.gov/resource/apollo-11-bootprint/",
+      "src": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/a/as11-40-5878_detail.jpg?w=1274&h=1280&fit=clip&crop=faces%2Cfocalpoint",
+      "width": 1274,
+      "height": 1280
+    },
     {
       "id": "apollo11-rise1",
       "title": "Eagle in lunar orbit",
@@ -267,7 +378,30 @@
       "src": "/images/apollo11-evidence/legacy-in-light.jpg",
       "width": 1282,
       "height": 722
+    },
+    {
+      "id": "apollo11-legacy-landing-site",
+      "title": "Apollo 11 site from lunar orbit",
+      "caption": "An annotated Lunar Reconnaissance Orbiter image locates the Apollo 11 landing site and West Crater.",
+      "alt": "Apollo 11 site from lunar orbit",
+      "credit": "NASA / GSFC / Arizona State University",
+      "sourceUrl": "https://lroc.im-ldi.com/images/484",
+      "src": "https://images-assets.nasa.gov/image/PIA12925/PIA12925~orig.jpg",
+      "width": 1400,
+      "height": 1400
     }
   ],
-  []
+  [
+    {
+      "id": "apollo11-laser-ranging",
+      "title": "Laser ranging from Earth",
+      "caption": "An observatory aims a laser toward the Moon to measure the Earth–Moon distance.",
+      "alt": "Laser ranging from Earth",
+      "credit": "NASA",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2020/08/laser-ranging.jpg",
+      "src": "https://www.nasa.gov/wp-content/uploads/2020/08/laser-ranging.jpg",
+      "width": 1041,
+      "height": 781
+    }
+  ]
 ]

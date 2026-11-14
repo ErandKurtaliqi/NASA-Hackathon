@@ -29,7 +29,7 @@ export function terrainId(id: string) { return id.startsWith('apollo-') ? `apoll
 function evidenceGalleries(rows: readonly (typeof apollo11Evidence[number] | null)[]) {
   return rows.map(entries => entries?.map((image): StoryEvidenceMedia => ({
     ...image,
-    kind: (image.src.includes('lrv_deployment_art') || image.id === 'apollo17-battery' || image.src.startsWith('/images/apollo11-evidence/')) ? 'Illustration · not a photograph' : 'Photograph',
+    kind: (image.kind === 'Illustration · not a photograph' || image.src.includes('lrv_deployment_art') || image.id === 'apollo17-battery' || image.src.startsWith('/images/apollo11-evidence/')) ? 'Illustration · not a photograph' : 'Photograph',
     originalUrl: image.src.startsWith('/images/') ? image.sourceUrl : image.src,
     srcSet: '',
     verifiedOn: '2026-11-13',

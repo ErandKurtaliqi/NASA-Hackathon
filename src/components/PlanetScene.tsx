@@ -12,20 +12,34 @@ const INITIAL_CAMERA_POSITION: [number, number, number] = [0, .15, 5.6]
 const MIN_CAMERA_DISTANCE = 3.2
 const MAX_CAMERA_DISTANCE = Math.hypot(...INITIAL_CAMERA_POSITION)
 
+type SurfaceState = 'loading' | 'live' | 'fallback' | 'failed'
+
 type CameraCommand = { type: 'in' | 'out' | 'reset' | 'left' | 'right' | 'up' | 'down'; nonce: number }
 const textureCache = new Map<PlanetId, THREE.CanvasTexture>()
 
 function loadImage(url: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image()
+    const finish = () => {
+      window.clearTimeout(timeout)
+      image.onload = null
+      image.onerror = null
+    }
+    const fail = () => {
+      finish()
+      image.removeAttribute('src')
+      reject(new Error('Unable to load planetary imagery'))
+    }
+    const timeout = window.setTimeout(fail, 8000)
     image.crossOrigin = 'anonymous'
-    image.onload = () => resolve(image)
-    image.onerror = reject
+    image.onload = () => { finish(); resolve(image) }
+    image.onerror = fail
     image.src = url
   })
 }
 
-function usePlanetTexture(planet: PlanetId, onStatus: (state: 'loading' | 'live' | 'fallback') => void) {
+function usePlanetTexture(planet: PlanetId, onStatus: (state: SurfaceState) => void) {
+  const invalidate = useThree(state => state.invalidate)
   const texture = useMemo(() => {
     const cached = textureCache.get(planet)
     if (cached) return cached
@@ -41,49 +55,64 @@ function usePlanetTexture(planet: PlanetId, onStatus: (state: 'loading' | 'live'
   }, [planet])
 
   useEffect(() => {
+    const cachedState = texture.userData.surfaceState
+    if (cachedState === 'live') {
+      onStatus('live')
+      return
+    }
     const canvas = texture.image as HTMLCanvasElement
     const context = canvas.getContext('2d')
-    if (!context) return
+    if (!context) {
+      onStatus('failed')
+      return
+    }
+
     let cancelled = false
     const config = planetaryLayers[planet]
-    if(texture.userData.surfaceState==='live'){onStatus('live');return}
-    let tilesApplied=false
-    onStatus('loading')
-
-
-    Promise.allSettled([loadImage(config.fallbackWest), loadImage(config.fallbackEast)]).then(results => {
-      if (cancelled||tilesApplied) return
-      results.forEach((result, index) => {
-        if (result.status === 'fulfilled') context.drawImage(result.value, index * 1024, 0, 1024, 1024)
+    const base = cachedState === 'fallback' ? Promise.resolve(true) :
+      Promise.allSettled([loadImage(config.fallbackWest), loadImage(config.fallbackEast)]).then(results => {
+        const [west, east] = results
+        if (cancelled || west.status !== 'fulfilled' || east.status !== 'fulfilled') return false
+        context.drawImage(west.value, 0, 0, 1024, 1024)
+        context.drawImage(east.value, 1024, 0, 1024, 1024)
+        texture.userData.surfaceState = 'fallback'
+        texture.needsUpdate = true
+        onStatus('fallback')
+        invalidate()
+        return true
       })
-      texture.needsUpdate = true
-      onStatus('fallback')
-    })
+    if (cachedState === 'fallback') onStatus('fallback')
 
-    const zoom = 2
-    const requests = Array.from({ length: 4 }, (_, y) => Array.from({ length: 8 }, (_, x) => ({ x, y }))).flat()
-    Promise.allSettled(requests.map(async ({ x, y }) => ({ x, y, image: await loadImage(textureTileUrl(planet, zoom, y, x)) }))).then(results => {
+    const tiles = Array.from({ length: 32 }, (_, index) => {
+      const x = index % 8
+      const y = Math.floor(index / 8)
+      return loadImage(textureTileUrl(planet, 2, y, x)).then(image => ({ x, y, image }))
+    })
+    Promise.all([base, Promise.allSettled(tiles)]).then(([hasBase, results]) => {
       if (cancelled) return
-      let loaded = 0
-      results.forEach(result => {
-        if (result.status !== 'fulfilled') return
+      const complete = results.every(result => result.status === 'fulfilled')
+      if (!hasBase && !complete) {
+        onStatus('failed')
+        return
+      }
+      for (const result of results) {
+        if (result.status !== 'fulfilled') continue
         const { x, y, image } = result.value
         context.drawImage(image, x * 256, y * 256, 256, 256)
-        loaded += 1
-      })
-      if(loaded===0)return
-      tilesApplied=true
-      texture.userData.surfaceState=loaded===requests.length?'live':'fallback'
+      }
+      const state = complete ? 'live' : 'fallback'
+      texture.userData.surfaceState = state
       texture.needsUpdate = true
-      onStatus(loaded === requests.length ? 'live' : 'fallback')
+      onStatus(state)
+      invalidate()
     })
     return () => { cancelled = true }
-  }, [planet, texture, onStatus])
+  }, [planet, texture, onStatus, invalidate])
 
   return texture
 }
 
-function Planet({ planet, onInteract, onTextureState }: { planet: PlanetId; onInteract?: () => void; onTextureState: (state: 'loading' | 'live' | 'fallback') => void }) {
+function Planet({ planet, onInteract, onTextureState }: { planet: PlanetId; onInteract?: () => void; onTextureState: (state: SurfaceState) => void }) {
   const texture = usePlanetTexture(planet, onTextureState)
 
   return <mesh>
@@ -97,6 +126,24 @@ function NasaMars({onTextureState}:{onTextureState:(state:'loading'|'live'|'fall
   const model=useMemo(()=>{const copy=scene.clone(true);const box=new THREE.Box3().setFromObject(copy);const size=box.getSize(new THREE.Vector3());const center=box.getCenter(new THREE.Vector3());const scale=4/Math.max(size.x,size.y,size.z);copy.scale.multiplyScalar(scale);copy.position.sub(center.multiplyScalar(scale));return copy},[scene])
   useEffect(()=>onTextureState('live'),[onTextureState])
   return <group><primitive object={model}/><MarsLimb/></group>
+}
+
+function SceneReady({ onReady }: { onReady: () => void }) {
+  const frame = useRef<number | null>(null)
+  const invalidate = useThree(state => state.invalidate)
+  useEffect(() => {
+    invalidate()
+    return () => {
+      if (frame.current !== null) cancelAnimationFrame(frame.current)
+      frame.current = null
+    }
+  }, [invalidate])
+
+  useFrame(() => {
+    // React Three Fiber draws after useFrame. Reveal on the next browser frame.
+    if (frame.current === null) frame.current = requestAnimationFrame(onReady)
+  })
+  return null
 }
 
 function CameraRig({command,reduced,suspendUntil}:{command:CameraCommand;reduced:boolean;suspendUntil:React.MutableRefObject<number>}){
@@ -160,18 +207,19 @@ export default function PlanetScene({ planet, compact = false, onInteract, onRea
     return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update)}
   },[])
   const [command, setCommand] = useState<CameraCommand>({ type: 'reset', nonce: 0 })
-  const [textureState, setTextureState] = useState<'loading' | 'live' | 'fallback'>('loading')
-  useEffect(()=>{if(textureState!=='loading')onReady?.()},[textureState,onReady])
+  const [textureState, setTextureState] = useState<SurfaceState>('loading')
   const issue = (type: CameraCommand['type']) => {suspendUntil.current=performance.now()+1200;setCommand({ type, nonce: performance.now() })}
-  const stableStatus = useMemo(() => (state: 'loading' | 'live' | 'fallback') => setTextureState(state), [])
   const config = planetaryLayers[planet]
+  if (textureState === 'failed') throw new Error('Planetary imagery is unavailable')
+  const surfaceReady = textureState === 'live' || textureState === 'fallback'
 
-  return <div ref={root} tabIndex={0} role="group" aria-description="Drag to orbit. Scroll or pinch to zoom. Arrow keys rotate, plus and minus zoom, and R resets the camera." onPointerDown={e=>{if(e.target instanceof HTMLCanvasElement)root.current?.focus({preventScroll:true})}} onKeyDown={e=>{const keys:Record<string,CameraCommand['type']>={'+':'in','=':'in','-':'out',ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',r:'reset',R:'reset'};if(keys[e.key]){e.preventDefault();issue(keys[e.key])}}} className={`${compact?'planet-canvas compact':'planet-canvas'} ${textureState!=='loading'?'planet-surface-ready':''} ${reduced?'planet-reduced-motion':''}`} aria-label={`Interactive 3D ${planet} globe using ${planet==='mars'?'NASA/JPL Mars visual texture':config.title}`}>
+  return <div ref={root} tabIndex={0} role="group" aria-description="Drag to orbit. Scroll or pinch to zoom. Arrow keys rotate, plus and minus zoom, and R resets the camera." onPointerDown={e=>{if(e.target instanceof HTMLCanvasElement)root.current?.focus({preventScroll:true})}} onKeyDown={e=>{const keys:Record<string,CameraCommand['type']>={'+':'in','=':'in','-':'out',ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',r:'reset',R:'reset'};if(keys[e.key]){e.preventDefault();issue(keys[e.key])}}} className={`${compact?'planet-canvas compact':'planet-canvas'}`} aria-label={`Interactive 3D ${planet} globe using ${planet==='mars'?'NASA/JPL Mars visual texture':config.title}`}>
     <Canvas frameloop={reduced||!visible||!pageVisible?'demand':'always'} camera={{ position: INITIAL_CAMERA_POSITION, fov: 44 }} dpr={[1, 1.7]} gl={{ alpha: true, antialias: true, outputColorSpace: THREE.SRGBColorSpace }}>
       <PlanetLighting planet={planet} reduced={reduced}/>
       <Suspense fallback={null}>
-        <PlanetMotion planet={planet} reduced={reduced} suspendUntil={suspendUntil} onInteract={onInteract}>{planet==='mars'?<NasaMars onTextureState={stableStatus}/>:<Planet planet={planet} onTextureState={stableStatus}/>}</PlanetMotion>
+        <PlanetMotion planet={planet} reduced={reduced} suspendUntil={suspendUntil} onInteract={onInteract}>{planet==='mars'?<NasaMars onTextureState={setTextureState}/>:<Planet planet={planet} onTextureState={setTextureState}/>}</PlanetMotion>
         {!compact&&<Stars radius={70} depth={35} count={1500} factor={2.4} fade speed={.18}/>}
+        {surfaceReady && onReady && <SceneReady onReady={onReady}/>}
         <CameraRig command={command} reduced={reduced} suspendUntil={suspendUntil}/>
       </Suspense>
     </Canvas>
