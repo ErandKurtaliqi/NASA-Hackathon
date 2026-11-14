@@ -4,11 +4,11 @@ import { getStoryEntry } from './storyEntry'
 import type { HardwareProfile } from '../../types'
 import type { MachineProgress } from '../../store'
 
+const moonRoster = ['apollo-11-lrrr', 'lrv-1', 'lrv-2', 'lrv']
 const marsRoster = ['ingenuity', 'sojourner', 'opportunity', 'viking-1']
 
 export const explorerHardware = [
-  ...missionHardware
-    .filter(item => item.planet === 'moon' && item.id !== 'lunar-module')
+  ...moonRoster.flatMap(id => missionHardware.filter(item => item.planet === 'moon' && item.id === id))
     .map(item => item.id === 'lrv' ? { ...item, name: 'Apollo 17 Lunar Roving Vehicle' } : item),
   ...marsRoster.flatMap(id => missionHardware.filter(item => item.planet === 'mars' && item.id === id)),
 ]

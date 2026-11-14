@@ -86,7 +86,7 @@ test('master and documentary catalogs retain separate mission data with a single
   assert.deepEqual(api.explorerHardware.filter(item => item.planet === 'mars').map(item => item.id),
     ['ingenuity', 'sojourner', 'opportunity', 'viking-1'])
   const moonRoster = api.explorerHardware.filter(item => item.planet === 'moon')
-  assert.deepEqual(moonRoster.map(item => item.id), ['apollo-11-lrrr', 'lrv', 'lrv-1', 'lrv-2'])
+  assert.deepEqual(moonRoster.map(item => item.id), ['apollo-11-lrrr', 'lrv-1', 'lrv-2', 'lrv'])
   assert.equal(moonRoster.find(item => item.id === 'lrv').name, 'Apollo 17 Lunar Roving Vehicle')
   const ids = api.explorerHardware.map(h => api.getExplorerStoryEntry(h)?.story.id).filter(Boolean)
   assert.equal(new Set(ids).size, 8)
