@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import type { StoryEvidenceMedia } from './StoryMedia'
 
 /** Keep the frame fixed while preloading and smoothly replacing current evidence. */
-export default function DocumentaryEvidence({ media: primary, gallery, video, optionalVideo, source, sourceLabel, sourceSummary }: {
+export default function DocumentaryEvidence({ media: primary, gallery, video, youtubeVideoId, optionalVideo, source, sourceLabel, sourceSummary }: {
   gallery?: readonly StoryEvidenceMedia[]
   video?: string
+  youtubeVideoId?: string
   optionalVideo?: { url: string; label: string }
   media?: StoryEvidenceMedia
   source: string
@@ -50,7 +51,16 @@ export default function DocumentaryEvidence({ media: primary, gallery, video, op
       <div>
         {shown && <img key={shown.id} src={shown.src} width={shown.width} height={shown.height} alt={shown.alt} decoding="async" />}
         {video && <video key={video} src={video} controls playsInline preload="metadata" aria-label={sourceLabel} style={{ width: '100%', height: '100%' }} />}
-        {!media && !video && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p></div>}
+        {youtubeVideoId && <iframe
+          src={'https://www.youtube.com/embed/' + encodeURIComponent(youtubeVideoId)}
+          title={sourceLabel ?? 'Mission evidence video'}
+          allow="encrypted-media; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          style={{ display: 'block', width: '100%', height: '100%', border: 0 }}
+        />}
+        {!media && !video && !youtubeVideoId && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p></div>}
         {media && !shown && <p>{failed ? 'Selected image could not load. The exact source remains available.' : 'Loading the selected evidence.'}</p>}
       </div>
       <figcaption>
@@ -65,7 +75,7 @@ export default function DocumentaryEvidence({ media: primary, gallery, video, op
         {!media && <><h3>{sourceLabel ?? 'Mission evidence record'}</h3><p>{sourceSummary ?? 'Use the exact source supplied for this narration section.'}</p></>}
         {video && <a href={video} target="_blank" rel="noreferrer">Open NASA video ↗</a>}
         {optionalVideo && <p><a href={optionalVideo.url} target="_blank" rel="noreferrer">Optional video · {optionalVideo.label} ↗</a></p>}
-        <a href={source} target="_blank" rel="noreferrer">Open this section's evidence ↗</a>
+        <a href={source} target="_blank" rel="noreferrer">{youtubeVideoId ? 'Watch on YouTube ↗' : "Open this section's evidence ↗"}</a>
       </figcaption>
     </figure>
   </div>

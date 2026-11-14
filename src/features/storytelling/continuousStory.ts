@@ -15,7 +15,7 @@ import type { StoryEvidenceMedia } from '../../components/storytelling/StoryMedi
 
 export type DocumentarySegment = {
   id: string; chapter: number; segment: number; title: string; text: string
-  audio?: string; evidence?: StoryEvidenceMedia; gallery?: readonly StoryEvidenceMedia[]; video?: string; optionalVideo?: { url: string; label: string }; evidenceLabel?: string; evidenceSummary?: string
+  audio?: string; evidence?: StoryEvidenceMedia; gallery?: readonly StoryEvidenceMedia[]; video?: string; youtubeVideoId?: string; optionalVideo?: { url: string; label: string }; evidenceLabel?: string; evidenceSummary?: string
   note?: string; audioHold?: string
   completion: 'intentional-chapter-action' | 'quiz'; source: string
 }
@@ -59,6 +59,7 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
       let evidence: StoryEvidenceMedia | undefined, note: string | undefined, audioHold: string | undefined
       let optionalVideo = story.id === 'apollo-17-rover' ? apollo17Videos[`${c}:${s}`] : undefined
       let video: string | undefined
+      let youtubeVideoId: string | undefined
       let gallery: readonly StoryEvidenceMedia[] | undefined
       let evidenceLabel: string | undefined, evidenceSummary: string | undefined
       let source = story.id === 'apollo-16-rover' ? apollo16ChapterRecordings[c][s].note.source.url : story.sources[0].url
@@ -68,7 +69,8 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
         if (c === 3 && s === 3) {
           evidence = undefined
           evidenceLabel = 'Apollo 15: Never Been on a Ride like this Before'
-          evidenceSummary = 'Watch NASA’s Apollo 15 footage on YouTube.'
+          evidenceSummary = 'NASA’s Apollo 15 mission footage.'
+          youtubeVideoId = '1Mqsd0ru_pc'
           source = 'https://youtu.be/1Mqsd0ru_pc?si=W3z5PPmRZB5XqIXZ'
         }
       }
@@ -96,7 +98,7 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
       }
       const text = 'readingText' in track ? String(track.readingText) : track.text
       return { id: `${story.id}:${chapter.id}:${s + 1}`, chapter: c, segment: s, title: track.title, text,
-        audio: track.audio, evidence, gallery, video, optionalVideo, evidenceLabel, evidenceSummary, note, audioHold,
+        audio: track.audio, evidence, gallery, video, youtubeVideoId, optionalVideo, evidenceLabel, evidenceSummary, note, audioHold,
         completion: 'intentional-chapter-action' as const, source }
     })
   })
