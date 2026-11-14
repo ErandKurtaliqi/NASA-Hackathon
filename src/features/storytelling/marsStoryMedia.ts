@@ -146,27 +146,49 @@ const opportunity: readonly MarsSegmentEvidence[][] = [
 
 const viking: readonly MarsSegmentEvidence[][] = [
   [
-    image('viking-1-1', 'Viking 1 on Mars', 'The supplied NASA mission image introduces the stationary Viking 1 lander.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/viking/viking-%E2%80%94-50-years-on-mars-poster/Viking_50_Desktop_Background_1920x1080.jpg?w=900&h=900&fit=crop&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/viking-1/', 'Illustration · not a photograph'),
-    image('viking-1-2', 'First close surface view', 'The supplied Viking 1 image shows rocks, soil and a lander footpad from its fixed landing site.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/2305_Mars-Viking1-Lander-1st-Image-PIA00381-full2.jpg?w=1439&h=512&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/viking-1/'),
-    image('viking-1-3', 'Viking orbiter partner', 'The supplied NASA image represents the orbital partner described in this section.', 'https://science.nasa.gov/wp-content/uploads/2024/03/261003main-02-viking1-full.jpg?resize=900,675', 'https://nssdc.gsfc.nasa.gov/planetary/viking.html', 'Illustration · not a photograph', 'NASA'),
+    withEvidenceGallery(image('viking-1-1', 'Viking 1 on Mars', 'The supplied NASA mission image introduces the stationary Viking 1 lander.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/viking/viking-%E2%80%94-50-years-on-mars-poster/Viking_50_Desktop_Background_1920x1080.jpg?w=900&h=900&fit=crop&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/viking-1/', 'Illustration · not a photograph'), primary => [
+      primary.media,
+      image("viking-proof-test", "Viking lander proof-test article", "The Smithsonian’s test article shows the Viking lander hardware.", "https://upload.wikimedia.org/wikipedia/commons/b/bd/NASM-A19790215000-NASM2016-02690.jpg", "https://airandspace.si.edu/collection-objects/lander-mars-viking-proof-test-article/nasm_A19790215000", "Photograph", "Mark Avino / Smithsonian National Air and Space Museum").media,
+    ]),
+    withEvidenceGallery(image('viking-1-2', 'First close surface view', 'The supplied Viking 1 image shows rocks, soil and a lander footpad from its fixed landing site.', 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/2305_Mars-Viking1-Lander-1st-Image-PIA00381-full2.jpg?w=1439&h=512&fit=clip&crop=faces%2Cfocalpoint', 'https://science.nasa.gov/mission/viking-1/'), primary => [
+      primary.media,
+      image("viking-lander-schematic", "Viking lander schematic", "The diagram shows the instruments Viking used from its fixed landing site.", "https://www.nasa.gov/wp-content/uploads/2020/08/viking_lander_schematic.jpg", "https://science.nasa.gov/mission/viking-1/", "Illustration · not a photograph", "NASA").media,
+    ]),
+    withEvidenceGallery(image('viking-1-3', 'Viking orbiter partner', 'The supplied NASA image represents the orbital partner described in this section.', 'https://science.nasa.gov/wp-content/uploads/2024/03/261003main-02-viking1-full.jpg?resize=900,675', 'https://nssdc.gsfc.nasa.gov/planetary/viking.html', 'Illustration · not a photograph', 'NASA'), primary => [
+      primary.media,
+      image("viking-orbiter-visual", "Viking spacecraft overview", "A NASA visual shows the Viking spacecraft.", "https://science.nasa.gov/wp-content/uploads/2024/03/viking-vis.jpg", "https://nssdc.gsfc.nasa.gov/planetary/viking.html", "Illustration · not a photograph", "NASA").media,
+    ]),
   ],
   [
-    image('viking-2-1', 'Viking 1 launch', 'The supplied launch photograph accompanies the August 20, 1975 departure.', 'https://www.nasa.gov/wp-content/uploads/2025/08/4940404265-47186ca7a3-o.jpg', 'https://science.nasa.gov/mission/viking-1/'),
-    source('Viking landing-site selection', 'The supplied NASA mission history explains why the planned July 4 landing was delayed for a safer site.', 'https://science.nasa.gov/mission/viking-1/'),
-    { ...source('Viking 1 touchdown film', 'NASA’s mission film accompanies the July 20, 1976 landing story.', 'https://science.nasa.gov/mission/viking-1/'), video: 'https://science.nasa.gov/wp-content/uploads/2024/07/jpl-19760131-vikings-0001-src001968-viking-mission-to-mars-trimmed.mp4' },
+    withEvidenceGallery(image('viking-2-1', 'Viking 1 launch', 'The supplied launch photograph accompanies the August 20, 1975 departure.', 'https://www.nasa.gov/wp-content/uploads/2025/08/4940404265-47186ca7a3-o.jpg', 'https://science.nasa.gov/mission/viking-1/'), primary => [
+      primary.media,
+      image("viking-viking-2-launch", "Viking 2 launch", "This companion photograph shows Viking 2 launching on September 9, 1975.", "https://www.nasa.gov/wp-content/uploads/2020/08/viking_2_launch_sep_9_1975.jpg", "https://science.nasa.gov/mission/viking-1/", "Photograph", "NASA").media,
+    ]),
+    image("viking-2-2", "Viking 1 landing site from orbit", "A later Mars Odyssey image shows where Viking 1 landed in Chryse Planitia.", "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia03/pia03902/PIA03902.jpg?w=1037&h=644&fit=clip&crop=faces%2Cfocalpoint", "https://science.nasa.gov/mission/viking-1/", "Photograph", "NASA"),
+    withEvidenceGallery(image("viking-2-3", "Viking landing sequence", "A NASA illustration shows stages of the Viking landing sequence.", "https://www.nasa.gov/wp-content/uploads/2020/08/viking_landing_sequence_3.jpg", "https://science.nasa.gov/mission/viking-1/", "Illustration · not a photograph", "NASA"), primary => [
+      primary.media,
+      { type: "video", url: "https://science.nasa.gov/wp-content/uploads/2024/07/jpl-19760131-vikings-0001-src001968-viking-mission-to-mars-trimmed.mp4", label: "Viking Mission to Mars" },
+    ]),
     image('viking-2-4', 'Viking 1 soil trench', 'A later sampling trench shows the work Viking 1 went on to do after landing.', 'https://www.nasa.gov/wp-content/uploads/2021/07/viking_1_10_trench_color.png', 'https://science.nasa.gov/mission/viking-1/'),
   ],
   [
-    image('viking-3-1', 'Viking 1 color surface image', 'The supplied color image shows the rocky Chryse Planitia surface explored from the lander\'s fixed position.', 'https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/3/4/34282_Mars-Viking1-Lander-Color-Image-PIA00563.jpg', 'https://science.nasa.gov/mission/viking-1/'),
-    source('Viking biology laboratory', 'The supplied NASA mission record describes the sampling arm and three onboard biology experiments.', 'https://science.nasa.gov/mission/viking-1/'),
-    source('Viking soil experiment results', 'The supplied NASA mission record documents the unresolved experiment results without claiming proof of life.', 'https://science.nasa.gov/mission/viking-1/'),
+    withEvidenceGallery(image("viking-3-1", "Viking 1’s first surface image", "The first close-up view shows rocks and a lander footpad.", "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/2305_Mars-Viking1-Lander-1st-Image-PIA00381-full2.jpg?w=1439&h=512&fit=clip&crop=faces%2Cfocalpoint", "https://science.nasa.gov/mission/viking-1/", "Photograph", "NASA"), primary => [
+      primary.media,
+      image("viking-color-surface", "Viking 1 color surface view", "A color image shows the rocky terrain at the landing site.", "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/3/4/34282_Mars-Viking1-Lander-Color-Image-PIA00563.jpg", "https://science.nasa.gov/mission/viking-1/", "Photograph", "NASA").media,
+      image("viking-chryse-panorama", "Chryse Planitia panorama", "The panorama shows the plain around the Viking 1 landing site.", "https://science.nasa.gov/wp-content/uploads/2024/03/chryse-planitia-panorama.jpg?resize=2000,410", "https://science.nasa.gov/mission/viking-1/", "Photograph", "NASA").media,
+    ]),
+    withEvidenceGallery(image("viking-3-2", "Viking biology package", "Viking’s biology package tested samples of Martian soil.", "https://www.nasa.gov/wp-content/uploads/2020/08/viking_lander_biology_package.jpg", "https://science.nasa.gov/mission/viking-1/", "Photograph", "NASA"), primary => [
+      primary.media,
+      image("viking-biology-hardware", "Viking biology experiment hardware", "A second NASA image provides context for the onboard laboratory.", "https://www.nasa.gov/wp-content/uploads/2023/03/7651157248_000b1ccd82_o.jpg", "https://science.nasa.gov/mission/viking-1/", "Photograph", "NASA").media,
+    ]),
+    image("viking-3-3", "Viking soil experiment figure", "The supplied research figure provides context for the debated Viking biology results.", "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/0b7f/6445182/5fe52514fb33/fig-2.jpg", "https://pmc.ncbi.nlm.nih.gov/articles/PMC6445182/", "Illustration · not a photograph", "Figure supplied from PubMed Central"),
     image('viking-3-4', 'Viking weather evidence', 'The supplied visual accompanies the story of Viking 1’s temperature, pressure and wind measurements.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbp5weV5BXfsKkJMRp7I3GJ0e5v10n7s2MmUnKCY2Y-A&s=10', 'https://science.nasa.gov/mission/viking-1/', 'Photograph', 'Image link supplied in the Viking 1 PDF'),
   ],
   [
     image('viking-4-1', 'Thomas A. Mutch', 'The supplied portrait identifies the imaging-team leader honored by the memorial station name.', 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Thomas_Mutch%2C_1976.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original', 'https://science.nasa.gov/mission/viking-1/', 'Photograph', 'Wikimedia Commons'),
-    source('Viking 1 extended mission', 'The supplied NASA mission history documents more than six years of surface operations.', 'https://science.nasa.gov/mission/viking-1/'),
-    image('viking-4-3', 'Phobos photographed by Viking 1 Orbiter', 'The supplied orbiter mosaic accompanies the separate ending of Viking 1\'s orbital partner.', 'https://www.nasa.gov/wp-content/uploads/2021/07/viking_1_14_orbiter_phobos_mosaic_1978.jpg', 'https://science.nasa.gov/mission/viking-1/'),
-    source('Viking 1 final transmission', 'The supplied NASA mission record covers the November 1982 communications loss and recovery attempts.', 'https://science.nasa.gov/mission/viking-1/'),
+    image("viking-4-2", "Viking 1 extended mission", "The supplied image accompanies the lander’s more than six years of surface operations.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtpcF-F9wlwiU_vKkhWOaaLD6M8--PhbF6W-TIXHYR9isM8ALbU0sVzJk&s=10", "https://science.nasa.gov/mission/viking-1/", "Photograph", "Supplied image"),
+    image("viking-4-3", "Viking spacecraft", "The Viking orbiter continued relaying and collecting data until its separate mission ended.", "https://science.nasa.gov/wp-content/uploads/2024/03/261003main-02-viking1-full.jpg?resize=900,675", "https://science.nasa.gov/mission/viking-1/", "Illustration · not a photograph", "NASA"),
+    image("viking-4-4", "Viking 1 communications closeout", "The supplied excerpt records the loss of contact in November 1982 and the unsuccessful recovery effort.", "/images/viking-1-last-message.png", "https://science.nasa.gov/mission/viking-1/", "Illustration · not a photograph", "Supplied document excerpt"),
   ],
 ]
 
