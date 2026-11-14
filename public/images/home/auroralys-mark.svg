@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Auroralys provisional monogram</title>
+  <defs><linearGradient id="a" x1="12" y1="8" x2="50" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#39ddff"/><stop offset=".45" stop-color="#419bff"/><stop offset="1" stop-color="#944cff"/></linearGradient></defs>
+  <path d="M32 4 61 58H43L31 34 21 52 3 58 32 4Z" fill="url(#a)"/>
+  <path d="m31 34 12 24H20l8-12h7l-4-12Z" fill="#6176ff"/>
+</svg>
