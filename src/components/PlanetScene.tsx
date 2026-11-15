@@ -69,6 +69,9 @@ function usePlanetTexture(planet: PlanetId, onStatus: (state: SurfaceState) => v
       return
     }
 
+    // Remove the elevation palette before applying a consistent rust tint.
+    if (planet === 'mars') context.filter = 'grayscale(1)'
+
     let cancelled = false
     const config = planetaryLayers[planet]
     const base = cachedState === 'fallback' ? Promise.resolve(true) :
@@ -119,7 +122,7 @@ function Planet({ planet, onInteract, onTextureState }: { planet: PlanetId; onIn
 
   return <mesh>
     <sphereGeometry args={[2, 128, 128]}/>
-    <meshStandardMaterial map={texture} roughness={planet === 'mars' ? .93 : 1} metalness={0} bumpScale={0}/>
+    <meshStandardMaterial map={texture} color={planet === 'mars' ? '#df805c' : '#ffffff'} roughness={planet === 'mars' ? .93 : 1} metalness={0} bumpScale={0}/>
   </mesh>
 }
 
@@ -235,6 +238,6 @@ export default function PlanetScene({ planet, compact = false, onInteract, onRea
       <button aria-label="Zoom 3D globe out" onClick={() => issue('out')}><Minus/></button>
       <button aria-label="Reset 3D globe camera" onClick={() => issue('reset')}><RotateCcw/></button>
     </div>}
-    <div className={`globe-data-state ${textureState}`}><span/><div><b>{textureState === 'live' ? (useMarsModel?'NASA MARS VISUAL TEXTURE':'NASA SURFACE DATA') : textureState === 'loading' ? 'ASSEMBLING NASA MOSAIC' : ('NASA OFFLINE MOSAIC')}</b><small>{useMarsModel?'NASA/JPL · VISUAL COLOUR, NOT ELEVATION':`${config.shortTitle} · EQUIRECTANGULAR`}</small></div></div>
+    <div className={`globe-data-state ${textureState}`}><span/><div><b>{textureState === 'live' ? (useMarsModel?'NASA MARS VISUAL TEXTURE':'NASA SURFACE DATA') : textureState === 'loading' ? 'ASSEMBLING NASA MOSAIC' : ('NASA OFFLINE MOSAIC')}</b><small>{useMarsModel?'NASA/JPL · VISUAL COLOUR, NOT ELEVATION':`${config.shortTitle} · ${planet === 'mars' ? 'COLORIZED HILLSHADE' : 'EQUIRECTANGULAR'}`}</small></div></div>
   </div>
 }

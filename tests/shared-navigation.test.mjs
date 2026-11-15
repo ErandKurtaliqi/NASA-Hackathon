@@ -24,7 +24,7 @@ const result = await build({ stdin: { contents: "export {Shell} from './src/App'
     build.onResolve({ filter: /^react-router-dom$/ }, () => ({ path: 'router', namespace: 'navigation-router' }))
     build.onLoad({ filter: /.*/, namespace: 'navigation-router' }, () => ({ loader: 'js', contents: `
       export const Link='a',NavLink='a',Route='route',Routes='routes',Navigate='redirect';
-      export const useSearchParams=()=>[new URLSearchParams()];export const useNavigationType=()=> 'PUSH';export const useLocation=()=>globalThis.__navLocation,useNavigate=()=>{},useParams=()=>({});` }))
+      export const useSearchParams=()=>[new URLSearchParams()];export const useNavigationType=()=> 'PUSH';export const useLocation=()=>globalThis.__navLocation,useNavigate=()=>delta=>globalThis.__navHistory.push(delta),useParams=()=>({});` }))
     build.onLoad({ filter: /[\\/](RoverScene|LunarRoverScene|IngenuityScene|LandingSequence|PlanetScene|PlanetMap|CinematicScene)\.tsx$/ }, () => ({ loader: 'tsx', contents: 'export const OfficialRover=()=>null,LunarRover=()=>null;export default function Scene(){return null}' }))
     build.onResolve({ filter: /^@react-three\/(fiber|drei)$/ }, args => ({ path: args.path, namespace: 'no-gpu' }))
     build.onLoad({ filter: /.*/, namespace: 'no-gpu' }, () => ({ loader: 'js', contents: 'export const Canvas=()=>null,Stars=()=>null,useFrame=()=>{},useThree=()=>({});' }))
@@ -46,6 +46,9 @@ function fixture(pathname = '/hardware') {
   const toggle = { getClientRects: () => [{}], focus() { focused = 'toggle'; document.activeElement = toggle; focusMoves++ } }
   const firstLink = { focus() { focused = 'first-link'; document.activeElement = firstLink; focusMoves++ } }
   globalThis.document = { activeElement: null }
+  const previousWindow = globalThis.window
+  globalThis.window = { history: { state: { idx: 0 } } }
+  globalThis.__navHistory = []
   const header = { contains: target => target === toggle || target === firstLink || target?.insideHeader === true }
   const nav = { contains: target => target === firstLink, querySelector(selector) { assert.ok(selector === 'a' || selector === 'a[href]'); return firstLink } }
   const slot = init => cells[cursor++] ||= init()
@@ -82,7 +85,7 @@ function fixture(pathname = '/hardware') {
       if (destinationFocused) { focused = 'destination'; document.activeElement = { id: 'page-heading' } }
       globalThis.__navLocation = { pathname, search: '', hash: '', key: String(Math.random()), ...extra }; render()
     },
-    dispose() { cells.forEach(c => c.cleanup?.()); delete globalThis.__navHooks; delete globalThis.__navLocation; delete globalThis.document },
+    dispose() { cells.forEach(c => c.cleanup?.()); delete globalThis.__navHooks; delete globalThis.__navLocation; delete globalThis.document; delete globalThis.__navHistory; globalThis.window = previousWindow },
   }
 }
 
@@ -121,14 +124,30 @@ test('opening reaches the first link; Escape closes and restores focus; Tab and 
 test('each existing navigation link closes the mobile menu and restores focus even on the current route', () => {
   const f = fixture()
   try {
-    const expected = ['/hardware', '/dashboard', '/sources']
+    const expected = ['/', '/dashboard', '/sources']
     assert.deepEqual(nodes(f.navigation(), n => n.type === 'a').map(n => n.props.to), expected)
-    assert.deepEqual(nodes(f.navigation(), n => n.type === 'a').map(text), ['Hardware', 'Mission control', 'Sources'])
+    assert.deepEqual(nodes(f.navigation(), n => n.type === 'a').map(text), ['Go back', 'Mission control', 'Sources'])
     for (const path of expected) {
       f.clickToggle()
-      nodes(f.navigation(), n => n.type === 'a' && n.props.to === path)[0].props.onClick(); f.render()
+      nodes(f.navigation(), n => n.type === 'a' && n.props.to === path)[0].props.onClick({ button: 0 }); f.render()
       assert.equal(f.button().props['aria-expanded'], false); assert.equal(f.focus(), 'toggle')
     }
+  } finally { f.dispose() }
+})
+
+test('Go back uses in-app history and otherwise links home', () => {
+  const f = fixture()
+  try {
+    const back = nodes(f.navigation(), n => n.props.className === 'topbar-back')[0]
+    let prevented = false
+    const click = { button: 0, preventDefault() { prevented = true } }
+    back.props.onClick(click)
+    assert.equal(back.props.to, '/')
+    assert.equal(prevented, false)
+    window.history.state.idx = 1
+    back.props.onClick(click)
+    assert.equal(prevented, true)
+    assert.deepEqual(globalThis.__navHistory, [-1])
   } finally { f.dispose() }
 })
 

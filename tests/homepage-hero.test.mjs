@@ -110,12 +110,12 @@ test('homepage renders only the cinematic hero, original assets and both world l
   } finally { f.dispose() }
 })
 
-test('the home menu lists only the three highlighted destinations', () => {
+test('the home menu lists only Mission control and Science & sources', () => {
   const f = fixture()
   try {
     f.click('Open navigation')
     const menu = f.all(n => n.type === 'nav' && n.props.id === 'home-navigation')[0]
-    assert.deepEqual(f.all(n => n.type === 'a', menu).map(n => n.props.href), ['/hardware', '/dashboard', '/sources'])
+    assert.deepEqual(f.all(n => n.type === 'a', menu).map(n => n.props.href), ['/dashboard', '/sources'])
   } finally { f.dispose() }
 })
 

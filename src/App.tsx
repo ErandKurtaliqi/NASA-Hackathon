@@ -1,8 +1,8 @@
 import './animations.css'
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
-import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { ArrowRight, BookOpen, ChevronRight, ExternalLink, Gauge, Menu, Orbit, Satellite, X } from 'lucide-react'
+import { Link, NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { ArrowLeft, BookOpen, ChevronRight, ExternalLink, Gauge, Menu, Orbit, Satellite, X } from 'lucide-react'
 import { markers, sources } from './data'
 import { explorerHardware as hardware, getExplorerStoryEntry as getStoryEntry } from './features/explorer/integratedStoryEntry'
 import { useProgress } from './store'
@@ -25,6 +25,7 @@ function SceneLoader(){return <div className="scene-loader"><Orbit className="sp
 
 function Shell({children}:{children:React.ReactNode}){
   const location=useLocation()
+  const navigate=useNavigate()
   const pathname=location.pathname
   const isHome=pathname==='/'
   const immersive=pathname.startsWith('/inspection/')||(pathname.startsWith('/story/follow-perseverance')&&!pathname.endsWith('/5')&&new URLSearchParams(location.search).get('view')!=='reader')
@@ -50,12 +51,21 @@ function Shell({children}:{children:React.ReactNode}){
     }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))setOpen(false)}}>
       <Link className="brand" to="/" aria-label="Auroralys home"><img src="/images/home/auroralys-mark.svg" width="34" height="34" alt="" style={{ flexShrink: 0 }} /><span><b>AURORALYS</b><small>MOON & MARS EXPLORER</small></span></Link>
       <nav id="internal-navigation" ref={navigation} className={open?'open':''} aria-label="Main navigation">
-        <NavLink to="/hardware" onClick={closeMenu}>Hardware</NavLink><NavLink to="/dashboard" onClick={closeMenu}>Mission control</NavLink><NavLink to="/sources" onClick={closeMenu}>Sources</NavLink>
+        <Link className="topbar-back" to="/" onClick={event => {
+          closeMenu()
+          if (event.button !== 0 || event.metaKey || event.altKey || event.ctrlKey || event.shiftKey) return
+          const index = window.history.state?.idx
+          if (typeof index === 'number' && index > 0) {
+            event.preventDefault()
+            navigate(-1)
+          }
+        }}><ArrowLeft size={14} aria-hidden="true" />Go back</Link>
+        <NavLink to="/dashboard" onClick={closeMenu}>Mission control</NavLink><NavLink to="/sources" onClick={closeMenu}>Sources</NavLink>
       </nav>
       <div className="top-actions"><button className="motion-toggle" aria-pressed={calm} onClick={toggleMotion}>{calm?'Animations off':'Animations on'}</button><Link className="status-pill" to="/dashboard"><span/>MISSION ONLINE</Link><button type="button" ref={menuToggle} className="menu-button" onClick={()=>{if(open)closeMenu();else setOpen(true)}} aria-label={open?'Close navigation':'Open navigation'} aria-expanded={open} aria-controls="internal-navigation">{open?<X aria-hidden="true"/>:<Menu aria-hidden="true"/>}</button></div>
     </header>}
     <main>{children}</main>
-    {!isHome&&!isExplorer&&!immersive&&<footer><FooterBrand/><p>Educational MVP · Not an official NASA product</p><Link to="/sources">Data & attribution <ArrowRight size={14}/></Link></footer>}
+    {!isHome&&!isExplorer&&!immersive&&<footer><FooterBrand/></footer>}
   </div></MotionConfig>
 }
 

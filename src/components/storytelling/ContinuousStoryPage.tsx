@@ -108,7 +108,6 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
     <div className={styles.environment} data-documentary-background><StoryEnvironment world={presentation.world} idPrefix={terrainId(story.id)} /></div>
     <header className={styles.header}>
       <Link to={`/explore/${story.planet}`}>← Back to {story.planet === 'moon' ? 'Moon' : 'Mars'} missions</Link>
-      <Link className={styles.hardwareLink} to="/hardware">Hardware Lab</Link>
       <div className={styles.headerActions}>
         <Link to="/dashboard">Mission Control</Link>
         <div className={styles.sourceControls}>

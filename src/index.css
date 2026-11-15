@@ -73,14 +73,4 @@
 }
 
 
-/* Mission Control keeps one focused exit to the mission hardware catalog. */
-.app-shell:has(.mission-control-page) > .topbar { height: 64px; justify-content: center; padding: 0; background: #060914; }
-.app-shell:has(.mission-control-page) > .topbar :is(.brand,.top-actions) { display: none; }
-.app-shell:has(.mission-control-page) > .topbar nav { position: static; inset: auto; display: flex; flex-direction: row; gap: 0; padding: 0; background: transparent; border: 0; }
-.app-shell:has(.mission-control-page) > .topbar nav a { display: none; }
-.app-shell:has(.mission-control-page) > .topbar nav a[href="/hardware"] { display: flex; align-items: center; min-height: 64px; padding: 0 30px; background: #1748c7; color: #fff; box-shadow: 0 0 0 1px #5f86ff55,0 10px 28px #0e2f8a55; }
-.app-shell:has(.mission-control-page) > .topbar nav a[href="/hardware"]::after { display: none; }
-.mission-back-link { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; margin-bottom: 22px; padding: 0 14px; border: 1px solid #67e2ff66; border-radius: 8px; color: var(--cyan); font: 9px DM Mono; letter-spacing: .1em; text-transform: uppercase; }
-.mission-back-link:hover { background: #67e2ff12; border-color: var(--cyan); }
-.mission-back-link svg { width: 15px; }
-@media(max-width:680px) { .app-shell:has(.mission-control-page) > .topbar { height: 56px; } .app-shell:has(.mission-control-page) > .topbar nav a[href="/hardware"] { min-height: 56px; padding-inline: 24px; } .mission-back-link { margin-bottom: 15px; } }
+.topbar nav .topbar-back { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }

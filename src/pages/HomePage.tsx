@@ -12,7 +12,6 @@ import styles from './HomePage.module.css'
 const artwork = { logo: '/images/home/auroralys-mark.svg', astronaut: '/images/home/astronaut-guide.png' }
 
 const navigation = [
-  { to: '/hardware', label: 'Spacecraft & rovers' },
   { to: '/dashboard', label: 'Mission control' },
   { to: '/sources', label: 'Science & sources' },
 ]

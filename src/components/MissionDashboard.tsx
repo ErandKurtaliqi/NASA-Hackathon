@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Award, Check, Map, Orbit, RotateCcw, ScanLine, Sparkles } from 'lucide-react'
+import { ArrowRight, Award, Check, Map, Orbit, RotateCcw, ScanLine, Sparkles } from 'lucide-react'
 import { chapterMeta, machineStories as legacyStories } from '../machineStories'
 import { storyCatalog as machineStories } from '../features/storytelling/storyCatalog'
 import { useProgress } from '../store'
@@ -20,7 +20,7 @@ export default function MissionDashboard(){
     {icon:<Award/>,value:missionBadges.length,label:'Mission badges earned'},
   ]
   return <motion.div initial={{opacity:0}} animate={{opacity:1}} className="mission-control-page">
-    <header className="mission-control-head"><div><Link className="mission-back-link" to="/hardware"><ArrowLeft aria-hidden="true"/> Back to missions</Link><span className="eyebrow"><span/> PERSONAL MISSION NETWORK</span><h1>Mission Control</h1><p>Your fieldwork is stored on this device. Every machine keeps its own chapter position, discoveries, and completion record.</p></div><div className="mission-total"><Orbit/><span><small>EXPEDITION COMPLETION</small><b>{chapterTotal?Math.round(total/chapterTotal*100):0}%</b></span></div></header>
+    <header className="mission-control-head"><div><span className="eyebrow"><span/> PERSONAL MISSION NETWORK</span><h1>Mission Control</h1><p>Your fieldwork is stored on this device. Every machine keeps its own chapter position, discoveries, and completion record.</p></div><div className="mission-total"><Orbit/><span><small>EXPEDITION COMPLETION</small><b>{chapterTotal?Math.round(total/chapterTotal*100):0}%</b></span></div></header>
     {Object.entries(progress.roverJourneys||{}).length>0&&<section className="documentary-log"><h2>Your rover documentaries</h2><p>Five chapters, one field challenge, a story worth remembering.</p>{[...missions,legacyStories['follow-perseverance']].filter(m=>progress.roverJourneys?.[m.id]).map(m=>{const journey=progress.roverJourneys[m.id];return <div key={m.id}><Link to={m.id==='follow-perseverance'?`/story/${m.id}/1`:`/inspection/${m.id}/1`}>{journey.completedAt?<Award size={17}/>:<Orbit size={17}/>} {m.missionLabel} · {journey.completedAt?'Mission Explorer earned':`${journey.visited.length}/5 chapters explored`}</Link></div>})}</section>}
     <PerseveranceMissionCard />
     <section className="journey-console"><div className="console-label"><span>ACTIVE STORY MISSIONS</span><small>{total} / {chapterTotal} CHAPTERS COMPLETE</small></div><div className="mission-tracks">{missions.map(mission=>{
