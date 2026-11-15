@@ -125,11 +125,14 @@ test('both planet previews wait for a rendered scene and hold briefly before rot
   try {
     const scenes = () => f.all(n => n.type === 'planet-scene').map(n => n.props)
     const loaders = () => f.all(n => n.props.role === 'status' && n.props['aria-label']?.includes('in 3D'))
+    const posters = () => f.all(n => n.type === 'img' && /mars-nasa-poster|nasa-fallback/.test(n.props.src))
     assert.deepEqual(scenes().map(scene => scene.openingPaused), [true, true])
     assert.equal(loaders().length, 2)
+    assert.equal(posters().length, 0)
 
     f.update(() => scenes()[0].onReady())
     assert.equal(loaders().length, 1)
+    assert.equal(posters().length, 0)
     f.update(() => t.mock.timers.tick(649))
     assert.deepEqual(scenes().map(scene => scene.openingPaused), [true, true])
     f.update(() => t.mock.timers.tick(1))

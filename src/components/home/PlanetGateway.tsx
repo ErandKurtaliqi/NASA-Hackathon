@@ -21,7 +21,7 @@ class PreviewBoundary extends Component<{ children: ReactNode; onError: () => vo
 export default function PlanetGateway({ planet, animated, webgl, onHighlight, onNarrate }: {
   planet: PlanetId
   animated: boolean
-  webgl: boolean
+  webgl: boolean | null
   onHighlight: (planet: PlanetId | null) => void
   onNarrate: (planet: PlanetId) => void
 }) {
@@ -42,7 +42,8 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
   const name = planet === 'moon' ? 'Moon' : 'Mars'
   const sceneActive = webgl && visible && documentVisible
   const sceneVisible = sceneActive && sceneReady && !sceneFailed
-  const sceneLoading = sceneActive && !sceneReady && !sceneFailed
+  const showPoster = webgl === false || sceneFailed
+  const sceneLoading = !sceneVisible && !showPoster
 
   useEffect(() => {
     if (!sceneVisible || !animated) {
@@ -82,12 +83,12 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
       onClick={() => onNarrate(planet)}>
       <div className={styles.planetHalo} aria-hidden="true" /><div className={styles.orbitAccent} aria-hidden="true" />
       <div className={styles.planetDisc}>
-        {sceneActive && <div className={styles.scene} style={{ visibility: sceneVisible ? 'visible' : 'hidden' }}>
+        {sceneActive && <div className={`${styles.scene} ${animated && sceneVisible ? openingStyles.reveal : ''}`} style={{ visibility: sceneVisible ? 'visible' : 'hidden' }}>
           <PreviewBoundary onError={failed}><Suspense fallback={null}><PlanetScene planet={planet} compact onReady={ready} openingPaused={!animated || !openingComplete} /></Suspense></PreviewBoundary>
         </div>}
-        <div className={`${styles.planetPoster} ${openingStyles.poster} ${animated ? openingStyles.transition : ''} ${sceneVisible ? openingStyles.faded : ''}`} aria-hidden="true">
+        {showPoster && <div className={styles.planetPoster} aria-hidden="true">
           {planet==='mars'?<img src="/images/mars-nasa-poster.jpg" alt="" width="512" height="512" />:<><img src="/nasa-fallback/moon/west.jpg" alt="" width="256" height="256" /><img src="/nasa-fallback/moon/east.jpg" alt="" width="256" height="256" /></>}
-        </div>
+        </div>}
         <div className={styles.planetRim} aria-hidden="true" />
         {sceneLoading && <span className={openingStyles.loading} role="status" aria-label={`Loading ${name} in 3D`}><LoaderCircle aria-hidden="true" /></span>}
       </div>

@@ -26,7 +26,7 @@ export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [highlighted, setHighlighted] = useState<PlanetId | null>(null)
   const [selectedDialogue, setSelectedDialogue] = useState<PlanetId | null>(null)
-  const [webgl, setWebgl] = useState(false)
+  const [webgl, setWebgl] = useState<boolean | null>(null)
   const animated = !reducedMotion && (typeof localStorage==='undefined'||localStorage.getItem('auroralys-calm')!=='true')
   const narratePlanet = (planet: PlanetId) => {
     setSelectedDialogue(planet)
