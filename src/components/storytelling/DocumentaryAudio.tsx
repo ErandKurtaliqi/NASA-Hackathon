@@ -4,12 +4,12 @@ import { createDocumentaryNarration, type DocumentaryVoiceState } from '../../fe
 import { apollo15CaptionTiming } from '../../features/storytelling/apollo15CaptionTiming'
 import { cueAt, pendingCues } from '../../features/storytelling/storyCues'
 
-export default function DocumentaryAudio({ src, nextSrc, label, hold, contextId = src, statusId = 'documentary-audio-status', onBeforeEnable }: {
-  src?: string; nextSrc?: string; label: string; hold?: string; contextId?: string; statusId?: string; onBeforeEnable?: () => boolean
+export default function DocumentaryAudio({ src, nextSrc, label, hold, contextId = src, statusId = 'documentary-audio-status', autoPlay = false, onBeforeEnable }: {
+  src?: string; nextSrc?: string; label: string; hold?: string; contextId?: string; statusId?: string; autoPlay?: boolean; onBeforeEnable?: () => boolean
 }) {
   const audio = useRef<HTMLAudioElement>(null), controller = useRef<ReturnType<typeof createDocumentaryNarration>>()
   const [status, setStatus] = useState<DocumentaryVoiceState>('idle'), [time, setTime] = useState(0)
-  const [sound, setSound] = useState(false)
+  const [sound, setSound] = useState(autoPlay)
   const [checked, setChecked] = useState<{ context?: string; available: boolean }>()
   const [timingSrc, setTimingSrc] = useState<string>()
   const timing = timingSrc ? apollo15CaptionTiming[timingSrc] ?? pendingCues : pendingCues
@@ -20,8 +20,9 @@ export default function DocumentaryAudio({ src, nextSrc, label, hold, contextId 
       if (value === 'blocked' || value === 'error') setSound(false)
     })
     controller.current = voice
+    if (autoPlay) voice.play()
     return () => { voice.dispose(); controller.current = undefined }
-  }, [])
+  }, [autoPlay])
   useEffect(() => {
     // Stop before HEAD completes, even if a rapid scroll revisits the same URL.
     const voice = controller.current

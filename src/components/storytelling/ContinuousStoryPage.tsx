@@ -35,6 +35,11 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
   useEffect(() => { noteDocumentaryPlanet(story.planet) }, [story.planet])
   const segments = useMemo(() => documentarySegments(story), [story])
   const presentation = documentaryPresentation(story)
+  const missionTitle = story.planet === 'moon' || story.id === 'sojourner'
+    ? story.missionLabel.split(' · ')[0] : story.name
+  const hardwareType = story.planet === 'moon'
+    ? story.shortName.replace(missionTitle + ' ', '')
+    : presentation.hardware === 'helicopter' ? 'Mars helicopter' : presentation.hardware === 'lander' ? 'Mars lander' : 'Mars rover'
   const initial = initialChapter === 4 ? segments.length : segments.findIndex(s => s.chapter === initialChapter)
   const [active, setActive] = useState(initial), activeRef = useRef(initial)
   const reader = useRef<HTMLDivElement>(null), cards = useRef<(HTMLElement | null)[]>([])
@@ -112,15 +117,15 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
           sources?.scrollIntoView({ block: 'start', behavior: 'instant' })
           sources?.focus({ preventScroll: true })
         }}>Mission sources ↗</button>
-        <DocumentaryAudio src={selectedAudio} nextSrc={upcoming?.audioHold ? undefined : upcoming?.audio}
+        <DocumentaryAudio autoPlay src={selectedAudio} nextSrc={upcoming?.audioHold ? undefined : upcoming?.audio}
           contextId={segment?.id ?? `${story.id}:quiz:${questionAudio ?? 'complete'}`} onBeforeEnable={syncVisibleNarration}
           label={`Chapter ${chapter + 1} / 5 · ${segment?.title ?? 'Quiz and completion'}`} hold={segment?.audioHold} />
         </div>
       </div>
     </header>
     <div className={styles.title}>
-      <h1>{story.missionLabel.split(' · ')[0]}</h1>
-      <div className={styles.machineLabel} aria-label={story.shortName}><span aria-hidden="true" /><p>{story.shortName}</p><span aria-hidden="true" /></div>
+      <h1>{missionTitle}</h1>
+      <div className={styles.machineLabel} aria-label={hardwareType}><span aria-hidden="true" /><p>{hardwareType}</p><span aria-hidden="true" /></div>
     </div>
     <section className={styles.stage} data-documentary-stage aria-label="Continuous story and activities">
       <div className={styles.center}>

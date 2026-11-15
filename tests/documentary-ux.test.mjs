@@ -11,12 +11,12 @@ const built=await build({stdin:{contents:`export {default as Audio} from './src/
 const code=built.outputFiles[0].text
 const instantiate=custom=>{const m={exports:{}};new Function('require','module','exports',code)(custom??require,m,m.exports);return m.exports}
 function nodes(tree,test){if(Array.isArray(tree))return tree.flatMap(n=>nodes(n,test));if(!tree?.props)return[];return[...(test(tree)?[tree]:[]),...nodes(tree.props.children,test)]}
-function fixture({src='/first.mp3',hold,contextId='first',sync=true}={}){
+function fixture({src='/first.mp3',hold,contextId='first',sync=true,autoPlay=false}={}){
  const requests=[],audio={paused:true,currentTime:0,src:'',plays:0,play(){this.plays++;if(this.throws)throw Error('Decoder failure');this.paused=false;this.onplay?.();return this.pending??Promise.resolve()},pause(){this.paused=true;this.onpause?.()},removeAttribute(){this.src=''},load(){this.loads=(this.loads??0)+1}}
  const previous={fetch:globalThis.fetch,window:globalThis.window,navigator:Object.getOwnPropertyDescriptor(globalThis,'navigator')}
  globalThis.fetch=(src,options)=>new Promise((resolve,reject)=>requests.push({src,signal:options.signal,resolve:available=>resolve({ok:available,headers:{get:()=>available?'audio/mpeg':'text/html'}}),reject}))
  globalThis.window={speechSynthesis:{cancel(){}}};Object.defineProperty(globalThis,'navigator',{value:{connection:{saveData:true}},configurable:true})
- let cells=[],cursor=0,pending=[],dirty=false,tree,props={src,hold,contextId,label:'Visible segment',onBeforeEnable:()=>sync}
+ let cells=[],cursor=0,pending=[],dirty=false,tree,props={src,hold,contextId,autoPlay,label:'Visible segment',onBeforeEnable:()=>sync}
  const slot=fn=>cells[cursor++]??=fn()
  const hooks={...React,useRef:value=>slot(()=>({current:value})),useState(init){const c=slot(()=>({value:typeof init==='function'?init():init}));return[c.value,value=>{const next=typeof value==='function'?value(c.value):value;if(!Object.is(c.value,next)){c.value=next;dirty=true}}]},useEffect(fn,deps){const c=slot(()=>({}));if(!c.deps||deps.some((v,i)=>!Object.is(v,c.deps[i]))){c.deps=deps;pending.push(()=>{c.cleanup?.();c.cleanup=fn()})}}}
  const api=instantiate(id=>id==='react'?hooks:require(id))
@@ -29,6 +29,19 @@ function fixture({src='/first.mp3',hold,contextId='first',sync=true}={}){
 }
 
 test('header owns one sound disclosure; no seek, pause/resume or extra media element',()=>{const f=fixture();try{assert.equal(nodes(f.tree(),n=>n.type==='button').length,1);assert.equal(nodes(f.tree(),n=>n.type==='audio').length,1);assert.equal(nodes(f.tree(),n=>n.type==='input').length,0);assert.equal(f.button().props['aria-label'],'Sound on');assert.equal(f.button().props['aria-pressed'],false);assert.ok(f.button().props['aria-describedby']);assert.equal(f.audio.plays,0)}finally{f.dispose()}})
+
+test('story entry requests autoplay after checking the recording and preserves manual mute',async()=>{
+ const f=fixture({autoPlay:true})
+ try {
+  assert.equal(f.audio.plays,0)
+  f.requests[0].resolve(true);await f.settle()
+  assert.equal(f.audio.plays,1)
+  f.toggle()
+  f.change({src:'/next.mp3',contextId:'next'})
+  f.requests[1].resolve(true);await f.settle()
+  assert.equal(f.audio.plays,1)
+ } finally { f.dispose() }
+})
 
 test('sound starts the checked visible recording, off stops, on restarts at zero',async()=>{const f=fixture();try{f.requests[0].resolve(true);await f.settle();assert.equal(f.audio.plays,0);f.toggle();assert.equal(f.audio.plays,1);f.audio.currentTime=12;f.toggle();assert.ok(f.audio.paused);f.change({src:'/second.mp3',contextId:'second'});f.requests[1].resolve(true);await f.settle();assert.equal(f.audio.plays,1);f.toggle();assert.equal(f.audio.src,'/second.mp3');assert.equal(f.audio.currentTime,0);assert.equal(f.audio.plays,2)}finally{f.dispose()}})
 

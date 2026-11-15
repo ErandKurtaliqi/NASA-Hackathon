@@ -4,7 +4,7 @@ export type DocumentaryVoiceState = 'idle' | 'playing' | 'paused' | 'ended' | 'b
 
 /** One persistent HTMLAudioElement. Changing context restarts a recording;
  * Sound Off survives scrolling. Sound On always starts the selected recording
- * at its beginning. No play before intentional activation. */
+ * at its beginning. Playback requires an initial request. */
 export function createDocumentaryNarration(audio: HTMLAudioElement, notify: (state: DocumentaryVoiceState) => void) {
   let permitted = false, disposed = false, serial = 0, source: string | undefined
   let binding: ReturnType<typeof bindRecordedNarration> | undefined
