@@ -190,10 +190,6 @@
 .datasetDetails a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #aad4f4; font-size: 11px; }
 .footer { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 24px; padding: 28px 5vw; border-top: 1px solid var(--line); font-family: Manrope, sans-serif; letter-spacing: 0; background: #030711; }
 .footerBrand { display: inline-flex; align-items: center; gap: 10px; color: #d9e5fa; font-size: 12px; font-weight: 700; letter-spacing: .15em; }
-.footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
-.footer nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: #9baecb; font-size: 11px; }
-.footer nav a:hover { color: #daeeff; }
-.footer p { margin: 0; width: 100%; font-size: 10px; color: #7185a3; }
 .still *, .still *::before, .still *::after { animation: none !important; }
 @keyframes scene-arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes star-breathe { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
@@ -304,7 +300,6 @@
   .coordinates dd { font-size: 15px; }
   .scrollLink { gap: 6px; font-size: 9px; }
   .footer { padding-inline: 20px; }
-  .footer nav { flex-direction: column; gap: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .explorer *, .explorer *::before, .explorer *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

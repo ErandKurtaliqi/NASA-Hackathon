@@ -34,6 +34,20 @@ export default function ContinuousStoryPage() {
 function ContinuousDocument({ story, initialChapter }: { story: MachineStory; initialChapter: number }) {
   useEffect(() => { noteDocumentaryPlanet(story.planet) }, [story.planet])
   const segments = useMemo(() => documentarySegments(story), [story])
+  const evidenceSources = useMemo(() => {
+    const links = new Map<string, string>()
+    for (const segment of segments) {
+      for (const item of segment.gallery ?? (segment.evidence ? [segment.evidence] : [])) {
+        if ('src' in item) links.set(item.sourceUrl, item.title + ' · ' + item.credit)
+        else links.set(item.url, item.label)
+      }
+      if (segment.video) links.set(segment.video, segment.evidenceLabel ?? segment.title)
+      if (segment.youtubeVideoId) links.set(segment.source, segment.evidenceLabel ?? segment.title)
+      if (segment.optionalVideo) links.set(segment.optionalVideo.url, segment.optionalVideo.label)
+    }
+    for (const source of story.sources) links.delete(source.url)
+    return [...links]
+  }, [segments, story.sources])
   const presentation = documentaryPresentation(story)
   const missionTitle = story.planet === 'moon' || story.id === 'sojourner'
     ? story.missionLabel.split(' · ')[0] : story.name
@@ -157,10 +171,10 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
             {done(4) && <p><strong>Mission badge earned</strong> · {story.reward}</p>}
             <p><Link to="/dashboard">View mission dashboard →</Link></p><p><Link to={`/explore/${story.planet}`}>Return to the {story.planet === 'moon' ? 'Moon' : 'Mars'} globe →</Link></p>
           </article>
-          <section data-mission-sources tabIndex={-1} aria-label="Scientific mission sources"><h2>Mission sources</h2>{story.sources.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a></p>)}{story.id === 'apollo-15-rover' ? <p>Photographic composition for storytelling · NASA <a href={apollo15StageAssets.surface.sourceUrl} target="_blank" rel="noreferrer">Apollo 15 surface panorama ↗</a> and a masked historical rover photograph. Decorative stars and lighting; not a single mission photograph or a geographic reconstruction.</p> : <MissionSceneCredits idPrefix={terrainId(story.id)} diagram={story.category === 'stationary-experiment'} />}<p>Photographic composition for storytelling; not a geographic reconstruction. Project narration is not original astronaut audio. Educational project; not an official NASA product.</p><a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" target="_blank" rel="noreferrer">NASA media usage guidelines ↗</a></section>
+          <section data-mission-sources tabIndex={-1} aria-label="Scientific mission sources"><h2>Mission sources</h2>{evidenceSources.length > 0 && <details><summary>Evidence media and credits</summary><ul>{evidenceSources.map(([url, label]) => <li key={url}><a href={url} target="_blank" rel="noreferrer">{label} ↗</a></li>)}</ul></details>}{story.sources.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a></p>)}{story.id === 'apollo-15-rover' ? <p>Photographic composition for storytelling · NASA <a href={apollo15StageAssets.surface.sourceUrl} target="_blank" rel="noreferrer">Apollo 15 surface panorama ↗</a> and a masked historical rover photograph. Decorative stars and lighting; not a single mission photograph or a geographic reconstruction.</p> : <MissionSceneCredits idPrefix={terrainId(story.id)} diagram={story.category === 'stationary-experiment'} />}<p>Photographic composition for storytelling; not a geographic reconstruction. Project narration is not original astronaut audio. Educational project; not an official NASA product.</p><a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" target="_blank" rel="noreferrer">NASA media usage guidelines ↗</a></section>
         </div>
       </div>
-      <aside className={styles.evidence} aria-label="NASA evidence"><DocumentaryEvidence key={segment?.gallery ? segment.id : undefined} gallery={segment?.gallery} video={segment?.video} youtubeVideoId={segment?.youtubeVideoId} optionalVideo={segment?.optionalVideo} media={segment?.evidence ?? (chapter === 4 ? presentation.portrait : undefined)} source={segment?.source ?? story.sources[0].url} sourceLabel={segment?.evidenceLabel} sourceSummary={segment?.evidenceSummary} /></aside>
+      <aside className={styles.evidence} aria-label="NASA evidence"><DocumentaryEvidence key={segment?.gallery ? segment.id : undefined} gallery={segment?.gallery} video={segment?.video} youtubeVideoId={segment?.youtubeVideoId} media={segment?.evidence ?? (chapter === 4 ? presentation.portrait : undefined)} source={segment?.source ?? story.sources[0].url} sourceLabel={segment?.evidenceLabel} sourceSummary={segment?.evidenceSummary} /></aside>
     </section>
     <nav aria-label="Story chapters" className={styles.chapters}>{chapterMeta.map((item, i) => <button type="button" key={item.id} data-completed={done(i)} aria-current={chapter === i ? 'step' : undefined} aria-label={`${i + 1}. ${item.title}${done(i) ? ', completed' : ''}`} onClick={() => select(i === 4 ? segments.length : segments.findIndex(s => s.chapter === i))}><b aria-hidden="true">{done(i) ? '✓' : ''}</b><span>{shortChapterLabels[i]}</span></button>)}</nav>
   </div>

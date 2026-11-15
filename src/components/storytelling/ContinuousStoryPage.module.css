@@ -43,7 +43,7 @@
 .evidence > div { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
 .evidence > div > p { font-size: 10px; letter-spacing: .15em; color: #b4ccdf; margin: 0 0 12px; }
 .evidence figure { margin: 0; border: 1px solid #9bdaff91; border-radius: 20px; background: #09111ce8; box-shadow: 0 0 45px #3f9cdd28,0 30px 70px #0008; overflow: hidden; flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
-.evidence figure > div { flex: 0 0 66%; min-height: 0; background: #02060c; }
+.evidence figure > div { flex: 1 1 0; min-height: 0; background: #02060c; }
 .evidence img { width: 100%; height: 100%; object-fit: contain; display: block; animation: evidence-in 280ms ease-out both; }
 .evidence figure > div > p { padding: 18px; font-size: 13px; }
 .evidence [data-source-evidence] { height: 100%; box-sizing: border-box; display: grid; align-content: center; gap: 8px; padding: 22px; background: radial-gradient(circle at 85% 15%,#713a223d,transparent 45%),linear-gradient(145deg,#101c2b,#070b12); }
@@ -52,10 +52,9 @@
 .evidence [data-source-evidence] p { margin: 0; color: #bed0df; line-height: 1.55; }
 @keyframes evidence-in { from { opacity: 0; transform: scale(.985); } to { opacity: 1; transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .evidence img { animation: none; } }
-.evidence figcaption { padding: 12px 16px; overflow: auto; flex: 1 1 0; min-height: 0; font-size: 12px; line-height: 1.6; }
-.evidence h3 { font-size: 18px; margin: 8px 0; }
-.evidence figcaption p { margin: 6px 0; }
-.evidence small { color: #b9d5e6; }
+.evidence figcaption { flex: none; padding: 0 8px; font-size: 12px; }
+.evidence figcaption nav { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; font-variant-numeric: tabular-nums; }
+.evidence figcaption button { padding: 0; font-size: 18px; }
 .document[data-world=mars] { --cyan: #ffba83; }
 .document[data-world=mars] .evidence figure { border-color: #f4b78b99; box-shadow: 0 0 35px #d8673226; }
 @media (max-width: 700px) {
@@ -66,9 +65,6 @@
   .evidence { grid-column: 1; grid-row: 2; }
   .evidence > div > p { font-size: 9px; margin-block-end: 4px; }
   .evidence figure { border-radius: 12px; }
-  .evidence figure > div { flex-basis: 64%; }
-  .evidence figcaption { padding: 6px 10px; }
-  .evidence h3 { font-size: 14px; }
   .evidence [data-source-evidence] { padding: 8px 10px; overflow: auto; display: block; }
   .evidence [data-source-evidence] strong { display: block; font-size: 14px; }
   .title h1 { font-size: clamp(20px, 5.5vw, 30px); }

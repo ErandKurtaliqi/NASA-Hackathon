@@ -1,8 +1,8 @@
 import useExplorerIntro from '../components/explorer/useExplorerIntro'
 import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, Globe2 } from 'lucide-react'
-import { Link, useLocation, useNavigate, useNavigationType, useParams, useSearchParams } from 'react-router-dom'
+import { ArrowDown, Globe2 } from 'lucide-react'
+import { useLocation, useNavigate, useNavigationType, useParams, useSearchParams } from 'react-router-dom'
 import ExplorerHeader from '../components/explorer/ExplorerHeader'
 import FooterBrand from '../components/branding/FooterBrand'
 import ExplorerGuide from '../components/explorer/ExplorerGuide'
@@ -116,8 +116,6 @@ export default function ExplorerPage() {
     <ScientificLocations planet={planet} selectedId={location.id} onSelect={selectLocation} onViewMap={viewMap} />
     <footer className={styles.footer}>
       <FooterBrand linked />
-      <nav aria-label="More to explore"><Link to="/hardware">Machines & stories<ArrowUpRight size={13} aria-hidden="true" /></Link><Link to="/dashboard">Mission control<ArrowUpRight size={13} aria-hidden="true" /></Link><Link to="/sources">Science & sources<ArrowUpRight size={13} aria-hidden="true" /></Link></nav>
-      <p>Educational experience · Not an official NASA product</p>
     </footer>
   </div>
 }

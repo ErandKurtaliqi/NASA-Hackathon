@@ -2,11 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import type { DocumentaryGalleryItem, StoryEvidenceMedia } from './StoryMedia'
 
 /** Keep the frame fixed while preloading and smoothly replacing current evidence. */
-export default function DocumentaryEvidence({ media: primary, gallery, video, youtubeVideoId, optionalVideo, source, sourceLabel, sourceSummary }: {
+export default function DocumentaryEvidence({ media: primary, gallery, video, youtubeVideoId, source, sourceLabel, sourceSummary }: {
   gallery?: readonly DocumentaryGalleryItem[]
   video?: string
   youtubeVideoId?: string
-  optionalVideo?: { url: string; label: string }
   media?: StoryEvidenceMedia
   source: string
   sourceLabel?: string
@@ -66,25 +65,16 @@ export default function DocumentaryEvidence({ media: primary, gallery, video, yo
           style={{ display: 'block', width: '100%', height: '100%', border: 0 }}
         />}
         {selectedVideo?.type === 'link' && <div data-source-evidence><a href={selectedVideo.url} target="_blank" rel="noreferrer">{selectedVideo.label} ↗</a></div>}
-        {!media && !videoSrc && !embedId && !selectedVideo && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p></div>}
-        {media && !shown && <p>{failed ? 'Selected image could not load. The exact source remains available.' : 'Loading the selected evidence.'}</p>}
+        {!media && !videoSrc && !embedId && !selectedVideo && <div data-source-evidence><small>SCIENTIFIC SOURCE</small><strong>{sourceLabel ?? 'Mission evidence record'}</strong><p>{sourceSummary ?? 'Read the scientific source for this part of the story.'}</p><a href={source} target="_blank" rel="noreferrer">Open source ↗</a></div>}
+        {media && !shown && <p role="status">{failed ? 'Selected image could not load. See Mission sources.' : 'Loading the selected evidence.'}</p>}
       </div>
-      <figcaption>
-        {gallery && gallery.length > 1 && <nav aria-label="Evidence gallery" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <button type="button" aria-label="Previous evidence image" disabled={index === 0} onClick={() => setIndex(value => value - 1)}>‹</button>
-          <span aria-live="polite">{index + 1} / {gallery.length}</span>
-          <button type="button" aria-label="Next evidence image" disabled={index === gallery.length - 1} onClick={() => setIndex(value => value + 1)}>›</button>
-        </nav>}
-        {pending && <p role="status">Loading the next section's evidence.</p>}
-        {failed && <p role="status">Selected image could not load. The exact source remains available.</p>}
-        {shown && <><small>{shown.kind}</small><h3>{shown.title}</h3><p>{shown.caption}</p><p>Credit: {shown.credit}</p><a href={shown.sourceUrl} target="_blank" rel="noreferrer">Image source ↗</a></>}
-        {selectedVideo && <h3>{selectedVideo.label}</h3>}
-        {!media && !selectedVideo && <><h3>{sourceLabel ?? 'Mission evidence record'}</h3><p>{sourceSummary ?? 'Use the exact source supplied for this narration section.'}</p></>}
-        {videoSrc && <a href={videoSrc} target="_blank" rel="noreferrer">Open NASA video ↗</a>}
-        {selectedVideo?.type === 'youtube' && <a href={selectedVideo.url} target="_blank" rel="noreferrer">Watch on YouTube ↗</a>}
-        {optionalVideo && <p><a href={optionalVideo.url} target="_blank" rel="noreferrer">Optional video · {optionalVideo.label} ↗</a></p>}
-        <a href={source} target="_blank" rel="noreferrer">{youtubeVideoId ? 'Watch on YouTube ↗' : "Open this section's evidence ↗"}</a>
-      </figcaption>
+      {(gallery || media) && <figcaption>
+        <nav aria-label="Evidence gallery">
+          {gallery && gallery.length > 1 && <button type="button" aria-label="Previous evidence image" disabled={index === 0} onClick={() => setIndex(value => value - 1)}>‹</button>}
+          <span aria-live="polite">{index + 1}/{gallery?.length ?? 1}</span>
+          {gallery && gallery.length > 1 && <button type="button" aria-label="Next evidence image" disabled={index === gallery.length - 1} onClick={() => setIndex(value => value + 1)}>›</button>}
+        </nav>
+      </figcaption>}
     </figure>
   </div>
 }
