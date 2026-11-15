@@ -9,13 +9,13 @@ import { MemoryRouter, Routes, Route } from 'react-router-dom'
 
 const root = fileURLToPath(new URL('../', import.meta.url)), require = createRequire(import.meta.url)
 const bundle = await build({
-  stdin: { contents: `export {default as Page} from './src/components/storytelling/ContinuousStoryPage'; export {storyCatalog} from './src/features/storytelling/storyCatalog'; export {documentarySegments} from './src/features/storytelling/continuousStory'; export {apollo15Narration} from './src/apollo15Narration'`, resolveDir: root },
+  stdin: { contents: `export {default as Page} from './src/components/storytelling/ContinuousStoryPage'; export {storyCatalog} from './src/features/storytelling/storyCatalog'; export {documentarySegments} from './src/features/storytelling/continuousStory'; export {apollo15Narration} from './src/apollo15Narration'; export {apollo16ChapterRecordings} from './src/features/storytelling/apollo16Recordings'`, resolveDir: root },
   bundle: true, write: false, outfile: 'documentary-layout.cjs', platform: 'node', format: 'cjs', packages: 'external',
   jsx: 'automatic', loader: { '.css': 'empty' }, logLevel: 'silent',
 })
 const mod = { exports: {} }
 new Function('module', 'exports', 'require', bundle.outputFiles.find(file => file.path.endsWith('.cjs')).text)(mod, mod.exports, require)
-const { Page, storyCatalog, documentarySegments, apollo15Narration } = mod.exports
+const { Page, storyCatalog, documentarySegments, apollo15Narration, apollo16ChapterRecordings } = mod.exports
 
 function renderStory(id) {
   return renderToStaticMarkup(React.createElement(MemoryRouter, { initialEntries: [`/story/${id}/1`] },
@@ -79,9 +79,14 @@ test('remaining Apollo 15 narration, engineering panels, optional activities and
   assert.ok(html.includes('COMPLETE STORY') && html.includes('NASA evidence') && html.includes('Mission sources'))
 })
 
-test('legitimate additional Apollo 16 journey paragraphs are preserved', () => {
-  const story = storyCatalog['apollo-16-rover'], html = renderStory(story.id)
-  for (const segment of documentarySegments(story).filter(s => s.chapter === 1)) {
-    assert.deepEqual(narrativeParagraphs(articleFor(html, segment.id)), [segment.text, story.journey[segment.segment].copy].map(text => renderToStaticMarkup(React.createElement('p', null, text))))
-  }
+for (const [index, recording] of apollo16ChapterRecordings[1].entries()) test(`Apollo 16 ${recording.title}: one unchanged main paragraph without the redundant summary`, () => {
+  const story = storyCatalog['apollo-16-rover'], segment = documentarySegments(story).find(s => s.chapter === 1 && s.segment === index)
+  assert.deepEqual(narrativeParagraphs(articleFor(renderStory(story.id), segment.id)), [renderToStaticMarkup(React.createElement('p', null, recording.text))])
+  assert.equal(segment.audio, recording.audio)
+  assert.ok(story.journey[index].copy.length > 0, 'Shared journey data is not deleted')
+})
+
+test('the legitimate extra Apollo 17 student-context paragraph is preserved', () => {
+  const story = storyCatalog['apollo-17-rover'], segment = documentarySegments(story).find(s => s.chapter === 3 && s.segment === 4)
+  assert.deepEqual(narrativeParagraphs(articleFor(renderStory(story.id), segment.id)), [segment.text, 'An invitation to students, not a claim that a particular classroom activity occurred on the mission.'].map(text => renderToStaticMarkup(React.createElement('p', null, text))))
 })

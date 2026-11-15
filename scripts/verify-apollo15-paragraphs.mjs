@@ -13,10 +13,10 @@ const root = fileURLToPath(new URL('../', import.meta.url)), require = createReq
 const base = process.env.AURORALYS_QA_URL ?? 'http://127.0.0.1:5179'
 const output = resolve(process.env.AURORALYS_QA_OUTPUT ?? 'qa-apollo15-paragraphs')
 await mkdir(output, { recursive: true })
-const built = await build({ stdin: { contents: `export {storyCatalog} from './src/features/storytelling/storyCatalog';export {documentarySegments} from './src/features/storytelling/continuousStory';export {apollo15Narration} from './src/apollo15Narration'`, resolveDir: root }, bundle: true, write: false, platform: 'node', format: 'cjs', packages: 'external', logLevel: 'silent' })
+const built = await build({ stdin: { contents: `export {storyCatalog} from './src/features/storytelling/storyCatalog';export {documentarySegments} from './src/features/storytelling/continuousStory';export {apollo15Narration} from './src/apollo15Narration';export {apollo16ChapterRecordings} from './src/features/storytelling/apollo16Recordings'`, resolveDir: root }, bundle: true, write: false, platform: 'node', format: 'cjs', packages: 'external', logLevel: 'silent' })
 const mod = { exports: {} }
 new Function('module', 'exports', 'require', built.outputFiles[0].text)(mod, mod.exports, require)
-const { storyCatalog, documentarySegments, apollo15Narration } = mod.exports
+const { storyCatalog, documentarySegments, apollo15Narration, apollo16ChapterRecordings } = mod.exports
 const inventory = JSON.parse(await readFile(resolve(root, 'docs/moon-package/inventory.json'), 'utf8'))
 const results = { integrity: [], journeys: [], errors: [] }
 for (const [chapter, tracks] of apollo15Narration.entries()) for (const [segment, track] of tracks.entries()) {
@@ -26,8 +26,8 @@ for (const [chapter, tracks] of apollo15Narration.entries()) for (const [segment
   results.integrity.push({ audio: track.audio, sha256: hash })
 }
 const browser = await chromium.launch({ headless: true, ...(process.env.AURORALYS_CHROME_PATH ? { executablePath: process.env.AURORALYS_CHROME_PATH } : {}) })
-const cases = [[1600, 667], [1366, 768], [390, 844]].map(([width, height]) => ({ id: 'apollo-15-rover', width, height }))
-cases.push(...['apollo-11-reflector', 'apollo-16-rover', 'apollo-17-rover', 'ingenuity', 'sojourner', 'opportunity', 'viking-1'].map(id => ({ id, width: 1366, height: 768 })))
+const cases = ['apollo-15-rover', 'apollo-16-rover'].flatMap(id => [[1600, 667], [1366, 768], [390, 844]].map(([width, height]) => ({ id, width, height })))
+cases.push(...['apollo-11-reflector', 'apollo-17-rover', 'ingenuity', 'sojourner', 'opportunity', 'viking-1'].map(id => ({ id, width: 1366, height: 768 })))
 try {
   for (const { id, width, height } of cases) {
     const page = await browser.newPage({ viewport: { width, height }, reducedMotion: 'reduce' })
@@ -40,7 +40,9 @@ try {
     const chapters = page.getByRole('navigation', { name: 'Story chapters' }).getByRole('button')
     const evidence = page.getByRole('complementary', { name: 'NASA evidence' })
     const segments = documentarySegments(storyCatalog[id])
-    const selected = id === 'apollo-15-rover' ? segments : segments.slice(0, 2)
+    const rover = id === 'apollo-15-rover' || id === 'apollo-16-rover'
+    const narration = id === 'apollo-15-rover' ? apollo15Narration : apollo16ChapterRecordings
+    const selected = rover ? segments : segments.slice(0, 2)
     const checked = []
     const select = async segment => {
       await reader.evaluate((root, id) => { const card = [...root.querySelectorAll('[data-segment]')].find(card => card.dataset.segment === id); root.scrollTo({ top: root.scrollTop + card.getBoundingClientRect().top - root.getBoundingClientRect().top - 20, behavior: 'instant' }) }, segment.id)
@@ -50,10 +52,10 @@ try {
       await select(segment)
       const card = reader.locator(`[data-segment="${segment.id}"]`), paragraphs = card.locator(':scope > p')
       assert.equal(await paragraphs.first().textContent(), segment.text)
-      if (id === 'apollo-15-rover') {
+      if (rover) {
         assert.equal(await paragraphs.count(), 1, segment.title)
-        assert.equal(await paragraphs.first().textContent(), apollo15Narration[segment.chapter][segment.segment].text)
-        assert.equal(segment.audio, apollo15Narration[segment.chapter][segment.segment].audio)
+        assert.equal(await paragraphs.first().textContent(), narration[segment.chapter][segment.segment].text)
+        assert.equal(segment.audio, narration[segment.chapter][segment.segment].audio)
       }
       await page.waitForFunction(src => document.querySelector('[data-documentary-audio] audio').getAttribute('src') === src, segment.audio)
       if (await sound.getAttribute('aria-pressed') === 'true') await sound.click()
@@ -69,11 +71,12 @@ try {
       await page.waitForFunction(() => { const a = document.querySelector('[data-documentary-audio] audio'); return !a.paused && a.currentTime > 0.1 })
       assert.ok(await page.evaluate(() => [...document.querySelectorAll('audio,video')].filter(a => !a.paused).length <= 1))
       assert.ok(await evidence.isVisible())
-      assert.ok(await evidence.locator('figure').isVisible())
+      const expectsFigure = segment.gallery?.length !== 0
+      assert.equal(await evidence.locator('figure').isVisible(), expectsFigure, segment.title)
       const box = await evidence.boundingBox(), timeline = await chapters.first().boundingBox()
       assert.ok(box.width > 100 && box.height > 100 && box.y + box.height <= timeline.y + 1)
-      checked.push({ title: segment.title, audio: segment.audio, mainParagraphs: await paragraphs.count(), playback: true, muteAndRestart: true, evidenceVisible: true })
-      if (id === 'apollo-15-rover' && [1, 3].includes(segment.chapter)) await page.screenshot({ path: resolve(output, `apollo15-${segment.chapter + 1}-${segment.segment + 1}-${width}x${height}.png`) })
+      checked.push({ title: segment.title, audio: segment.audio, mainParagraphs: await paragraphs.count(), playback: true, muteAndRestart: true, evidenceVisible: expectsFigure, intentionallyEmptyEvidence: !expectsFigure })
+      if (id === 'apollo-15-rover' && [1, 3].includes(segment.chapter) || id === 'apollo-16-rover' && segment.chapter === 1) await page.screenshot({ path: resolve(output, `${id}-${segment.chapter + 1}-${segment.segment + 1}-${width}x${height}.png`) })
     }
     if (id === 'apollo-15-rover') {
       // Reverse jumps must select each affected recording again correctly.

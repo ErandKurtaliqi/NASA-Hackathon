@@ -154,7 +154,6 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
             <small>CHAPTER {item.chapter + 1} · {chapterMeta[item.chapter].title} · SEGMENT {item.segment + 1}</small><h2 id={`segment-${i}`}>{item.title}</h2><p>{item.text}</p>
             {story.id === 'apollo-11-eagle' && item.chapter === 2 && item.segment === 2 && <p><Link to="/story/apollo-11-reflector/1">Explore the Apollo 11 reflector story →</Link></p>}
             {story.id === 'apollo-15-rover' && item.chapter === 2 && story.challenges[item.segment] && <aside><b>Engineering challenge</b><p>{story.challenges[item.segment].problem}</p><b>Engineering solution</b><p>{story.challenges[item.segment].solution}</p></aside>}
-            {story.id === 'apollo-16-rover' && item.chapter === 1 && <p>{story.journey[item.segment].copy}</p>}
             {story.id === 'apollo-17-rover' && item.chapter === 3 && item.segment === 4 && <p>An invitation to students, not a claim that a particular classroom activity occurred on the mission.</p>}
             {(i === segments.length - 1 || segments[i + 1].chapter !== item.chapter) && <div className={styles.chapterEnd}>
               <DocumentaryActivities story={story} chapter={item.chapter} />
