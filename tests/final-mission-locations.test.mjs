@@ -35,7 +35,7 @@ new Function('require','module','exports',result.outputFiles.find(f=>f.path.ends
 const api = module.exports
 const expected = [
   ['moon','Apollo 11 Eagle Descent Stage','Tranquility Base, Mare Tranquillitatis',0.67408,23.47297,'0.67408° N, 23.47297° E'],
-  ['moon','Apollo 11 LRRR','Mare Tranquillitatis, Sea of Tranquility',0.67345,23.47307,'0.67345° N, 23.47307° E'],
+  ['moon','Apollo 11 LRRR','Mare Tranquillitatis, Sea of Tranquillity',0.67345,23.47307,'0.67345° N, 23.47307° E'],
   ['moon','Apollo 15 LRV','Hadley-Apennine Region, Hadley Rille',26.13110,3.63972,'26.13110° N, 3.63972° E'],
   ['moon','Apollo 16 LRV','Descartes Highlands, near Orion Lunar Module',-8.97292,15.50279,'8.97292° S, 15.50279° E'],
   ['moon','Apollo 17 LRV','Taurus-Littrow Valley, near Challenger Lunar Module',20.19043,30.77726,'20.19043° N, 30.77726° E'],

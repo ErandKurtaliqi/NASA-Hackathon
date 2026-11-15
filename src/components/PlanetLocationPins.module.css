@@ -1,0 +1,23 @@
+.pin {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 6px;
+  border: 1px solid #a4d9ff80;
+  border-radius: 10px;
+  background: #071325ee;
+  color: #e9f4ff;
+  font: 600 clamp(9px, 1vw, 12px) / 1.2 system-ui, sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pin[hidden] { display: none; }
+.pin svg { flex: none; color: #a8deff; }
+.pin:hover, .pin:focus-visible, .pin[aria-pressed='true'] {
+  border-color: #c8edff;
+  background: #173951;
+  box-shadow: 0 0 12px #6bccff86;
+}
+.pin:focus-visible { outline: 2px solid #eaf8ff; outline-offset: 2px; }
+.pin[data-shift='above'] { transform: translateY(-65%); }
+.pin[data-shift='below'] { transform: translateY(65%); }

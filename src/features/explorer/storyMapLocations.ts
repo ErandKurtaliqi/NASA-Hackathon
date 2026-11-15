@@ -26,7 +26,7 @@ export const storyMapLocations: readonly FinalMissionLocation[] = [
     coordinates: { latitude: 0.67408, longitude: 23.47297, display: '0.67408° N, 23.47297° E' },
     source: { label: 'NASA — Apollo artifacts and coordinates', url: 'https://www.nasa.gov/wp-content/uploads/2023/12/nasa-usg-lunar-historic-sites-reva.pdf' } },
   { id: 'apollo-11', planet: 'moon', name: 'Apollo 11 LRRR', kind: 'Stationary reflector',
-    location: 'Mare Tranquillitatis, Sea of Tranquility', precision: 'provided',
+    location: 'Mare Tranquillitatis, Sea of Tranquillity', precision: 'provided',
     coordinates: { latitude: 0.67345, longitude: 23.47307, display: '0.67345° N, 23.47307° E' },
     source: { label: 'NASA — Apollo 11', url: 'https://www.nasa.gov/mission/apollo-11/' } },
   { id: 'apollo-15-rover', planet: 'moon', name: 'Apollo 15 LRV', kind: 'Lunar rover',

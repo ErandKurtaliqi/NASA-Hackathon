@@ -1,5 +1,6 @@
 import { Component, lazy, Suspense, useCallback, useEffect, useState, type ReactNode, type RefObject } from 'react'
 import { ExternalLink, Globe2, Map as MapIcon, Maximize2, Orbit } from 'lucide-react'
+import { getPlanetLocations, hasCoordinates } from '../../features/explorer/storyMapLocations'
 import { sources } from '../../data'
 import type { PlanetId } from '../../types'
 import styles from '../../pages/ExplorerPage.module.css'
@@ -19,11 +20,13 @@ function LoadingView({ label }: { label: string }) {
   return <div className={styles.loadingView} role="status"><Orbit aria-hidden="true" /><span>{label}</span></div>
 }
 
-function GlobeView({ planet, loading, active, fallback }: {
+function GlobeView({ planet, loading, active, fallback, focusId, onSelectLocation }: {
   planet: PlanetId
   loading: boolean
   active: boolean
   fallback: ReactNode
+  focusId?: string
+  onSelectLocation: (id: string) => void
 }) {
   const [ready, setReady] = useState(false)
   const onReady = useCallback(() => setReady(true), [])
@@ -39,7 +42,7 @@ function GlobeView({ planet, loading, active, fallback }: {
     </div>}
     {active ? <ViewBoundary fallback={fallback}>
       <div className={`${styles.globeScene} ${styles.touchSurface}`} style={{ visibility: ready ? 'visible' : 'hidden' }}>
-        <Suspense fallback={null}><PlanetScene planet={planet} onReady={onReady} /></Suspense>
+        <Suspense fallback={null}><PlanetScene planet={planet} onReady={onReady} locations={getPlanetLocations(planet).filter(hasCoordinates)} selectedLocationId={focusId} onSelectLocation={onSelectLocation} /></Suspense>
       </div>
       {!ready && <LoadingView label={'Loading ' + name + ' in 3D…'} />}
     </ViewBoundary> : loading ? <LoadingView label={'Loading ' + name + ' in 3D…'} /> :
@@ -47,12 +50,13 @@ function GlobeView({ planet, loading, active, fallback }: {
   </div>
 }
 
-export default function PlanetViewport({ planet, mode, onModeChange, focusId, focusRequest, viewportRef }: {
+export default function PlanetViewport({ planet, mode, onModeChange, focusId, focusRequest, onSelectLocation, viewportRef }: {
   planet: PlanetId
   mode: ExplorerView
   onModeChange: (mode: ExplorerView) => void
   focusId?: string
   focusRequest?: number
+  onSelectLocation: (id: string) => void
   viewportRef: RefObject<HTMLDivElement>
 }) {
   const [webgl, setWebgl] = useState<boolean | null>(null)
@@ -108,7 +112,7 @@ export default function PlanetViewport({ planet, mode, onModeChange, focusId, fo
         <a href={sources.marsTrekExplorer.url} target="_blank" rel="noreferrer">Open NASA Mars Trek <ExternalLink size={15} aria-hidden="true" /></a>
         <a href={sources.perseveranceLocation.url} target="_blank" rel="noreferrer">Track Perseverance <ExternalLink size={15} aria-hidden="true" /></a>
       </section> : mode === 'globe' ?
-        <GlobeView key={planet + liveGlobe} planet={planet} active={liveGlobe} loading={webgl === null} fallback={fallback} /> : <div className={`${mapStyles.frame} ${touchActive ? mapStyles.interactive : ''}`}>
+        <GlobeView key={planet + liveGlobe} planet={planet} active={liveGlobe} loading={webgl === null} fallback={fallback} focusId={focusId} onSelectLocation={onSelectLocation} /> : <div className={`${mapStyles.frame} ${touchActive ? mapStyles.interactive : ''}`}>
         <ViewBoundary key={planet} fallback={fallback}>
           <Suspense fallback={<LoadingView label="Preparing the scientific map…" />}>
             <PlanetMap planet={planet} focusId={focusId} focusRequest={focusRequest} />
@@ -120,7 +124,7 @@ export default function PlanetViewport({ planet, mode, onModeChange, focusId, fo
       <button type="button" aria-pressed={touchActive} onClick={() => setTouchActive(value => !value)}>{touchActive ? 'Done' : mode !== 'globe' ? 'Interact with map' : 'Rotate & zoom'}</button>
       <span>{touchActive ? mode !== 'globe' ? 'Drag to move. Pinch to zoom.' : 'Drag to rotate. Pinch to zoom.' : 'Scroll freely. Tap to interact.'}</span>
     </div>}
-    {mode !== 'trek' && <p className={styles.viewerHint}>{mode === 'map' ? 'Pan, zoom, and select a location on the scientific map.' : liveGlobe ? 'Drag to orbit · Scroll to zoom' : 'Scientific locations and their sources are available below.'}</p>}
+    {mode !== 'trek' && <p className={styles.viewerHint}>{mode === 'map' ? 'Pan, zoom, and select a location on the scientific map.' : liveGlobe ? 'Drag to orbit · Scroll to zoom · Select a pin for location details' : 'Scientific locations and their sources are available below.'}</p>}
     {fullscreenNotice && <p className={styles.fullscreenNotice} role="status">{fullscreenNotice}</p>}
   </div>
 }

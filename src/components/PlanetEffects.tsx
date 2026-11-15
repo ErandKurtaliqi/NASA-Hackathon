@@ -4,7 +4,7 @@ import * as THREE from 'three'
 import type { PlanetId } from '../types'
 
 // Presentation motion, not a simulation of actual planetary rotation rates.
-export function PlanetMotion({children,planet,reduced,onInteract,suspendUntil}:{children:ReactNode;planet:PlanetId;reduced:boolean;onInteract?:()=>void;suspendUntil:React.MutableRefObject<number>}){
+export function PlanetMotion({children,planet,reduced,onInteract,suspendUntil,initialLongitude}:{children:ReactNode;planet:PlanetId;reduced:boolean;onInteract?:()=>void;initialLongitude?:number;suspendUntil:React.MutableRefObject<number>}){
   const group=useRef<THREE.Group>(null)
   const hovering=useRef(false),elapsed=useRef(0),velocity=useRef(0)
   useFrame((_,rawDelta)=>{
@@ -17,7 +17,7 @@ export function PlanetMotion({children,planet,reduced,onInteract,suspendUntil}:{
     velocity.current=THREE.MathUtils.damp(velocity.current,desired,4.4,dt)
     group.current.rotation.y+=velocity.current*dt
   })
-  return <group ref={group} onPointerEnter={()=>{hovering.current=true}} onPointerLeave={()=>{hovering.current=false}} onPointerDown={onInteract} rotation={[0,planet==='moon'?Math.PI:0,0]}>{children}</group>
+  return <group ref={group} onPointerEnter={()=>{hovering.current=true}} onPointerLeave={()=>{hovering.current=false}} onPointerDown={onInteract} rotation={[0,initialLongitude ?? (planet==='moon'?Math.PI:0),0]}>{children}</group>
 }
 
 export function PlanetLighting({planet,reduced}:{planet:PlanetId;reduced:boolean}){

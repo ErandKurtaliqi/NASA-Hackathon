@@ -1,3 +1,5 @@
+import PlanetLocationPins from './PlanetLocationPins'
+import type { ExactMissionLocation } from '../features/explorer/storyMapLocations'
 import { PlanetLighting, PlanetMotion, MarsLimb } from './PlanetEffects'
 import { useReducedMotion } from 'framer-motion'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
@@ -192,7 +194,7 @@ function CameraRig({command,reduced,suspendUntil}:{command:CameraCommand;reduced
   return <OrbitControls ref={controls} enablePan={false} minDistance={MIN_CAMERA_DISTANCE} maxDistance={MAX_CAMERA_DISTANCE} minPolarAngle={.22} maxPolarAngle={Math.PI-.22} enableDamping dampingFactor={.09} rotateSpeed={.65} zoomSpeed={.65} onStart={()=>{transitioning.current=false;suspendUntil.current=Infinity}} onEnd={()=>{suspendUntil.current=performance.now()+1200}}/>
 }
 
-export default function PlanetScene({ planet, compact = false, onInteract, onReady }: { planet: PlanetId; compact?: boolean; onInteract?: () => void; onReady?: () => void }) {
+export default function PlanetScene({ planet, compact = false, onInteract, onReady, locations, selectedLocationId, onSelectLocation }: { planet: PlanetId; compact?: boolean; onInteract?: () => void; onReady?: () => void; locations?: readonly ExactMissionLocation[]; selectedLocationId?: string; onSelectLocation?: (id: string) => void }) {
   const root=useRef<HTMLDivElement>(null)
   const suspendUntil=useRef(0)
   const systemReduced=useReducedMotion()
@@ -210,14 +212,19 @@ export default function PlanetScene({ planet, compact = false, onInteract, onRea
   const [textureState, setTextureState] = useState<SurfaceState>('loading')
   const issue = (type: CameraCommand['type']) => {suspendUntil.current=performance.now()+1200;setCommand({ type, nonce: performance.now() })}
   const config = planetaryLayers[planet]
+  const useMarsModel = planet === 'mars' && !locations
   if (textureState === 'failed') throw new Error('Planetary imagery is unavailable')
   const surfaceReady = textureState === 'live' || textureState === 'fallback'
 
-  return <div ref={root} tabIndex={0} role="group" aria-description="Drag to orbit. Scroll or pinch to zoom. Arrow keys rotate, plus and minus zoom, and R resets the camera." onPointerDown={e=>{if(e.target instanceof HTMLCanvasElement)root.current?.focus({preventScroll:true})}} onKeyDown={e=>{const keys:Record<string,CameraCommand['type']>={'+':'in','=':'in','-':'out',ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',r:'reset',R:'reset'};if(keys[e.key]){e.preventDefault();issue(keys[e.key])}}} className={`${compact?'planet-canvas compact':'planet-canvas'}`} aria-label={`Interactive 3D ${planet} globe using ${planet==='mars'?'NASA/JPL Mars visual texture':config.title}`}>
+  return <div ref={root} tabIndex={0} role="group" aria-description="Drag to orbit. Scroll or pinch to zoom. Arrow keys rotate, plus and minus zoom, and R resets the camera." onPointerDown={e=>{if(e.target instanceof HTMLCanvasElement)root.current?.focus({preventScroll:true})}} onKeyDown={e=>{const keys:Record<string,CameraCommand['type']>={'+':'in','=':'in','-':'out',ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',r:'reset',R:'reset'};if(keys[e.key]){e.preventDefault();issue(keys[e.key])}}} className={`${compact?'planet-canvas compact':'planet-canvas'}`} aria-label={`Interactive 3D ${planet} globe using ${useMarsModel?'NASA/JPL Mars visual texture':config.title}`}>
     <Canvas frameloop={reduced||!visible||!pageVisible?'demand':'always'} camera={{ position: INITIAL_CAMERA_POSITION, fov: 44 }} dpr={[1, 1.7]} gl={{ alpha: true, antialias: true, outputColorSpace: THREE.SRGBColorSpace }}>
       <PlanetLighting planet={planet} reduced={reduced}/>
       <Suspense fallback={null}>
-        <PlanetMotion planet={planet} reduced={reduced} suspendUntil={suspendUntil} onInteract={onInteract}>{planet==='mars'?<NasaMars onTextureState={setTextureState}/>:<Planet planet={planet} onTextureState={setTextureState}/>}</PlanetMotion>
+        <PlanetMotion planet={planet} reduced={reduced} suspendUntil={suspendUntil} onInteract={onInteract} initialLongitude={locations ? -Math.PI / 2 : undefined}>
+          {useMarsModel ? <NasaMars onTextureState={setTextureState}/> : <Planet planet={planet} onTextureState={setTextureState}/>}
+          {planet === 'mars' && !useMarsModel && <MarsLimb/>}
+          {surfaceReady && locations && onSelectLocation && <PlanetLocationPins locations={locations} selectedId={selectedLocationId} onSelect={onSelectLocation}/>}
+        </PlanetMotion>
         {!compact&&<Stars radius={70} depth={35} count={1500} factor={2.4} fade speed={.18}/>}
         {surfaceReady && onReady && <SceneReady onReady={onReady}/>}
         <CameraRig command={command} reduced={reduced} suspendUntil={suspendUntil}/>
@@ -228,6 +235,6 @@ export default function PlanetScene({ planet, compact = false, onInteract, onRea
       <button aria-label="Zoom 3D globe out" onClick={() => issue('out')}><Minus/></button>
       <button aria-label="Reset 3D globe camera" onClick={() => issue('reset')}><RotateCcw/></button>
     </div>}
-    <div className={`globe-data-state ${textureState}`}><span/><div><b>{textureState === 'live' ? (planet==='mars'?'NASA MARS VISUAL TEXTURE':'NASA SURFACE DATA') : textureState === 'loading' ? 'ASSEMBLING NASA MOSAIC' : (planet==='mars'?'MARS TEXTURE UNAVAILABLE':'NASA OFFLINE MOSAIC')}</b><small>{planet==='mars'?'NASA/JPL · VISUAL COLOUR, NOT ELEVATION':`${config.shortTitle} · EQUIRECTANGULAR`}</small></div></div>
+    <div className={`globe-data-state ${textureState}`}><span/><div><b>{textureState === 'live' ? (useMarsModel?'NASA MARS VISUAL TEXTURE':'NASA SURFACE DATA') : textureState === 'loading' ? 'ASSEMBLING NASA MOSAIC' : ('NASA OFFLINE MOSAIC')}</b><small>{useMarsModel?'NASA/JPL · VISUAL COLOUR, NOT ELEVATION':`${config.shortTitle} · EQUIRECTANGULAR`}</small></div></div>
   </div>
 }

@@ -106,7 +106,7 @@ export default function ExplorerPage() {
           <MachineDetails machine={machine} />
           <p className={styles.srOnly} role="status">{machine.name} selected. {getStoryEntry(machine) ? 'A story is available in the machine information panel.' : 'Its mission profile is available in the machine information panel.'}</p>
         </div>
-        <PlanetViewport planet={planet} mode={mode} onModeChange={setMode} focusId={location.id} focusRequest={focusRequest} viewportRef={viewport} />
+        <PlanetViewport planet={planet} mode={mode} onModeChange={setMode} focusId={location.id} focusRequest={focusRequest} onSelectLocation={selectLocation} viewportRef={viewport} />
       </div>
       <div className={styles.heroBottom}>
         <div className={styles.worldSignature}><Globe2 size={23} aria-hidden="true" /><b>{world}</b><span>Real missions. Lasting legacies.</span></div>
