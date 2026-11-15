@@ -111,6 +111,8 @@
 .staticGlobe:has(.marsPoster) { background: transparent; }
 .staticGlobe:has(.marsPoster)::after { content: none; }
 .globeScene { position: absolute; inset: -3%; }
+.globeReady { animation: globeReveal .3s ease-out both; }
+@keyframes globeReveal { from { opacity: 0; } to { opacity: 1; } }
 /* Presentation adapters only: public components, datasets, camera, and geometry are unchanged. */
 .globeScene :global(.planet-canvas) { background: transparent; }
 .globeScene canvas { display: block; border-radius: 50%; }
@@ -121,8 +123,8 @@
 .previewNotice { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 330px; padding: 9px; border-radius: 12px; background: #050a16d9; color: #b4c7e2; font-size: 10px; line-height: 1.6; text-align: center; }
 .loadingView { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 13px; padding: 20px; color: #bdcbe0; font-size: 12px; text-align: center; }
 .loadingView svg { width: 25px; color: var(--accent); }
-.globeSurface .loadingView { inset: auto auto 8px 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; width: max-content; max-width: 90%; padding: 8px 13px; border-radius: 20px; background: #050a16ed; color: #e5f1ff; }
-.globeSurface .loadingView svg { width: 17px; height: 17px; animation: planetLoading 1.6s linear infinite; }
+.globeSurface .loadingView { border-radius: 50%; background: #080d1c; color: #e5f1ff; }
+.globeSurface .loadingView svg { width: clamp(30px, 18%, 58px); height: auto; color: var(--glow); animation: planetLoading .9s linear infinite; }
 @keyframes planetLoading { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .globeSurface .loadingView svg { animation: none; } }
 .viewError { position: absolute; inset: 20%; display: grid; place-content: center; justify-items: center; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 18px; color: #c8d4e9; background: #071020f2; text-align: center; font-size: 13px; line-height: 1.7; }

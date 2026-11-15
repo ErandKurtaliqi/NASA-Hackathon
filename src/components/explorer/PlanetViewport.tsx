@@ -1,5 +1,5 @@
 import { Component, lazy, Suspense, useCallback, useEffect, useState, type ReactNode, type RefObject } from 'react'
-import { ExternalLink, Globe2, Map as MapIcon, Maximize2, Orbit } from 'lucide-react'
+import { ExternalLink, Globe2, LoaderCircle, Map as MapIcon, Maximize2 } from 'lucide-react'
 import { getPlanetLocations, hasCoordinates } from '../../features/explorer/storyMapLocations'
 import { sources } from '../../data'
 import type { PlanetId } from '../../types'
@@ -17,7 +17,7 @@ class ViewBoundary extends Component<{ children: ReactNode; fallback: ReactNode 
 }
 
 function LoadingView({ label }: { label: string }) {
-  return <div className={styles.loadingView} role="status"><Orbit aria-hidden="true" /><span>{label}</span></div>
+  return <div className={styles.loadingView} role="status"><LoaderCircle aria-hidden="true" /><span>{label}</span></div>
 }
 
 function GlobeView({ planet, loading, active, fallback, focusId, onSelectLocation }: {
@@ -29,20 +29,27 @@ function GlobeView({ planet, loading, active, fallback, focusId, onSelectLocatio
   onSelectLocation: (id: string) => void
 }) {
   const [ready, setReady] = useState(false)
+  const [openingComplete, setOpeningComplete] = useState(false)
   const onReady = useCallback(() => setReady(true), [])
   const name = planet === 'mars' ? 'Mars' : 'the Moon'
 
+  useEffect(() => {
+    if (!ready) return
+    const timer = setTimeout(() => setOpeningComplete(true), 650)
+    return () => clearTimeout(timer)
+  }, [ready])
+
   return <div className={styles.globeSurface}>
     <div className={styles.globeHalo} aria-hidden="true" />
-    {!ready && <div className={styles.staticGlobe} role="img" aria-label={'Static preview of ' + name}>
+    {!active && !loading && <div className={styles.staticGlobe} role="img" aria-label={'Static preview of ' + name}>
       {planet === 'mars' ? <img className={styles.marsPoster} src="/images/mars-nasa-poster.jpg" alt="" width="512" height="512" /> : <>
         <img src="/nasa-fallback/moon/west.jpg" width="256" height="256" alt="" />
         <img src="/nasa-fallback/moon/east.jpg" width="256" height="256" alt="" />
       </>}
     </div>}
     {active ? <ViewBoundary fallback={fallback}>
-      <div className={`${styles.globeScene} ${styles.touchSurface}`} style={{ visibility: ready ? 'visible' : 'hidden' }}>
-        <Suspense fallback={null}><PlanetScene planet={planet} onReady={onReady} locations={getPlanetLocations(planet).filter(hasCoordinates)} selectedLocationId={focusId} onSelectLocation={onSelectLocation} /></Suspense>
+      <div className={`${styles.globeScene} ${styles.touchSurface} ${ready ? styles.globeReady : ''}`} style={{ visibility: ready ? 'visible' : 'hidden' }}>
+        <Suspense fallback={null}><PlanetScene planet={planet} onReady={onReady} openingPaused={!openingComplete} locations={getPlanetLocations(planet).filter(hasCoordinates)} selectedLocationId={focusId} onSelectLocation={onSelectLocation} /></Suspense>
       </div>
       {!ready && <LoadingView label={'Loading ' + name + ' in 3D…'} />}
     </ViewBoundary> : loading ? <LoadingView label={'Loading ' + name + ' in 3D…'} /> :
