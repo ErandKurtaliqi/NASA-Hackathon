@@ -1,4 +1,4 @@
-# Seven recordings on hold — evidence and decisions
+# Moon recording reviews — evidence and decisions
 
 ## Current Apollo 11 decision
 
@@ -30,52 +30,53 @@ Approval for 4/4 does not apply to 2/3, 2/4, or Apollo 17. Caption timing remain
 pending. Meet Me's duplicate heading is removed only from the displayed script;
 the original audio and source archive remain unchanged.
 
-## Current Apollo 17 decision and restoration proposal
+## Current Apollo 17 decision - approved restoration
 
-The user explicitly confirmed that individual listening/editorial approval for
-the four Apollo 17 originals has **not** been obtained. Haroon requested that
-the text/audio mismatch be corrected; that request is not recorded as approval
-of the individual original recordings. The original scripts are prepared for
-review, not published as editorially approved. Existing alternate readings are
-retained until confirmation. All original MP3 bytes remain unchanged.
+The user supplied Haroon's explicit response: **"Yes. We must have to match our
+text with narration."** The user confirmed that this authorizes restoring the
+four original Apollo 17 scripts and aligning them with their existing recordings.
+The previous proposal-only state is superseded for those four recordings.
 
-The continuous reader previously ignored `review-required` for Apollo 17, even
-though the recording metadata retained those holds. It now enforces the same
-per-recording decision for Apollo 11 and Apollo 17. An alternate reading no
-longer plays alongside a held, different original. The approval for Apollo 11
-4/4 remains valid and its playback is unchanged.
+The four alternate `readingText` overrides are removed, so the displayed narrative
+uses the supplied original scripts. Playback is enabled per approved recording.
+The general `review-required` guard remains enforced for both Moon missions,
+including the two unresolved Apollo 11 deployment clips. Apollo 11 4/4 retains
+its previously confirmed human-listening approval.
 
-- **2/4, Three Journeys, One Moon:** Source C supports 35.9 km and 4 h 26 min of
-  driving across the traverses. This is not the total lunar EVA time. The
-  proposed original says "of exploring"; Haroon must explicitly accept that
-  wording with its driving-time context or approve revised text and a matching
-  corrected recording. The supported numbers themselves are not the blocker.
-- **3/2, A Warning from My Battery:** The complete mission report was downloaded
-  and its PDF page 129, printed page 9-1, section 9.1, was text-extracted. It
-  describes battery 2's temperature indication going off-scale low, a probable
-  thermistor fault, and monitoring using battery 1 and earlier trends. The
-  original correctly describes a temperature gauge, not a loss of battery
-  power. Listening/editorial confirmation is still required for restoration.
-- **3/3, Mystery of Orange Soil:** The recording says approximately 3.7 billion
-  years. [NASA SP-350, chapter 14.6](https://www.nasa.gov/wp-content/uploads/static/history/SP-350/ch-14-6.html)
-  gives cooling ages of 3.5 to 3.7 billion years. The [NASA Lunar Sample Compendium,
-  sample 74220](https://www.lpi.usra.edu/lunar/samples/atlas/compendium/74220.pdf)
-  reports multiple age estimates, including approximately 3.6 and 3.7 billion
-  years. This supports a historical approximation; it does not make all published
-  estimates identical. Source E's approximately 3.6-billion-year summary remains
-  preserved. Haroon must approve the selected source/approximation and original
-  wording, or approve a corrected recording. No 3.6-billion-year text is labeled
-  as a verbatim transcript of the original.
+Editorial authorization and listening verification are recorded separately.
+Apollo 17's spoken content was checked with local faster-whisper small and base,
+without a script prompt, and with complete MP3 decoding and real Chrome playback.
+This is machine content verification, not a claim that Haroon or the agent
+personally listened to each original. Automatic transcripts are not published
+as verbatim captions; caption timing remains pending.
+
+- **2/4, Three Journeys, One Moon:** the original wording "of exploring" is
+  restored as approved. Source C supports 35.9 km and 4 h 26 min of **driving**
+  across the traverses, not the total lunar EVA duration. This distinction remains
+  in Mission sources, separately from the narration.
+- **3/2, A Warning from My Battery:** the original specifically describes a
+  temperature gauge. The mission report, PDF page 129, printed page 9-1,
+  section 9.1, supports the battery 2 indication fault, a probable thermistor
+  fault, and monitoring with battery 1 and prior trends. This does not describe
+  a loss of battery power.
+- **3/3, Mystery of Orange Soil:** the original audio and restored text use
+  approximately 3.7 billion years. [NASA SP-350, chapter 14.6](https://www.nasa.gov/wp-content/uploads/static/history/SP-350/ch-14-6.html)
+  reports historical cooling ages of 3.5 to 3.7 billion years; the
+  [NASA Lunar Sample Compendium for 74220](https://www.lpi.usra.edu/lunar/samples/atlas/compendium/74220.pdf)
+  records multiple estimates. Source E's approximately 3.6-billion-year summary
+  remains scientific context, not substitute text presented as a transcript of
+  the 3.7-billion-year recording. The original script's grammar is preserved.
 - **4/1, My Final Place:** Source F supports the approximate 158-meter final VIP
-  parking position and televising liftoff. The original approximation is
-  supported; listening/editorial approval is still required for restoration.
+  parking position and the purpose of televising liftoff. The approved original
+  text and unchanged recording are restored together.
 
-Local ASR was run against the four unchanged originals. It corroborates the
-expected script content, including "exploring", "temperature gauge", 3.7 billion
-years, and 158 meters. This is a machine candidate, not human listening approval
-or a replacement transcript/caption. The four direct source links and scientific
-precisions are available in Mission sources. No clarification boxes were added
-back into the narrative.
+Both local transcription models corroborate the principal phrases and figures:
+exploring, temperature gauge, 3.7 billion years, and 158 meters. Their outputs
+vary in punctuation, articles, tense and proper-name spelling. Those predictions
+are not used to rewrite the approved package script or fabricate a verbatim
+transcript. No new factual contradiction was found in the checked claims.
+All original MP3 hashes remain unchanged. The four source notes and primary
+links stay in Mission sources; no clarification boxes are added to the story.
 
 ## Historical review record
 

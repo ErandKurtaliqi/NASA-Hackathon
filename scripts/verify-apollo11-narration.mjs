@@ -114,9 +114,15 @@ try {
         await sound.click()
         await page.waitForFunction(() => document.querySelector('[data-documentary-audio] audio').currentTime > 0.1)
         assert.ok(await page.evaluate(() => [...document.querySelectorAll('audio,video')].filter(a => !a.paused).length <= 1))
-        checked.push({ title: segment.title, audio: segment.audio, held: false, ...state, muteAndRestart: true })
+        const approvedApollo17 = id === 'apollo-17-rover' && !!segment.note
+        if (approvedApollo17 && width === 1366) {
+          await page.waitForFunction(() => document.querySelector('[data-documentary-audio] audio').ended, undefined, { timeout: 30000 })
+          assert.equal(await page.locator('[data-continuous-story]').getAttribute('data-active-segment'), segment.id)
+          assert.equal(await card.locator(':scope > p').first().textContent(), segment.text)
+        }
+        checked.push({ title: segment.title, audio: segment.audio, held: false, ...state, muteAndRestart: true, playedToEndInDocumentary: approvedApollo17 && width === 1366 })
       }
-      if (segment.audioHold || id === 'apollo-11-reflector' && (segment.title === 'More Than a Mirror' || segment.segment === 0 && segment.chapter === 0)) {
+      if (segment.audioHold || id === 'apollo-17-rover' && segment.note || id === 'apollo-11-reflector' && (segment.title === 'More Than a Mirror' || segment.segment === 0 && segment.chapter === 0)) {
         await page.screenshot({ path: resolve(output, `${id}-${segment.chapter + 1}-${segment.segment + 1}-${width}x${height}.png`) })
       }
     }
@@ -127,9 +133,19 @@ try {
       await page.waitForFunction(() => { const a = document.querySelector('[data-documentary-audio] audio'); return a.getAttribute('src') === '/audio/apollo-11/chapter-4/4.mp3' && !a.paused && a.currentTime > 0.1 })
     }
     if (id === 'apollo-17-rover') {
+      const approved = segments.filter(s => s.note)
+      assert.equal(approved.length, 4)
+      for (const segment of [...approved].reverse()) {
+        assert.equal(segment.audioHold, undefined)
+        await select(segments[0]); await select(segment)
+        await page.waitForFunction(src => {
+          const a = document.querySelector('[data-documentary-audio] audio')
+          return a.getAttribute('src') === src && !a.paused && a.currentTime > 0.1
+        }, segment.audio)
+      }
       await page.getByRole('button', { name: 'Mission sources' }).click()
       await reader.locator('[data-scientific-review] summary').click()
-      for (const segment of segments.filter(s => s.audioHold)) {
+      for (const segment of approved) {
         assert.ok((await reader.locator('[data-scientific-review]').textContent()).includes(segment.note))
         assert.ok((await reader.locator('[data-scientific-review] a').evaluateAll(links => links.map(a => a.href))).includes(segment.source))
       }

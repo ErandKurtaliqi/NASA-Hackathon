@@ -1,4 +1,9 @@
-# Moon narration safeguards and combined status
+# Moon narration safeguards and combined status (historical stage)
+
+The Apollo 17 proposal-only state below is superseded by Haroon's later explicit
+editorial approval. See [the approved alignment report](apollo17-approved-alignment.md)
+for the current restoration, playback decisions and verification. This document
+preserves the safeguard-stage record; its pending Apollo 17 rows are historical.
 
 ## Publication scope
 

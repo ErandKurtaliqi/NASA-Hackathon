@@ -1,23 +1,24 @@
-# Apollo 17 original-text restoration proposal
+# Apollo 17 original-text restoration - approved
 
-**Status: proposed, not approved.** The user confirmed that Haroon has not
-explicitly approved the four individual original recordings. These paragraphs
-are copied from the existing package scripts, not newly transcribed or rewritten.
-They are not deployed as approved narrative. Original MP3 bytes are preserved.
+**Status: approved restoration.** The user supplied Haroon's explicit response:
+"Yes. We must have to match our text with narration." The four paragraphs below
+are restored from the existing package scripts, not newly transcribed or
+rewritten. Their matching original recordings are enabled without changing MP3
+bytes. Editorial approval is distinct from machine spoken-content verification.
 
-The independently deployable fix enforces Apollo 17's existing editorial holds
-and adds the verified references to Mission sources. Current alternate readings
-remain in the published narrative while approval is pending. A held original
-must not play alongside a different reading.
+The general editorial-hold guard remains in place. The four approved Apollo 17
+records are enabled individually and their alternate reading overrides are
+removed. Scientific context and references remain separately in Mission sources.
+This approval does not extend to the pending Apollo 11 deployment recordings.
 
 ## Three Journeys, One Moon — chapter 2, segment 4
 
 > Three journeys...one world, around 4 hours 26 minutes of exploring! With Cernan and Schmitt beside me, I travelled around 35.9 km across the Moon. Together, we turned a distant world into a place of discovery!
 
 Source: [NASA NSSDCA rover overview](https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html).
-The figures refer to **driving time**, not total lunar EVA activity. Haroon must
-accept the original phrase "of exploring" with that explicit context, or approve
-a revised script and a matching corrected recording. File: `/audio/apollo-17/chapter-2/4.mp3`.
+The figures refer to **driving time**, not total lunar EVA activity. The approved
+original phrase "of exploring" is preserved; that distinction remains in Mission
+sources. File: `/audio/apollo-17/chapter-2/4.mp3`.
 
 ## A Warning from My Battery — chapter 3, segment 2
 
@@ -36,8 +37,8 @@ Source: [NASA SP-350, chapter 14.6](https://www.nasa.gov/wp-content/uploads/stat
 which reports historical cooling ages of **3.5–3.7 billion years**, and the
 [NASA Lunar Sample Compendium for 74220](https://www.lpi.usra.edu/lunar/samples/atlas/compendium/74220.pdf),
 which records multiple age determinations. Other NASA summaries use about 3.6
-billion years. Haroon must approve the historical approximation/source and the
-original wording, or choose another formulation with a corrected recording.
+billion years. The approved original approximation and wording are restored with
+the historical range and other estimates retained as separate scientific context.
 The original's grammar is preserved here because this is the supplied script,
 not a fabricated verbatim ASR transcript. File: `/audio/apollo-17/chapter-3/3.mp3`.
 
@@ -49,20 +50,20 @@ Source: [NASA History's Apollo 17 surface account](https://www.nasa.gov/history/
 It supports the final VIP parking position **approximately 158 meters** from the
 lunar module and the camera's liftoff coverage. File: `/audio/apollo-17/chapter-4/1.mp3`.
 
-## Verification and release condition
+## Verification and approval record
 
 All four files match the original inventory SHA-256 values. MPEG frames and full
-decoded audio samples are valid. Local ASR corroborates the expected content,
+decoded audio samples are valid. Local small/base ASR corroborates the content,
 including "exploring", the temperature gauge, 3.7 billion years, and 158 meters;
-it remains a machine candidate and is not human listening approval.
+it remains machine verification and is not a human-listening certificate.
 
-The local review artifacts contain `proposed-texts.json`,
-`proposed-moonRecordings.ts`, and `restoration-proposal.patch` under
-`../qa-artifacts/apollo17-alignment/`. The patch proposes only removing the four
-alternate `readingText` overrides. It does not change MP3 bytes or enable
-playback. No proposal is automatically applied by the application or build.
+The historical proposal artifacts remain under
+`../qa-artifacts/apollo17-alignment/`. Current verification evidence is under
+`../qa-artifacts/apollo17-approved/`. The application now implements the approved
+four-text restoration and explicit playback decisions; no external patch is
+automatically applied by the application or build.
 
-Before restoring/enabling any original, record Haroon's explicit per-recording
-decision, source/context choice, and full listening confirmation. Preserve the
-scientific note and source link. The approval already recorded for Apollo 11
-4/4 remains valid and does not extend to these Apollo 17 clips.
+Haroon's approval is recorded per Apollo 17 original in `held-recordings.json`
+and `moonRecordings.ts`. No separate personal listening confirmation is inferred.
+The existing Apollo 11 4/4 approval remains valid. Apollo 11 2/3 and 2/4 remain
+held for their independent deployment-attribution review.

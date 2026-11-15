@@ -57,9 +57,11 @@ test('all five Apollo 17 screens expose the three-area accessible layout without
     assert.ok(html.includes('data-story-pilot="apollo-17"'));assert.ok(html.includes(escape(api.chapterMeta[ch-1].title)))
     for(const label of ['Your rover storyteller','Scroll story and activities','NASA evidence','Chapter navigation'])assert.ok(html.includes(`aria-label="${label}"`))
     assert.ok(html.includes('Credit:'));assert.ok(html.includes('Official source'))
-    assert.ok(!/<canvas|<audio/.test(html));assert.ok(ch===4 ? html.includes('Recording held for scientific review') : html.includes('Recorded narration omitted from this code review'));assert.ok(!html.includes('/audio/apollo-15/'))
+    assert.ok(!/<canvas|<audio/.test(html));assert.ok(html.includes('Recorded narration omitted from this code review'));assert.ok(!html.includes('/audio/apollo-15/'))
     if(ch<5) {
-      assert.ok(ch===4 ? html.includes('Recording held for scientific review') : html.includes('Recorded narration omitted from this code review'))
+      // Approved originals are no longer editorially held; this legacy
+      // asset-safe fixture still omits recordings under its review policy.
+      assert.ok(html.includes('Recorded narration omitted from this code review'))
       assert.ok(html.includes('Continue to the next chapter when I scroll past the end'))
     } else {
       assert.ok(html.includes('Who drove Apollo'));assert.ok(!html.includes(story.quiz[0].explanation))

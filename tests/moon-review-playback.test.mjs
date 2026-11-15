@@ -28,16 +28,18 @@ for (const item of audit.recordings) test(`${item.mission} ${item.chapter}/${ite
   assert.equal(recording.text, item.expectedScript)
   assert.equal(segment.audio, `/${item.localQaPath.replace('public/', '')}`)
   assert.equal(segment.text, item.currentReadingText)
-  const approved = mission === '11' && item.chapter === 4 && item.segment === 4
+  const approved = mission === '17' || item.chapter === 4 && item.segment === 4
   assert.equal(recording.playback, approved ? 'enabled' : 'review-required')
-  assert.equal(recording.listening, approved ? 'approved-by-haroon' : 'pending')
+  assert.equal(recording.listening, mission === '17' ? 'machine-verified' : approved ? 'approved-by-haroon' : 'pending')
   assert.equal(segment.audioHold, approved ? undefined : recording.review)
   if (!approved) assert.ok(segment.audioHold, 'An alternate reading must not play the disputed/unapproved original')
   if (mission === '17') {
-    assert.notEqual(segment.text, recording.text, 'Restoration is a proposal; it is not published as approved')
+    assert.equal(segment.text, recording.text, 'Approved story text matches the original recording script')
+    assert.equal(recording.editorialApproval, 'approved-by-haroon')
+    assert.equal(item.restorationStatus, 'approved-restored')
     assert.equal(segment.source, recording.reviewSource)
     assert.match(new URL(segment.source).hostname, /(^|\.)nasa\.gov$/)
-    assert.match(segment.note, /explicit editorial approval/)
+    assert.match(segment.note, /Haroon approved restoring/)
   }
 })
 
