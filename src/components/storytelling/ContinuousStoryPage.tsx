@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { chapterMeta, type MachineStory } from '../../machineStories'
 import { resolveStoryRoute } from '../../features/storytelling/pilot'
-import { activeDocumentSegment, documentaryPresentation, documentarySegments, quizRecording, terrainId } from '../../features/storytelling/continuousStory'
+import { activeDocumentSegment, documentaryPresentation, documentarySegments, terrainId } from '../../features/storytelling/continuousStory'
 import { useProgress, type QuizResult } from '../../store'
 import { useStoryReducedMotion } from '../../features/storytelling/motionPreference'
 import { DocumentaryQuiz as QuizChapter } from '../MachineStoryPage'
@@ -19,10 +19,8 @@ import { shortChapterLabels } from '../../features/storytelling/storyPresentatio
 import { noteDocumentaryPlanet } from '../../features/explorer/documentaryPlanetReturn'
 import styles from './ContinuousStoryPage.module.css'
 
-function SelectQuizRecording({ src, onSelect }: { src: string; onSelect: (src: string) => void }) {
-  useEffect(() => { onSelect(src) }, [src, onSelect])
-  return <p>Use Sound on below Mission sources to hear this question. Verified transcript timing is pending.</p>
-}
+const quizIntroAudio = '/audio/quiz-intro.mp3'
+const noQuestionRecording = () => null
 
 export default function ContinuousStoryPage() {
   const { storyId = '', chapter = '1' } = useParams()
@@ -62,10 +60,8 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
   const quizResult = useRef<QuizResult>()
   const captureQuizResult = useCallback((result: QuizResult) => { quizResult.current = result }, [])
   const [quizReady, setQuizReady] = useState(() => done(4))
-  const [questionAudio, setQuestionAudio] = useState<string | undefined>(() => quizRecording(story.id, 0))
-  const selectQuestion = useCallback((src: string) => setQuestionAudio(src), [])
   const segment = segments[active], chapter = segment?.chapter ?? 4
-  const selectedAudio = segment ? segment.audio : questionAudio
+  const selectedAudio = segment ? segment.audio : quizIntroAudio
   const upcoming = segments[active + 1]
   const upcomingImage = upcoming?.evidence?.src
   useEffect(() => {
@@ -107,8 +103,7 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
     if (quizResult.current) progress.saveStoryQuiz(story.id, quizResult.current)
     progress.awardBadge(`${story.id}-storyteller`)
   }
-  const renderRecording = (question: number) => <SelectQuizRecording src={quizRecording(story.id, question)} onSelect={selectQuestion} />
-  const finishQuiz = () => { setQuizReady(true); setQuestionAudio(undefined) }
+  const finishQuiz = () => setQuizReady(true)
   const syncVisibleNarration = () => {
     const root = reader.current
     if (!root) return true
@@ -131,7 +126,7 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
           sources?.focus({ preventScroll: true })
         }}>Mission sources ↗</button>
         <DocumentaryAudio autoPlay src={selectedAudio} nextSrc={upcoming?.audioHold ? undefined : upcoming?.audio}
-          contextId={segment?.id ?? `${story.id}:quiz:${questionAudio ?? 'complete'}`} onBeforeEnable={syncVisibleNarration}
+          contextId={segment?.id ?? `${story.id}:quiz`} onBeforeEnable={syncVisibleNarration}
           label={`Chapter ${chapter + 1} / 5 · ${segment?.title ?? 'Quiz and completion'}`} hold={segment?.audioHold} />
         </div>
       </div>
@@ -163,7 +158,7 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
           <article ref={el => { cards.current[segments.length] = el }} tabIndex={-1} data-segment={`${story.id}:quiz`} aria-labelledby="documentary-quiz-title">
             <small>CHAPTER 5</small><h2 id="documentary-quiz-title">{chapterMeta[4].title}</h2>
             {story.category === 'stationary-experiment' && <p>Identify the experiment followed in this story. The astronauts also left other equipment on the Moon.</p>}
-            {story.id === 'apollo-16-rover' ? <Apollo16Quiz story={story} sound={false} onSound={() => {}} onComplete={finishQuiz} onResult={captureQuizResult} onRetry={() => setQuizReady(false)} renderRecording={renderRecording} /> : <QuizChapter story={story} onComplete={finishQuiz} onResult={captureQuizResult} onRetry={() => setQuizReady(false)} renderRecording={renderRecording} reducedMotion={reduced} />}
+            {story.id === 'apollo-16-rover' ? <Apollo16Quiz story={story} sound={false} onSound={() => {}} onComplete={finishQuiz} onResult={captureQuizResult} onRetry={() => setQuizReady(false)} renderRecording={noQuestionRecording} /> : <QuizChapter story={story} onComplete={finishQuiz} onResult={captureQuizResult} onRetry={() => setQuizReady(false)} renderRecording={noQuestionRecording} reducedMotion={reduced} />}
             <button type="button" disabled={!quizReady || !chapterMeta.slice(0, 4).every((_, i) => done(i))} onClick={finish}>COMPLETE STORY</button>
             {!chapterMeta.slice(0, 4).every((_, i) => done(i)) && <p>Mark the four reading chapters complete before saving your mission. Use the chapter timeline below to return.</p>}
             {progress.storyProgress[story.id]?.quizResult && <p>Saved quiz result: {progress.storyProgress[story.id].quizResult!.score} / {progress.storyProgress[story.id].quizResult!.total}</p>}
