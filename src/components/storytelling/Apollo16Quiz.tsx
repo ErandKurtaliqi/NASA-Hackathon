@@ -6,10 +6,11 @@ import { apollo16CaptionTiming, apollo16QuizRecordings } from '../../features/st
 import StoryRecording from './ReviewStoryRecording'
 import styles from './ApolloQuiz.module.css'
 
-export default function Apollo16Quiz({ story, sound, onSound, onComplete, onRetry, onResult, renderRecording }: {
+export default function Apollo16Quiz({ story, sound, onSound, onComplete, onRetry, onResult, renderRecording, onQuestionHover }: {
   story: MachineStory; sound: boolean; onSound: (enabled: boolean) => void; onComplete: () => void; onRetry: () => void
   onResult?: (result: QuizResult) => void
   renderRecording?: (question: number) => ReactNode
+  onQuestionHover?: (question: number) => void
 }) {
   const [question, setQuestion] = useState(0), [answers, setAnswers] = useState<number[]>([]), [finished, setFinished] = useState(false)
   const submitted = useRef<number[]>([])
@@ -35,7 +36,7 @@ export default function Apollo16Quiz({ story, sound, onSound, onComplete, onRetr
   const audio = apollo16QuizRecordings[question]
   return <section className="quiz-experience" aria-label="Apollo 16 knowledge assessment">
     <p id="apollo16-quiz-position">QUESTION {question + 1} / {story.quiz.length}</p>
-    <h2 id="apollo16-quiz-question" ref={questionHeading} tabIndex={-1} className={styles.focusTarget} aria-describedby="apollo16-quiz-position">{item.question}</h2>
+    <h2 id="apollo16-quiz-question" ref={questionHeading} tabIndex={-1} onPointerEnter={event => { if (event.pointerType === 'mouse') onQuestionHover?.(question) }} className={styles.focusTarget} aria-describedby="apollo16-quiz-position">{item.question}</h2>
     {renderRecording ? renderRecording(question) : <StoryRecording key={audio} src={audio} label={`Original question ${question + 1} recording. Question and answer choices are below; listening review is pending.`} sound={sound} onSound={onSound} timing={apollo16CaptionTiming[audio]} />}
     <div className="quiz-options">{item.options.map((option, i) => <button key={option} type="button" disabled={answered}
       aria-pressed={answered ? answers[question] === i : undefined}
