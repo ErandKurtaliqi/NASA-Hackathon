@@ -1,5 +1,5 @@
 import { Component, lazy, Suspense, useCallback, useEffect, useState, type ReactNode, type RefObject } from 'react'
-import { ExternalLink, Globe2, LoaderCircle, Map as MapIcon, Maximize2 } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Globe2, LoaderCircle, Map as MapIcon, Maximize2 } from 'lucide-react'
 import { getPlanetLocations, hasCoordinates } from '../../features/explorer/storyMapLocations'
 import { sources } from '../../data'
 import type { PlanetId } from '../../types'
@@ -71,6 +71,7 @@ export default function PlanetViewport({ planet, mode, onModeChange, focusId, fo
   const [visible, setVisible] = useState(true)
   const [documentVisible, setDocumentVisible] = useState(true)
   const [fullscreenNotice, setFullscreenNotice] = useState('')
+  const [isFullscreen, setIsFullscreen] = useState(false)
   const name = planet === 'mars' ? 'Mars' : 'the Moon'
   const liveGlobe = !!webgl && visible && documentVisible
 
@@ -90,11 +91,28 @@ export default function PlanetViewport({ planet, mode, onModeChange, focusId, fo
 
   useEffect(() => { setTouchActive(false); setFullscreenNotice('') }, [planet, mode])
 
-  const fullscreen = async () => {
+  useEffect(() => {
+    const syncFullscreen = () => setIsFullscreen(
+      viewportRef.current !== null && document.fullscreenElement === viewportRef.current
+    )
+    syncFullscreen()
+    document.addEventListener('fullscreenchange', syncFullscreen)
+    return () => document.removeEventListener('fullscreenchange', syncFullscreen)
+  }, [viewportRef])
+
+  const toggleFullscreen = async () => {
+    const viewer = viewportRef.current
+    if (!viewer) return
+    const exiting = document.fullscreenElement === viewer
+    setFullscreenNotice('')
     try {
-      if (!viewportRef.current?.requestFullscreen) throw new Error('Fullscreen unavailable')
-      await viewportRef.current.requestFullscreen()
-    } catch { setFullscreenNotice('Fullscreen is unavailable here. You can continue exploring in this view.') }
+      if (exiting) await document.exitFullscreen()
+      else await viewer.requestFullscreen()
+    } catch {
+      setFullscreenNotice(exiting
+        ? 'Could not exit fullscreen. Press Escape to go back.'
+        : 'Fullscreen is unavailable here. You can continue exploring in this view.')
+    }
   }
 
   const fallback = <div className={styles.viewError} role="status">
@@ -110,7 +128,9 @@ export default function PlanetViewport({ planet, mode, onModeChange, focusId, fo
         <button type="button" aria-pressed={mode === 'map'} onClick={() => onModeChange('map')}><MapIcon size={15} aria-hidden="true" />2D map</button>
         {planet === 'mars' && <button type="button" aria-pressed={mode === 'trek'} onClick={() => onModeChange('trek')}><Globe2 size={15} aria-hidden="true" />NASA Mars Trek</button>}
       </div>
-      <button type="button" className={styles.fullscreenButton} onClick={fullscreen} aria-label="Enter fullscreen exploration"><Maximize2 size={17} aria-hidden="true" /></button>
+      <button type="button" className={`${styles.fullscreenButton} ${isFullscreen ? styles.exitFullscreenButton : ''}`} onClick={toggleFullscreen} aria-label={isFullscreen ? 'Go back from fullscreen' : 'Enter fullscreen exploration'}>
+        {isFullscreen ? <><ArrowLeft size={17} aria-hidden="true" />Go back</> : <Maximize2 size={17} aria-hidden="true" />}
+      </button>
     </div>
     <div className={styles.viewerContent}>
       {mode === 'trek' && planet === 'mars' ? <section className={styles.trekPanel} aria-label="NASA Mars Trek">
@@ -131,7 +151,7 @@ export default function PlanetViewport({ planet, mode, onModeChange, focusId, fo
       <button type="button" aria-pressed={touchActive} onClick={() => setTouchActive(value => !value)}>{touchActive ? 'Done' : mode !== 'globe' ? 'Interact with map' : 'Rotate & zoom'}</button>
       <span>{touchActive ? mode !== 'globe' ? 'Drag to move. Pinch to zoom.' : 'Drag to rotate. Pinch to zoom.' : 'Scroll freely. Tap to interact.'}</span>
     </div>}
-    {mode !== 'trek' && <p className={styles.viewerHint}>{mode === 'map' ? 'Pan, zoom, and select a location on the scientific map.' : liveGlobe ? 'Drag to orbit · Scroll to zoom · Select a pin for location details' : 'Scientific locations and their sources are available below.'}</p>}
+    {mode !== 'trek' && <p className={styles.viewerHint}>{mode === 'map' ? 'Pan, zoom, and select a location on the scientific map.' : liveGlobe ? 'Drag to orbit · Scroll to zoom' : 'Scientific locations and their sources are available below.'}</p>}
     {fullscreenNotice && <p className={styles.fullscreenNotice} role="status">{fullscreenNotice}</p>}
   </div>
 }
