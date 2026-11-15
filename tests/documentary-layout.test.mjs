@@ -9,13 +9,26 @@ import { MemoryRouter, Routes, Route } from 'react-router-dom'
 
 const root = fileURLToPath(new URL('../', import.meta.url)), require = createRequire(import.meta.url)
 const bundle = await build({
-  stdin: { contents: `export {default as Page} from './src/components/storytelling/ContinuousStoryPage'; export {storyCatalog} from './src/features/storytelling/storyCatalog'; export {documentarySegments} from './src/features/storytelling/continuousStory'`, resolveDir: root },
+  stdin: { contents: `export {default as Page} from './src/components/storytelling/ContinuousStoryPage'; export {storyCatalog} from './src/features/storytelling/storyCatalog'; export {documentarySegments} from './src/features/storytelling/continuousStory'; export {apollo15Narration} from './src/apollo15Narration'`, resolveDir: root },
   bundle: true, write: false, outfile: 'documentary-layout.cjs', platform: 'node', format: 'cjs', packages: 'external',
   jsx: 'automatic', loader: { '.css': 'empty' }, logLevel: 'silent',
 })
 const mod = { exports: {} }
 new Function('module', 'exports', 'require', bundle.outputFiles.find(file => file.path.endsWith('.cjs')).text)(mod, mod.exports, require)
-const { Page, storyCatalog, documentarySegments } = mod.exports
+const { Page, storyCatalog, documentarySegments, apollo15Narration } = mod.exports
+
+function renderStory(id) {
+  return renderToStaticMarkup(React.createElement(MemoryRouter, { initialEntries: [`/story/${id}/1`] },
+    React.createElement(Routes, null, React.createElement(Route, { path: '/story/:storyId/:chapter', element: React.createElement(Page) }))))
+}
+function articleFor(html, id) {
+  const article = html.match(new RegExp(`<article\\b(?=[^>]*data-segment="${id}")[^>]*>([\\s\\S]*?)<\\/article>`))?.[1]
+  assert.ok(article, id)
+  return article
+}
+// Only the narrative paragraphs immediately after the title. Nested activity
+// details may legitimately repeat legacy text and must remain available.
+const narrativeParagraphs = article => article.match(/<\/h2>((?:<p>[\s\S]*?<\/p>)+)/)?.[1].match(/<p>[\s\S]*?<\/p>/g) ?? []
 
 for (const story of Object.values(storyCatalog)) test(`${story.id}: clean narrative retains every scientific review note and source in Mission sources`, () => {
   const html = renderToStaticMarkup(React.createElement(MemoryRouter, { initialEntries: [`/story/${story.id}/1`] },
@@ -37,4 +50,38 @@ for (const story of Object.values(storyCatalog)) test(`${story.id}: clean narrat
     }
   }
   assert.ok(html.indexOf('<h1>') < html.indexOf('</header>'), 'Mission title shares the compact header')
+})
+
+for (const chapter of [1, 3]) for (const [index, recording] of apollo15Narration[chapter].entries()) {
+  test(`Apollo 15 ${recording.title}: one unchanged main paragraph without the redundant second paragraph`, () => {
+    const story = storyCatalog['apollo-15-rover'], segment = documentarySegments(story).find(s => s.chapter === chapter && s.segment === index)
+    const article = articleFor(renderStory(story.id), segment.id)
+    assert.deepEqual(narrativeParagraphs(article), [renderToStaticMarkup(React.createElement('p', null, recording.text))])
+    assert.equal(segment.text, recording.text)
+    assert.equal(segment.audio, recording.audio)
+    const shared = (chapter === 1 ? story.journey : story.legacy)[index]
+    assert.equal(shared.title, recording.title)
+    assert.ok(shared.copy.length > 0, 'Shared summaries remain available to activities and other components')
+  })
+}
+
+test('remaining Apollo 15 narration, engineering panels, optional activities and completion remain intact', () => {
+  const story = storyCatalog['apollo-15-rover'], html = renderStory(story.id)
+  for (const segment of documentarySegments(story).filter(s => s.chapter === 0 || s.chapter === 2)) {
+    const article = articleFor(html, segment.id)
+    assert.deepEqual(narrativeParagraphs(article), [renderToStaticMarkup(React.createElement('p', null, apollo15Narration[segment.chapter][segment.segment].text))])
+    if (segment.chapter === 2 && story.challenges[segment.segment]) {
+      assert.ok(article.includes('Engineering challenge'))
+      assert.ok(article.includes('Engineering solution'))
+    }
+  }
+  for (let chapter = 1; chapter <= 4; chapter++) assert.ok(html.includes(`aria-label="Chapter ${chapter} optional mission activities"`))
+  assert.ok(html.includes('COMPLETE STORY') && html.includes('NASA evidence') && html.includes('Mission sources'))
+})
+
+test('legitimate additional Apollo 16 journey paragraphs are preserved', () => {
+  const story = storyCatalog['apollo-16-rover'], html = renderStory(story.id)
+  for (const segment of documentarySegments(story).filter(s => s.chapter === 1)) {
+    assert.deepEqual(narrativeParagraphs(articleFor(html, segment.id)), [segment.text, story.journey[segment.segment].copy].map(text => renderToStaticMarkup(React.createElement('p', null, text))))
+  }
 })
