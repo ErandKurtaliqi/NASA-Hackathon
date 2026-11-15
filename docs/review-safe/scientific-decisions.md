@@ -1,5 +1,37 @@
 # Seven recordings on hold — evidence and decisions
 
+## Current Apollo 11 decision
+
+This update supersedes the historical Apollo 11 playback state below. The
+original recordings are present in current `ErandKurtaliqi/NASA-Hackathon` main.
+No MP3 bytes were changed.
+
+- **Chapter 2 / segment 3 - Carried Out by Hand:** remains held. The original
+  attributes transport to Buzz and deployment to Neil. Sources A and B disagree
+  about deployment attribution. No corrected, approved recording is available.
+  The reading continues to credit the crew collectively, with its source note.
+- **Chapter 2 / segment 4 - Set Down Once, Forever:** remains held for the same
+  individual attribution. Source A supports the approximate 14-meter placement;
+  distance is no longer the reason for this hold. Reconcile attribution with the
+  primary chronology and provide/approve a recording consistent with the chosen
+  account. The original is preserved and is not silently enabled.
+- **Chapter 4 / segment 4 - More Than a Mirror:** approved and enabled. The user
+  explicitly confirmed that Haroon listened to and approved the complete original
+  recording (about 19.3 seconds), SHA-256
+  `4166f8c94a0b51b81bc113f1c81c31f6fc39c67621d76eda5eaabc3283d47bc4`.
+  Approval was confirmed on 2026-11-15. Source A supports placement approximately
+  14 meters from Eagle. The displayed reading now uses the approved original
+  script. Mission sources retains a provenance note explaining passive reflection.
+  Human listening approval comes from Haroon, relayed by the user; automated
+  transcription is not represented as human listening by the agent.
+
+The first two holds are editorial, not missing files or playback failures.
+Approval for 4/4 does not apply to 2/3, 2/4, or Apollo 17. Caption timing remains
+pending. Meet Me's duplicate heading is removed only from the displayed script;
+the original audio and source archive remain unchanged.
+
+## Historical review record
+
 This review updates the earlier classification. It leaves scripts, recordings, and playback permissions intact. The files, chapter and segment assignments, and SHA-256 hashes for all seven tracks match the local inventory. Listening is still required to confirm what the recordings say. [held-recordings.json](held-recordings.json) contains the complete expected scripts, hashes, MPEG durations, and current reading text from `4f6d380`.
 
 The seven segments are silent in the local backup and display explanatory text. This GitHub review excludes all 38 new Apollo 11 and Apollo 17 recordings. File availability and scientific review are separate conditions. There is no text-to-speech fallback. Apollo 15 and the homepage retain their published recordings.

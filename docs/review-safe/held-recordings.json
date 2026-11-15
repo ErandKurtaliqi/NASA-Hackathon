@@ -49,15 +49,15 @@
       "sha256": "4166f8c94a0b51b81bc113f1c81c31f6fc39c67621d76eda5eaabc3283d47bc4",
       "structuralDurationSeconds": 19.330612,
       "expectedScript": "At Tranquility Base, about 14 meters from Eagle, I remain. I am a little mirror, sending Earth's laser light back home. More than five decades have passed, yet I still serve science. The astronauts left the Moon, but a part of their dream never left me.",
-      "currentReadingText": "The array remains at Tranquility Base. Earth observatories use returned pulses for lunar science; the reflector itself has no powered transmitter.",
+      "currentReadingText": "At Tranquility Base, about 14 meters from Eagle, I remain. I am a little mirror, sending Earth's laser light back home. More than five decades have passed, yet I still serve science. The astronauts left the Moon, but a part of their dream never left me.",
       "originalHoldReason": "The package specifies an exact distance that its own source notes say remains unconfirmed.",
-      "localQaPlayback": "held; selected segment has reading but no narrator",
-      "codeReviewPlayback": "original intentionally absent; no playable controls",
-      "mapping": "filename, chapter/segment and original bytes agree; audible identity not verified",
+      "localQaPlayback": "enabled; unchanged original approved by Haroon on 2026-11-15",
+      "codeReviewPlayback": "original present in current main; enabled after editorial approval",
+      "mapping": "filename, chapter/segment and original bytes agree; complete original listening confirmed by Haroon via the user",
       "technicalMappingDefectFound": false,
-      "humanListening": "pending",
+      "humanListening": "Haroon listened to and approved the complete original; confirmed by the user on 2026-11-15",
       "captionTimes": "pending; no timestamps inferred",
-      "approval": "Haroon/editorial approval pending; no recording activated"
+      "approval": "Haroon approved complete original playback; user confirmation on 2026-11-15. NASA ALSJ supports approximate 14-meter placement. Original MP3 bytes unchanged."
     },
     {
       "mission": "Apollo 17",

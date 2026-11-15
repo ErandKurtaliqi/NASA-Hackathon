@@ -52,7 +52,7 @@ test('every Mars narration segment has exact context and no visual evidence is r
 })
 test('scientific holds remain explicit; missing evidence is never replaced by unrelated photographs', () => {
   const moon = documentarySegments(storyCatalog['apollo-11-reflector'])
-  assert.equal(moon.filter(s=>s.audioHold).length,3)
+  assert.equal(moon.filter(s=>s.audioHold).length,2)
   assert.ok(moon.some(s=>!s.evidence))
   const apollo17 = documentarySegments(storyCatalog['apollo-17-rover'])
   assert.equal(apollo17.filter(s=>s.audioHold).length,0)

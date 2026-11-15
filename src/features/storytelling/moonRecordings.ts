@@ -5,15 +5,17 @@ import type { QuizQuestion } from '../../machineStories'
 export type MoonMission = '11' | '17'
 export type MoonRecording = {
   chapter: number; segment: number; title: string; text: string; audio: string
-  mapping: 'filename-and-pdf'; listening: 'pending'; timing: 'pending'
+  mapping: 'filename-and-pdf'; listening: 'pending' | 'approved-by-haroon'; timing: 'pending'
   playback: 'enabled' | 'review-required'; review?: string; readingText: string
 }
 // Never silently edit the supplied script or recording. Questionable assertions
 // remain in the private source, while the public reading uses supported wording.
-const reviews: Record<string, { review: string; readingText: string }> = {
+const reviews: Record<string, { review: string; readingText?: string; playback?: 'enabled'; listening?: 'approved-by-haroon' }> = {
   '11:2:3': { review: 'The package names an individual deployer inconsistently. Historical review is required before playing this recording.', readingText: 'Buzz Aldrin carried the experiment packages away from Eagle. The crew placed the passive reflector on the lunar surface during the Apollo 11 moonwalk.' },
-  '11:2:4': { review: 'The deployer and exact placement distance need reconciliation with the source research sheet.', readingText: 'The reflector was set on the lunar surface, leveled and pointed toward Earth. It needed no electrical power.' },
-  '11:4:4': { review: 'The package specifies an exact distance that its own source notes say remains unconfirmed.', readingText: 'The array remains at Tranquility Base. Earth observatories use returned pulses for lunar science; the reflector itself has no powered transmitter.' },
+  '11:2:4': { review: 'The approximate 14-meter placement is supported by NASA ALSJ. Individual deployer attribution remains disputed across NASA sources; the original recording is still held for an editorial decision.', readingText: 'The reflector was set on the lunar surface, leveled and pointed toward Earth. It needed no electrical power.' },
+  // Haroon listened to and approved the complete, unchanged original; confirmed
+  // by the user on 2026-11-15. See docs/review-safe/scientific-decisions.md.
+  '11:4:4': { review: 'NASA ALSJ supports placement approximately 14 meters from Eagle. Haroon listened to and approved the complete original recording, confirmed on 2026-11-15. This is passive reflection, not a powered transmitter.', playback: 'enabled', listening: 'approved-by-haroon' },
   '17:2:4': { review: 'The PDF gives 35.9 km here and 35.7 km in its summary. Keep the recording pending scientific approval.', readingText: 'Across three surface traverses, LRV-3 extended the astronauts’ reach. The mission covered about 36 kilometers and returned samples from diverse terrain.' },
   '17:3:2': { review: 'The supplied battery-gauge account needs a direct mission-report reference before playback approval.', readingText: 'Battery power and thermal monitoring were essential to operating an electric vehicle in lunar vacuum. Read the existing engineering account below.' },
   '17:3:3': { review: 'The package gives conflicting ages for the volcanic glass. NASA describes roughly 3.6-billion-year-old volcanic material.', readingText: 'Schmitt discovered orange soil at Shorty Crater. Its volcanic glass beads preserve evidence of ancient explosive eruptions, about 3.6 billion years ago.' },
@@ -36,8 +38,8 @@ function manifest(mission: MoonMission, scripts: typeof apollo11Scripts): MoonRe
   return chapters.map(segments => segments.map(segment => {
     const audit = reviews[`${mission}:${segment.chapter}:${segment.segment}`]
     return { ...segment, audio: `/audio/apollo-${mission}/chapter-${segment.chapter}/${segment.segment}.mp3`,
-      mapping: 'filename-and-pdf', listening: 'pending', timing: 'pending',
-      playback: audit ? 'review-required' : 'enabled', readingText: audit?.readingText ?? segment.text,
+      mapping: 'filename-and-pdf', listening: audit?.listening ?? 'pending', timing: 'pending',
+      playback: audit?.playback ?? (audit ? 'review-required' : 'enabled'), readingText: audit?.readingText ?? segment.text,
       review: audit?.review }
   }))
 }

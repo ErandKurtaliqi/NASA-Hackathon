@@ -69,11 +69,14 @@ test('a dedicated tab marker survives a document reload and is consumed without 
  try{const first=instantiate();first.noteDocumentaryPlanet('mars');const reloaded=instantiate();assert.equal(reloaded.isDocumentaryPlanetReturn('mars'),true);assert.equal(reloaded.isDocumentaryPlanetReturn('moon'),false);reloaded.clearDocumentaryPlanetReturn();assert.deepEqual([...memory],[['unrelated','keep']])}finally{globalThis.window=previous}
 })
 
-test('approved scripts, evidence, quiz, storage and separate cinematic code stay unchanged',()=>{
+test('evidence, quiz, storage and separate cinematic code stay unchanged outside authorized narration edits',()=>{
  const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim()
  // Git accounts for this Windows checkout's LF/CRLF filters; binary changes
  // remain visible. Do not compare a filtered checkout hash with an unfiltered blob.
- const changed=git('diff','--name-only','HEAD','--','src/features/storytelling','src/components/rover','src/machineStories.ts','src/data.ts','src/store.ts','src/pages/HomePage.tsx','src/pages/HomePage.module.css','src/components/MachineStoryPage.tsx','public').split('\n').filter(p=>p&&p!=='src/features/storytelling/documentaryNarration.ts')
+ // Apollo 11's duplicate heading and per-recording editorial approval are
+ // authorized here; apollo11-narration.test.mjs checks their precise contracts.
+ const allowed=['src/features/storytelling/documentaryNarration.ts','src/features/storytelling/apollo11PackageScripts.json','src/features/storytelling/moonRecordings.ts']
+ const changed=git('diff','--name-only','HEAD','--','src/features/storytelling','src/components/rover','src/machineStories.ts','src/data.ts','src/store.ts','src/pages/HomePage.tsx','src/pages/HomePage.module.css','src/components/MachineStoryPage.tsx','public').split('\n').filter(p=>p&&!allowed.includes(p))
  assert.deepEqual(changed,[])
  const css=readFileSync(root+'src/components/storytelling/ContinuousStoryPage.module.css','utf8');assert.ok(!/^\.deck\b/m.test(css));assert.ok(css.includes('background: #080e19bd'))
 })

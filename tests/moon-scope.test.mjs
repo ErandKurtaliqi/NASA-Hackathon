@@ -83,9 +83,9 @@ test('source inventory stays traceable while restricted originals are explicitly
 test('recordings follow their PDF chapter/segment mapping; scientific holds and all timing/listening gaps are explicit',()=>{
   for(const [mission,counts] of [['11',[4,4,3,4,3]],['17',[4,4,4,5,3]]]){
     const chapters=api.moonRecordings[mission];assert.deepEqual(chapters.map(c=>c.length),counts)
-    chapters.forEach((c,i)=>c.forEach((s,j)=>{assert.equal(s.audio,`/audio/apollo-${mission}/chapter-${i+1}/${j+1}.mp3`);assert.equal(s.mapping,'filename-and-pdf');assert.equal(s.timing,'pending');assert.equal(s.listening,'pending');assert.ok(s.text&&s.readingText);if(s.playback==='review-required')assert.ok(s.review)}))
+    chapters.forEach((c,i)=>c.forEach((s,j)=>{assert.equal(s.audio,`/audio/apollo-${mission}/chapter-${i+1}/${j+1}.mp3`);assert.equal(s.mapping,'filename-and-pdf');assert.equal(s.timing,'pending');assert.equal(s.listening,mission==='11'&&i===3&&j===3?'approved-by-haroon':'pending');assert.ok(s.text&&s.readingText);if(s.playback==='review-required')assert.ok(s.review)}))
   }
-  assert.equal(api.moonRecordings['11'].flat().filter(s=>s.playback==='review-required').length,3)
+  assert.equal(api.moonRecordings['11'].flat().filter(s=>s.playback==='review-required').length,2)
   assert.equal(api.moonRecordings['17'].flat().filter(s=>s.playback==='review-required').length,4)
   assert.ok(!page('apollo-17-rover',1).includes('<audio'));assert.ok(page('apollo-17-rover',1).includes('Recorded narration omitted from this code review'));assert.ok(page('apollo-17-rover',4).includes('Recording held for scientific review'))
   const component=readFileSync(`${root}/src/components/storytelling/MoonPackageStory.tsx`,'utf8')
