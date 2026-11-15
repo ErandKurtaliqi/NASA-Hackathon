@@ -46,7 +46,7 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
     return [...links]
   }, [segments, story.sources])
   const presentation = documentaryPresentation(story)
-  const missionTitle = story.planet === 'moon' || story.id === 'sojourner'
+  const missionTitle = story.planet === 'moon'
     ? story.missionLabel.split(' · ')[0] : story.name
   const hardwareType = story.planet === 'moon'
     ? story.shortName.replace(missionTitle + ' ', '')

@@ -50,6 +50,7 @@ for (const story of Object.values(storyCatalog)) test(`${story.id}: clean narrat
     }
   }
   assert.ok(html.indexOf('<h1>') < html.indexOf('</header>'), 'Mission title shares the compact header')
+  if (story.id === 'sojourner') assert.match(html, /<h1>Sojourner<\/h1>/)
 })
 
 for (const chapter of [1, 3]) for (const [index, recording] of apollo15Narration[chapter].entries()) {

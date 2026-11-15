@@ -28,6 +28,7 @@ function Shell({children}:{children:React.ReactNode}){
   const navigate=useNavigate()
   const pathname=location.pathname
   const isHome=pathname==='/'
+  const isMissionControl=/^\/dashboard\/?$/i.test(pathname)
   const immersive=pathname.startsWith('/inspection/')||(pathname.startsWith('/story/follow-perseverance')&&!pathname.endsWith('/5')&&new URLSearchParams(location.search).get('view')!=='reader')
   const [calm,setCalm]=useState(()=>typeof localStorage!=='undefined'&&localStorage.getItem('auroralys-calm')==='true')
   const toggleMotion=()=>{setCalm(value=>{localStorage.setItem('auroralys-calm',String(!value));return !value})}
@@ -62,7 +63,7 @@ function Shell({children}:{children:React.ReactNode}){
         }}><ArrowLeft size={14} aria-hidden="true" />Go back</Link>
         <NavLink to="/dashboard" onClick={closeMenu}>Mission control</NavLink><NavLink to="/sources" onClick={closeMenu}>Sources</NavLink>
       </nav>
-      <div className="top-actions"><button className="motion-toggle" aria-pressed={calm} onClick={toggleMotion}>{calm?'Animations off':'Animations on'}</button><Link className="status-pill" to="/dashboard"><span/>MISSION ONLINE</Link><button type="button" ref={menuToggle} className="menu-button" onClick={()=>{if(open)closeMenu();else setOpen(true)}} aria-label={open?'Close navigation':'Open navigation'} aria-expanded={open} aria-controls="internal-navigation">{open?<X aria-hidden="true"/>:<Menu aria-hidden="true"/>}</button></div>
+      <div className="top-actions">{!isMissionControl&&<><button className="motion-toggle" aria-pressed={calm} onClick={toggleMotion}>{calm?'Animations off':'Animations on'}</button><Link className="status-pill" to="/dashboard"><span/>MISSION ONLINE</Link></>}<button type="button" ref={menuToggle} className="menu-button" onClick={()=>{if(open)closeMenu();else setOpen(true)}} aria-label={open?'Close navigation':'Open navigation'} aria-expanded={open} aria-controls="internal-navigation">{open?<X aria-hidden="true"/>:<Menu aria-hidden="true"/>}</button></div>
     </header>}
     <main>{children}</main>
     {!isHome&&!isExplorer&&!immersive&&<footer><FooterBrand/></footer>}

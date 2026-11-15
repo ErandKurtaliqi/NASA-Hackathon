@@ -89,6 +89,20 @@ function fixture(pathname = '/hardware') {
   }
 }
 
+test('Mission Control hides both status controls while keeping mobile navigation', () => {
+  const f = fixture('/dashboard')
+  const statusControls = () => f.all(n => ['motion-toggle', 'status-pill'].includes(n.props.className))
+  try {
+    assert.equal(statusControls().length, 0)
+    f.clickToggle()
+    assert.equal(f.button().props['aria-expanded'], true)
+    f.navigate('/sources')
+    assert.equal(statusControls().length, 2)
+    f.navigate('/dashboard/')
+    assert.equal(statusControls().length, 0)
+  } finally { f.dispose() }
+})
+
 test('toggle names its action and exposes a stable disclosure relationship without hiding desktop links', () => {
   const f = fixture()
   try {
