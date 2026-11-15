@@ -35,7 +35,6 @@ export default function ExplorerHeader({ planet, sound, onToggleSound }: {
       </div>
       {open && <nav id="explorer-navigation" className={styles.menu} aria-label="Main navigation">
         <Link to="/" onClick={() => setOpen(false)}>Home <ArrowUpRight aria-hidden="true" /></Link>
-        <Link to="/story/apollo-15-rover/1" onClick={() => setOpen(false)}>Story <ArrowUpRight aria-hidden="true" /></Link>
         <Link to="/dashboard" onClick={() => setOpen(false)}>Mission control <ArrowUpRight aria-hidden="true" /></Link>
         <Link to="/sources" onClick={() => setOpen(false)}>Science & sources <ArrowUpRight aria-hidden="true" /></Link>
       </nav>}
