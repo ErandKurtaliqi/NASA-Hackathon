@@ -6,7 +6,7 @@ Esta entrega reúne las dos historias mediante el commit de merge que contiene e
 
 - Primer padre/master verificado después de `git fetch origin`: `3b45e8f2324e8af85e55d81a1020306e95e1706e`.
 - Segundo padre/storytelling: `ddb458657e1fa5fca0bd117f265e95b444090712`.
-- Worktree original: `C:\xampp\htdocs\Auroralys\workstreams\20261112-master-integration`.
+- Worktree original: `master-integration`.
 - Se continuó el merge ya abierto. No se creó otro worktree, reinició, abortó, reseteó ni sustituyó el árbol de ningún desarrollador.
 - Se revisaron y prepararon las tres modificaciones del layout, su regresión y documentación. Se comprobó que las demás entradas del índice original conservaran sus blobs.
 - El SHA exacto de esta entrega se obtiene con `git log -1 --format=%H`; sus padres con `git show -s --format=%P HEAD`. Las verificaciones de ancestros deben aprobar para ambos SHA anteriores.

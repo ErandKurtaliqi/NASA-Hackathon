@@ -4,7 +4,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { connectChrome } from './story-browser-qa.mjs'
 
-const output=resolve(process.argv[2] ?? '../qa-artifacts/20261111-mission-integration')
+const output=resolve(process.argv[2] ?? '../qa-artifacts/mission-integration')
 const base=process.argv[3] ?? 'http://127.0.0.1:5200'
 assert.match(base,/^http:\/\/(?:127\.0\.0\.1|localhost):\d+$/)
 mkdirSync(output,{recursive:true})

@@ -15,7 +15,7 @@ En el respaldo local los siete segmentos permanecen silenciosos al seleccionarlo
 
 ## Revisión por archivo
 
-Todos los paths son relativos al worktree **privado local** `20261110-moon-storytelling-qa`; no existen en esta rama de revisión.
+Todos los paths son relativos al worktree **privado local** `moon-storytelling-qa`; no existen en esta rama de revisión.
 
 | Misión / archivo | Afirmación del guion esperado | Clasificación actual y evidencia | Recomendación / decisión sobre audio |
 |---|---|---|---|

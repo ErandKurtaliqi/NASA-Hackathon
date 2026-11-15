@@ -5,12 +5,14 @@ No se han integrado resultados ni aplicado cambios a la rama protegida.
 
 ## Ownership y aislamiento
 
-| Frente | Worktree desacoplado bajo `C:/xampp/htdocs/Auroralys/workstreams/` | Propietario de archivos |
+| Frente | Nombre del frente | Propietario de archivos |
 | --- | --- | --- |
-| A | `20261108-audio` | Apollo15ScrollStory, StoryRecording; helpers Apollo 15 nuevos; scripts/datos/reviewer y pruebas A nuevos. |
-| B | `20261108-apollo17` | Seam MachineStoryPage; componentes/manifiestos/medios Apollo 17 nuevos; pruebas históricas ajustadas solo al layout autorizado y pruebas B nuevas. |
-| C | `20261108-activity` | Solo archivos nuevos de actividad genérica, caso Apollo 15, demo HTML, pruebas C y documento. Ninguna inyección en historias. |
-| D | `20261108-map-audit` | Análisis de mapas/QA y este informe; no modifica código de aplicación. |
+| A | Audio | Apollo15ScrollStory, StoryRecording; helpers Apollo 15 nuevos; scripts/datos/reviewer y pruebas A nuevos. |
+| B | Apollo 17 | Seam MachineStoryPage; componentes/manifiestos/medios Apollo 17 nuevos; pruebas históricas ajustadas solo al layout autorizado y pruebas B nuevas. |
+| C | Actividad de Apollo 15 | Solo archivos nuevos de actividad genérica, caso Apollo 15, demo HTML, pruebas C y documento. Ninguna inyección en historias. |
+| D | Auditoría de mapas | Análisis de mapas/QA y este informe; no modifica código de aplicación. |
+
+Los cuatro frentes se revisaron en worktrees separados el 8 de noviembre de 2026.
 
 Dependencias existentes se comparten para lectura mediante junction `node_modules`;
 ningún agente instala dependencias de la aplicación ni edita esa carpeta. Las demos
@@ -21,6 +23,18 @@ Un checkout Windows convirtió el guión original a CRLF, haciendo fallar una pr
 que compara sus bytes con el blob original. Se repuso el mismo blob y se refrescó
 el stat-cache de ese único archivo, sin staged diff ni modificación funcional. Los
 MP3 no se alteraron. El baseline después del ajuste es 165/165.
+
+## Otros frentes de revisión
+
+| Nombre del frente | Identificador |
+| --- | --- |
+| Apollo 16 | `apollo16` |
+| Historias de Marte | `mars-stories` |
+| Candidato de Rover Stories | `rover-stories-release-candidate` |
+| Revisión de las historias lunares | `moon-storytelling-qa` |
+| Integración de Ingenuity | `mission-integration-ingenuity` |
+| Corrección visual | `visual-correction` |
+| Integración de storytelling | `master-integration` |
 
 ## Resultados y límites
 
@@ -34,7 +48,7 @@ No se confunden esos candidatos con captions aprobados: 0 revisiones humanas y 1
 registros de producción pendientes. El reviewer captura/edita tiempos usando el
 reproductor real y permite exportar una revisión explícita.
 
-Validación final e inventario A: ver `../../20261108-audio/docs/workstream-a-audio.md`.
+Validación final e inventario A: ver `./workstream-a-audio.md`.
 No se declara completa la sincronización fina hasta aprobar los cues por escucha.
 
 Resultado A: 174/174 (165 + 9), TypeScript y build correctos. Se verifican los
@@ -71,7 +85,7 @@ Validación: 173/173 (165 anteriores + 8 nuevas), TypeScript, producción y diff
 Smoke HTTP: ruta SPA, módulo transformado e imagen devuelven 200; no es una prueba
 visual ni auditiva de navegador. Revisión manual pendiente.
 
-Inventario y fuentes: `../../20261108-apollo17/docs/workstream-b-apollo17.md`.
+Inventario y fuentes: `./workstream-b-apollo17.md`.
 
 ### C — actividad independiente
 
@@ -85,7 +99,7 @@ Validación: 173/173 (165 + 8), TypeScript, build normal y build independiente d
 preview; diff-check correcto. HTML, módulo y JPEG servidos por HTTP con 200; servidor
 cerrado. DOM real, touch y lector de pantalla permanecen pendientes.
 
-Inventario y fuentes: `../../20261108-activity/docs/workstream-c-activity.md`.
+Inventario y fuentes: `./workstream-c-activity.md`.
 
 ### D — mapas y riesgos
 
@@ -127,7 +141,7 @@ en el checkout protegido. Los worktrees contienen los resultados para revisión.
 
 ## Inventario exacto final por worktree
 
-### A: `20261108-audio` (12 archivos)
+### A: Audio (12 archivos)
 
 - Modificado: `src/components/storytelling/Apollo15ScrollStory.tsx`
 - Modificado: `src/components/storytelling/StoryRecording.tsx`
@@ -142,7 +156,7 @@ en el checkout protegido. Los worktrees contienen los resultados para revisión.
 - Nuevo: `src/features/storytelling/apollo15CueEvidence.ts`
 - Nuevo: `tests/workstream-a-audio.test.mjs`
 
-### B: `20261108-apollo17` (18 archivos)
+### B: Apollo 17 (18 archivos)
 
 - Modificado: `src/components/MachineStoryPage.tsx`
 - Modificado: `tests/apollo-progress-persistence.test.mjs`
@@ -163,7 +177,7 @@ en el checkout protegido. Los worktrees contienen los resultados para revisión.
 - Nuevo: `src/features/storytelling/apollo17StorySteps.ts`
 - Nuevo: `tests/workstream-b-apollo17.test.mjs`
 
-### C: `20261108-activity` (9 archivos)
+### C: Actividad de Apollo 15 (9 archivos)
 
 - Nuevo: `activity-preview.html`
 - Nuevo: `docs/workstream-c-activity.md`
@@ -175,7 +189,7 @@ en el checkout protegido. Los worktrees contienen los resultados para revisión.
 - Nuevo: `src/features/storytelling/activities/evidencePrediction.ts`
 - Nuevo: `tests/workstream-c-activity.test.mjs`
 
-### D: `20261108-map-audit` (2 archivos)
+### D: Auditoría de mapas (2 archivos)
 
 - Nuevo: `docs/workstream-d-map-contract.md`
 - Nuevo: `docs/workstreams-review.md`

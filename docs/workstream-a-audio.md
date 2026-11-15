@@ -1,6 +1,6 @@
 # Frente A — audio, captions y evidencia de Apollo 15
 
-Fecha: 2026-11-08. Worktree aislado: `workstreams/20261108-audio`, HEAD
+Fecha: 2026-11-08. Worktree aislado: `audio`, HEAD
 desacoplado en `8120d9e`. No se ha integrado este trabajo en ninguna rama.
 
 ## Resultado y límite explícito

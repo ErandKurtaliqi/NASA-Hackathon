@@ -93,8 +93,8 @@ En un Chrome QA dedicado con puerto de debugging 9338 y perfil temporal fuera de
 
 ```powershell
 $env:CHROME_QA_PORT = '9338'
-node scripts/story-visual-qa.mjs ../qa-artifacts/20261111-mission-integration-ingenuity http://127.0.0.1:5200 --all-missions
-node scripts/story-catalog-qa.mjs ../qa-artifacts/20261111-mission-integration-ingenuity http://127.0.0.1:5200
+node scripts/story-visual-qa.mjs ../qa-artifacts/mission-integration-ingenuity http://127.0.0.1:5200 --all-missions
+node scripts/story-catalog-qa.mjs ../qa-artifacts/mission-integration-ingenuity http://127.0.0.1:5200
 ```
 
 Rutas de inicio: `/story/apollo-11-reflector/1`, `/story/apollo-15-rover/1`, `/story/apollo-16-rover/1`, `/story/apollo-17-rover/1`, `/story/sojourner/1`, `/story/opportunity/1`, `/story/viking-1/1`, `/story/ingenuity/1`; tambien `/hardware`, `/explore/moon`, `/explore/mars`, `/dashboard`. Avanzar capitulos con Next Chapter en la prueba manual; no borrar progreso para abrir el quiz. localStorage depende del origen/puerto.

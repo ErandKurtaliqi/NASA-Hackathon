@@ -2,7 +2,7 @@
 
 ## Scope and baseline
 
-Isolated branch `review/haroon-visual-correction`, worktree `20261111-visual-correction`, from the safe visual baseline `8a77514`. No integration of Apollo 16 or Mars workstreams. The eight-mission integration at `b9de4fe` is preserved separately. This correction is not a declaration of director approval or pixel equivalence.
+Isolated branch `review/haroon-visual-correction`, worktree `visual-correction`, from the safe visual baseline `8a77514`. No integration of Apollo 16 or Mars workstreams. The eight-mission integration at `b9de4fe` is preserved separately. This correction is not a declaration of director approval or pixel equivalence.
 
 ## Observed gaps, from actual OLD Chrome captures
 
@@ -70,8 +70,8 @@ With dedicated headless QA Chrome on port 9339, profile outside dist:
 
 ```powershell
 $env:CHROME_QA_PORT='9339'
-node scripts/story-design-qa.mjs ../qa-artifacts/20261111-visual-correction "$env:AURORALYS_APOLLO15_REFERENCE" http://127.0.0.1:5202
-node scripts/story-visual-qa.mjs ../qa-artifacts/20261111-visual-correction/regression http://127.0.0.1:5202
+node scripts/story-design-qa.mjs ../qa-artifacts/visual-correction "$env:AURORALYS_APOLLO15_REFERENCE" http://127.0.0.1:5202
+node scripts/story-visual-qa.mjs ../qa-artifacts/visual-correction/regression http://127.0.0.1:5202
 ```
 
 Capture OLD images before modifying/building the baseline if repeating this review in a fresh worktree. No browser package or new application dependency is required.

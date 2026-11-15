@@ -138,7 +138,7 @@ Ninguna captura/renderizado de Chrome se realizó en esta auditoría.
 
 ## Baseline y aislamiento
 
-- Cuatro worktrees desacoplados en `C:/xampp/htdocs/Auroralys/workstreams/20261108-*`.
+- Cuatro worktrees desacoplados de la revisión del 8 de noviembre de 2026.
 - Dependencias existentes vía junction `node_modules`, solo lectura; cada worktree
   tiene archivos fuente, `dist` y cachés de compilación propios. Sin npm install.
 - Las demos deben usar Vite `createServer` con `cacheDir` local explícito (por ejemplo

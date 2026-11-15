@@ -1,7 +1,7 @@
 # Frente C: actividad independiente de predicción y evidencia
 
 Estado: implementada para revisión en el worktree aislado
-`workstreams/20261108-activity (relativo al repositorio)`, HEAD desacoplado en
+`activity (relativo al repositorio)`, HEAD desacoplado en
 `8120d9e`. No se ha insertado en ninguna historia ni modificado una ruta compartida.
 
 ## Resultado demostrable

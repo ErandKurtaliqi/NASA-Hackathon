@@ -62,7 +62,7 @@ export async function connectChrome(port = 9337) {
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1'))) {
-  const directory = resolve(process.argv[2] ?? '../qa-artifacts/20261111-haroon-visual')
+  const directory = resolve(process.argv[2] ?? '../qa-artifacts/haroon-visual')
   const label = process.argv[3] ?? 'capture'
   mkdirSync(directory, { recursive: true })
   const browser = await connectChrome()

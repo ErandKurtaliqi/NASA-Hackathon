@@ -5,7 +5,7 @@ Objetivo de revisión de Haroon: 10 de noviembre. Este informe distingue el cand
 ## Estado Git y procedencia
 
 - Repositorio raíz: `la raíz del repositorio`, rama protegida `integration/main-feature-review`, commit `8120d9ecba6babb9e2c0695c02c6ef96234b359b`.
-- Candidato: rama `review/rover-stories-release-candidate`, worktree `workstreams/20261109-rover-stories-release-candidate`, creado desde esa base.
+- Candidato: rama `review/rover-stories-release-candidate`, worktree `rover-stories-release-candidate`, creado desde esa base.
 - **HEAD del candidato sigue en 8120d9e. Los cambios combinados están sin commit, sin staging de contenido y sin push**, pendientes de revisión. Se aplicaron patches binarios inspeccionados con `git apply --check` y `git apply`; no se ejecutó un merge ni se modificó la ascendencia de las ramas originales.
 - Se consultaron las referencias reales de GitHub mediante `git ls-remote --heads origin`; coinciden con los objetos locales siguientes. Todas tienen merge-base `8120d9e`.
 
@@ -18,9 +18,9 @@ Objetivo de revisión de Haroon: 10 de noviembre. Este informe distingue el cand
 
 Los documentos B/C copiados al candidato describen su revisión original del 8 de noviembre y conservan ese contexto histórico. Este informe registra la integración local actual.
 
-E permanece independiente en `workstreams/20261109-mars-stories`, rama `review/workstream-e-mars-stories`, commit local `814d0443f65c77164635bc43b643a2aea2799d5f`: **92 archivos comprometidos localmente y worktree limpio**. Sojourner/Opportunity/Viking 1 no se incorporaron al candidato; sus 56 MP3 y tres PDF siguen locales con permiso de redistribución pendiente.
+E permanece independiente en `mars-stories`, rama `review/workstream-e-mars-stories`, commit local `814d0443f65c77164635bc43b643a2aea2799d5f`: **92 archivos comprometidos localmente y worktree limpio**. Sojourner/Opportunity/Viking 1 no se incorporaron al candidato; sus 56 MP3 y tres PDF siguen locales con permiso de redistribución pendiente.
 
-F quedó implementado por separado en `workstreams/20261109-apollo16`, rama `review/workstream-f-apollo16`, desde `8120d9e`, sin commit ni staging: **43 archivos, 9 modificados y 34 nuevos**. Sus resultados y reservas editoriales se documentan en [su informe independiente](../../20261109-apollo16/docs/workstream-f-apollo16.md). No se copian sus grabaciones ni PDF al candidato.
+F quedó implementado por separado en `apollo16`, rama `review/workstream-f-apollo16`, desde `8120d9e`, sin commit ni staging: **43 archivos, 9 modificados y 34 nuevos**. Sus resultados y reservas editoriales se documentan en su informe independiente de Apollo 16. No se copian sus grabaciones ni PDF al candidato.
 
 Estado comprobado de Apollo 16: identidad `apollo-16-rover`, hardware `lrv-2`, cinco capítulos y quiz original B/A/B de cuatro opciones. Reutiliza layout, scroll, reproductor, evidencia y confirmación de guardado; los quince textos originales permanecen acompañados de notas editoriales y la voz sólo se inicia mediante acción explícita. Los 18 MP3 (4/4/3/4/3; 4.111.629 bytes) conservan todos sus bytes y etiquetas. Seis imágenes NASA de Apollo 16, 353.377 bytes, con fotografías y fotogramas distinguidos; no se usan fotos de otra misión como sustitutos. El PDF de ocho páginas sigue dentro del ZIP externo, fuera de public/dist.
 
@@ -174,7 +174,7 @@ Total actual: **34 archivos** (11 modificados y 23 nuevos), sin cambios staged.
 
 ## Inventario exacto de F, separado del candidato
 
-Estos 43 archivos pertenecen exclusivamente a `workstreams/20261109-apollo16` (9 modificados, 34 nuevos); no son parte del diff B+C. El PDF original sigue fuera del worktree, en el ZIP de entrada.
+Estos 43 archivos pertenecen exclusivamente a `apollo16` (9 modificados, 34 nuevos); no son parte del diff B+C. El PDF original sigue fuera del worktree, en el ZIP de entrada.
 
 - `docs/apollo16-input-manifest.json`
 - `docs/workstream-f-apollo16.md`

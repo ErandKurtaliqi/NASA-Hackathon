@@ -10,7 +10,7 @@ El encargo exige verificar la integración antes del commit. El acceso disponibl
 
 2. **Continuous-storytelling original.** `origin/review/continuous-storytelling-office`: `ddb458657e1fa5fca0bd117f265e95b444090712`, también sin cambios en el segundo fetch. Base común: `a0048e918a7a6549600f5159ab6c8b584d0f59d2`. Divergencia: 5 commits exclusivos de master y 22 de storytelling.
 
-3. **Rama y worktree nuevos.** `integration/haroon-master-continuous-storytelling`, en `C:\xampp\htdocs\Auroralys\workstreams\20261112-master-integration`. Ambos nombres estaban libres. El worktree comenzó limpio y exactamente en el SHA de master indicado arriba. No se cambió de rama, reseteó ni editó ningún worktree existente. Los diez worktrees anteriores conservan cero cambios rastreados; los directorios no rastreados del checkout original ya existían. La rama nueva no tiene upstream hasta su futura publicación explícita.
+3. **Rama y worktree nuevos.** `integration/haroon-master-continuous-storytelling`, en `master-integration`. Ambos nombres estaban libres. El worktree comenzó limpio y exactamente en el SHA de master indicado arriba. No se cambió de rama, reseteó ni editó ningún worktree existente. Los diez worktrees anteriores conservan cero cambios rastreados; los directorios no rastreados del checkout original ya existían. La rama nueva no tiene upstream hasta su futura publicación explícita.
 
 4. **Estrategia real.** Se ejecutó `git merge --no-ff --no-commit origin/review/continuous-storytelling-office` desde la rama nueva basada en master. Es una fusión Git real pendiente de commit, con master como primer padre y storytelling en `MERGE_HEAD`. No se usaron reset, force-push, selección global ours/theirs ni cherry-picks de ramas privadas. No se sustituyó el árbol de master por el de la otra rama.
 
@@ -81,7 +81,7 @@ El encargo exige verificar la integración antes del commit. El acceso disponibl
 18. **Procedimiento final seguro, condicionado al QA.** Ejecutar desde este worktree nuevo. Primero completar y registrar el QA real. Si master o storytelling han cambiado, integrarlos mediante merge y repetir pruebas/QA antes de continuar. No ejecutar la publicación mientras siga pendiente ese gate.
 
 ```powershell
-Set-Location 'C:\xampp\htdocs\Auroralys\workstreams\20261112-master-integration'
+Set-Location (git rev-parse --show-toplevel)
 git fetch origin
 git rev-parse origin/master origin/review/continuous-storytelling-office
 # Deben seguir coincidiendo con los dos SHA documentados arriba.

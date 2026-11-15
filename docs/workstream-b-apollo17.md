@@ -1,7 +1,7 @@
 # Workstream B — Apollo 17 reusable Rover Story
 
 2026-11-08. Isolated detached worktree:
-`workstreams/20261108-apollo17 (repository-relative)`, based on `8120d9e`.
+`apollo17 (repository-relative)`, based on `8120d9e`.
 No changes have been transferred to `integration/main-feature-review`, committed,
 merged, or pushed. Dependencies are reused read-only through a `node_modules`
 junction; no dependency was installed or changed.
