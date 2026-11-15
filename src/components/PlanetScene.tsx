@@ -197,7 +197,7 @@ function CameraRig({command,reduced,suspendUntil}:{command:CameraCommand;reduced
   return <OrbitControls ref={controls} enablePan={false} minDistance={MIN_CAMERA_DISTANCE} maxDistance={MAX_CAMERA_DISTANCE} minPolarAngle={.22} maxPolarAngle={Math.PI-.22} enableDamping dampingFactor={.09} rotateSpeed={.65} zoomSpeed={.65} onStart={()=>{transitioning.current=false;suspendUntil.current=Infinity}} onEnd={()=>{suspendUntil.current=performance.now()+1200}}/>
 }
 
-export default function PlanetScene({ planet, compact = false, onInteract, onReady, locations, selectedLocationId, onSelectLocation }: { planet: PlanetId; compact?: boolean; onInteract?: () => void; onReady?: () => void; locations?: readonly ExactMissionLocation[]; selectedLocationId?: string; onSelectLocation?: (id: string) => void }) {
+export default function PlanetScene({ planet, compact = false, openingPaused = false, onInteract, onReady, locations, selectedLocationId, onSelectLocation }: { planet: PlanetId; compact?: boolean; openingPaused?: boolean; onInteract?: () => void; onReady?: () => void; locations?: readonly ExactMissionLocation[]; selectedLocationId?: string; onSelectLocation?: (id: string) => void }) {
   const root=useRef<HTMLDivElement>(null)
   const suspendUntil=useRef(0)
   const systemReduced=useReducedMotion()
@@ -221,9 +221,9 @@ export default function PlanetScene({ planet, compact = false, onInteract, onRea
 
   return <div ref={root} tabIndex={0} role="group" aria-description="Drag to orbit. Scroll or pinch to zoom. Arrow keys rotate, plus and minus zoom, and R resets the camera." onPointerDown={e=>{if(e.target instanceof HTMLCanvasElement)root.current?.focus({preventScroll:true})}} onKeyDown={e=>{const keys:Record<string,CameraCommand['type']>={'+':'in','=':'in','-':'out',ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',r:'reset',R:'reset'};if(keys[e.key]){e.preventDefault();issue(keys[e.key])}}} className={`${compact?'planet-canvas compact':'planet-canvas'}`} aria-label={`Interactive 3D ${planet} globe using ${useMarsModel?'NASA/JPL Mars visual texture':config.title}`}>
     <Canvas frameloop={reduced||!visible||!pageVisible?'demand':'always'} camera={{ position: INITIAL_CAMERA_POSITION, fov: 44 }} dpr={[1, 1.7]} gl={{ alpha: true, antialias: true, outputColorSpace: THREE.SRGBColorSpace }}>
-      <PlanetLighting planet={planet} reduced={reduced}/>
+      <PlanetLighting planet={planet} reduced={reduced} paused={openingPaused}/>
       <Suspense fallback={null}>
-        <PlanetMotion planet={planet} reduced={reduced} suspendUntil={suspendUntil} onInteract={onInteract} initialLongitude={locations ? -Math.PI / 2 : undefined}>
+        <PlanetMotion planet={planet} reduced={reduced || openingPaused} suspendUntil={suspendUntil} onInteract={onInteract} initialLongitude={locations ? -Math.PI / 2 : undefined}>
           {useMarsModel ? <NasaMars onTextureState={setTextureState}/> : <Planet planet={planet} onTextureState={setTextureState}/>}
           {planet === 'mars' && !useMarsModel && <MarsLimb/>}
           {surfaceReady && locations && onSelectLocation && <PlanetLocationPins locations={locations} selectedId={selectedLocationId} onSelect={onSelectLocation}/>}

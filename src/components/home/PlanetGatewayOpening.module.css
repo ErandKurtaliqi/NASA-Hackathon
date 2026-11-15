@@ -1,0 +1,22 @@
+.gateway.gateway { animation-delay: 0s; }
+.poster { pointer-events: none; }
+.transition { transition: opacity .3s ease-out; }
+.faded { opacity: 0; }
+
+.loading {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #080d1cdb;
+  color: var(--glow);
+  pointer-events: none;
+}
+
+.loading svg { width: 17px; height: 17px; animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }

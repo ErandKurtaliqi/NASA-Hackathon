@@ -1,12 +1,14 @@
 import { startExplorerIntro } from '../explorer/useExplorerIntro'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { Component, lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
-import { ArrowRight, Moon, Orbit } from 'lucide-react'
+import { ArrowRight, LoaderCircle, Moon, Orbit } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { PlanetId } from '../../types'
 import styles from '../../pages/HomePage.module.css'
+import openingStyles from './PlanetGatewayOpening.module.css'
 
 const PlanetScene = lazy(() => import('../PlanetScene'))
+const OPENING_PAUSE_MS = 650
 
 class PreviewBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
   state = { failed: false }
@@ -30,6 +32,7 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
   const [documentVisible, setDocumentVisible] = useState(true)
   const [touchActive, setTouchActive] = useState(false)
   const [sceneReady,setSceneReady]=useState(false)
+  const [openingComplete, setOpeningComplete] = useState(false)
   const ready=useCallback(()=>setSceneReady(true),[])
   const [sceneFailed, setSceneFailed] = useState(false)
   const failed = useCallback(() => {
@@ -38,6 +41,17 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
   }, [])
   const name = planet === 'moon' ? 'Moon' : 'Mars'
   const sceneActive = webgl && visible && documentVisible
+  const sceneVisible = sceneActive && sceneReady && !sceneFailed
+  const sceneLoading = sceneActive && !sceneReady && !sceneFailed
+
+  useEffect(() => {
+    if (!sceneVisible || !animated) {
+      setOpeningComplete(false)
+      return
+    }
+    const timer = setTimeout(() => setOpeningComplete(true), OPENING_PAUSE_MS)
+    return () => clearTimeout(timer)
+  }, [sceneVisible, animated])
 
   useEffect(() => {
     const update = () => setDocumentVisible(!document.hidden)
@@ -54,34 +68,35 @@ export default function PlanetGateway({ planet, animated, webgl, onHighlight, on
 
   return <article
     ref={host}
-    onPointerMove={event=>{if(!animated||event.pointerType!=='mouse')return;const rect=event.currentTarget.getBoundingClientRect();pointerX.set(((event.clientX-rect.left)/rect.width-.5)*10);pointerY.set(((event.clientY-rect.top)/rect.height-.5)*8)}}
+    onPointerMove={event=>{if(!openingComplete||!animated||event.pointerType!=='mouse')return;const rect=event.currentTarget.getBoundingClientRect();pointerX.set(((event.clientX-rect.left)/rect.width-.5)*10);pointerY.set(((event.clientY-rect.top)/rect.height-.5)*8)}}
     onPointerLeave={()=>{pointerX.set(0);pointerY.set(0)}}
-    className={`${styles.gateway} ${planet === 'moon' ? styles.moon : styles.mars} ${touchActive ? styles.touchInteractive : ''}`}
+    className={`${styles.gateway} ${openingStyles.gateway} ${planet === 'moon' ? styles.moon : styles.mars} ${touchActive ? styles.touchInteractive : ''}`}
     aria-label={planet === 'moon' ? 'Explore the Moon' : 'Explore Mars'}
     onMouseEnter={() => onHighlight(planet)}
     onMouseLeave={() => onHighlight(null)}
     onFocus={() => { onHighlight(planet); onNarrate(planet) }}
     onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) onHighlight(null) }}
   >
-    <motion.div className={styles.planetMotion} style={{x:animated?x:0,y:animated?y:0}}><div className={styles.planetStage}
+    <motion.div className={styles.planetMotion} style={{x:animated&&openingComplete?x:0,y:animated&&openingComplete?y:0}}><div className={styles.planetStage}
       onPointerDown={event => { if (event.pointerType !== 'touch' && event.button === 0) onNarrate(planet) }}
       onClick={() => onNarrate(planet)}>
       <div className={styles.planetHalo} aria-hidden="true" /><div className={styles.orbitAccent} aria-hidden="true" />
       <div className={styles.planetDisc}>
-        <div className={styles.planetPoster} aria-hidden="true" hidden={sceneActive&&sceneReady}>
+        {sceneActive && <div className={styles.scene} style={{ visibility: sceneVisible ? 'visible' : 'hidden' }}>
+          <PreviewBoundary onError={failed}><Suspense fallback={null}><PlanetScene planet={planet} compact onReady={ready} openingPaused={!animated || !openingComplete} /></Suspense></PreviewBoundary>
+        </div>}
+        <div className={`${styles.planetPoster} ${openingStyles.poster} ${animated ? openingStyles.transition : ''} ${sceneVisible ? openingStyles.faded : ''}`} aria-hidden="true">
           {planet==='mars'?<img src="/images/mars-nasa-poster.jpg" alt="" width="512" height="512" />:<><img src="/nasa-fallback/moon/west.jpg" alt="" width="256" height="256" /><img src="/nasa-fallback/moon/east.jpg" alt="" width="256" height="256" /></>}
         </div>
-        {sceneActive && <div className={styles.scene} style={{ visibility: sceneReady ? 'visible' : 'hidden' }}>
-          <PreviewBoundary onError={failed}><Suspense fallback={null}><PlanetScene planet={planet} compact onReady={ready} /></Suspense></PreviewBoundary>
-        </div>}
         <div className={styles.planetRim} aria-hidden="true" />
+        {sceneLoading && <span className={openingStyles.loading} role="status" aria-label={`Loading ${name} in 3D`}><LoaderCircle aria-hidden="true" /></span>}
       </div>
     </div></motion.div>
     <Link className={styles.exploreLink} to={`/explore/${planet}`} aria-label={`Explore ${name}`} onClick={event => { if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) startExplorerIntro(planet) }}>
       {planet === 'moon' ? <Moon aria-hidden="true" /> : <Orbit aria-hidden="true" />}
       <span>Explore {name}</span><ArrowRight aria-hidden="true" />
     </Link>
-    <span className={styles.planetHint}>{sceneActive && !sceneReady && !sceneFailed ? <span role="status">Loading {name} in 3D…</span> : animated && sceneReady ? 'Drag to look around' : 'A world of stories awaits'}</span>
+    <span className={styles.planetHint}>{animated && sceneVisible ? 'Drag to look around' : 'A world of stories awaits'}</span>
     <div className={styles.touchControls}>
       {sceneActive && !sceneFailed && <button
         type="button"

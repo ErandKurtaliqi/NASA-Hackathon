@@ -20,16 +20,18 @@ export function PlanetMotion({children,planet,reduced,onInteract,suspendUntil,in
   return <group ref={group} onPointerEnter={()=>{hovering.current=true}} onPointerLeave={()=>{hovering.current=false}} onPointerDown={onInteract} rotation={[0,initialLongitude ?? (planet==='moon'?Math.PI:0),0]}>{children}</group>
 }
 
-export function PlanetLighting({planet,reduced}:{planet:PlanetId;reduced:boolean}){
+export function PlanetLighting({planet,reduced,paused=false}:{planet:PlanetId;reduced:boolean;paused?:boolean}){
   const light=useRef<THREE.DirectionalLight>(null),time=useRef(0)
   useFrame((_,delta)=>{
-    if(!light.current||reduced)return
+    if(!light.current||reduced||paused)return
     time.current+=Math.min(delta,.05)
     const ease=1-Math.exp(-time.current*1.8)
     light.current.position.set(-6+ease,2.4+1.1*ease,2.5+2.5*ease)
     light.current.intensity=(planet==='mars'?2.7:4.2)*(.75+.25*ease)
   })
-  return <><ambientLight intensity={.08}/><directionalLight ref={light} position={[-5,3.5,5]} intensity={planet==='mars'?2.7:4.2} color={planet==='mars'?'#ffffff':'#f6f8ff'}/><directionalLight position={[4,-2,-3]} intensity={.08} color="#6ca9ff"/></>
+  const intensity=planet==='mars'?2.7:4.2
+  const openingPosition: [number, number, number] = [-6,2.4,2.5]
+  return <><ambientLight intensity={.08}/><directionalLight ref={light} position={paused&&!reduced?openingPosition:[-5,3.5,5]} intensity={paused&&!reduced?intensity*.75:intensity} color={planet==='mars'?'#ffffff':'#f6f8ff'}/><directionalLight position={[4,-2,-3]} intensity={.08} color="#6ca9ff"/></>
 }
 
 // A restrained sunlit limb for Mars only. The Moon intentionally has no atmosphere.

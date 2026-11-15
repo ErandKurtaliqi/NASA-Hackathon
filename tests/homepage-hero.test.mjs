@@ -119,6 +119,30 @@ test('the home menu lists only Mission control and Science & sources', () => {
   } finally { f.dispose() }
 })
 
+test('both planet previews wait for a rendered scene and hold briefly before rotating', t => {
+  t.mock.timers.enable({ apis: ['setTimeout'] })
+  const f = fixture()
+  try {
+    const scenes = () => f.all(n => n.type === 'planet-scene').map(n => n.props)
+    const loaders = () => f.all(n => n.props.role === 'status' && n.props['aria-label']?.includes('in 3D'))
+    assert.deepEqual(scenes().map(scene => scene.openingPaused), [true, true])
+    assert.equal(loaders().length, 2)
+
+    f.update(() => scenes()[0].onReady())
+    assert.equal(loaders().length, 1)
+    f.update(() => t.mock.timers.tick(649))
+    assert.deepEqual(scenes().map(scene => scene.openingPaused), [true, true])
+    f.update(() => t.mock.timers.tick(1))
+    assert.deepEqual(scenes().map(scene => scene.openingPaused), [false, true])
+
+    f.update(() => scenes()[1].onReady())
+    assert.equal(loaders().length, 0)
+    assert.equal(scenes()[1].openingPaused, true)
+    f.update(() => t.mock.timers.tick(650))
+    assert.deepEqual(scenes().map(scene => scene.openingPaused), [false, false])
+  } finally { f.dispose() }
+})
+
 test('both public planet scenes, touch interaction, guide feedback, motion pause and essential menu remain functional', () => {
   const f = fixture()
   try {
