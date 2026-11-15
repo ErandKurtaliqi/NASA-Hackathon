@@ -1,12 +1,14 @@
 import { ImageOverlay, MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import L from 'leaflet'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { ExternalLink, Layers3, LocateFixed, Maximize2, Minus, Plus, RotateCcw, Wifi, WifiOff } from 'lucide-react'
-import { getMapStory, storyMapLocations } from '../features/explorer/storyMapLocations'
+import { getMapStory, getPlanetLocations, hasCoordinates, type ExactMissionLocation, type FinalMissionLocation } from '../features/explorer/storyMapLocations'
 import { planetaryLayers } from '../planetaryConfig'
 import { useProgress } from '../store'
-import type { MissionMarker, PlanetId } from '../types'
+import type { PlanetId } from '../types'
+import styles from '../pages/ExplorerPage.module.css'
 
 const planetaryCRS = L.extend({}, L.CRS.Simple, {
   transformation: new L.Transformation(1 / 180, 1, -1 / 180, 0.5),
@@ -16,9 +18,9 @@ const planetaryCRS = L.extend({}, L.CRS.Simple, {
   wrapLng: [-180, 180],
 }) as L.CRS
 
-const makeIcon = (marker: MissionMarker) => L.divIcon({
+const makeIcon = (marker: ExactMissionLocation) => L.divIcon({
   className: '',
-  html: `<span class="map-pin ${marker.planet} ${marker.category}"><i></i></span>`,
+  html: `<span class="map-pin ${marker.planet} mission-region"><i></i></span>`,
   iconSize: [30, 30],
   iconAnchor: [15, 15],
 })
@@ -34,31 +36,38 @@ function MapControls({ planet }: { planet: PlanetId }) {
   </div>
 }
 
-function FocusLocation({ marker, maxZoom }: { marker?: MissionMarker; maxZoom: number }) {
+function FocusLocation({ location, maxZoom, request }: { location?: FinalMissionLocation; maxZoom: number; request?: number }) {
   const map = useMap()
+  const reducedMotion = useReducedMotion()
   useEffect(() => {
-    if (!marker) return
-    const zoom = marker.precision === 'exact' ? Math.min(6, maxZoom) : Math.min(4, maxZoom)
-    map.flyTo([marker.latitude, marker.longitude], zoom, { duration: 1.35, easeLinearity: 0.22 })
-  }, [map, marker, maxZoom])
+    if (!location) return
+    if (hasCoordinates(location)) {
+      const { latitude, longitude } = location.coordinates
+      map.flyTo([latitude, longitude], Math.min(6, maxZoom), { animate: !reducedMotion, duration: 1.35, easeLinearity: 0.22 })
+    } else {
+      // Explicit global context, never a surrogate point for a missing position.
+      map.fitBounds([[-90, -180], [90, 180]], { animate: false })
+    }
+  }, [map, location, maxZoom, request, reducedMotion])
   return null
 }
 
-const formatCoordinate = (value: number, axis: 'lat' | 'lon') => {
-  const suffix = axis === 'lat' ? (value >= 0 ? 'N' : 'S') : (value >= 0 ? 'E' : 'W')
-  return `${Math.abs(value).toFixed(5)}°${suffix}`
-}
-
-export default function PlanetMap({ planet, focusId }: { planet: PlanetId; focusId?: string }) {
+export default function PlanetMap({ planet, focusId, focusRequest }: { planet: PlanetId; focusId?: string; focusRequest?: number }) {
   const explore = useProgress(s => s.exploreLocation)
   const navigate = useNavigate()
   const config = planetaryLayers[planet]
-  const points = storyMapLocations.filter(m => m.planet === planet)
-  const focused = points.find(m => m.id === focusId)
+  const locations = getPlanetLocations(planet)
+  const points = locations.filter(hasCoordinates)
+  const focused = locations.find(m => m.id === focusId)
   const [tileState, setTileState] = useState<'loading' | 'live' | 'fallback'>('loading')
+  const tileFailed = useRef(false)
   const icons = useMemo(() => new Map(points.map(point => [point.id, makeIcon(point)])), [points])
 
   return <div className={`map-shell ${planet}`}>
+    {focused && <div className={styles.mapFocusNotice} role="status" aria-live="polite" aria-atomic="true" data-mission-location={focused.id}>
+      <b>{focused.name}</b><span>{focused.location}</span>
+      <small>{focused.coordinates?.display ?? 'Official location only · Global Mars view · No exact final-position pin for this mission'}</small>
+    </div>}
     <MapContainer
       crs={planetaryCRS}
       center={[0, 0]}
@@ -84,9 +93,9 @@ export default function PlanetMap({ planet, focusId }: { planet: PlanetId; focus
         updateWhenZooming={false}
         updateWhenIdle
         eventHandlers={{
-          loading: () => setTileState('loading'),
-          load: () => setTileState('live'),
-          tileerror: () => setTileState('fallback'),
+          loading: () => { tileFailed.current = false; setTileState('loading') },
+          load: () => setTileState(tileFailed.current ? 'fallback' : 'live'),
+          tileerror: () => { tileFailed.current = true; setTileState('fallback') },
         }}
       />
       {points.map(marker => {
@@ -98,7 +107,7 @@ export default function PlanetMap({ planet, focusId }: { planet: PlanetId; focus
         const label = story ? `Start ${story.name}: Meet Me` : marker.name
         return <Marker
           key={marker.id}
-          position={[marker.latitude, marker.longitude]}
+          position={[marker.coordinates.latitude, marker.coordinates.longitude]}
           icon={icons.get(marker.id)!}
           title={label}
           alt={label}
@@ -113,16 +122,15 @@ export default function PlanetMap({ planet, focusId }: { planet: PlanetId; focus
           }}
         >
           {!story && <Popup>
-            <span className="popup-kicker">{marker.category.replace('-', ' ')}</span>
+            <span className="popup-kicker">{marker.kind}</span>
             <h3>{marker.name}</h3>
-            <strong>{marker.subtitle}</strong>
-            <div className="popup-coordinates">{formatCoordinate(marker.latitude, 'lat')} · {formatCoordinate(marker.longitude, 'lon')}</div>
-            <p>{marker.description}</p>
+            <strong>{marker.location}</strong>
+            <div className="popup-coordinates">{marker.coordinates.display}</div>
             <a href={marker.source.url} target="_blank" rel="noreferrer">{marker.source.label} ↗</a>
           </Popup>}
         </Marker>
       })}
-      <FocusLocation marker={focused} maxZoom={config.maxZoom}/>
+      <FocusLocation location={focused} maxZoom={config.maxZoom} request={focusRequest}/>
       <MapControls planet={planet}/>
     </MapContainer>
 

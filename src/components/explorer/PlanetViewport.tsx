@@ -47,11 +47,12 @@ function GlobeView({ planet, loading, active, fallback }: {
   </div>
 }
 
-export default function PlanetViewport({ planet, mode, onModeChange, focusId, viewportRef }: {
+export default function PlanetViewport({ planet, mode, onModeChange, focusId, focusRequest, viewportRef }: {
   planet: PlanetId
   mode: ExplorerView
   onModeChange: (mode: ExplorerView) => void
   focusId?: string
+  focusRequest?: number
   viewportRef: RefObject<HTMLDivElement>
 }) {
   const [webgl, setWebgl] = useState<boolean | null>(null)
@@ -110,7 +111,7 @@ export default function PlanetViewport({ planet, mode, onModeChange, focusId, vi
         <GlobeView key={planet + liveGlobe} planet={planet} active={liveGlobe} loading={webgl === null} fallback={fallback} /> : <div className={`${mapStyles.frame} ${touchActive ? mapStyles.interactive : ''}`}>
         <ViewBoundary key={planet} fallback={fallback}>
           <Suspense fallback={<LoadingView label="Preparing the scientific map…" />}>
-            <PlanetMap planet={planet} focusId={focusId} />
+            <PlanetMap planet={planet} focusId={focusId} focusRequest={focusRequest} />
           </Suspense>
         </ViewBoundary>
       </div>}

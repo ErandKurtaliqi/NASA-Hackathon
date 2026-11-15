@@ -1,17 +1,72 @@
-import { markers } from '../../data'
-import type { MissionMarker } from '../../types'
+import type { PlanetId, SourceRef } from '../../types'
 import { storyCatalog } from '../storytelling/storyCatalog'
 
-export function getMapStory(marker: MissionMarker) {
+type LocationRecord = {
+  id: string
+  planet: PlanetId
+  name: string
+  location: string
+  kind: 'Stationary reflector' | 'Lunar rover' | 'Rover' | 'Lander' | 'Helicopter'
+  source: SourceRef
+}
+
+/** Approved final-location data, not legacy landing sites or inferred positions. */
+export type FinalMissionLocation = LocationRecord & (
+  | { precision: 'provided'; coordinates: { latitude: number; longitude: number; display: string } }
+  | { precision: 'location-only'; coordinates?: never }
+)
+export type ExactMissionLocation = FinalMissionLocation & { precision: 'provided' }
+
+// Place names and coordinate strings are verbatim from Haroon's final inventory.
+// Mission references provide context, not certification of every supplied decimal.
+// Never replace missing values with a landing site or approximate region center.
+export const storyMapLocations: readonly FinalMissionLocation[] = [
+  { id: 'apollo-11', planet: 'moon', name: 'Apollo 11 LRRR', kind: 'Stationary reflector',
+    location: 'Mare Tranquillitatis, Sea of Tranquility', precision: 'provided',
+    coordinates: { latitude: 0.67345, longitude: 23.47307, display: '0.67345° N, 23.47307° E' },
+    source: { label: 'NASA — Apollo 11', url: 'https://www.nasa.gov/mission/apollo-11/' } },
+  { id: 'apollo-15-rover', planet: 'moon', name: 'Apollo 15 LRV', kind: 'Lunar rover',
+    location: 'Hadley-Apennine Region, Hadley Rille', precision: 'provided',
+    coordinates: { latitude: 26.13110, longitude: 3.63972, display: '26.13110° N, 3.63972° E' },
+    source: { label: 'NASA — Apollo 15', url: 'https://www.nasa.gov/mission/apollo-15/' } },
+  { id: 'apollo-16-rover', planet: 'moon', name: 'Apollo 16 LRV', kind: 'Lunar rover',
+    location: 'Descartes Highlands, near Orion Lunar Module', precision: 'provided',
+    coordinates: { latitude: -8.97292, longitude: 15.50279, display: '8.97292° S, 15.50279° E' },
+    source: { label: 'NASA — Apollo 16', url: 'https://www.nasa.gov/mission/apollo-16/' } },
+  { id: 'apollo-17-rover', planet: 'moon', name: 'Apollo 17 LRV', kind: 'Lunar rover',
+    location: 'Taurus-Littrow Valley, near Challenger Lunar Module', precision: 'provided',
+    coordinates: { latitude: 20.19043, longitude: 30.77726, display: '20.19043° N, 30.77726° E' },
+    source: { label: 'NASA — Apollo 17', url: 'https://www.nasa.gov/mission/apollo-17/' } },
+  { id: 'opportunity', planet: 'mars', name: 'Opportunity Rover', kind: 'Rover',
+    location: 'Perseverance Valley, Endeavour Crater', precision: 'location-only',
+    source: { label: 'NASA — Opportunity', url: 'https://science.nasa.gov/mission/mer-opportunity/' } },
+  { id: 'sojourner', planet: 'mars', name: 'Sojourner Rover', kind: 'Rover',
+    location: 'Ares Vallis, Mars Pathfinder Landing Site', precision: 'location-only',
+    source: { label: 'NASA — Mars Pathfinder', url: 'https://science.nasa.gov/mission/mars-pathfinder/' } },
+  { id: 'viking-1', planet: 'mars', name: 'Viking 1 Lander', kind: 'Lander',
+    location: 'Chryse Planitia', precision: 'provided',
+    coordinates: { latitude: 22.483, longitude: -47.968, display: '22.483° N, 47.968° W' },
+    source: { label: 'NASA NTRS — Revised Viking 1 location', url: 'https://ntrs.nasa.gov/citations/19810041868' } },
+  { id: 'ingenuity', planet: 'mars', name: 'Ingenuity Helicopter', kind: 'Helicopter',
+    location: 'Valinor Hills, Jezero Crater', precision: 'location-only',
+    source: { label: 'NASA — Ingenuity at Valinor Hills', url: 'https://science.nasa.gov/resource/ingenuity-at-valinor-hills/' } },
+]
+
+export function hasCoordinates(location: FinalMissionLocation): location is ExactMissionLocation {
+  return location.precision === 'provided'
+}
+
+export function getPlanetLocations(planet: PlanetId) {
+  return storyMapLocations.filter(location => location.planet === planet)
+}
+
+export function getSelectedLocation(planet: PlanetId, id?: string) {
+  const locations = getPlanetLocations(planet)
+  return locations.find(location => location.id === id) ?? locations[0]
+}
+
+export function getMapStory(marker: { id: string; planet: PlanetId }) {
   const id = marker.id === 'apollo-11' ? 'apollo-11-reflector' : marker.id
   const story = storyCatalog[id]
   return story?.planet === marker.planet ? story : undefined
 }
-
-export const storyMapLocations: MissionMarker[] = [
-  ...markers,
-  { id: 'opportunity', planet: 'mars', name: 'Opportunity · Landing Site', subtitle: 'Eagle Crater', latitude: -1.9483, longitude: -5.52583, precision: 'exact', category: 'landing-site', description: 'Opportunity began its traverse in Eagle Crater and later reached Perseverance Valley.', source: { label: 'NASA — Opportunity', url: 'https://science.nasa.gov/mission/mer-opportunity/' } },
-  { id: 'sojourner', planet: 'mars', name: 'Sojourner · Pathfinder Landing Site', subtitle: 'Ares Vallis', latitude: 19.17, longitude: -33.21, precision: 'feature-center', category: 'landing-site', description: 'This marker identifies the Pathfinder landing site from which Sojourner explored.', source: { label: 'NASA — Mars Pathfinder Landing Site', url: 'https://science.nasa.gov/resource/mars-pathfinder-landing-site/' } },
-  { id: 'viking-1', planet: 'mars', name: 'Viking 1 · Landing Site', subtitle: 'Chryse Planitia', latitude: 22.483, longitude: -47.968, precision: 'exact', category: 'landing-site', description: 'Viking 1 carried out its surface experiments here.', source: { label: 'NASA — Revised Viking 1 location', url: 'https://ntrs.nasa.gov/citations/19810041868' } },
-  { id: 'ingenuity', planet: 'mars', name: 'Ingenuity · Final Flight Area', subtitle: 'Valinor Hills, Jezero Crater', latitude: 18.50, longitude: 77.32, precision: 'region', category: 'mission-region', description: 'Approximate area of the final flight. NASA photographed the helicopter at Valinor Hills.', source: { label: 'NASA — Ingenuity at Valinor Hills', url: 'https://science.nasa.gov/resource/ingenuity-at-valinor-hills/' } },
-]

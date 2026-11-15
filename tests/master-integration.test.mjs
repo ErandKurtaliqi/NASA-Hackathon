@@ -30,14 +30,15 @@ test('master GPU effects, rover models, animation, challenge and narration imple
   }
 })
 
-test('each documentary has one map location and other map markers still have no story entry', async () => {
+test('each documentary has one final mission location while legacy scientific markers remain separate', async () => {
   const api = await bundle("export * from './src/features/explorer/storyMapLocations'; export * from './src/features/storytelling/storyCatalog'; export { markers } from './src/data'")
   const entries = api.storyMapLocations.flatMap(marker => {
     const story = api.getMapStory(marker)
     return story ? [story.id] : []
   })
   assert.deepEqual(entries.sort(), Object.keys(api.storyCatalog).sort())
-  assert.deepEqual(api.storyMapLocations.slice(0, api.markers.length), api.markers)
+  assert.equal(api.storyMapLocations.length, 8)
+  assert.ok(!api.storyMapLocations.some(location => ['tycho', 'curiosity', 'jezero'].includes(location.id)))
   assert.equal(api.getMapStory(api.markers.find(marker => marker.id === 'tycho')), undefined)
 })
 
