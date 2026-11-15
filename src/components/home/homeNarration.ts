@@ -9,27 +9,30 @@ export const homeRecordings: Record<HomeRecording, string> = {
 }
 
 export type NarrationState = {
+  introVisible: boolean
   enabled: boolean; message: string; error: boolean
   recording: HomeRecording | null; phase: 'off' | 'loading' | 'playing' | 'paused' | 'ended' | 'error'
   caption: number; duration: number | null
 }
 export const silentNarration: NarrationState = {
+  introVisible: false,
   enabled: false, message: 'Sound off. Enable sound to hear your astronaut guide.', error: false,
   recording: null, phase: 'off', caption: 0, duration: null,
 }
 
 const titles: Record<HomeRecording, string> = { intro: 'Welcome', moon: 'Moon', mars: 'Mars' }
 
-/** Homepage-only audio session. No media is created or fetched before explicit consent. */
+/** Homepage-only audio controller. First-visit autoplay still obeys browser policy. */
 export function createHomeNarration(
   notify: (state: NarrationState) => void,
   createAudio: () => HTMLAudioElement = () => new Audio(),
 ) {
-  let state = silentNarration
+  let state = { ...silentNarration, introVisible: true }
   let current: HTMLAudioElement | null = null
   let selected: HomeRecording | null = null
   let generation = 0
   let disposed = false
+  let entered = false
 
   function update(next: NarrationState) { state = next; notify(next) }
 
@@ -53,23 +56,26 @@ export function createHomeNarration(
     audio.load() // Abort pending requests and release the decoder/buffer.
   }
 
-  function play(recording: HomeRecording) {
+  function play(recording: HomeRecording, automatic = false) {
     release()
     selected = recording
     const request = generation
     const active = () => !disposed && state.enabled && request === generation
-    const fail = () => {
+    const fail = (error?: unknown) => {
       if (!active()) return
       release()
-      update({ ...state, enabled: false, phase: 'error', error: true, message: 'Astronaut audio could not play. Turn sound on to retry.' })
+      const blocked = automatic && error instanceof Error && error.name === 'NotAllowedError'
+      update({ ...state, enabled: false, phase: 'error', error: true, message: blocked
+        ? 'Your browser blocked automatic audio. Turn sound on to hear the introduction.'
+        : 'Astronaut audio could not play. Turn sound on to retry.' })
     }
-    update({ enabled: true, error: false, recording, phase: 'loading', caption: 0, duration: null, message: `${titles[recording]} narration loading.` })
+    update({ ...state, enabled: true, error: false, recording, phase: 'loading', caption: 0, duration: null, message: `${titles[recording]} narration loading.` })
     try {
       const audio = createAudio()
       current = audio
       audio.preload = 'none'
       audio.src = homeRecordings[recording]
-      audio.onerror = fail
+      audio.onerror = () => fail()
       const sync = (phase = state.phase) => {
         if (!active()) return
         const duration = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : null
@@ -92,8 +98,9 @@ export function createHomeNarration(
         release()
         update({ ...state, enabled: true, phase: 'ended', caption: homeCaptions[recording].length - 1, error: false, message: `${titles[recording]} narration finished. Focus or interact with another world to listen.` })
       }
-      // Called synchronously within the enabling click or intentional planet interaction.
+      // First entry attempts normal autoplay; retries run in the actual user gesture.
       Promise.resolve(audio.play()).then(() => {
+        if (!active()) { audio.pause(); return }
         if (active()) {
           sync(audio.paused ? 'paused' : 'playing')
           update({ ...state, message: `${titles[recording]} narration playing.` })
@@ -103,18 +110,39 @@ export function createHomeNarration(
   }
 
   return {
+    enter(firstVisit: boolean) {
+      if (disposed || entered) return
+      entered = true
+      update({ ...silentNarration, introVisible: firstVisit })
+      if (firstVisit) play('intro', true)
+    },
+    stopForNavigation() {
+      if (disposed) return
+      entered = true // Cancel even a first-entry operation still queued by the hook.
+      release()
+      selected = null
+      update(silentNarration)
+    },
     toggle() {
       if (disposed) return
       if (state.enabled) {
         release()
-        update(silentNarration)
+        update({ ...silentNarration, introVisible: state.introVisible, recording: state.recording })
       } else {
-        // First enable always welcomes the visitor; re-enabling retries the last selection.
-        play(selected ?? 'intro')
+        const recording = selected ?? (state.introVisible ? 'intro' : null)
+        if (recording) play(recording)
+        else update({ ...state, enabled: true, error: false, message: 'Sound on. Choose a world to hear your astronaut guide.' })
       }
     },
     select(recording: 'moon' | 'mars') {
-      if (disposed || !state.enabled || selected === recording) return
+      if (disposed) return
+      if (!state.enabled) {
+        // Preserve first-visit mute/resume; on a return, remember the requested
+        // world so enabling sound can never fall back to an unsolicited welcome.
+        if (!state.introVisible) selected = recording
+        return
+      }
+      if (selected === recording) return
       play(recording)
     },
     seekCaption(index: number) {

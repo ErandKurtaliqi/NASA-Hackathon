@@ -47,13 +47,24 @@ export default function HomePage() {
     return () => { document.title = originalTitle }
   }, [])
 
-  return <div className={`${styles.home} ${!animated ? styles.still : ''}`}>
+  return <div className={`${styles.home} ${!animated ? styles.still : ''}`} onClickCapture={event => {
+    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
+    const link = (event.target as Element).closest?.('a[href]') as HTMLAnchorElement | null
+    if (!link || link.target === '_blank' || link.hasAttribute('download')) return
+    const destination = new URL(link.href, window.location.href)
+    if (destination.origin !== window.location.origin || destination.pathname === '/') return
+    // Route exit animations can retain this component briefly. Stop immediately
+    // on navigation intent, including a quick return before unmount finishes.
+    narration.stopForNavigation()
+    setSelectedDialogue(null)
+    setHighlighted(null)
+  }}>
     <a className={styles.skipLink} href="#home-content">Skip to content</a>
     <section className={styles.hero} aria-labelledby="home-heading">
       <div className={styles.space} aria-hidden="true"><div className={styles.nebula} /><div className={styles.stars} />
         {Array.from({ length: 15 }, (_, i) => <i key={i} className={styles.brightStar} style={{ left: `${(i * 37 + 8) % 100}%`, top: `${(i * 23 + 7) % 95}%`, animationDelay: `${i * -.7}s` }} />)}
       </div>
-      <header className={styles.header}>
+      <header className={`${styles.header} ${narration.error ? styles.headerWithAudioNotice : ''}`}>
         <Brand />
         <div className={styles.headerActions}>
           <button type="button" className={styles.iconButton} onClick={narration.toggle} aria-label={narration.enabled ? 'Turn sound off' : 'Turn sound on'} aria-pressed={narration.enabled} aria-describedby="home-audio-status" title={narration.enabled ? 'Turn astronaut sound off' : 'Turn astronaut sound on'}>{narration.enabled ? <Volume2 aria-hidden="true" /> : <VolumeX aria-hidden="true" />}</button>
