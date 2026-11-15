@@ -144,6 +144,8 @@
   .speech { width: 170px; margin-left: 18px; font-size: 11px; min-height: 83px; padding: 13px; }
 }
 @media (max-width: 800px) {
+  .headerWithAudioNotice { flex-wrap: wrap; row-gap: 8px; }
+  .headerWithAudioNotice .audioError { position: static; flex-basis: 100%; width: 100%; max-width: none; }
   .header { margin-inline: 24px; }
   .brand span { font-size: 16px; }
   .brand img { width: 39px; height: 39px; }
