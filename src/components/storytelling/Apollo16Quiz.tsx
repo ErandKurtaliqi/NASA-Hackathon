@@ -45,7 +45,7 @@ export default function Apollo16Quiz({ story, sound, onSound, onComplete, onRetr
         if (submitted.current[question] !== undefined) return
         submitted.current = [...submitted.current, i]; setAnswers(submitted.current)
       }}><span>{String.fromCharCode(65 + i)}</span>{option}</button>)}</div>
-    {answered && <div className="quiz-explanation" role="region" aria-label="Answer feedback">
+    {answered && <div className={`quiz-explanation ${styles.feedback}`} role="region" aria-label="Answer feedback">
       <p id="apollo16-quiz-feedback" ref={feedback} tabIndex={-1} className={styles.focusTarget}>{answers[question] === item.answer ? 'Correct. ' : `Incorrect. Correct answer: ${item.options[item.answer]}. `}{item.explanation}</p>
       <button type="button" onClick={() => { stopRecordedNarration(); if (question === story.quiz.length - 1) setFinished(true); else setQuestion(value => value + 1) }}>{question === story.quiz.length - 1 ? 'View Results' : 'NEXT QUESTION'}</button>
     </div>}

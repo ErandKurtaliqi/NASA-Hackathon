@@ -57,7 +57,7 @@ export default function DocumentaryAudio({ src, nextSrc, label, hold, contextId 
   }
   const caption = cueAt(timing, time)?.text
   const unavailable = !src || (!!checked && checked.context === contextId && !checked.available) || status === 'error'
-  const message = hold ? 'Read the scientific clarification while this recording is under review.'
+  const message = hold ? 'This recording is under review. Read the scientific review notes in Mission sources.'
     : status === 'blocked' ? 'Your browser blocked narration. Select Sound on to try again.'
     : unavailable ? 'Recording unavailable. You can keep reading.'
     : checked?.context !== contextId ? 'Checking narration availability…'

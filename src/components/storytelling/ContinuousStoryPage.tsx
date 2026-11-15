@@ -128,6 +128,10 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
     <div className={styles.environment} data-documentary-background><StoryEnvironment world={presentation.world} idPrefix={terrainId(story.id)} /></div>
     <header className={styles.header}>
       <Link to={`/explore/${story.planet}`}>← Back to {story.planet === 'moon' ? 'Moon' : 'Mars'} missions</Link>
+      <div className={styles.title}>
+        <h1>{missionTitle}</h1>
+        <div className={styles.machineLabel} aria-label={hardwareType}><span aria-hidden="true" /><p>{hardwareType}</p><span aria-hidden="true" /></div>
+      </div>
       <div className={styles.headerActions}>
         <Link to="/dashboard">Mission Control</Link>
         <div className={styles.sourceControls}>
@@ -142,10 +146,6 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
         </div>
       </div>
     </header>
-    <div className={styles.title}>
-      <h1>{missionTitle}</h1>
-      <div className={styles.machineLabel} aria-label={hardwareType}><span aria-hidden="true" /><p>{hardwareType}</p><span aria-hidden="true" /></div>
-    </div>
     <section className={styles.stage} data-documentary-stage aria-label="Continuous story and activities">
       <div className={styles.center}>
         <p className={styles.hint} id="documentary-reading-help">Scroll to explore. Use the chapter shortcuts to jump ahead or revisit a chapter.</p>
@@ -157,7 +157,6 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
             {story.id === 'apollo-15-rover' && item.chapter === 2 && story.challenges[item.segment] && <aside><b>Engineering challenge</b><p>{story.challenges[item.segment].problem}</p><b>Engineering solution</b><p>{story.challenges[item.segment].solution}</p></aside>}
             {story.id === 'apollo-15-rover' && item.chapter === 3 && <p>{story.legacy[item.segment].copy}</p>}
             {story.id === 'apollo-16-rover' && item.chapter === 1 && <p>{story.journey[item.segment].copy}</p>}
-            {item.note && <aside role="note"><b>Scientific clarification</b><p>{item.note}</p><a href={item.source} target="_blank" rel="noreferrer">Scientific source ↗</a></aside>}
             {story.id === 'apollo-17-rover' && item.chapter === 3 && item.segment === 4 && <p>An invitation to students, not a claim that a particular classroom activity occurred on the mission.</p>}
             {(i === segments.length - 1 || segments[i + 1].chapter !== item.chapter) && <div className={styles.chapterEnd}>
               <DocumentaryActivities story={story} chapter={item.chapter} />
@@ -177,7 +176,15 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
             {done(4) && <p><strong>Mission badge earned</strong> · {story.reward}</p>}
             <p><Link to="/dashboard">View mission dashboard →</Link></p><p><Link to={`/explore/${story.planet}`}>Return to the {story.planet === 'moon' ? 'Moon' : 'Mars'} globe →</Link></p>
           </article>
-          <section data-mission-sources tabIndex={-1} aria-label="Scientific mission sources"><h2>Mission sources</h2>{evidenceSources.length > 0 && <details><summary>Evidence media and credits</summary><ul>{evidenceSources.map(([url, label]) => <li key={url}><a href={url} target="_blank" rel="noreferrer">{label} ↗</a></li>)}</ul></details>}{story.sources.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a></p>)}{story.id === 'apollo-15-rover' ? <p>Photographic composition for storytelling · NASA <a href={apollo15StageAssets.surface.sourceUrl} target="_blank" rel="noreferrer">Apollo 15 surface panorama ↗</a> and a masked historical rover photograph. Decorative stars and lighting; not a single mission photograph or a geographic reconstruction.</p> : <MissionSceneCredits idPrefix={terrainId(story.id)} diagram={story.category === 'stationary-experiment'} />}<p>Photographic composition for storytelling; not a geographic reconstruction. Project narration is not original astronaut audio. Educational project; not an official NASA product.</p><a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" target="_blank" rel="noreferrer">NASA media usage guidelines ↗</a></section>
+          <section data-mission-sources tabIndex={-1} aria-label="Scientific mission sources"><h2>Mission sources</h2>
+            {segments.some(item => item.note) && <details data-scientific-review>
+              <summary>Scientific review notes and sources</summary>
+              <ul>{segments.filter(item => item.note).map(item => <li key={item.id}>
+                <h3>Chapter {item.chapter + 1} · {item.title}</h3><p>{item.note}</p>
+                <a href={item.source} target="_blank" rel="noreferrer">Scientific source ↗</a>
+              </li>)}</ul>
+            </details>}
+            {evidenceSources.length > 0 && <details><summary>Evidence media and credits</summary><ul>{evidenceSources.map(([url, label]) => <li key={url}><a href={url} target="_blank" rel="noreferrer">{label} ↗</a></li>)}</ul></details>}{story.sources.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a></p>)}{story.id === 'apollo-15-rover' ? <p>Photographic composition for storytelling · NASA <a href={apollo15StageAssets.surface.sourceUrl} target="_blank" rel="noreferrer">Apollo 15 surface panorama ↗</a> and a masked historical rover photograph. Decorative stars and lighting; not a single mission photograph or a geographic reconstruction.</p> : <MissionSceneCredits idPrefix={terrainId(story.id)} diagram={story.category === 'stationary-experiment'} />}<p>Photographic composition for storytelling; not a geographic reconstruction. Project narration is not original astronaut audio. Educational project; not an official NASA product.</p><a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" target="_blank" rel="noreferrer">NASA media usage guidelines ↗</a></section>
         </div>
       </div>
       <aside className={styles.evidence} aria-label="NASA evidence"><DocumentaryEvidence key={segment?.gallery ? segment.id : undefined} gallery={segment?.gallery} video={segment?.video} youtubeVideoId={segment?.youtubeVideoId} media={segment?.evidence ?? (chapter === 4 ? presentation.portrait : undefined)} source={segment?.source ?? story.sources[0].url} sourceLabel={segment?.evidenceLabel} sourceSummary={segment?.evidenceSummary} /></aside>

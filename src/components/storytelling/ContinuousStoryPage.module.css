@@ -1,11 +1,12 @@
-.document { height: 100svh; height: 100dvh; position: relative; isolation: isolate; background: #02050b; color: #edf3fc; padding: 18px clamp(18px,2.5vw,40px); display: flex; flex-direction: column; gap: 8px; }
+.document { height: 100svh; height: 100dvh; position: relative; isolation: isolate; background: #02050b; color: #edf3fc; padding: clamp(8px,1.5dvh,16px) clamp(18px,2.5vw,40px); display: flex; flex-direction: column; gap: 8px; }
 :global(.app-shell):has(.document) { height: 100dvh; overflow: clip; }
 :global(.app-shell):has(.document) > main { min-height: 0; }
 :global(.app-shell):has(.document) > :is(:global(.topbar), footer) { display: none; }
 .document::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5; background-image: radial-gradient(circle at 17px 29px,#cadfff99 0 1px,transparent 1.5px),radial-gradient(circle at 89px 71px,#b5c5db66 0 .7px,transparent 1.3px); background-size: 223px 211px,307px 283px; }
 .environment { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.header { display: flex; align-items: start; gap: 24px; flex-shrink: 0; min-height: 88px; font-size: 13px; }
-.headerActions { margin-inline-start: auto; display: flex; align-items: flex-start; gap: 8px; }
+.header { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: start; gap: clamp(12px,2vw,24px); flex-shrink: 0; font-size: 13px; }
+.header > a { justify-self: start; }
+.headerActions { justify-self: end; min-width: 0; display: flex; align-items: flex-start; gap: 8px; }
 .document .headerActions > a, .document .sourceControls > button { white-space: nowrap; color: #e9f4ff; background: #141e28; border: 1px solid #394b5d; border-radius: 12px; padding: 8px 12px; }
 .document [data-documentary-save-warning] { position: absolute; z-index: 40; top: 70px; left: 18px; width: min(440px,calc(100% - 36px)); max-height: 55%; overflow: auto; padding: 18px; background: #101724; border: 2px solid #f4c47b; border-radius: 16px; }
 .document [data-documentary-save-warning] h2 { font-size: 18px; }
@@ -16,8 +17,8 @@
 .document p { overflow-wrap: anywhere; }
 .stage { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: minmax(0,1.65fr) minmax(0,1fr); gap: clamp(18px,2.1vw,36px); }
 .center { grid-column: 1; grid-row: 1; min-height: 0; min-width: 0; display: flex; flex-direction: column; }
-.title { flex-shrink: 0; margin-block-start: -6px; padding-top: 0; text-align: center; }
-.title h1 { font-size: clamp(38px,3.6vw,56px); font-weight: 650; letter-spacing: -.045em; line-height: 1.08; margin: 0; text-wrap: balance; }
+.title { min-width: 0; padding-block: 4px; text-align: center; }
+.title h1 { font-size: clamp(28px,3vw,44px); font-weight: 650; letter-spacing: -.045em; line-height: 1.08; margin: 0; text-wrap: balance; }
 .machineLabel { display: grid; grid-template-columns: minmax(24px,1fr) auto minmax(24px,1fr); align-items: center; gap: 12px; width: min(100%,300px); margin: 7px auto 0; color: #cbd8e7; }
 .machineLabel span { height: 1px; background: #a2b6ce70; }
 .machineLabel p { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
@@ -39,6 +40,26 @@
 .reader details { margin: 12px 0; }
 .reader summary { cursor: pointer; }
 .reader [data-mission-sources] { padding: 24px 0 60px; font-size: 13px; }
+/* The reader owns scrolling; nested quizzes grow naturally without a second scroll trap. */
+.reader :is(:global(.quiz-experience), :global(.quiz-reward)) { min-height: 0; min-width: 0; padding: clamp(14px,1.8vw,24px); border-radius: 14px; }
+.reader :global(.quiz-experience) > h2 { font-size: clamp(20px,1.8vw,26px); line-height: 1.35; text-align: left; margin: 14px 0; }
+.reader :global(.quiz-head) { grid-template-columns: minmax(0,1fr) auto; gap: 8px; font-size: 11px; }
+.reader :global(.quiz-head) > div { display: none; }
+.reader :global(.quiz-head) > b { font-size: 11px; }
+.reader :global(.quiz-options) { margin-top: 12px; }
+.reader :global(.quiz-options) button { min-width: 0; padding: 10px 12px; font-size: 16px; line-height: 1.45; }
+.reader :global(.quiz-options) button > span { flex: 0 0 27px; font-size: 12px; }
+.reader :global(.quiz-options) button > svg { flex-shrink: 0; }
+.reader :global(.quiz-explanation) { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; padding: 12px; }
+.reader :global(.quiz-explanation) > svg { flex: 0 0 18px; }
+.reader :global(.quiz-explanation) > p { flex: 1 1 28ch; min-width: 0; margin: 0; font-size: 16px; line-height: 1.6; }
+.reader :global(.quiz-explanation) > button { flex: 0 1 auto; max-width: 100%; margin-inline-start: auto; font-size: 14px; }
+.reader :global(.quiz-reward) { gap: 10px; }
+.reader :global(.quiz-reward) > h2 { font-size: clamp(24px,2.2vw,32px); margin: 8px 0; }
+.reader :global(.quiz-reward) > p { font-size: 16px; }
+.reader :global(.quiz-reward) > span { font-size: 12px; }
+.reader :global(.quiz-reward) > button { margin-top: 0; font-size: 14px; }
+.reader :global(.quiz-reward) > svg { width: 48px; height: 48px; }
 .evidence { grid-column: 2; grid-row: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
 .evidence > div { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
 .evidence > div > p { font-size: 10px; letter-spacing: .15em; color: #b4ccdf; margin: 0 0 12px; }
@@ -59,7 +80,7 @@
 .document[data-world=mars] .evidence figure { border-color: #f4b78b99; box-shadow: 0 0 35px #d8673226; }
 @media (max-width: 700px) {
   .document { padding: 8px 14px; gap: 6px; }
-  .header { font-size: 10px; gap: 10px; height: auto; }
+  .header { font-size: 11px; gap: 6px 10px; }
   .document .headerActions > a, .document .sourceControls > button { padding-inline: 8px; }
   .stage { grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(0,1.2fr) minmax(0,1fr); gap: 8px; }
   .evidence { grid-column: 1; grid-row: 2; }
@@ -67,7 +88,8 @@
   .evidence figure { border-radius: 12px; }
   .evidence [data-source-evidence] { padding: 8px 10px; overflow: auto; display: block; }
   .evidence [data-source-evidence] strong { display: block; font-size: 14px; }
-  .title h1 { font-size: clamp(20px, 5.5vw, 30px); }
+  .title { grid-column: 1 / -1; grid-row: 2; padding-block: 0; }
+  .title h1 { font-size: clamp(22px, 5.5vw, 30px); }
   .machineLabel { width: min(100%,230px); gap: 8px; margin-top: 4px; }
   .machineLabel p { font-size: 10px; }
   .chapters button { min-height: 44px; font-size: 10px; }
@@ -83,19 +105,19 @@
 
 @media (min-width: 701px) and (max-height: 680px) {
   .reader article > p:first-of-type { line-height: 1.5; }
-  .title { padding-top: 4px; }
-  .title h1 { font-size: clamp(36px, 4.5vw, 56px); }
   .hint { margin-block: 4px; }
 }
 
-.sourceControls { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+.sourceControls { display: flex; flex-wrap: wrap; align-items: start; justify-content: flex-end; gap: 8px; }
 .sourceControls [data-documentary-audio] { display: grid; justify-items: center; min-width: 0; }
 .document .sourceControls [data-documentary-audio] button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 50%; background: #141e28; border-color: #394b5d; }
 .document .sourceControls [data-documentary-audio] button[aria-pressed=true] { border-color: #c4eaff; background: #24455e; }
 .sourceControls [role=status] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .sourceControls [role=status][data-important=true], .sourceControls [data-story-caption] { position: static; clip-path: none; width: 0; min-width: 100%; height: auto; max-height: 3.2em; margin: 4px 0 0; overflow: auto; font-size: 11px; line-height: 1.5; }
 @media (max-width: 700px) {
-  .header { display: grid; grid-template-columns: minmax(0,1fr) auto; height: auto; min-height: 88px; gap: 4px 12px; }
+  .header { grid-template-columns: minmax(0,1fr) auto; }
   .header > a:first-child { grid-column: 1; grid-row: 1; }
   .headerActions { grid-column: 2; grid-row: 1; }
+  .headerActions > a { display: none; }
+  .sourceControls { gap: 6px; }
 }
