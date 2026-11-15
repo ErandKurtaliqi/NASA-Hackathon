@@ -2,7 +2,7 @@ import useExplorerIntro from '../components/explorer/useExplorerIntro'
 import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowDown, ArrowUpRight, Globe2 } from 'lucide-react'
-import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useNavigationType, useParams, useSearchParams } from 'react-router-dom'
 import ExplorerHeader from '../components/explorer/ExplorerHeader'
 import FooterBrand from '../components/branding/FooterBrand'
 import ExplorerGuide from '../components/explorer/ExplorerGuide'
@@ -16,13 +16,28 @@ import { getExplorerStoryEntry as getStoryEntry } from '../features/explorer/int
 import { useProgress } from '../store'
 import type { PlanetId } from '../types'
 import styles from './ExplorerPage.module.css'
+import { clearDocumentaryPlanetReturn, isDocumentaryPlanetReturn } from '../features/explorer/documentaryPlanetReturn'
 
 export default function ExplorerPage() {
   const { planet: raw } = useParams()
   const [search] = useSearchParams()
-  const entryMode = search.get('view') === 'map' ? 'map' : 'globe'
+  const navigationType = useNavigationType(), routeLocation = useLocation(), navigate = useNavigate()
   // Preserve the existing route fallback for unsupported planet parameters.
   const planet: PlanetId = raw === 'moon' ? 'moon' : 'mars'
+  const entry = useRef({ key: routeLocation.key, fromDocumentary: isDocumentaryPlanetReturn(planet) })
+  const documentaryBack = navigationType === 'POP' && entry.current.key === routeLocation.key && entry.current.fromDocumentary
+  const entryMode = search.get('view') === 'map' && !documentaryBack ? 'map' : 'globe'
+  const handledReturn = useRef(false)
+  useEffect(() => {
+    if (handledReturn.current) return
+    handledReturn.current = true
+    clearDocumentaryPlanetReturn()
+    if (documentaryBack && search.get('view') === 'map') {
+      const next = new URLSearchParams(search)
+      next.delete('view')
+      navigate({ pathname: routeLocation.pathname, search: next.toString() }, { replace: true })
+    }
+  }, [documentaryBack, navigate, routeLocation.pathname, search])
   const machines = hardware.filter(machine => machine.planet === planet)
   const locations = storyMapLocations.filter(location => location.planet === planet)
   const [machineId, setMachineId] = useState('')
@@ -44,6 +59,23 @@ export default function ExplorerPage() {
     setLocationId('')
     return () => { document.title = title }
   }, [world, entryMode])
+
+  useEffect(() => {
+    // A browser Back across a full reload may restore an existing map document
+    // from BFCache instead of remounting React. Apply the same return intent.
+    const restored = (event: PageTransitionEvent) => {
+      if (!event.persisted || !isDocumentaryPlanetReturn(planet)) return
+      clearDocumentaryPlanetReturn()
+      setMode('globe'); setLocationId('')
+      const next = new URLSearchParams(window.location.search)
+      if (next.get('view') === 'map') {
+        next.delete('view')
+        navigate({ pathname: routeLocation.pathname, search: next.toString() }, { replace: true })
+      }
+    }
+    window.addEventListener('pageshow', restored)
+    return () => window.removeEventListener('pageshow', restored)
+  }, [planet, navigate, routeLocation.pathname])
 
   const selectLocation = (id: string) => {
     if (!locations.some(item => item.id === id)) return

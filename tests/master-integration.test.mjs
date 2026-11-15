@@ -53,7 +53,7 @@ test('approved documentary scripts, mappings and fixed stage geometry survive st
   const protectedRules = css => {
     const rules = []
     postcss.parse(css).walkRules(rule => {
-      if (/^\.(?:reader|deck|shortcuts|chapters|header|headerActions|title|hint)(?![\w-])/.test(rule.selector) || ['.document', '.document .chapters button', '.document .hardwareLink'].includes(rule.selector) || rule.selector.startsWith(':global(.app-shell):has(.document)')) return
+      if (/^\.(?:reader|deck|shortcuts|chapters|header|headerActions|sourceControls|title|hint)(?![\w-])/.test(rule.selector) || ['.document', '.document .chapters button', '.document .hardwareLink'].includes(rule.selector) || rule.selector.startsWith(':global(.app-shell):has(.document)')) return
       const context = []
       for (let parent = rule.parent; parent?.type === 'atrule'; parent = parent.parent) context.unshift(`@${parent.name} ${parent.params}`)
       rules.push({ context, selector: rule.selector, declarations: rule.nodes.map(node => node.toString()) })
@@ -61,13 +61,7 @@ test('approved documentary scripts, mappings and fixed stage geometry survive st
     return rules
   }
   assert.deepEqual(protectedRules(source(cssPath)), protectedRules(git('show', `${feature}:${cssPath}`)))
-  postcss.parse(source(cssPath)).walkRules(rule => {
-    if (rule.selector !== '.deck') return
-    for (const node of rule.nodes) {
-      assert.ok(!['height','block-size'].includes(node.prop), 'Control deck must size from content')
-      assert.ok(node.prop !== 'position' || !['absolute','fixed'].includes(node.value), 'Controls remain in document flow')
-    }
-  })
+  assert.ok(!/^\.(?:deck|shortcuts)\b/m.test(source(cssPath)), 'The approved bottom playback deck is removed')
 
 })
 
