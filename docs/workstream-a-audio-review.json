@@ -1,7 +1,6 @@
 {
   "missionId": "apollo-15-rover",
   "hardwareId": "lrv-1",
-  "generatedOn": "2026-11-08",
   "durationMethod": "Sum of actual MPEG Layer III frame sample counts / sample rate. Includes encoding padding; native decoded duration can differ. No sentence timestamps inferred.",
   "audioProvenance": "Original project narration, not NASA mission audio. MP3 files unchanged.",
   "evidenceNote": "Contextual media are verified stills from the existing Apollo 15 manifest. Original script source links are preserved as history, not automatically certified for display.",
@@ -9,7 +8,6 @@
     "rover": {
       "credit": "NASA",
       "usagePolicyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-      "verifiedOn": "2026-11-08",
       "usageNotes": "Educational/informational use under NASA media guidelines. Credit NASA; no endorsement implied. Third-party and identifiable-person restrictions still apply.",
       "id": "rover",
       "title": "LRV-1 at Hadley-Apennine",
@@ -26,7 +24,6 @@
     "rollout": {
       "credit": "NASA",
       "usagePolicyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-      "verifiedOn": "2026-11-08",
       "usageNotes": "Educational/informational use under NASA media guidelines. Credit NASA; no endorsement implied. Third-party and identifiable-person restrictions still apply.",
       "id": "rollout",
       "title": "Before launch: the rollout",
@@ -43,7 +40,6 @@
     "field": {
       "credit": "NASA / James B. Irwin",
       "usagePolicyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-      "verifiedOn": "2026-11-08",
       "usageNotes": "Educational/informational use under NASA media guidelines. Credit NASA; no endorsement implied. Third-party and identifiable-person restrictions still apply.",
       "id": "field",
       "title": "Fieldwork beside Hadley Rille",
@@ -60,7 +56,6 @@
     "genesis": {
       "credit": "NASA",
       "usagePolicyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-      "verifiedOn": "2026-11-08",
       "usageNotes": "Educational/informational use under NASA media guidelines. Credit NASA; no endorsement implied. Third-party and identifiable-person restrictions still apply.",
       "id": "genesis",
       "title": "The Genesis Rock before collection",
@@ -77,7 +72,6 @@
     "hammer": {
       "credit": "NASA",
       "usagePolicyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-      "verifiedOn": "2026-11-08",
       "usageNotes": "Educational/informational use under NASA media guidelines. Credit NASA; no endorsement implied. Third-party and identifiable-person restrictions still apply.",
       "id": "hammer",
       "title": "The hammer and feather demonstration",
@@ -94,7 +88,6 @@
     "final": {
       "credit": "NASA",
       "usagePolicyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-      "verifiedOn": "2026-11-08",
       "usageNotes": "Educational/informational use under NASA media guidelines. Credit NASA; no endorsement implied. Third-party and identifiable-person restrictions still apply.",
       "id": "final",
       "title": "Leaving a record on the Moon",

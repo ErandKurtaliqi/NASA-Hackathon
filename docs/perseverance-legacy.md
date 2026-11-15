@@ -1,6 +1,6 @@
 # Perseverance Chapter 4 — My Legacy
 
-Scope: `/story/follow-perseverance/4` only. Source/status review: **2026-11-04**.
+Scope: `/story/follow-perseverance/4` only.
 
 ## Inspection and retained behavior
 
@@ -56,7 +56,7 @@ was edited. All previous working-tree changes were preserved.
 | Making oxygen on Mars | First/final production: **2021-04-20 / 2023-08-07** | [NASA first-run history](https://science.nasa.gov/blog/moxie-celebrates-2-years-on-mars-discoveries-and-work-left-to-do/), [JPL final report, 2023-09-06](https://www.jpl.nasa.gov/news/nasas-oxygen-generating-experiment-moxie-completes-mars-mission/) |
 | A backup sample collection | Depot construction: **2022-12-21 to 2023-01-28** | [JPL depot report, 2023-02-14](https://www.jpl.nasa.gov/news/nasas-perseverance-rover-shows-off-collection-of-mars-samples/) |
 | A new off-world driving record | Event **2026-10-11**, report **2026-10-12** | [NASA October 2026 report](https://science.nasa.gov/blogs/perseverance-mars-rover/2026/10/12/nasas-perseverance-sets-off-world-record-for-total-distance-driven/) |
-| My story is still being written | Status checked **2026-11-04**, not an event or live feed | NASA's current mission page labels Perseverance active; the October report supplies ongoing research context. |
+| My story is still being written | Status checked, not an event or live feed | NASA's current mission page labels Perseverance active; the October report supplies ongoing research context. |
 | Pathfinder for explorers | **Undated possibilities** | Mission overview and MOXIE final report; no return/crew schedule is asserted. |
 
 Records are ordered by starting date; multi-year intervals naturally overlap.
@@ -87,7 +87,7 @@ All images are stills; there is no animated GIF, video autoplay or reconstructio
 | MOXIE / oxygen | [PIA24203](https://www.jpl.nasa.gov/images/pia24203-moxie-all-tucked-in/) — **NASA/JPL-Caltech** | Prelanding hardware photograph published January 19, 2021, not oxygen production photographed on Mars. Acquisition date is unspecified. |
 | Tubes / depot and future | [PIA25738](https://www.jpl.nasa.gov/images/pia25738-watsons-photomontage-of-mars-sample-depot/) — **NASA/JPL-Caltech/MSSS** | Separate tube photographs in a montage; not their ground arrangement, not samples already on Earth. Reuses Chapter 3 derivatives. |
 | AutoNav / 2026 driving record | [PIA26071](https://www.jpl.nasa.gov/images/pia26071-perseverances-autonav-leads-the-way/) — **NASA/JPL-Caltech** | Supporting annotated composite from June 29, 2023. Existing JPL visualization overlays explain navigation; the caption/context explicitly say this is not the October 2026 record drive. |
-| Rochette portrait / ongoing mission | [PIA24836](https://www.jpl.nasa.gov/images/pia24836-perseverances-selfie-at-rochette/) — **NASA/JPL-Caltech/MSSS** | Archival WATSON photographic mosaic dated September 10, 2021, not the rover's November 2026 location or a live view. |
+| Rochette portrait / ongoing mission | [PIA24836](https://www.jpl.nasa.gov/images/pia24836-perseverances-selfie-at-rochette/) — **NASA/JPL-Caltech/MSSS** | Archival WATSON photographic mosaic dated September 10, 2021, not the rover's location at the time of the review or a live view. |
 
 Meaningful alt text for the two new images:
 

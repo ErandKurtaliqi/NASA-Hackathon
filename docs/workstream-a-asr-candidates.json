@@ -1,6 +1,5 @@
 {
   "status": "candidates-only-not-runtime-captions",
-  "generatedOn": "2026-11-08",
   "method": "Fully local whisper.cpp inference against unchanged original MP3 files, then sentence grouping using returned token offsets. No script-based timestamp interpolation and no human listening certification.",
   "engine": {
     "name": "whisper.cpp",

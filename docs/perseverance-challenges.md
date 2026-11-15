@@ -1,6 +1,6 @@
 # Perseverance Chapter 3 — Challenges & Discoveries
 
-Scope: only `/story/follow-perseverance/3`. Sources verified on **2026-11-04**.
+Scope: only `/story/follow-perseverance/3`. Sources verified.
 The uncommitted My Journey implementation from the previous task is preserved.
 
 ## Inspection before editing

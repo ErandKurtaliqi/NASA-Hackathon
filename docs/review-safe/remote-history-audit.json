@@ -1,5 +1,4 @@
 {
-  "date": "2026-11-11",
   "scope": "Advertised remote heads/tags only; not deleted refs, PRs, forks, CI/deployment artifacts or external copies",
   "repositoryVisibility": "private, authenticated GitHub API",
   "refs": [

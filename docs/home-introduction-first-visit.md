@@ -1,6 +1,6 @@
 # Homepage first-visit introduction
 
-Homepage review, 2026-11-14. Final repository: `ErandKurtaliqi/NASA-Hackathon`.
+Final repository: `ErandKurtaliqi/NASA-Hackathon`.
 Branch: `feat/home-intro-first-visit`; base `origin/main`:
 `a912a7e7ef646a43cdd81ad16ada7af243dde494`.
 
@@ -71,8 +71,7 @@ are not changed. The locations branch and draft PR #1 are separate and untouched
   Mars/Moon/Rover returns, same-tab refresh, reduced motion, 44px controls,
   horizontal overflow and a notice that does not cover the headline.
 
-Screenshots and JSON logs remain outside Git:
-`C:\xampp\htdocs\NASA-Hackathon-home-intro-QA-20261114`.
+Screenshots and JSON logs remain in the external homepage introduction QA directory.
 `first-1440.jpg`, `first-390.jpg`, `return-1440.jpg`, `return-390.jpg`
 are actual rendered screenshots taken after entry animations settle.
 

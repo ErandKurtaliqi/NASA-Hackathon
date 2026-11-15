@@ -1,42 +1,42 @@
-﻿# AURORALYS — candidato de publicación saneado
+# AURORALYS — Publication candidate after cleanup
 
-## Alcance y procedencia
+## Scope and provenance
 
-Rama: `review/eight-mission-release-safe`. Base publicada: `8a77514c8841c6f518b0b2d71421f455b6ef9702`. Snapshot funcional y visual de origen: `f0996303f9e899aa5913db2cbb169a393a49dc9b`.
+Branch: `review/eight-mission-release-safe`. Published base: `8a77514c8841c6f518b0b2d71421f455b6ef9702`. Functional and visual snapshot of origin: `f0996303f9e899aa5913db2cbb169a393a49dc9b`.
 
-El árbol final se trasladó mediante `git merge --squash --no-commit review/eight-mission-cinematic` sobre un worktree nuevo y limpio basado en 8a77514. No hubo conflictos. Se crea un único commit hijo de esa base; los commits locales originales no se fusionan ni cherry-pickean. Las ramas y los respaldos originales se conservan.
+The final tree was moved by `git merge --squash --no-commit review/eight-mission-cinematic` over a clean new worktree based on 8a77514. There were no conflicts. A single commit child is created from that base; the original local commits are neither merged nor cherry-picked. The original branches and backups are preserved.
 
-No se rediseñó ninguna misión. Todos los archivos de `src/`, `public/`, dependencias y configuración de build conservan los mismos blobs que f099630. Se mantienen ocho misiones y cuarenta capítulos, sus escenas aprobadas, narrativa, audio/captions, actividades/quizzes, navegación, accesibilidad, progreso y badges. Homepage, GIS/3D, coordenadas y mapas permanecen intactos.
+No mission was redesigned. All `src/`, `public/`, dependencies and build configurations retain the same blobs as f099630. Eight missions and forty chapters are maintained, their approved scenes, narrative, audio/captions, activities/quizzes, navigation, accessibility, progress and badges. Homepage, GIS/3D, coordinates and maps remain intact.
 
-## Saneamiento autorizado
+## Authorized cleanup
 
-Las rutas de perfil personal y las rutas fijas del equipo se sustituyen por rutas relativas o configuración explícita en documentación y QA. No se incluyen nombres reales de usuarios o carpetas personales como valores de ejemplo.
+Personal profile paths and fixed paths of the computer are replaced by relative paths or explicit configuration in documentation and QA. Real names of users or personal folders are not included as example values.
 
-- `docs/mission-integration/README.md`, `docs/visual-correction-review.md` y `scripts/story-design-qa.mjs`: se eliminan ubicaciones personales de paquetes y referencias.
-- Se hacen portables las rutas de los otros informes/checklists y del procedimiento de transferencia privada. Los valores privados se configuran fuera de Git mediante variables de entorno.
-- El script visual exige un directorio QA externo y una referencia existente. Rechaza el checkout como destino y también junctions/symlinks que resuelvan dentro de él antes de crear el directorio. Los nombres de salida siguen confinados al directorio QA elegido.
-- Tres pruebas dependían de objetos Git no publicados. Sus contratos de regresión se conservan con SHA-256 revisados en `tests/fixtures/release-source-baselines.json`, normalizando LF o JSON canónico según el caso. No se copian scripts originales adicionales, grabaciones ni PDFs a los fixtures. Los hashes de procedencia son metadatos, no ancestros Git.
-- `tests/release-safety.test.mjs` comprueba argumentos obligatorios, configuración por entorno, confinamiento de salidas y restricción a orígenes loopback.
+- `docs/mission-integration/README.md`, `docs/visual-correction-review.md` and `scripts/story-design-qa.mjs`: Personal packet and reference locations are removed.
+- The routes of the other reports/checklists and the private transfer procedure are made portable. Private values are configured outside Git by means of environment variables.
+- The visual script requires an external QA directory and an existing reference. It rejects checkout as a destination and also junctions or symlinks that resolve within it before creating the directory. Output names remain confined to the chosen QA directory.
+- Three tests depended on unpublished Git objects. Their regression contracts are retained with SHA-256 revised in `tests/fixtures/release-source-baselines.json`, normalizing LF or canonical JSON as the case may be. No additional original scripts, recordings or PDFs are copied to the fixtures. The Hashes of origin are metadata, not Git ancestors.
+- `tests/release-safety.test.mjs` checks mandatory arguments, environment settings, output containment and loopback source restriction.
 
-Las variables utilizadas son `AURORALYS_QA_DIR`, `AURORALYS_APOLLO15_REFERENCE`, `AURORALYS_QA_BASE_URL` y `CHROME_QA_PORT`; las instrucciones operativas antiguas también identifican variables para los worktrees y entradas privadas. No hacen falta paquetes privados para compilar o ejecutar las pruebas de esta revisión.
+The variables used are `AURORALYS_QA_DIR`, `AURORALYS_APOLLO15_REFERENCE`, `AURORALYS_QA_BASE_URL` and `CHROME_QA_PORT`; old operating instructions also identify variables for worktrees and private inputs. No private packages are required to compile or execute the tests of this revision.
 
-## Validación actual
+## Current Validation
 
-- Suite completa nueva: **260 pruebas aprobadas, cero fallos/omitidos**.
-- TypeScript (`npx.cmd tsc -b --pretty false`) y producción (`npm.cmd run build`): correctos. Se mantiene el warning previo del chunk Three.js.
-- Cinco pruebas nuevas de configuración/confinamiento QA, más las regresiones completas de ocho misiones y persistencia.
+- New complete suite: **260 approved tests, zero failures/missed**.
+- TypeScript (`npx.cmd tsc -b --pretty false`) and production (`npm.cmd run build`): correct. Pre-warning of chunk Three.js is maintained.
+- Five new QA configuration/confining tests, plus complete regressions of eight missions and persistence.
 
-Chrome sobre el build de este candidato verificó las cuarenta rutas a escritorio y móvil, las ocho aperturas en tamaños pequeños/tablet y reduced motion: 106 capturas de rutas/variantes, más evidencia de actividades/finalización. Sin overflow horizontal, imágenes rotas, errores JavaScript ni requests de grabaciones privadas. Se comprobaron reproducción disponible de Apollo 15, Pause/Resume, cambio de segmento sin autoplay, quizzes, completion, recarga, badges idempotentes, Escape/Tab/Enter y touch emulado. El favicon.ico heredado continúa devolviendo 404.
+Chrome on the build of this candidate verified the forty paths to desktop and mobile, the eight openings in small/tablet sizes and reduced motion: 106 captures of routes/variant, more evidence of activities/finalization. No horizontal overflow, broken images, JavaScript errors or private recordings required. Available reproduction of Apollo 15, Pause/Resume, segment change without autoplay, quizzes, completion, recharge, idempotent badges, Escape/Tab/Enter and emulated touch was checked. The inherited favicon.ico continues to return 404.
 
-`story-design-qa.mjs` se ejecutó realmente con argumentos CLI y otra vez usando solo variables de entorno, ambas contra el candidato: cada pasada validó 1440×900, 1024×768 y 390×844, comparativas y acceso a controles de audio tras cambiar segmento. Las capturas OLD son copias byte-idénticas de los registros anteriores; no se generó un falso ANTES desde el nuevo build.
+`story-design-qa.mjs` was actually executed with CLI arguments and again using only environment variables, both against the candidate: each pass validated 1440×900, 1024×768 and 390×844, comparatives and access to audio controls after switching segments. OLD captures are byte-identical copies of previous records; no false BEFORE was generated since the new build.
 
-La comparación adicional de Apollo 15 contra el build fuente confirmó geometría, fuentes y colores en siete elementos principales a 1440×900 y 390×844. La igualdad de los blobs de aplicación es el criterio de preservación del snapshot; no se afirma igualdad byte por byte de los artefactos generados, cuyos hashes pueden variar con finales de línea del checkout.
+The additional comparison of Apollo 15 against the source build confirmed geometry, fonts and colors in seven main elements at 1440×900 and 390×844. The equality of application blobs is the criterion of snapshot preservation; no byte equality per byte of the artifacts generated is affirmed, whose hashes may vary with end of line of checkout.
 
-Los registros nuevos, las comparativas y los informes de privacidad permanecen en el directorio QA externo configurado, sin agregarse a Git. La reproducción de una clonación independiente se registra en esos artefactos al cerrar la entrega. Las pruebas históricas existentes requieren una clonación completa con las referencias ya publicadas; no necesitan los tres commits locales descartados.
+New records, comparatives and privacy reports remain in the configured external QA directory, without being added to Git. Reproduction of an independent cloning is recorded in those artifacts upon completion of delivery. Existing historical evidence requires complete cloning with references already published; they do not need the three discarded local committs.
 
-## Reproducción portable
+## Portable reproduction
 
-Desde la raíz del nuevo worktree:
+From the root of the new worktree:
 
 ```powershell
 node --test --test-concurrency=1 tests/*.test.mjs
@@ -45,7 +45,7 @@ npm.cmd run build
 npm.cmd run preview -- --port 5206 --strictPort
 ```
 
-Para QA, configurar `CHROME_EXE` con el ejecutable instalado, `AURORALYS_QA_DIR` con una carpeta externa y `AURORALYS_APOLLO15_REFERENCE` con la referencia autorizada local. No guardar esos valores personales en archivos versionados. Copiar en el directorio QA las capturas OLD auténticas antes de ejecutar el script de comparación; no reemplazarlas por capturas del candidato.
+For QA, set `CHROME_EXE` with the installed executable, `AURORALYS_QA_DIR` with an external folder and `AURORALYS_APOLLO15_REFERENCE` with the local authorized reference. Do not save those personal values to versioned files. Copy authentic OLD captures to the QA directory before running the comparison script; do not replace them with candidate captures.
 
 ```powershell
 $env:CHROME_QA_PORT = '9342'
@@ -57,12 +57,12 @@ node scripts/story-visual-qa.mjs "$env:AURORALYS_QA_DIR/routes" http://127.0.0.1
 node scripts/story-design-qa.mjs
 ```
 
-La última línea usa la configuración por entorno. También acepta argumentos explícitos: directorio QA, archivo de referencia y URL local.
+The last line uses the environment settings. It also accepts explicit arguments: QA directory, reference file and local URL.
 
-## Medios, privacidad y límites
+## Media, privacy and boundaries
 
-No se agregan MP3, PDF, ZIP, imágenes binarias, modelos, caches ni secretos. Los 22 MP3 heredados y demás recursos públicos son idénticos a la base publicada. Las URLs NASA y sus créditos se conservan; los manifiestos contienen referencias/hashes, no los archivos privados.
+No MP3, PDF, ZIP, binary images, models, caches or secrets are added. 22 legacy MP3s and other public resources are identical to the published database. NASA URLs and their credits are preserved; manifests contain references/hashes, not private files.
 
-Apollo 11/16/17, Sojourner, Opportunity, Viking 1 e Ingenuity conservan interfaces y lectura, pero sus siete grupos de grabaciones permanecen deliberadamente excluidos mediante la política y el adaptador existentes. No se inventa audio, TTS, sincronización precisa ni autorización de redistribución. Las observaciones editoriales/científicas pendientes, derechos de voz/PDF y pruebas físicas/Safari/lectores de pantalla siguen siendo límites de entrega, no nuevas aprobaciones.
+Apollo 11/16/17, Sojourner, Opportunity, Viking 1 and Ingenuity retain interfaces and reading, but their seven sets of recordings remain deliberately excluded by existing policy and adapter. Audio, TTS, precise synchronization, or redistribution authorization are not invented. Outstanding editorial/scientific observations, voice/PDF rights and physical testing/Safari/screenreaders remain delivery limits, not new approvals.
 
-Solo se permite el commit local de este candidato. Esta preparación no autoriza push, PR, merge en ramas protegidas ni publicación de los medios excluidos. La historia saliente debe auditarse como exactamente un commit sobre origin/review/haroon-visual-storytelling antes de cualquier autorización humana de publicación.
+Only the local commit of this candidate is allowed. This preparation does not authorize push, PR, merge in protected branches or publication of excluded media. The outgoing history should be audited as exactly a commit on origin/review/haroon-visual-storytelling prior to any human publication authorization.

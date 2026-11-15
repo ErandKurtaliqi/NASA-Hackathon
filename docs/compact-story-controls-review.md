@@ -1,53 +1,53 @@
-# Ajuste de controles del documental — 12 de noviembre de 2026
+# Adjustment of documentary controls
 
-Estado: implementado y aprobado visualmente por el usuario en Chrome para el diseño compacto de Apollo 15. El usuario autorizó finalizar el merge existente, publicar únicamente la rama de integración y preparar un PR contra master. Esa aprobación no establece QA completo de las otras misiones, todos los segmentos, audio, actividades o tamaños de viewport. No se han generado capturas ni imágenes de sustitución. El cierre y sus gates están registrados en [master-integration-finalization.md](master-integration-finalization.md).
+Status: Visually implemented and approved by the user in Chrome for the compact design of Apollo 15. The user authorized the completion of the existing merge, only publish the integration branch and prepare a PR versus master. That approval does not set up full QA of the other missions, all segments, audio, activities or viewport sizes. No captures or replacement images have been generated. The closure and its gates are registered in [master-integration-finalization.md](master-integration-finalization.md).
 
-## Cambios de producto
+## Product changes
 
-- `src/components/storytelling/ContinuousStoryPage.module.css`: el deck pasa de una altura fija de 154 px en escritorio y 152 px en móvil a una cuadrícula en flujo normal, con altura determinada por los controles y un área de estado de dos líneas. Se elimina también la altura fija de 138 px de pantallas móviles bajas.
-- Se reúnen navegación, reproducción, posición y volumen en una fila. El área de estado conserva su espacio al cambiar de segmento o estado de audio; un mensaje largo se puede recorrer con teclado. Los botones y sliders mantienen áreas mínimas de 44 px. En móvil, los botones usan iconos con sus nombres accesibles completos. En pantallas excepcionalmente estrechas, la cuadrícula permite una segunda fila en vez de forzar los controles a caber.
-- El lector gana el espacio liberado por el deck. Se ajustan márgenes, espaciado entre segmentos, interlineado a 1,7, peso de la narrativa y tamaño de encabezados/metadatos; el texto principal conserva 18–22 px en escritorio y 17 px en móvil. El canal de scrollbar se reserva para evitar variaciones de anchura del texto.
-- `src/components/storytelling/ContinuousStoryPage.tsx`: añade iconos accesibles a Previous/Next y reúne el capítulo y segmento en el estado del reproductor, eliminando el contexto duplicado que ocupaba otra fila. No cambia handlers, detección del segmento, navegación, quizzes, actividades ni guardado.
-- `src/components/storytelling/DocumentaryAudio.tsx`: añade los iconos de Play/Pause, nombres accesibles explícitos y acceso por teclado al mensaje de estado. Los efectos, callbacks, controles de posición/volumen y ciclo de vida de audio permanecen idénticos.
+- `src/components/storytelling/ContinuousStoryPage.module.css`: the deck moves from a fixed height of 154 px on desktop and 152 px on mobile to a grid in normal flow, with height determined by controls and a two-line status area. The 138 px fixed height of low mobile screens is also removed.
+- Navigation, playback, position and volume are gathered in a row. The status area retains its space when changing segment or audio status; a long message can be navigated with keyboard. Buttons and sliders maintain minimum areas of 44 px. On mobile, buttons use icons with their full accessible names. On exceptionally narrow screens, the grid allows a second row instead of forcing controls to fit.
+- The reader gains the space released by the deck. Margins are adjusted, spacing between segments, interlined to 1,7, narrative weight and header/metadata size; the main text retains 18–22 px on desktop and 17 px on mobile. The scrollbar channel is reserved to avoid text width variations.
+- `src/components/storytelling/ContinuousStoryPage.tsx`: adds icons accessible to Previous/Next and brings together the chapter and segment in the player state, eliminating the duplicate context that occupied another row. It does not change handlers, segment detection, navigation, quizzes, activities or save.
+- `src/components/storytelling/DocumentaryAudio.tsx`: adds Play/Pause icons, explicit accessible names and keyboard access to the status message. Effects, callbacks, position/volume controls and audio lifecycle remain identical.
 
-Las reglas de fondo, hardware, evidencia, posiciones de paneles y sus breakpoints no se modificaron. Se mantienen el scroll nativo del lector y el deck como elemento de flujo, sin posicionamiento absoluto/fijo encima de la narrativa. La estabilidad y ausencia de solapamiento en un navegador real todavía deben comprobarse manualmente.
+The background rules, hardware, evidence, panel positions and their breakpoints were not modified. The reader's native scroll and deck are maintained as a flow element, without absolute/fixed positioning above the narrative. Stability and absence of overlap in a real browser must still be checked manually.
 
-## Tamaños solicitados
+## Sizes requested
 
-Estos valores son **estimaciones derivadas del CSS**, no mediciones de navegador ni resultados de QA visual. La altura real puede adaptarse a contenido, zoom y restricciones del viewport.
+These values are **estimates derived from CSS**, no browser measurements or visual QA results. The actual height can be adapted to viewport content, zoom and restrictions.
 
-| Viewport | Altura anterior declarada | Objetivo aproximado | Reducción prevista | Estado visual |
+| Viewport | Previous specified height | Approximate target height | Planned reduction | Visual verification |
 |---|---:|---:|---:|---|
-| 1440 × 900 | 154 px | 93 px | 40% | Pendiente en Chrome |
-| 1366 × 768 | 154 px | 93 px | 40% | Pendiente en Chrome |
-| 1024 × 768 | 154 px | 93 px | 40% | Pendiente en Chrome |
-| 390 × 844 | 152 px | 96 px | 37% | Pendiente en Chrome |
+| 1440 × 900 | 154 px | 93 px | 40% | Pending on Chrome |
+| 1366 × 768 | 154 px | 93 px | 40% | Pending on Chrome |
+| 1024 × 768 | 154 px | 93 px | 40% | Pending on Chrome |
+| 390 × 844 | 152 px | 96 px | 37% | Pending on Chrome |
 
-## Validación ejecutada
+## Validation executed
 
-- `node --test tests/*.test.mjs`: **286 aprobadas, 0 fallos, 0 omisiones**. Incluye rutas reales SSR de las ocho misiones/cuarenta capítulos, narración, quizzes y persistencia.
-- `npm.cmd run test:rover`: aprobado.
-- `npx.cmd tsc -b --pretty false`: aprobado.
-- `npm.cmd run build`: aprobado; se conserva la advertencia de chunks mayores de 500 kB.
-- `git diff --check`: aprobado.
-- `tests/master-integration.test.mjs`: se adapta la comparación histórica que impedía cualquier cambio de CSS/audio. Ahora exige igualdad de todas las reglas de paneles y fondo, incluidos contextos responsive; mantiene igualdad exacta del audio salvo los iconos, nombres accesibles y foco autorizados. También verifica que el deck no vuelva a tener altura fija ni posición absoluta/fija. No se eliminan ni omiten pruebas.
-- Los servidores locales responden por HTTP y sirven respectivamente el CSS anterior y el ajustado. Esta comprobación no equivale a inspección visual, medición geométrica, playback real o prueba de gestos.
+- `node --test tests/*.test.mjs`: **286 passed, 0 failed, 0 skipped**. Includes actual SSR routes of the eight missions/forty chapters, narration, quizzes and persistence.
+- `npm.cmd run test:rover`: passed.
+- `npx.cmd tsc -b --pretty false`: passed.
+- `npm.cmd run build`: approved; warning of chunks greater than 500 kB is retained.
+- `git diff --check`: passed.
+- `tests/master-integration.test.mjs`: The historical comparison that prevented any CSS/audio change is adapted. It now requires equality of all panel and background rules, including responsive contexts; it maintains exact audio equality except for icons, accessible names and authorized focus. It also checks that the deck does not again have fixed height or absolute/fixed position. No evidence is removed or omitted.
+- Local servers respond to HTTP and serve the old CSS and the adjusted CSS respectively. This check does not amount to visual inspection, geometric measurement, real playback or gesture testing.
 
-## Comparación manual antes/después
+## Manual comparison before/after
 
-- **Antes:** [Apollo 15 anterior](http://127.0.0.1:5214/story/apollo-15-rover).
-- **Después:** [Apollo 15 ajustado](http://127.0.0.1:5226/story/apollo-15-rover).
+- **Before:** [Previous Apollo 15 layout](http://127.0.0.1:5214/story/apollo-15-rover).
+- **Then:** [Apollo 15 adjusted](http://127.0.0.1:5226/story/apollo-15-rover).
 
-La vista anterior procede de una copia de frontend del árbol inicial del índice, `b9e78d000a9f6c775ade4008bd72e08c6b8948c3`, en un directorio de QA externo. La vista ajustada usa este worktree. Ambas vistas son de desarrollo, escuchan sólo en loopback y mantienen almacenamiento independiente por puerto. No fue necesario restaurar archivos del worktree ni tocar el índice para preparar la comparación.
+The previous view comes from a frontend copy of the index tree, `b9e78d000a9f6c775ade4008bd72e08c6b8948c3`, in an external QA directory. The adjusted view uses this worktree. Both views are development, listen only to loopback and maintain independent storage by port. It was not necessary to restore files from the worktree or touch the index to prepare the comparison.
 
-En Chrome, usar los cuatro tamaños de la tabla, con zoom al 100%, y capturar ambas versiones en el mismo capítulo y segmento. Comprobar legibilidad, botones, sliders, navegación con Tab y que los mensajes largos sean accesibles. Recorrer hacia delante/atrás: sólo deben cambiar texto, evidencia y audio correspondiente; hardware, fondo, paneles y controles deben permanecer estables durante el scroll. Revisar también el quiz, actividades y la recarga del progreso.
+In Chrome, use the four table sizes, zooming at 100%, and capture both versions in the same chapter and segment. Check legibility, buttons, sliders, Tab navigation and make long messages accessible. Go forward/back: you should only change text, evidence and corresponding audio; hardware, background, panels and controls should remain stable during scrolling. Also check the quiz, activities and reloading progress.
 
-Repetir con `apollo-11-reflector`, `apollo-16-rover`, `apollo-17-rover`, `sojourner`, `opportunity`, `viking-1` e `ingenuity`, cambiando el ID en ambas URLs. Las capturas de las cuatro resoluciones siguen pendientes; no se reutilizan capturas de revisiones anteriores como evidencia de este cambio.
+Repeat with `apollo-11-reflector`, `apollo-16-rover`, `apollo-17-rover`, `sojourner`, `opportunity`, `viking-1` and `ingenuity`, changing the ID in both URLs. Screenshots at the four resolutions remain pending; screenshots from earlier reviews are not reused as evidence of this change.
 
-## Checkpoint del ajuste: merge e índice preservados antes del cierre
+## Adjustment checkpoint: merge and index preserved before closure
 
-- Rama: `integration/haroon-master-continuous-storytelling`.
+- Branch: `integration/haroon-master-continuous-storytelling`.
 - `HEAD`: `3b45e8f2324e8af85e55d81a1020306e95e1706e`.
 - `MERGE_HEAD`: `ddb458657e1fa5fca0bd117f265e95b444090712`.
-- Árbol del índice antes/después: `b9e78d000a9f6c775ade4008bd72e08c6b8948c3`.
-- En este checkpoint se comparó además el hash de todas las entradas preparadas: coincidió exactamente con el inicial. Los ajustes se dejaron sin preparar para revisión. La instrucción posterior del usuario autoriza prepararlos y completar/publicar el merge; este apartado conserva el registro anterior y no describe el estado final de publicación.
+- Index tree before/after: `b9e78d000a9f6c775ade4008bd72e08c6b8948c3`.
+- This checkpoint also compared the hash of all prepared entries: it exactly coincided with the initial. The settings were left unprepared for revision. The user's subsequent instruction authorizes preparing and completing/publishing the merge; this section retains the previous record and does not describe the final status of publication.

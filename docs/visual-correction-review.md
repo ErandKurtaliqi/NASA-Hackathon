@@ -1,4 +1,4 @@
-# AURORALYS - Visual correction review, 11 November 2026
+# AURORALYS - Visual correction review
 
 ## Scope and baseline
 
@@ -49,7 +49,7 @@ New private MP3/PDF/ZIP resources are absent. Apollo 11/17 recorded-narration su
 - No JavaScript, image or application/media HTTP errors; favicon.ico remains an unrelated 404. Browser contexts are disposable; ordinary user progress is neither read nor reset.
 - `git diff --check` and staged checks pass. Legacy source snapshots initially flagged the intentional presentation extraction; a precise reversal contract was added, with a test confirming it cannot hide changed handlers.
 
-Local screenshots/comparisons: `$env:AURORALYS_QA_DIR (external visual-review artifacts)`. `design-verification.json` records required-size checks; `regression/verification.json` records full browser regression. These files and the references are not staged.
+Local screenshots/comparisons: `$env:AURORALYS_QA_DIR` (external visual-review artifacts). `design-verification.json` records required-size checks; `regression/verification.json` records full browser regression. These files and the references are not staged.
 
 Manual pending: director visual approval, physical touch devices, Safari/iOS, screen-reader reading order, 200% zoom, offline/CDN failure review and production-quality alpha edges. The panorama/high-resolution portrait depend on NASA availability; the hardware retains a readable load-error state and source access.
 

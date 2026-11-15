@@ -1,157 +1,120 @@
-# Frente A — audio, captions y evidencia de Apollo 15
+# Workstream A — Apollo 15 audio, captions, and evidence
 
-Fecha: 2026-11-08. Worktree aislado: `audio`, HEAD
-desacoplado en `8120d9e`. No se ha integrado este trabajo en ninguna rama.
+The work was performed in the isolated `audio` worktree at detached HEAD `8120d9e`. It has yet to be integrated into a branch.
 
-## Resultado y límite explícito
+## Results and limitations
 
-- **19/19 MP3 inspeccionados y transcritos localmente como candidatos ASR.**
-- **54 candidatos de frase/fragmento**, agrupados por puntuación usando offsets
-  por token emitidos por el modelo al analizar los MP3 originales. No se dividieron
-  intervalos en partes iguales ni se calcularon tiempos por longitud del guion.
-- **0/19 grabaciones certificadas mediante escucha humana; 0 cues publicados como
-  `verified`.** `apollo15CaptionTiming.ts` conserva las 19 entradas `pending`.
-- Los 19 archivos conservan sus bytes originales: **5,054,347 bytes** en total.
-  Duración codificada sumada: **295.784490 segundos** (aproximadamente cinco minutos).
-  Es una suma de muestras de frames MPEG, no una medida de inicio/final de frases.
-  Incluye padding de codificación; el reproductor decodificado puede mostrar una
-  duración algo distinta. Las predicciones ASR incluso pueden excederla ligeramente.
-- No se subieron grabaciones a un servicio externo. No se instalaron paquetes en
-  la aplicación, el sistema o `node_modules`.
+- **19 of 19 MP3s were inspected and transcribed locally to produce ASR drafts.**
+- **54 candidate phrases or fragments** were grouped by punctuation using token offsets from the original MP3s. The process used actual audio offsets and avoided inferring timings from equal intervals or script length.
+- **0 of 19 recordings have been certified by human listening, and 0 cues were published as `verified`.** All 19 entries in `apollo15CaptionTiming.ts` remain `pending`.
+- All 19 files retain their original bytes, **5,054,347 bytes** in total. The MPEG frames add up to **295.784490 seconds**, including encoder padding. The duration shown by the player can differ slightly, and ASR estimates may exceed it. Phrase boundaries require separate review.
+- The recordings were processed locally. The application, system, and `node_modules` required no package installations.
 
-Los guiones originales y las preguntas existentes no prueban por sí solos qué se
-pronunció. Ahora existen candidatos auditables para las tres grabaciones del quiz;
-siguen faltando sus transcripciones **aprobadas**. No se insertaron estos borradores
-en el quiz, ni se revelaron respuestas antes de la interacción del estudiante.
+The original scripts and quiz questions do not establish what the recordings say. ASR drafts for all three quiz recordings are available for review. Approved transcripts are still pending. The drafts were kept out of the quiz and answers remain hidden until the student interacts.
 
-## Herramienta de revisión demostrable
+## Review tool
 
-Abrir `docs/workstream-a-audio-review.html` desde este worktree en Chrome. Funciona
-con `file://`, sin instalar dependencias ni utilizar localStorage. También puede
-servirse desde un servidor HTTP estático local del worktree; por ejemplo:
+Open `docs/workstream-a-audio-review.html` from this worktree in Chrome. It works with `file://` and needs neither installed dependencies nor localStorage. To serve it from the worktree over HTTP, run:
 
 ```powershell
 python -m http.server 5181 --bind 127.0.0.1
 ```
 
-Después abrir `http://127.0.0.1:5181/docs/workstream-a-audio-review.html`.
-Las URLs de audio e imágenes se resuelven como `../public/...` desde `/docs`,
-tanto con `file://` como con este servidor estático; no requieren el mapeo de Vite.
-No usar `npm run dev` con la caché predeterminada de la junction compartida.
+Then open `http://127.0.0.1:5181/docs/workstream-a-audio-review.html`. Audio and image URLs resolve through `../public/...` from `/docs` in both modes, without Vite URL mapping. Avoid running `npm run dev` with the default cache in the shared junction.
 
-La herramienta contiene un único reproductor, selección de las 19 pistas,
-guiones originales candidatos, contexto de las preguntas y seis imágenes NASA
-del manifiesto verificado existente. **Load local ASR draft — unreviewed** carga
-texto y tiempos predichos para corregirlos, sin aprobarlos automáticamente.
+The tool has one player, a selector for all 19 tracks, original candidate scripts, question context, and six NASA images from the existing verified manifest. **Load local ASR draft — unreviewed** loads draft text and timings for correction. Approval remains a separate action.
 
-El revisor puede reproducir, pausar, buscar y capturar start/end desde
-`audio.currentTime`, cambiar el texto de cada frase y elegir evidencia pertinente.
-Se pueden descargar borradores. Exportar cues revisados exige nombre del revisor,
-confirmación explícita de escucha y comprobaciones de orden, intervalos y duración
-decodificada. Cambiar texto, tiempos o imágenes invalida la aprobación anterior.
-Los cambios viven solo en la pestaña; descargar antes de cerrarla.
+Reviewers can play, pause, seek, capture start and end times from `audio.currentTime`, edit sentence text, and choose relevant evidence. Drafts can be downloaded. Exporting reviewed cues requires a reviewer name, explicit listening confirmation, and validation of cue order, intervals, and decoded duration. Changing text, timings, or images clears previous approval. Download the draft before closing the tab.
 
-La exportación contiene path/hash del MP3 y no modifica la aplicación. Antes de
-copiar una entrada revisada al registro de producción, contrastar su hash, comprobar
-que el audio no cambió, revisar la transcripción completa y ejecutar las pruebas.
-Los candidatos `candidate-not-approved` no son compatibles con el tipo de cues de
-producción y nunca se importan automáticamente.
+The export contains the MP3 path and hash. It leaves application files untouched. Before copying a reviewed entry into the production registry, compare the recorded hash against the current audio, read the complete transcript, and run the tests. The production cue type excludes `candidate-not-approved` entries, and the tool never imports them automatically.
 
-## Correcciones de runtime
+## Runtime fixes
 
-- Replay actualiza el cue inmediatamente desde el tiempo real cero.
-- Seeking/seeked usan `currentTime` para saltos adelante/atrás y huecos sin caption.
-- Fin, error, cambio de fuente y desmontaje limpian captions/evidencia obsoletos.
-- Un rechazo de Play pendiente de una fuente anterior no muestra un error falso
-  en la fuente nueva. Los errores síncronos del reproductor también son recuperables.
-- Un cue se asocia al path del audio que lo produjo. Tanto desktop como móvil
-  aplican su imagen solo a la tarjeta activa; las demás conservan evidencia por
-  segmento. IDs de imagen desconocidos vuelven al manifiesto contextual.
-- Continúan mute, pausa/resume/replay, exclusividad de voz, lectura sin audio,
-  `preload="none"`, ausencia de autoplay y ausencia de anuncios por cada timeupdate.
-- La cadencia de `timeupdate` depende del navegador: no garantiza sincronización
-  frame a frame. Buscar y reiniciar actualizan el cue inmediatamente desde el tiempo
-  del medio; la precisión editorial de cada frontera sigue requiriendo escucha.
-- No se tocaron GIS/3D, otras misiones, persistencia, MP3, guiones originales ni
-  créditos NASA. No se añadieron imágenes: se reutilizan las seis verificadas del piloto.
+- Replay refreshes the cue at media time zero.
+- Seeking and seek completion use `currentTime` to handle forward and backward jumps and caption gaps.
+- Playback end, errors, source changes, and unmounts clear stale captions and evidence.
+- A pending Play rejection from a previous source cannot surface as an error for a new source. Synchronous playback errors are also recoverable.
+- A cue belongs to the audio path that produced it. Desktop and mobile show cue-specific imagery on the active card, while other cards retain segment evidence. An unknown image ID falls back to the contextual manifest.
+- Mute, pause, resume, replay, exclusive voice playback, audio-free reading, `preload="none"`, and disabled autoplay remain available. The player avoids announcing every timeupdate.
+- Browser `timeupdate` cadence varies. Seeking and restarting update the cue immediately from media time. Listening is still required to verify phrase boundaries.
+- The changes leave GIS/3D, other missions, persistence, MP3s, original scripts, and NASA credits intact. The six verified pilot images are reused.
 
-## Inventario individual
+## Recording inventory
 
-La tabla muestra duración codificada real por frames. Todas las filas requieren
-escucha humana para confirmar palabras y tiempos. Los hashes completos, muestras,
-frames, texto original, ASR, offsets por token y referencias están en los JSON.
+The table shows actual duration encoded by frames. All rows require human listening to confirm words
+and times. Full hashes, samples, frames, original text, ASR, offsets per token and references are in
+the JSONs.
 
-| Capítulo.segmento | Grabación | Duración MPEG | Material textual | Revisión humana |
+| Chapter.segment | Recording | MPEG duration | Text source | Human Review |
 | --- | --- | --- | --- | --- |
-| 1.1 | Hook & Machine Intro | 16.927 s | Guion original + ASR | Pendiente |
-| 1.2 | Developed & Destination | 16.588 s | Guion original + ASR | Pendiente |
-| 1.3 | Who Built Me | 8.751 s | Guion original + ASR | Pendiente |
-| 1.4 | Designed to Accomplish | 14.106 s | Guion original + ASR | Pendiente |
-| 2.1 | Launch & Landing | 21.969 s | Guion original + ASR | Pendiente |
-| 2.2 | Lunar Environment & Controls | 22.988 s | Guion original + ASR | Pendiente |
-| 2.3 | One-sixth Gravity | 16.588 s | Guion original + ASR | Pendiente |
-| 2.4 | Milestones | 17.868 s | Guion original + ASR | Pendiente |
-| 3.1 | Steering Scare | 17.554 s | Guion original + ASR | Pendiente |
-| 3.2 | Steep Slopes, Heat & Lunar Dust | 20.767 s | Guion original + ASR | Pendiente |
-| 3.3 | Genesis Rock | 18.678 s | Guion original + ASR | Pendiente |
-| 3.4 | Observations | 15.229 s | Guion original + ASR | Pendiente |
-| 4.1 | Final Science Moment | 13.401 s | Guion original + ASR | Pendiente |
-| 4.2 | Filming Liftoff | 15.804 s | Guion original + ASR | Pendiente |
-| 4.3 | Current Status | 17.946 s | Guion original + ASR | Pendiente |
-| 4.4 | Reflection | 17.084 s | Guion original + ASR | Pendiente |
-| 5.1 | Quiz question 1 | 4.754 s | ASR; falta guion original | Pendiente |
-| 5.2 | Quiz question 2 | 7.549 s | ASR; falta guion original | Pendiente |
-| 5.3 | Quiz question 3 | 11.233 s | ASR; falta guion original | Pendiente |
+| 1.1 | Hook & Machine Intro | 16.927 s | Original script + ASR | Pending |
+| 1.2 | Developed & Destination | 16.588 s | Original script + ASR | Pending |
+| 1.3 | Who Built Me | 8.751 s | Original script + ASR | Pending |
+| 1.4 | Designed to Accomplish | 14.106 s | Original script + ASR | Pending |
+| 2.1 | Launch & Landing | 21.969 s | Original script + ASR | Pending |
+| 2.2 | Lunar Environment & Controls | 22.988 s | Original script + ASR | Pending |
+| 2.3 | One-sixth Gravity | 16.588 s | Original script + ASR | Pending |
+| 2.4 | Milestones | 17.868 s | Original script + ASR | Pending |
+| 3.1 | Steering Scare | 17.554 s | Original script + ASR | Pending |
+| 3.2 | Steep Slopes, Heat & Lunar Dust | 20.767 s | Original script + ASR | Pending |
+| 3.3 | Genesis Rock | 18.678 s | Original script + ASR | Pending |
+| 3.4 | Observations | 15.229 s | Original script + ASR | Pending |
+| 4.1 | Final Science Moment | 13.401 s | Original script + ASR | Pending |
+| 4.2 | Filming Liftoff | 15.804 s | Original script + ASR | Pending |
+| 4.3 | Current Status | 17.946 s | Original script + ASR | Pending |
+| 4.4 | Reflection | 17.084 s | Original script + ASR | Pending |
+| 5.1 | Quiz question 1 | 4.754 s | ASR only; original script unavailable | Pending |
+| 5.2 | Quiz question 2 | 7.549 s | ASR only; original script unavailable | Pending |
+| 5.3 | Quiz question 3 | 11.233 s | ASR only; original script unavailable | Pending |
 
-Riesgos observados en ASR: Hadley-Apennine aparece como “Hadley Apanine”; Hadley
-Rille como “Rill” o “Real”; 4.3 tiene puntuación fragmentada; 3.2 predice suspiros/tos
-que requieren comprobación audible. No corregirlos por suposición. Revisar números,
-unidades, “mass/weight”, marcas temporales finales y preguntas completas. Algunos
-fragmentos ASR abarcan una frase incompleta; 54 candidatos no equivalen a 54 frases
-certificadas. Las simplificaciones históricas de los guiones originales también
-requieren criterio editorial; no se regeneraron ni alteraron las grabaciones.
+Risks observed in ASR: Hadley-Apennine appears as “Hadley Apanine”; Hadley Rille as “Rill” or
+“Real”; 4.3 has fragmented punctuation; 3.2 predicts sighs or coughs that require audible verification. Do not
+correct them by guess. Review numbers, units, “mass/weight”, final time marks and complete
+questions. Some ASR fragments include an incomplete phrase; 54 candidates do not amount to 54
+certified phrases. Historical simplifications of the original scripts also require editorial
+criteria; recordings were not regenerated or altered.
 
-## Procedencia ASR y reproducción
+## ASR provenance and reproduction
 
-Se usó el binario CPU portátil oficial de [whisper.cpp b5454](https://github.com/ggml-org/whisper.cpp/releases/tag/b5454),
-que admite MP3 directamente, y el modelo inglés cuantizado
-[ggml-tiny.en-q5_1](https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.en-q5_1.bin).
-No se usó el reconocedor instalado de Windows, que solo ofrecía es-ES para estas
-grabaciones inglesas. ASR se ejecutó sin prompt que copiara el guion:
+The official portable CPU binary of [whisper.cpp
+b5454](https://github.com/ggml-org/whisper.cpp/releases/tag/b5454), which supports MP3 directly, and
+the quantized English model
+[ggml-tiny.en-q5_1](https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.en-q5_1.bin) were used. The Windows installed recognition device, which only offered es-ES for these English
+recordings, was not used. ASR was executed without a prompt to copy the script:
 
 ```text
 whisper-cli.exe -m MODEL -f ORIGINAL_MP3 -l en -t 4 -ng -ojf -otxt -of OUTPUT_PREFIX
 ```
 
-Aplicar a las 19 rutas del inventario, usando prefijos `1-1` … `5-3` en un directorio
-de salida aislado, y luego:
+Run for the 19 paths in the inventory using prefixes `1-1` ... `5-3` in an isolated output directory, and
+then:
 
 ```text
 node scripts/workstream-a-prepare-asr.mjs DIRECTORIO_DE_JSON_RAW
 node scripts/workstream-a-audio-review.mjs
 ```
 
-El segundo script inspecciona cada frame, verifica vinculación por SHA y regenera
-los datos del reviewer. Ninguno cambia MP3, guiones ni cues de producción.
-Las licencias MIT de [whisper.cpp](https://github.com/ggml-org/whisper.cpp/blob/master/LICENSE)
-y [Whisper](https://github.com/openai/whisper/blob/main/LICENSE) se referencian en el
-manifiesto; los binarios/modelo temporales fueron retirados tras procesar las pistas.
-No forman parte de los archivos propuestos para integrar.
+The second script inspects each frame, checks linking by SHA and regenerates the reviewer data. None
+changes MP3, scripts, or production cubes. The MIT licenses of
+[whisper.cpp](https://github.com/ggml-org/whisper.cpp/blob/master/LICENSE) and
+[Whisper](https://github.com/openai/whisper/blob/main/LICENSE) are referenced in the manifest; the
+temporary binary/model were removed after processing the tracks. They are not part of the files
+proposed to integrate.
 
-Hashes del análisis reproducible:
+Hashes of reproducible analysis:
 
 - ZIP oficial b5454: `6ba69e3482d7826214f90a6a9c84ca07782aec1e1d0c6a7c30c994fd5d816ccb`.
 - `whisper-cli.exe`: `331dba46d6427105d2b802cdbc7eae916ea1c5abf9b0d3b5cfe460d8db8e4366`.
 - Modelo, 32,166,155 bytes: `c77c5766f1cef09b6b7d47f21b546cbddd4157886b3b5d6d4f709e91e66c7c2b`.
 
-## Archivos y validación
+## Files and Validation
 
-Modificados:
+Modified files:
 
 - `src/components/storytelling/StoryRecording.tsx`
 - `src/components/storytelling/Apollo15ScrollStory.tsx`
 
-Nuevos:
+New:
 
 - `src/features/storytelling/apollo15CueEvidence.ts`
 - `scripts/workstream-a-audio-review.mjs`
@@ -164,20 +127,17 @@ Nuevos:
 - `docs/workstream-a-asr-candidates.json`
 - `tests/workstream-a-audio.test.mjs`
 
-Validación: 9 pruebas nuevas focalizadas aprobadas; suite completa **174/174**
-(165 de baseline + 9), TypeScript, producción y `git diff --check` correctos.
-Permanece el warning de bundle Three.js de 823.49 kB, preexistente. Las pruebas
-verifican inventario real, integridad, candidatos y su aislamiento de producción,
-captura de currentTime y bloqueo de exportación sin aprobación, replay/seek/end,
-rechazos obsoletos y selección de evidencia mobile/desktop.
-La prueba HTTP adicional usa las URLs realmente generadas por el reviewer desde
-la ubicación documentada y comprueba los bytes de primer/último MP3 e imagen,
-sin ningún mapeo especial de `/audio` a `/public/audio`.
+Validation: 9 new targeted tests approved; full suite **174/174** (165 baseline + 9), TypeScript,
+production build, and `git diff --check` all passed. The existing Three.js bundle warning (823.49 kB) remains.
+Tests verify real inventory, integrity, candidates and their production isolation, currentTime
+capture and export lock without approval, replay/seek/end, obsolete rejections and mobile and desktop
+evidence selection. The additional HTTP test uses the URLs actually generated by the reviewer from
+the documented location and checks the first/last MP3 bytes and image, without any special mapping
+of `/audio` a `/public/audio`.
 
-Pendiente en Chrome: escucha humana de las 19 pistas, corrección/aprobación de
-frases y tiempos; comprobación visual responsive, controles nativos al abrir
-el reviewer por `file://`, exportación descargada y cambio de capítulo real. Las
-pruebas de DOM/media son simuladas y no sustituyen esa revisión. Para cumplimiento
-completo aún deben aprobarse los cues y curarse imágenes adicionales cuando una
-acción específica no tenga evidencia directa. El alumno sigue viendo evidencia
-por segmento; no se afirma sincronización temporal perfecta.
+Pending in Chrome: Human Listening of the 19 Tracks, Correction/Approval of Phrases and Times;
+Responsive Visual Check, Native Controls When Opening the Reviewer by `file://`, Downloaded Export
+and Real Chapter Change. DOM/Media Tests are simulated and do not replace that review. For complete
+compliance the cues must still be approved and additional images must be cured when a specific
+action has no direct evidence. The student continues to see evidence by segment; perfect timing is
+not affirmed.

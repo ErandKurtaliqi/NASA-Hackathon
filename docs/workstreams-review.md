@@ -1,197 +1,186 @@
-# Entrega coordinada de Rover Stories — revisión aislada
+# Coordinated delivery of Rover Stories — isolated review
 
-Base común: `8120d9ecba6babb9e2c0695c02c6ef96234b359b`.
-No se han integrado resultados ni aplicado cambios a la rama protegida.
+Common base: `8120d9ecba6babb9e2c0695c02c6ef96234b359b`. No results have been integrated or changes
+applied to the protected branch.
 
-## Ownership y aislamiento
+## Ownership and isolation
 
-| Frente | Nombre del frente | Propietario de archivos |
+| Workstream | Name | File ownership |
 | --- | --- | --- |
-| A | Audio | Apollo15ScrollStory, StoryRecording; helpers Apollo 15 nuevos; scripts/datos/reviewer y pruebas A nuevos. |
-| B | Apollo 17 | Seam MachineStoryPage; componentes/manifiestos/medios Apollo 17 nuevos; pruebas históricas ajustadas solo al layout autorizado y pruebas B nuevas. |
-| C | Actividad de Apollo 15 | Solo archivos nuevos de actividad genérica, caso Apollo 15, demo HTML, pruebas C y documento. Ninguna inyección en historias. |
-| D | Auditoría de mapas | Análisis de mapas/QA y este informe; no modifica código de aplicación. |
+| A | Audio | Apollo15ScrollStory, StoryRecording; new Apollo 15 helpers; new scripts/data/reviewer and A tests. |
+| B | Apollo 17 | Seam MachineStoryPage; new Apollo 17 components/manifests/media; historical tests adjusted only to the authorized layout and new B tests. |
+| C | Apollo 15 activity | Only new generic activity files, Apollo 15 case, demo HTML, C tests and document. No injection into stories. |
+| D | Map audit | Map analysis/QA and this report; does not modify application code. |
 
-Los cuatro frentes se revisaron en worktrees separados el 8 de noviembre de 2026.
+The four workstreams were reviewed in separate worktrees.
 
-Dependencias existentes se comparten para lectura mediante junction `node_modules`;
-ningún agente instala dependencias de la aplicación ni edita esa carpeta. Las demos
-usan cachés locales explícitas dentro de cada `dist`. Los servidores efímeros HTTP
-de B/C se cerraron al finalizar; no hay despliegue ni servidor de revisión permanente.
+Existing dependencies are shared for reading by Junction `node_modules`; no agent installs
+application dependencies or edits that folder. Demos use explicit local caches within each `dist`.
+B/C HTTP ephemeral servers were closed at the end; there is no deployment or permanent revision
+server.
 
-Un checkout Windows convirtió el guión original a CRLF, haciendo fallar una prueba
-que compara sus bytes con el blob original. Se repuso el mismo blob y se refrescó
-el stat-cache de ese único archivo, sin staged diff ni modificación funcional. Los
-MP3 no se alteraron. El baseline después del ajuste es 165/165.
+A Windows checkout converted the original script to CRLF, making a failed test that compares its
+bytes to the original blob. The same blob was replaced and the stat-cache of that single file was
+refreshed, without staged diff or functional modification. MP3s were not altered. The baseline passed 165/165 tests after the correction.
 
-## Otros frentes de revisión
+## Other review workstreams
 
-| Nombre del frente | Identificador |
+| Workstream name | Identifier |
 | --- | --- |
 | Apollo 16 | `apollo16` |
-| Historias de Marte | `mars-stories` |
-| Candidato de Rover Stories | `rover-stories-release-candidate` |
-| Revisión de las historias lunares | `moon-storytelling-qa` |
-| Integración de Ingenuity | `mission-integration-ingenuity` |
-| Corrección visual | `visual-correction` |
-| Integración de storytelling | `master-integration` |
+| Mars stories | `mars-stories` |
+| Rover Stories release candidate | `rover-stories-release-candidate` |
+| Review of lunar stories | `moon-storytelling-qa` |
+| Integration of Ingenuity | `mission-integration-ingenuity` |
+| Visual correction | `visual-correction` |
+| Integration of storytelling | `master-integration` |
 
-## Resultados y límites
+## Results and limits
 
-### A — audio y revisión de cues
+### A — audio and cue review
 
-Se han procesado localmente las 19 grabaciones mediante whisper.cpp portátil,
-sin subirlas a servicios externos ni modificar MP3. El paquete contiene transcripción
-automática y 54 grupos candidatos con offsets de tokens del audio, no tiempos
-repartidos según palabras. Topónimos y algunas frases requieren corrección humana.
-No se confunden esos candidatos con captions aprobados: 0 revisiones humanas y 19
-registros de producción pendientes. El reviewer captura/edita tiempos usando el
-reproductor real y permite exportar una revisión explícita.
+The 19 recordings have been processed locally using whisper.cpp portable, without uploading them to
+external services or modifying MP3. The package contains automatic transcription and 54 candidate
+groups with audio token offsets, not word-disaggregated times. Toponyms and some phrases require
+human correction. These candidates are not confused with approved captions: 0 human reviews and 19
+pending production records. The reviewer captures/edits times using the actual player and allows
+exporting an explicit review.
 
-Validación final e inventario A: ver `./workstream-a-audio.md`.
-No se declara completa la sincronización fina hasta aprobar los cues por escucha.
+Final validation and inventory A: see `./workstream-a-audio.md`. Fine synchronization is not
+declared complete until the cues are approved by listening.
 
-Resultado A: 174/174 (165 + 9), TypeScript y build correctos. Se verifican los
-5.054.347 bytes originales de MP3 y 295,784490 segundos de duración MPEG total.
-La revisión del coordinador detectó rutas de medios erróneas en el reviewer bajo
-servidor estático; se corrigieron y una regresión comprueba las URLs realmente
-generadas del primer/último MP3 y de una imagen: HTTP200 y bytes idénticos. Esa
-corrección del HTML/JS de revisión no modificó el runtime de la aplicación.
-Whisper/modelo y temporales se retiraron tras producir datos reproducibles.
+Workstream A passed 174/174 tests (165 + 9), TypeScript checks, and the build. The review verified all 5,054,347 original MP3 bytes and 295.784490 seconds of total MPEG duration. The coordinator found incorrect media paths when serving the reviewer over HTTP. After the fix, a regression test checked the generated URLs for the first and last MP3s and an image, verifying HTTP 200 responses and identical bytes. The reviewer HTML/JS fix left the application runtime untouched. The Whisper executable, model, and temporary files were removed after the reproducible data was generated.
 
-| Frente | Suite completa en su propio worktree | Comprobaciones |
+| Workstream | Full suite in its own worktree | Checks |
 | --- | --- | --- |
-| A | 174/174 | 9 nuevas; TypeScript/build/diff-check; recursos reales del reviewer por HTTP. |
-| B | 173/173 | 8 nuevas; TypeScript/build/diff-check; SPA/módulo/JPEG por HTTP. |
-| C | 173/173 | 8 nuevas; TypeScript/build normal y preview/diff-check; HTML/módulo/JPEG por HTTP. |
-| D/base | 165/165 | TypeScript/build/diff-check; análisis de solo lectura. |
+| A | 174/174 | 9 new; TypeScript/build/diff-check; real HTTP reviewer resources. |
+| B | 173/173 | 8 new; TypeScript/build/diff-check; SPA/module/JPEG by HTTP. |
+| C | 173/173 | 8 new; Normal TypeScript/build and preview/diff-check; HTML/module/JPEG per HTTP. |
+| D/base | 165/165 | TypeScript/build/diff-check; read-only analysis. |
 
-Son resultados separados; no existe aún un resultado de suite conjunta integrada.
-Los builds conservan la advertencia previa de Three.js de 823,49 kB.
+These are separate results; there is no integrated joint suite result yet. Builds retain the
+Three.js previous warning of 823.49 kB.
 
-### B — Apollo 17 reutilizando la composición
+### B — Apollo 17 using the shared layout
 
-Apollo17ScrollStory consume RoverStoryLayout, scroll controller, StoryMedia y quiz
-existentes. Sus cinco capítulos conservan hechos, discovery log, datos y condiciones
-de recompensa/persistencia. No requiere WebGL. Ofrece voz de navegador opcional,
-no grabaciones MP3 inventadas; limpia reproducción y conserva lectura independiente.
+Apollo17ScrollStory consumes RoverStoryLayout, scroll controller, StoryMedia and existing quiz. Its
+five chapters retain facts, discovery log, data and reward/persistence conditions. It does not
+require WebGL. It offers optional browser voice, not invented MP3 recordings; clean playback and
+retains independent reading.
 
-Cuatro imágenes NASA nuevas y trazables (254.780 bytes): Schmitt en el rover,
-lanzamiento nocturno, rover en terreno rocoso y suelo naranja. Las escenas sin foto
-directa muestran documentación, sin sustituirla por imágenes históricas ajenas.
-El documento B incluye un plan de adaptación de Perseverance, sin modificarlo.
+Four new traceable NASA images (254,780 bytes): Schmitt on the rover, night launch, rover on rocky
+terrain and orange soil. Scenes without direct photo show documentation, without replacing it with
+other historical images. Document B includes a Perseverance adaptation plan, without modifying it.
 
-Validación: 173/173 (165 anteriores + 8 nuevas), TypeScript, producción y diff-check.
-Smoke HTTP: ruta SPA, módulo transformado e imagen devuelven 200; no es una prueba
-visual ni auditiva de navegador. Revisión manual pendiente.
+Validation: 173/173 (165 previous + 8 new), TypeScript, production and diff-check. Smoke HTTP: SPA
+path, transformed module and image return 200; it is not a visual or browser hearing test. Manual
+pending review.
 
-Inventario y fuentes: `./workstream-b-apollo17.md`.
+Inventory and sources: `./workstream-b-apollo17.md`.
 
-### C — actividad independiente
+### C — standalone activity
 
-Actividad genérica de predicción y evidencia: martillo/pluma de Apollo 15. Opciones
-radio, envío explícito, feedback por respuesta, evidencia NASA y reintento local.
-No cambia puntuación de misión, capítulos, badges o progreso. El fotograma S71-43788
-se identifica como televisión real; la actividad aclara que un único frame no mide
-tiempos de caída y enlaza el vídeo NASA. El componente aún no se inserta en historias.
+Generic prediction and evidence activity: Apollo 15 hammer and feather. Radio options, explicit submission,
+feedback by response, NASA evidence and local retry. It does not change mission score, chapters,
+badges or progress. Frame S71-43788 is identified as real television; the activity clarifies that a
+single frame does not measure drop times and links the NASA video. The component is not yet inserted
+into stories.
 
-Validación: 173/173 (165 + 8), TypeScript, build normal y build independiente del
-preview; diff-check correcto. HTML, módulo y JPEG servidos por HTTP con 200; servidor
-cerrado. DOM real, touch y lector de pantalla permanecen pendientes.
+Validation: 173/173 (165 + 8), TypeScript, normal build and build independent of the correct
+preview; diff-check. HTML, module and JPEG served by HTTP with 200; closed server. Real DOM, touch
+and screen reader remain pending.
 
-Inventario y fuentes: `./workstream-c-activity.md`.
+Inventory and sources: `./workstream-c-activity.md`.
 
-### D — mapas y riesgos
+### D — maps and risks
 
-El mapa público recibe `focusId`, pero no emite selección hacia el explorador. Las
-identidades de ubicación y de hardware son distintas. Apollo 15 no tiene pin registrado.
-La propuesta exige callback aditivo, bindings explícitos aprobados por planeta y
-resolución mediante getStoryEntry; no deriva rutas de nombres/coordenadas ni fuerza
-capítulos bloqueados. Incluye contrato de retorno/foco y responsabilidades GIS.
+The public map receives `focusId`, but does not issue selection to the browser. Location and
+hardware identities are different. Apollo 15 has no pin registered. The proposal requires additive
+callback, explicit bindings approved by planet and resolution by getStoryEntry; it does not derive
+name paths/coordinates or force blocked chapters. It includes return/focus contract and GIS
+responsibilities.
 
-El análisis separa defectos comprobados (selección no sincronizada, layering/estado
-de tiles existente, coste compartido de Three) de riesgos que requieren navegador
-(controles sticky, lectura a 45% de viewport, zoom y móvil). No se aplica parche GIS.
+The analysis separates proven defects (unsynchronised selection, existing layering/style status,
+Three sharing cost) from browser-required risks (sticky controls, 45% viewport reading, zoom and
+mobile). GIS patch is not applied.
 
-Validación base D: 165/165, TypeScript, producción y diff-check correctos.
-Contrato completo: `workstream-d-map-contract.md`.
+Base Validation D: 165/165, TypeScript, production and diff-check correct. Full contract:
+`workstream-d-map-contract.md`.
 
-## Revisión e integración recomendadas
+## Recommended review and integration
 
-1. Iniciar ya la escucha/revisión de las 19 pistas con el paquete A. Corregir nombres
-   y contrastar cada límite de frase en audio real; asociar solo evidencia relevante.
-2. Revisar los cambios runtime pequeños de A (seek/replay/end/cambio de recurso y
-   evidencia móvil) y la actividad C en sus demos independientes.
-3. Revisar Apollo 17 B: desktop/tablet, 360×800, 390×844, 439×591, zoom200%, teclado,
-   reduced motion, voz real, quiz y guardado rechazado/Retry saving/reload.
-4. Solo tras aprobación explícita, preparar un entorno de integración de revisión.
-   B contiene una prueba de alcance que protege Apollo 15 contra 8120d9e; deberá
-   actualizarse al contenido A aprobado, manteniendo protecciones de datos/store y
-   Perseverance. Es una dependencia de baseline de pruebas, no conflicto runtime.
-5. Ejecutar suite completa, build, TypeScript y diff-check sobre ese resultado conjunto.
-   No sumar los resultados independientes como si el conjunto ya estuviera validado.
-6. Coordinar D con Erand: callback, relación pin/story, nuevo registro científico de
-   Apollo 15, comportamiento de entrada/reanudación y foco de regreso. No tocar GIS
-   ni reutilizar el contrato pendiente de presentación de homepage para esos cambios.
+1. Start listening/revisioning all 19 tracks with package A. Correct names and contrast each
+   sentence limit in real audio; associate only relevant evidence.
+2. Review the small runtime changes of A (seek/replay/end/change of resource and mobile evidence)
+   and activity C on your independent demos.
+3. Review workstream B for Apollo 17 on desktop and tablet and at 360×800, 390×844, and 439×591. Check 200% zoom, keyboard navigation, reduced motion, browser narration, quiz, save rejection, Retry saving, and reload.
+4. Only after explicit approval, prepare a revision integration environment. B contains a scope test
+   that protects Apollo 15 against 8120d9e; it must be updated to approved A content, maintaining
+   data protections/store and Perseverance. It is a test-baseline, not runtime conflict.
+5. Run complete suite, build, TypeScript and diff-check on that joint result. Do not add independent
+   results as if the set was already validated.
+6. Coordinate D with Erand: callback, pin/story ratio, new scientific record of Apollo 15,
+   input/resumption behavior and focus of return. Do not touch GIS or reuse the pending homepage
+   handoff contract for those changes.
 
-Los frentes quedan sin commit. La rama `integration/main-feature-review`, main,
-la feature original, stash y respaldo documental se preservan. La homepage, sus
-audios/captions, IDs, esquema de storage, mapas, 3D y datos científicos no se cambian
-en el checkout protegido. Los worktrees contienen los resultados para revisión.
+The workstream changes remain uncommitted. The `integration/main-feature-review`, main, original feature, stash
+and documentary backup are preserved. Homepage, its audios/captions, IDs, storage schema, maps, 3D
+and scientific data are not changed in the protected checkout. Worktrees contain the results for
+review.
 
-## Inventario exacto final por worktree
+## Exact final inventory by worktree
 
-### A: Audio (12 archivos)
+### A: Audio (12 files)
 
-- Modificado: `src/components/storytelling/Apollo15ScrollStory.tsx`
-- Modificado: `src/components/storytelling/StoryRecording.tsx`
-- Nuevo: `docs/workstream-a-asr-candidates.json`
-- Nuevo: `docs/workstream-a-audio-review-data.js`
-- Nuevo: `docs/workstream-a-audio-review.html`
-- Nuevo: `docs/workstream-a-audio-review.js`
-- Nuevo: `docs/workstream-a-audio-review.json`
-- Nuevo: `docs/workstream-a-audio.md`
-- Nuevo: `scripts/workstream-a-audio-review.mjs`
-- Nuevo: `scripts/workstream-a-prepare-asr.mjs`
-- Nuevo: `src/features/storytelling/apollo15CueEvidence.ts`
-- Nuevo: `tests/workstream-a-audio.test.mjs`
+- Modified: `src/components/storytelling/Apollo15ScrollStory.tsx`
+- Modified: `src/components/storytelling/StoryRecording.tsx`
+- New: `docs/workstream-a-asr-candidates.json`
+- New: `docs/workstream-a-audio-review-data.js`
+- New: `docs/workstream-a-audio-review.html`
+- New: `docs/workstream-a-audio-review.js`
+- New: `docs/workstream-a-audio-review.json`
+- New: `docs/workstream-a-audio.md`
+- New: `scripts/workstream-a-audio-review.mjs`
+- New: `scripts/workstream-a-prepare-asr.mjs`
+- New: `src/features/storytelling/apollo15CueEvidence.ts`
+- New: `tests/workstream-a-audio.test.mjs`
 
-### B: Apollo 17 (18 archivos)
+### B: Apollo 17 (18 files)
 
-- Modificado: `src/components/MachineStoryPage.tsx`
-- Modificado: `tests/apollo-progress-persistence.test.mjs`
-- Modificado: `tests/apollo15-registration.test.mjs`
-- Modificado: `tests/helpers/apollo-quiz-contract.mjs`
-- Modificado: `tests/storytelling-challenges.test.mjs`
-- Modificado: `tests/storytelling-landmarks.test.mjs`
-- Modificado: `tests/storytelling-legacy.test.mjs`
-- Nuevo: `docs/workstream-b-apollo17.md`
-- Nuevo: `public/images/apollo17-story/launch.jpg`
-- Nuevo: `public/images/apollo17-story/orange.jpg`
-- Nuevo: `public/images/apollo17-story/rover.jpg`
-- Nuevo: `public/images/apollo17-story/vehicle.jpg`
-- Nuevo: `src/components/storytelling/Apollo17BrowserVoice.tsx`
-- Nuevo: `src/components/storytelling/Apollo17ScrollStory.module.css`
-- Nuevo: `src/components/storytelling/Apollo17ScrollStory.tsx`
-- Nuevo: `src/features/storytelling/apollo17StoryMedia.ts`
-- Nuevo: `src/features/storytelling/apollo17StorySteps.ts`
-- Nuevo: `tests/workstream-b-apollo17.test.mjs`
+- Modified: `src/components/MachineStoryPage.tsx`
+- Modified: `tests/apollo-progress-persistence.test.mjs`
+- Modified: `tests/apollo15-registration.test.mjs`
+- Modified: `tests/helpers/apollo-quiz-contract.mjs`
+- Modified: `tests/storytelling-challenges.test.mjs`
+- Modified: `tests/storytelling-landmarks.test.mjs`
+- Modified: `tests/storytelling-legacy.test.mjs`
+- New: `docs/workstream-b-apollo17.md`
+- New: `public/images/apollo17-story/launch.jpg`
+- New: `public/images/apollo17-story/orange.jpg`
+- New: `public/images/apollo17-story/rover.jpg`
+- New: `public/images/apollo17-story/vehicle.jpg`
+- New: `src/components/storytelling/Apollo17BrowserVoice.tsx`
+- New: `src/components/storytelling/Apollo17ScrollStory.module.css`
+- New: `src/components/storytelling/Apollo17ScrollStory.tsx`
+- New: `src/features/storytelling/apollo17StoryMedia.ts`
+- New: `src/features/storytelling/apollo17StorySteps.ts`
+- New: `tests/workstream-b-apollo17.test.mjs`
 
-### C: Actividad de Apollo 15 (9 archivos)
+### C: Apollo 15 activity (9 files)
 
-- Nuevo: `activity-preview.html`
-- Nuevo: `docs/workstream-c-activity.md`
-- Nuevo: `src/components/storytelling/activities/ActivityPreview.module.css`
-- Nuevo: `src/components/storytelling/activities/ActivityPreview.tsx`
-- Nuevo: `src/components/storytelling/activities/EvidencePredictionActivity.module.css`
-- Nuevo: `src/components/storytelling/activities/EvidencePredictionActivity.tsx`
-- Nuevo: `src/features/storytelling/activities/apollo15Prediction.ts`
-- Nuevo: `src/features/storytelling/activities/evidencePrediction.ts`
-- Nuevo: `tests/workstream-c-activity.test.mjs`
+- New: `activity-preview.html`
+- New: `docs/workstream-c-activity.md`
+- New: `src/components/storytelling/activities/ActivityPreview.module.css`
+- New: `src/components/storytelling/activities/ActivityPreview.tsx`
+- New: `src/components/storytelling/activities/EvidencePredictionActivity.module.css`
+- New: `src/components/storytelling/activities/EvidencePredictionActivity.tsx`
+- New: `src/features/storytelling/activities/apollo15Prediction.ts`
+- New: `src/features/storytelling/activities/evidencePrediction.ts`
+- New: `tests/workstream-c-activity.test.mjs`
 
-### D: Auditoría de mapas (2 archivos)
+### D: Map audit (2 files)
 
-- Nuevo: `docs/workstream-d-map-contract.md`
-- Nuevo: `docs/workstreams-review.md`
+- New: `docs/workstream-d-map-contract.md`
+- New: `docs/workstreams-review.md`
 
-No hay intersecciones de archivos propuestos entre frentes. Esto no sustituye una prueba conjunta de comportamiento.
+There are no file intersections proposed across workstreams. This does not replace a joint test of behavior.

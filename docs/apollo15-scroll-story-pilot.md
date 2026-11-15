@@ -1,6 +1,6 @@
 # Apollo 15 scroll-story pilot
 
-Implementation checkpoint: 2026-11-08. This is an isolated Apollo 15 presentation,
+This is an isolated Apollo 15 presentation,
 not a replacement for Apollo 17 or Perseverance. Haroon's supplied images guide
 composition only; they are not historical evidence or application assets.
 
@@ -112,7 +112,7 @@ script editorial changes need coordination; original recordings are preserved.
 
 ## Verified NASA evidence
 
-Verified on 2026-11-08 against the NASA Image and Video Library search metadata and
+Verified against the NASA Image and Video Library search metadata and
 NASA's [Apollo 15 surface history](https://www.nasa.gov/history/50-years-ago-apollo-15-on-the-moon-at-hadley-apennine/).
 All exact original URLs, descriptions, meaningful alt text, dimensions, credit and
 usage notes are recorded in `src/features/storytelling/apollo15StoryMedia.ts`.

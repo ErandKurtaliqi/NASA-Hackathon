@@ -1,74 +1,73 @@
-# Frente D — contrato de mapas y auditoría de calidad
+# Workstream D — Map contract and quality audit
 
-Revisión de solo lectura sobre `8120d9e`, 8 de noviembre de 2026.
-No se modificó código de aplicación, GIS/3D, coordenadas, texturas o esquema de progreso.
-Este documento es una propuesta para coordinación, no un contrato aprobado por Erand.
+Read-only review of `8120d9e`. No change in application code, GIS/3D, coordinates, textures or
+progress scheme. This document is a proposal for coordination, not a contract approved by Erand.
 
-## Interfaces y responsabilidades actuales
+## Current interfaces and responsibilities
 
-| Archivo | Comportamiento comprobado |
+| File | Verified behavior |
 | --- | --- |
-| `src/types.ts:19` | `MissionMarker` tiene ID, planeta, coordenadas, precisión, fuente y `storyChapter?`; no tiene hardware/story ID. |
-| `src/data.ts:45` | 11 ubicaciones registradas. Existen `perseverance-landing`, `jezero` y `apollo-17`. No existe pin Apollo 15. |
-| `src/data.ts:58` | Hardware de Perseverance (`perseverance`), Apollo 17 (`lrv`) y Apollo 15 (`lrv-1`) registrado; otros equipos carecen de historia publicada. |
-| `src/features/explorer/storyEntry.ts:6` | `getStoryEntry` resuelve por identidad explícita hardware + planeta; devuelve ruta existente y reanudación acotada a 1–5. No deduce identidad del nombre. |
-| `src/pages/ExplorerPage.tsx:25` | `machineId` y `locationId` son estados distintos. Elegir ubicación no cambia automáticamente el equipo. |
-| `src/pages/ExplorerPage.tsx:46` | `selectLocation` valida pertenencia al planeta y registra exploración. `viewMap` cambia vista y enfoca el visor. |
-| `src/components/explorer/PlanetViewport.tsx:23` | Consume `focusId` y pasa ese dato a `PlanetMap`; no recibe eventos de selección del mapa ni del globo. |
-| `src/components/PlanetMap.tsx:50` | API pública `{ planet, focusId? }`. El click de marcador registra `explore(marker.id)` y abre popup nativo. No comunica selección al atlas externo. |
-| `src/components/explorer/MachineDetails.tsx:9` | Ya ofrece enlace de historia/reanudación mediante `getStoryEntry` y progreso de la misión correcta. |
-| `src/App.tsx:60` | Una ruta dinámica `/story/:storyId/:chapter` cubre las tres misiones. No hace falta otra ruta para mapas. |
-| `src/features/storytelling/pilot.ts:15` | Valida historia y capítulo antes de acceder a arrays. El padre de la historia conserva el bloqueo por prerrequisitos. |
+| `src/types.ts:19` | `MissionMarker` has ID, planet, coordinates, accuracy, source and `storyChapter?`; it has no hardware/story ID. |
+| `src/data.ts:45` | 11 registered locations, including `perseverance-landing`, `jezero`, and `apollo-17`. Apollo 15 has no pin. |
+| `src/data.ts:58` | Hardware from Perseverance (`perseverance`), Apollo 17 (`lrv`) and Apollo 15 (`lrv-1`) registered; other teams lack published history. |
+| `src/features/explorer/storyEntry.ts:6` | `getStoryEntry` resolves by explicit hardware + planet identity; returns existing path and reboots bounded to 1–5. It does not deduce name identity. |
+| `src/pages/ExplorerPage.tsx:25` | `machineId` and `locationId` are different states. Choosing location does not automatically change the computer. |
+| `src/pages/ExplorerPage.tsx:46` | `selectLocation` validates belonging to the planet and records exploration. `viewMap` changes view and focuses the viewer. |
+| `src/components/explorer/PlanetViewport.tsx:23` | It consumes `focusId` and passes that data to `PlanetMap`; it does not receive selection events from the map or the balloon. |
+| `src/components/PlanetMap.tsx:50` | Public API `{ planet, focusId? }`. The marker click records `explore(marker.id)` and opens native popup. It does not communicate selection to the external atlas. |
+| `src/components/explorer/MachineDetails.tsx:9` | It already offers history/resumption link through `getStoryEntry` and progress of the correct mission. |
+| `src/App.tsx:60` | A dynamic route `/story/:storyId/:chapter` covers all three missions. No other route is needed for maps. |
+| `src/features/storytelling/pilot.ts:15` | Validation of history and chapter before accessing arrays. The father of history retains the blockade by prerequisites. |
 
-`storyChapter` aislado no identifica una misión ni un segmento. No debe usarse como
-URL, ni suponerse que sus números históricos reflejan la nueva narración. Tampoco
-se deben derivar historias mediante coordenadas cercanas, nombres o categorías.
+`storyChapter` isolated does not identify a mission or segment. It should not be used as URL, nor
+should its historical numbers be assumed to reflect the new narrative. Nor should stories be derived
+by close coordinates, names or categories.
 
-## Tabla de enlaces propuesta — requiere aprobación
+## Proposed link table — required approval
 
-| Ubicación existente | Hardware | Historia registrada | Entrada recomendada |
+| Existing location | Hardware | Registered story | Recommended entry point |
 | --- | --- | --- | --- |
-| `perseverance-landing` / Mars | `perseverance` | `follow-perseverance` | Inicio o reanudación validada. Contexto Journey solo si está desbloqueado y aprobado. |
-| `jezero` / Mars | `perseverance` | `follow-perseverance` | Misma identidad, pero región científica; no presentarla como coordenada exacta del rover. |
-| `apollo-17` / Moon | `lrv` | `apollo-17-rover` | Inicio o reanudación validada. |
-| Apollo 15 | `lrv-1` | `apollo-15-rover` | No hay pin actual. Erand debe proporcionar/confirmar ID de ubicación, procedencia, coordenadas y precisión. |
-| Curiosity, Ingenuity, otros sitios y geología | Sin historia registrada aplicable | Ninguna | Mantener perfil, evidencia y fuente; no fabricar enlaces. |
+| `perseverance-landing` / Mars | `perseverance` | `follow-perseverance` | Start or restart validated. Journey context only if unlocked and approved. |
+| `jezero` / Mars | `perseverance` | `follow-perseverance` | Same identity, but scientific region; not present it as the exact co-ordinate of the rover. |
+| `apollo-17` / Moon | `lrv` | `apollo-17-rover` | Start or restart validated. |
+| Apollo 15 | `lrv-1` | `apollo-15-rover` | No pin currently available. Erand must provide/confirm location, provenance, coordinates and accuracy ID. |
+| Curiosity, Ingenuity, Other Sites and Geology | No applicable registered history | None | Maintain profile, evidence and source; not make links. |
 
-La relación propuesta de pines con historias es distinta de los identificadores de
-hardware/historias ya confirmados. Falta aprobar la primera; los segundos no cambian.
+The proposed relationship of pins with stories is different from the already confirmed
+hardware/stories identifiers. The first one is missing; the second ones are unchanged.
 
-## Contrato aditivo sugerido para Erand
+## Suggested additive contract for Erand
 
 ```ts
 type LocationSelection = {
   planet: 'mars' | 'moon'
-  locationId: string // ID GIS ya registrado, no coordenadas proporcionadas por UI
+  locationId: string // Registered GIS ID. The UI does not provide coordinates.
   origin: 'pointer' | 'keyboard'
 }
 
-// Extensión opcional; llamadas actuales continúan funcionando sin callback.
+// Optional extension. Existing calls continue to work without a callback.
 type PlanetMapSelectionProps = {
   onLocationSelect?: (selection: LocationSelection) => void
 }
 ```
 
-Responsabilidad GIS: emitir eventos desde marcadores nativos para ratón, teclado y
-touch; mantener sus popups, coordenadas, precisión y registro de exploración; omitir
-eventos obsoletos tras cambio de planeta/desmontaje. La interfaz equivalente del
-globo requiere revisión separada; no se deben simular pins desde el frontend.
-No se expone una instancia Leaflet, Esri o Three ni se inspecciona su DOM privado.
+Responsibility GIS: Issue events from native markers for mouse, keyboard and touch; maintain your
+popups, coordinates, accuracy and scanning record; omit obsolete events after planet
+change/disassembly. The equivalent interface of the balloon requires separate revision; pins must
+not be simulated from the frontend. No Leaflet, Esri or Three instance is displayed nor is your
+private DOM inspected.
 
-Responsabilidad frontend: validar el evento contra `markers` del mismo planeta,
-actualizar atlas/selección y consultar un registro explícito de vínculos aprobado.
-Resolver hardware/story mediante `getStoryEntry`; usar la ruta actual y sus guardas.
-No completar capítulos, otorgar badges ni modificar progreso por abrir una historia.
+Frontend responsibility: validate the event against `markers` from the same planet, update
+atlas/selection and consult an explicit log of approved links. Solve hardware/story using
+`getStoryEntry`; use the current path and its saves. Do not complete chapters, grant badges or
+modify progress by opening a story.
 
-UX recomendada: el primer click selecciona y muestra contexto; un enlace explícito
-"Start/Continue story" abre la historia. Evita cambios de página inesperados al
-explorar un mapa con teclado. Si se prefiere navegación inmediata, Haroon y Erand
-deben acordarla antes de implementar. Una ubicación sin historia conserva su fuente.
+Recommended UX: the first click selects and displays context; an explicit link "Start/Continue
+story" opens the story. Avoid unexpected page changes when exploring a keyboard map. If immediate
+navigation is preferred, Haroon and Erand must agree to it before implementing. A location without
+history retains its source.
 
-Un contexto futuro de capítulo/segmento sería frontend y opcional:
+A future chapter/segment context would be frontend and optional:
 
 ```ts
 type StoryLocationBinding = {
@@ -76,82 +75,80 @@ type StoryLocationBinding = {
   locationId: string
   machineId: string
   chapterId?: 'meet' | 'journey' | 'challenges' | 'legacy' | 'quiz'
-  segmentId?: string // pendiente de registro estable, no título/índice inferido
+  segmentId?: string // Pending a stable registry. Avoid deriving IDs from titles or indexes.
 }
 ```
 
-No abrir capítulos bloqueados ni marcar prerrequisitos como realizados. La entrada
-por contexto debe degradar a inicio/reanudación permitidos. `lastChapter` es una
-pista de reanudación; la guarda de la historia sigue siendo autoridad de desbloqueo.
+Do not open blocked chapters or mark prerequisites as performed. Entry by context should degrade at
+allowed startup/resumption. `lastChapter` is a restart track; the history guard remains unlocking
+authority.
 
-La vuelta al mapa puede conservar planeta/ubicación y objetivo de foco mediante
-estado transitorio de router, sin nuevos campos en `beyond-earth-progress`. Hoy el
-explorador reinicia selección al entrar: la restauración requiere un cambio frontend
-posterior y pruebas, no existe todavía. Validar el ID de retorno y disponer de un
-fallback de foco si ya no existe; contemplar salida de fullscreen antes de navegar.
+The return to the map can retain planet/location and focus target by means of router transient
+status, without new fields in `beyond-earth-progress`. Today the browser restarts selection when
+entering: restoration requires a later frontend change and testing, does not exist yet. Validate the
+return ID and have a focus fallback if it no longer exists; view fullscreen output before browsing.
 
-## Qué puede prepararse independientemente
+## What can be prepared independently
 
-- Pruebas de un resolver puro sobre vínculos aprobados, IDs desconocidos y planeta.
-- Diseño de CTA/reanudación, mensajes sin historia y contrato de foco de retorno.
-- Registro de segmentos estable y validación de destinos desbloqueados.
-- QA de historias, evidencia, audio y progreso, sin tocar mapas.
+- Evidence of a pure resolution on approved links, unknown IDs and planet.
+- CTA/resumption design, no history messages and return focus contract.
+- Stable segment registration and validation of unlocked destinations.
+- QA of stories, evidence, audio and progress, without touching maps.
 
-No se implementó ninguno de esos adaptadores aquí: el frente D es de solo lectura.
-Requieren coordinación GIS el callback nativo, nuevos pins, binding geográfico,
-enfoque del globo, proyecciones, precisión y cualquier solución interna de carga.
+None of these adapters were implemented here: the D front is read-only. They require GIS
+coordination native callback, new pins, geographic binding, balloon focus, projections, precision
+and any internal loading solution.
 
-## Defectos comprobados frente a riesgos por validar
+## Defects verified against risks to be validated
 
-| Prioridad / estado | Evidencia de código | Consecuencia / corrección mínima propuesta |
+| Priority / status | Evidence of code | Proposed minimum consequence/correction |
 | --- | --- | --- |
-| Alta, confirmado | `PlanetMap.tsx:50–107`: no callback de selección; `focusId` solo entra al mapa. | Un click no sincroniza el atlas ni resuelve historia. Extensión pública opcional, revisada por Erand; ningún parche aplicado. |
-| Alta, confirmado | `data.ts:45–56`: no registro de ubicación Apollo 15. | No implementar pin/ruta inventados. Esperar registro científico del propietario GIS. |
-| Media, confirmado | `PlanetMap.tsx`: fallback opaco en `overlayPane` por defecto, por encima de tiles; `tileerror` puede ser sobrescrito por `load`. Detalle previo en `docs/explorer-map-integration-review.md`. | Estado "LIVE" no prueba éxito y el fallback puede ocultar tiles. Incidencia GIS existente; conservar científica/CRS y corregir internamente con coordinación. No se atribuye una caída de NASA. |
-| Media, confirmado | `MachineStoryPage.tsx:1–3` importa Fiber/Drei estáticamente aunque Apollo 15 no monte un canvas. Build base: chunk Fiber 823.49 kB y chunk de historia ~103.86 kB minificados. | La experiencia 2D evita WebGL activo, pero no elimina el coste de descargar JS Three compartido. Separar capítulos 3D por importación dinámica en una fase de rendimiento aprobada. |
-| Media, confirmado | `Apollo15ScrollStory.tsx:26`, con padre keyed por capítulo, reinicia Sound on y autoAdvance al montar cada capítulo. | Preferencias temporales no sobreviven al capítulo; no hay autoplay. Acordar alcance de preferencias y, si se desea, conservarlas en shell de sesión sin cambiar esquema. |
-| Media, confirmado | `StoryMedia.tsx` no usa `loading="lazy"`; en móvil se renderiza evidencia de los cuatro pasos. | No se cargan los 19 audios (preload none), pero sí pueden solicitarse imágenes de pasos posteriores. Carga diferida opcional; medir antes de afirmar una regresión de red. |
-| Media, riesgo visual pendiente | `Apollo15ScrollStory.module.css`: controles sticky; márgenes de foco 300/240px. `findReadingStep` usa 45% del viewport y no mide la altura real de controles. | Con zoom, textos largos o 439×591, comprobar si la línea activa queda cubierta. Medición con ResizeObserver/offset dinámico solo si se reproduce. |
-| Media, riesgo pendiente | Selección por scroll puede cambiar/recrear una pista justo al cruzar la línea entre tarjetas. | Confirmar que el usuario entiende por qué se pausa, que no hay oscilaciones de layout y que Replay/Resume siguen accesibles; no hay sincronización fina aprobada aún. |
-| Media, confirmado en base | Apollo 17 Journey antiguo usa intervalo de 3.6s y FlightScene usaFrame; no depende de reduced motion. | B propone sustituir solo su presentación por 2D; comprobar su resultado sin cambiar Perseverance. |
-| Media, revisión humana pendiente | Registro de 19 timings pendientes; fuentes originales del guión incluyen referencias de contexto ajeno. | No activar cues por estimación ni mostrar automáticamente cualquier URL del guión como evidencia. Usar manifiestos NASA verificados y revisión audible. |
-| Baja, riesgo visual pendiente | Grid con minmax y reordenación a 1100/700px; algunas columnas sticky se desactivan bajo 800px de alto. | Comprobar 360×800, 390×844, 439×591, tablet, desktop y zoom200%; no declarar overflow sin medición de navegador. |
+| High, confirmed | `PlanetMap.tsx:50–107`: no selection callback; `focusId` only enter the map. | A click does not synchronize the atlas or resolve history. Optional public extension, reviewed by Erand; no patch applied. |
+| High, confirmed | `data.ts:45–56`: no Apollo 15 location log. | Do not implement invented pin/path. Expect scientific registration of the owner GIS. |
+| Medium, confirmed | `PlanetMap.tsx`: opaque fallback in `overlayPane` by default, above tiles; `tileerror` can be overwritten by `load`. Previous detail in `docs/explorer-map-integration-review.md`. | LIVE state does not prove success and fallback can hide tiles. Existing GIS Incidence; conserve scientific/CRS and correct internally with coordination. NASA drop is not attributed. |
+| Medium, confirmed | `MachineStoryPage.tsx:1–3` imports Fiber and Drei statically even when Apollo 15 renders without a canvas. Baseline minified chunks: Fiber 823.49 kB and the story ~103.86 kB. | The 2D experience prevents active WebGL, but does not eliminate the cost of downloading JS Three shared. Separate dynamic 3D chapters by import in an approved performance phase. |
+| Medium, confirmed | `Apollo15ScrollStory.tsx:26`, with parent keyed per chapter, restart Sound on and autoAdvance when mounting each chapter. | Temporary settings do not survive the chapter; there is no autoplay. Agree to preferences range and, if desired, keep them in session shell without changing schema. |
+| Medium, confirmed | `StoryMedia.tsx` does not use `loading="lazy"`; on mobile evidence of the four steps is rendered. | The 19 audios (preload none) are not loaded, but images of later steps can be requested. Optional delayed load; measure before asserting a network regression. |
+| Medium, visual risk pending | `Apollo15ScrollStory.module.css`: sticky controls; 300/240px focus margins. `findReadingStep` uses 45% of the viewport and does not measure the actual height of controls. | With zoom, long text or 439×591, check if the active line is covered. Measurement with dynamic ResizeObserver/offset only if played. |
+| Average, risk pending | Scroll selection can change/recreate a track just when crossing the line between cards. | Confirm that the user understands why he pauses, that there are no layout oscillations and that Replay/Resume remain accessible; there is no fine synchronization approved yet. |
+| Average, confirmed on basis | Apollo 17 Ancient Journey uses 3.6s interval and FlightScene usesFrame; it does not depend on reduced motion. | B proposes to replace only its presentation with 2D; check its result without changing Perseverance. |
+| Mean, human review pending | Recording of 19 pending times; original script sources include external context references. | Do not activate quaes by estimation or automatically display any script URLs as evidence. Use verified NASA manifests and audible revision. |
+| Low, visual risk pending | Grid with minmax and rearrangement at 1100/700px; some sticky columns are deactivated under 800px high. | Check 360×800, 390×844, 439×591, tablet, desktop and zoom200%; do not declare overflow without browser measurement. |
 
-Las mediciones de tamaño provienen del build, no de un perfil de CPU/red móvil.
-Ninguna captura/renderizado de Chrome se realizó en esta auditoría.
+Size measurements come from the build, not a mobile CPU/network profile. No capture/rendering of
+Chrome was done in this audit.
 
-## Criterios de aceptación antes de integrar mapas
+## Acceptance criteria before integrating maps
 
-1. Pin conocido: selección y CTA correctos; desconocido/cruzado de planeta: ningún
-   enlace falso. `lrv` y `lrv-1` permanecen aislados. El pin Apollo 15 requiere fuente.
-2. Mouse/Enter/touch conservan popups y registran exploración sin completar capítulos.
-3. Historia nueva, parcialmente guardada, legacy y completada: ruta y guardas válidas.
-   Volver al explorador conserva contexto/foco mediante contrato aprobado.
-4. Guardado rechazado y Retry saving siguen funcionando; la navegación no implica
-   una confirmación de persistencia. No se alteran keys/schema/version/badges.
-5. Audio se detiene al abrir/cambiar/salir; no se reproduce automáticamente desde pins.
-6. Reduced motion no activa vuelos/animaciones no solicitados. Bloqueo touch del mapa
-   permite leer/scroll fuera de la interacción explícita.
-7. Pruebas de mapas/callback: cambio de planeta, callbacks tardíos, fullscreen,
-   imágenes/tiles fallidos, offline y fuentes siempre accesibles.
-8. Regresión de 15 capítulos, quiz/reintento/recompensas y homepage/narración/captions.
+1. Known pin: correct selection and CTA; unknown/crossing planet: no false link. `lrv` and `lrv-1`
+   remain isolated. The Apollo 15 pin requires source.
+2. Mouse/Enter/touch retain popups and record scanning without completing chapters.
+3. New, partially saved, legacy and completed history: valid path and saves. Back to browser retains
+   context/focus by contract approved.
+4. Rejected save and Retry saving still work; navigation does not imply a confirmation of
+   persistence. Keys/schema/version/badges are not altered.
+5. Audio stops when opening/changing/exiting; it does not automatically play from pins.
+6. Reduced motion does not activate unsolicited flights/animations. Touch block of the map allows
+   reading/scrolling outside explicit interaction.
+7. Map/callback tests: change of planet, late callbacks, fullscreen, failed images/tiles, offline
+   and always accessible sources.
+8. Regression of 15 chapters, perhaps/reintend/rewards and homepage/narration/captions.
 
-## Baseline y aislamiento
+## Baseline and isolation
 
-- Cuatro worktrees desacoplados de la revisión del 8 de noviembre de 2026.
-- Dependencias existentes vía junction `node_modules`, solo lectura; cada worktree
-  tiene archivos fuente, `dist` y cachés de compilación propios. Sin npm install.
-- Las demos deben usar Vite `createServer` con `cacheDir` local explícito (por ejemplo
-  `dist/.vite-workstream-c`), o un servidor estático para el reviewer HTML. El comando
-  Vite dev por defecto usa `node_modules/.vite`: no ejecutarlo simultáneamente sobre
-  la junction compartida. Los builds y pruebas no usan esa preoptimización de dev.
-- El primer checkout de Windows convirtió el guión original a CRLF y activó un fallo
-  de comparación binaria de texto. Se repusieron bytes exactos del blob HEAD en ese
-  archivo de cada worktree, sin diferencia funcional ni de Git; no se tocaron MP3.
-- Suite base comprobada después de ello: **165/165**, código salida 0.
-- Build de producción y TypeScript correctos; permanece la advertencia de Fiber
-  de 823,49 kB. `git diff --check` correcto. No hay archivos staged ni código aplicado.
-- Este frente añade únicamente este documento; no se integra código entre frentes.
-- Antes de integrar A/B/C se requieren revisión de diferencias por ownership, pruebas
-  completas en un entorno de revisión autorizado y aprobación explícita. No sumar
-  resultados de worktrees independientes como si fueran una suite integrada.
+- Four worktrees decoupled from the review.
+- Existing dependencies via Junction `node_modules`, read only; each worktree has source files,
+  `dist` and own build caches. No npm install.
+- Demos must use Vite `createServer` with `cacheDir` explicit local (e.g.
+  `dist/.vite-workstream-c`), or a static server for the HTML reviewer. The default Vite dev command
+  uses `node_modules/.vite`: do not run it simultaneously over the shared Junction. Builds and tests
+  do not use that dev preoptimization.
+- The first Windows checkout converted the original script to CRLF and activated a binary text
+  comparison bug. Exact bytes of the HEAD blob were replaced in that file of each worktree, without
+  functional difference or Git; MP3 was not played.
+- Base suite checked after it: **165/165**, exit code 0.
+- Production Build and TypeScript correct; the Fiber warning of 823.49 kB remains correct. `git diff --check` passed. No files were staged and no code changes were applied.
+- This workstream adds only this document; code is not integrated across workstreams.
+- Before integrating A/B/C, you need to review differences by ownership, complete tests in an
+  approved review environment and explicit approval. Do not add independent worktrees results as if
+  they were an integrated suite.

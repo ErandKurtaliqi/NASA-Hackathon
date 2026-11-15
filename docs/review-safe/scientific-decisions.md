@@ -1,53 +1,53 @@
-# Siete retenciones: evidencia y decisiones — 11 de noviembre de 2026
+# Seven recordings on hold — evidence and decisions
 
-Este documento actualiza la clasificación anterior; **no** modifica guiones, grabaciones o permisos de reproducción. No se encontró una asociación técnica errónea en las siete pistas: archivo, capítulo/segmento y SHA256 coinciden con el inventario local. La identidad audible sigue pendiente de escucha. Los textos esperados completos, hashes, duración estructural y lectura actual están en [held-recordings.json](held-recordings.json), tomados de `4f6d380`, no de una nueva transcripción.
+This review updates the earlier classification. It leaves scripts, recordings, and playback permissions intact. The files, chapter and segment assignments, and SHA-256 hashes for all seven tracks match the local inventory. Listening is still required to confirm what the recordings say. [held-recordings.json](held-recordings.json) contains the complete expected scripts, hashes, MPEG durations, and current reading text from `4f6d380`.
 
-En el respaldo local los siete segmentos permanecen silenciosos al seleccionarlos, con lectura aclaratoria. En esta revisión GitHub se omiten **todas** las 38 grabaciones nuevas Apollo 11/17: disponibilidad y retención científica son estados distintos. No hay TTS de reemplazo. Apollo 15 y homepage conservan sus grabaciones ya publicadas.
+The seven segments are silent in the local backup and display explanatory text. This GitHub review excludes all 38 new Apollo 11 and Apollo 17 recordings. File availability and scientific review are separate conditions. There is no text-to-speech fallback. Apollo 15 and the homepage retain their published recordings.
 
-## Fuentes primarias consultadas
+## Primary sources consulted
 
-- **A — [NASA/ALSJ, Apollo 11 Moonwalk Pictures](https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/a11_eva_thumbs.html)**: sección de despliegue junto a AS11-40-5942–5945; atribuye despliegue a Aldrin y sitúa el reflector aproximadamente a 14 m. La página tiene atribución de autor propia; aquí se cita y parafrasea, sin copiar sus thumbnails o texto completo.
-- **B — [NASA History, One Small Step, One Giant Leap](https://www.nasa.gov/history/50-years-ago-one-small-step-one-giant-leap/)**: el relato de EASEP atribuye el transporte a Aldrin y el reflector a Armstrong. La atribución individual **no coincide** con A; no se elige una versión silenciosamente.
-- **C — [NASA/NSSDCA, The Apollo Lunar Roving Vehicle](https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html)**: Apollo 17, aproximadamente 35,9 km y 4 h 26 min de **conducción**; no duración total de las tres EVAs.
-- **D — [NASA, Apollo 17 Mission Report, sección 9.1, página impresa 9-1](https://ntrs.nasa.gov/api/citations/19730015117/downloads/19730015117.pdf)**: indicación térmica de batería 2 fuera de escala al comienzo de EVA 3; termistor probablemente cortocircuitado. Describe seguimiento con batería 1 y tendencias previas de batería 2. Se verificó el pasaje indexado por búsqueda de NASA; la apertura completa del PDF fue bloqueada por tamaño de 14,8 MB. No se afirma inspección visual de esa página. El antiguo enlace ALSJ devolvió 404.
-- **E — [NASA Science, History of Lunar Exploration](https://science.nasa.gov/solar-system/moon/history-of-lunar-exploration/)**: sección Apollo 17, material volcánico naranja de unos 3.600 millones de años. No se usa este resumen para declarar imposible cualquier otra edad publicada; se recomienda coherencia con la fuente elegida.
-- **F — [NASA History, Apollo 17 Lands at Taurus-Littrow](https://www.nasa.gov/history/50-years-ago-apollo-17-lands-at-taurus-littrow/)**: párrafo del sitio VIP, estacionamiento final aproximadamente a 158 m del LM para televisar el ascenso.
+- **A — [NASA/ALSJ, Apollo 11 Moonwalk Pictures](https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/a11_eva_thumbs.html)**: The deployment section near photographs AS11-40-5942–5945 attributes deployment to Aldrin and places the reflector about 14 m away. The page's authorship is credited. This report uses a citation and paraphrase.
+- **B — [NASA History, One Small Step, One Giant Leap](https://www.nasa.gov/history/50-years-ago-one-small-step-one-giant-leap/)**: The EASEP account attributes transport to Aldrin and the reflector to Armstrong. This attribution differs from source A.
+- **C — [NASA/NSSDCA, The Apollo Lunar Roving Vehicle](https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html)**: Apollo 17 drove about 35.9 km over 4 h 26 min. The figure measures driving across the three EVAs.
+- **D — [NASA, Apollo 17 Mission Report, section 9.1, printed page 9-1](https://ntrs.nasa.gov/api/citations/19730015117/downloads/19730015117.pdf)**: Battery 2's temperature indication went off-scale at the start of EVA 3, probably because of a shorted thermistor. The report describes monitoring battery 1 and using previous trends from battery 2. The review verified the passage indexed by NASA search. The 14.8 MB PDF could not be opened for visual inspection. The earlier ALSJ link returned 404.
+- **E — [NASA Science, History of Lunar Exploration](https://science.nasa.gov/solar-system/moon/history-of-lunar-exploration/)**: The Apollo 17 section describes orange volcanic material around 3.6 billion years old. Use wording consistent with the selected source and account for other published estimates.
+- **F — [NASA History, Apollo 17 Lands at Taurus-Littrow](https://www.nasa.gov/history/50-years-ago-apollo-17-lands-at-taurus-littrow/)**: The paragraph about the VIP site puts the final parking spot approximately 158 m from the lunar module, where the rover could televise the ascent.
 
-## Revisión por archivo
+## Review by file
 
-Todos los paths son relativos al worktree **privado local** `moon-storytelling-qa`; no existen en esta rama de revisión.
+All audio paths are relative to the private local worktree `moon-storytelling-qa`. The recordings are outside this review branch.
 
-| Misión / archivo | Afirmación del guion esperado | Clasificación actual y evidencia | Recomendación / decisión sobre audio |
-|---|---|---|---|
-| Apollo 11 `public/audio/apollo-11/chapter-2/3.mp3` | Buzz transportó el reflector; Neil lo desplegó; fecha 21 julio 1969 | Editorial/científica: A y B discrepan sobre quién lo colocó. La fecha 21 puede corresponder a UTC; no es por sí sola un error | Mantener atribución colectiva de la lectura hasta conciliar transcripción/cronología primaria. Si se cambia el nombre en el relato aprobado, la grabación requerirá decisión editorial; conservar original |
-| Apollo 11 `public/audio/apollo-11/chapter-2/4.mp3` | Neil lo colocó aproximadamente a 14 m, niveló y orientó | Distancia aproximada respaldada por A; nombre sigue sujeto al conflicto A/B. La retención anterior no prueba que 14 m sea falso | No retirar la cifra por falta de evidencia: ya hay referencia. Resolver el nombre antes de aprobar audio; alternativa colectiva mantiene lectura actual |
-| Apollo 11 `public/audio/apollo-11/chapter-4/4.mp3` | Permanece aproximadamente a 14 m de Eagle | La cifra sí tiene respaldo en A. Se retira la clasificación de «sin fuente encontrada»; quedan aprobación editorial y escucha | No se identifica una edición científica necesaria para esa aproximación. Haroon puede aprobar el original después de confirmar el audio completo |
-| Apollo 17 `public/audio/apollo-17/chapter-2/4.mp3` | 35,9 km y unas 4 h 26 min de exploración | C respalda números, pero el tiempo es conducción. La diferencia 35,7/35,9 dentro del paquete exige reconciliar referencias/convenciones, no declarar 35,9 erróneo | Usar la fuente C y aclarar «tiempo de conducción» en contexto. Haroon decide si el wording audible requiere revisión; no modificar clip ni activar automáticamente |
-| Apollo 17 `public/audio/apollo-17/chapter-3/2.mp3` | Falló indicador de temperatura de batería 2 en la tercera EVA; se estimó con batería 1 y lecturas previas | D respalda evento y método. La batería no dejó de suministrar energía por este fallo de indicación; causa es probable, no certeza | No se encontró un defecto de mapping ni necesidad demostrada de editar el relato simplificado. Escuchar que dice indicador, no batería fallida, y comprobar contexto con página 9-1 antes de aprobar |
-| Apollo 17 `public/audio/apollo-17/chapter-3/3.mp3` | Vidrio volcánico naranja de unos 3.700 millones de años | Diferencia editorial/científica con E y la lectura actual (~3.600 millones); no resuelta por una prueba de integridad | Aprobar una formulación y fuente consistentes. Si se elige 3.600 millones, no presentar captions distintos como transcripción exacta del clip 3.700; mantener retención hasta decisión editorial. No generar/regrabar aquí |
-| Apollo 17 `public/audio/apollo-17/chapter-4/1.mp3` | Cernan estacionó aproximadamente a 158 m de Challenger | F respalda esa aproximación y finalidad de TV. La nota interna que pedía omitir distancias no invalida esta fuente NASA | No se identifica edición científica necesaria para la distancia. Haroon puede aprobar el original tras escuchar ubicación, cámara y despedida completas |
+| Mission / file | Expected script claim | Current classification and evidence | Audio decision |
+| --- | --- | --- | --- |
+| Apollo 11 `public/audio/apollo-11/chapter-2/3.mp3` | Buzz carried the reflector and Neil deployed it on July 21, 1969 | A and B disagree on who placed it. July 21 may be the UTC date | Keep the reading's crew attribution until the primary transcripts and chronology are reconciled. If approval changes the named astronaut, review the audio separately and retain the original |
+| Apollo 11 `public/audio/apollo-11/chapter-2/4.mp3` | Neil placed it about 14 m away, leveled it, and oriented it | A supports the distance. A and B differ on attribution | Retain the supported distance. Resolve attribution before approving audio. The reading can continue to credit the crew collectively |
+| Apollo 11 `public/audio/apollo-11/chapter-4/4.mp3` | It remains about 14 m from Eagle | A supports the figure. Editorial approval and listening remain pending | Haroon can approve the original after checking the complete recording |
+| Apollo 17 `public/audio/apollo-17/chapter-2/4.mp3` | 35.9 km and about 4 h 26 min of exploration | C supports the figures and identifies the duration as driving time. Reconcile the sources and rounding behind 35.7 and 35.9 km | Clarify driving time using C. Haroon decides whether the recording needs revised wording. Hold the original clip pending review |
+| Apollo 17 `public/audio/apollo-17/chapter-3/2.mp3` | Battery 2's temperature indicator failed in the third EVA. The crew used battery 1 and earlier readings to estimate the temperature | D supports the event and method. Battery 2 continued to supply power. The thermistor diagnosis is probable | No file mapping problem or required script edit was found. Check that the clip describes the indicator and compare it with page 9-1 before approval |
+| Apollo 17 `public/audio/apollo-17/chapter-3/3.mp3` | Orange volcanic glass around 3.7 billion years old | E and the current reading use roughly 3.6 billion years. File integrity checks cannot resolve the discrepancy | Approve wording that matches the selected source. If 3.6 billion is selected, the clip stating 3.7 billion cannot be captioned as if it said 3.6 billion. Keep the hold until an editorial decision |
+| Apollo 17 `public/audio/apollo-17/chapter-4/1.mp3` | Cernan parked approximately 158 m from Challenger | F supports the distance and the purpose of the TV camera. An internal note requesting omission of distances does not invalidate the NASA source | The distance requires no scientific edit. Haroon can approve the original after listening to the location, camera, and farewell in context |
 
-**Conclusión técnica:** cero correcciones de mapping necesarias demostradas; cero MP3 cambiados; cero cues inventados; cero pistas activadas. Las siete retenciones continúan hasta aceptación humana. Varias afirmaciones quedaron corroboradas, por lo que no deben seguir describiéndose como siete errores científicos confirmados.
+**Technical results:** The review found zero required file mapping fixes, changed zero MP3s, invented zero cues, and enabled zero tracks. The seven recordings await human acceptance. The corroborated claims should be credited accordingly.
 
-## Decisiones concretas para Haroon
+## Decisions for Haroon
 
-1. Apollo 11 2/3 y 2/4: resolver atribución individual con cronología primaria o aprobar relato colectivo; conservar ambos originales y no sustituirlos en esta fase.
-2. Apollo 11 4/4: aceptar aproximación respaldada de 14 m, sujeto a escucha y derechos.
-3. Apollo 17 2/4: elegir referencia/convención de distancia y distinguir conducción de EVA; valorar el contexto del audio original.
-4. Apollo 17 3/2: aceptar evento del indicador respaldado por 9-1, verificando que el clip no afirma pérdida de batería.
-5. Apollo 17 3/3: elegir edad/fuente y tratamiento del clip; lectura y voz deben ser honestas respecto a discrepancias.
-6. Apollo 17 4/1: aceptar aproximación de 158 m respaldada por NASA, sujeto a escucha completa.
+1. Apollo 11 2/3 and 2/4: resolve individual attribution using the primary chronology or approve crew-wide attribution. Preserve both recordings.
+2. Apollo 11 4/4: accept the supported approximation of 14 m after listening and confirming rights.
+3. Apollo 17 2/4: select a source and distance convention, distinguish driving from EVA duration, and assess the original wording in context.
+4. Apollo 17 3/2: accept the indicator event documented on page 9-1 after confirming the clip does not claim that battery power was lost.
+5. Apollo 17 3/3: choose the age, source, and audio treatment. Make the discrepancy clear in the reading and narration.
+6. Apollo 17 4/1: accept the NASA-supported 158 m approximation after hearing the full clip.
 
-## Escucha humana: checkpoints sin tiempos inventados
+## Listening checkpoints
 
-Abrir la pista original por su filename y SHA en el worktree local, escucharla completa y registrar reviewer/fecha/resultado. No usar esta rama sin archivos para dar aprobación auditiva.
+Open each original track in the local worktree by filename and SHA. Listen in full and record the reviewer, date, and result. Audio approval requires access to the original recordings.
 
-- 11 2/3 (~17,40 s estructurales): nombres Buzz/Neil, verbo transportar/desplegar, fecha/timezone, ausencia de cortes o otra misión.
-- 11 2/4 (~14,99 s): nombre de quien coloca, «about 14 meters», nivelación y orientación. Comparar con texto fuente y decidir atribución.
-- 11 4/4 (~19,33 s): «about 14 meters», reflexión pasiva, no transmisor activo. Aprobar si guion/voz completos coinciden.
-- 17 2/4 (~17,79 s): 35,9 km, cuatro horas veintiséis, conducción frente a todo el trabajo de superficie. Comprobar unidades y contexto.
-- 17 3/2 (~11,47 s): segunda batería/indicador, EVA tercera, estimación con la primera. No equiparar sensor y suministro de energía.
-- 17 3/3 (~14,68 s): Shorty, Schmitt, vidrio volcánico y cifra audible exacta; no ocultar discrepancia con captions.
-- 17 4/1 (~18,05 s): Cernan, Challenger, «about 158 meters», cámara hacia el ascenso. Confirmar que el archivo pertenece al capítulo correcto.
+- 11 2/3 (~17.40 s of MPEG frames): check Buzz and Neil, the verbs for carrying and deploying, the date and time zone, and any cuts or content from another mission.
+- 11 2/4 (~14.99 s): check who placed it, “about 14 meters,” leveling, and orientation. Compare with the source text to resolve attribution.
+- 11 4/4 (~19.33 s): check “about 14 meters” and that the clip describes a passive reflector. Approve if the full script and audio agree.
+- 17 2/4 (~17.79 s): check 35.9 km and 4 h 26 min of driving in the context of all surface work. Verify units and context.
+- 17 3/2 (~11.47 s): check the second battery's indicator, the third EVA, and the estimate using the first battery. Distinguish the sensor from the power supply.
+- 17 3/3 (~14.68 s): check Shorty, Schmitt, volcanic glass, and the exact audible number. Record any discrepancy with the captions.
+- 17 4/1 (~18.05 s): check Cernan, Challenger, “about 158 meters,” and the camera pointed toward the ascent. Confirm the chapter assignment.
 
-Las duraciones son suma de frames MPEG del inventario, no límites de cues. Tras aprobar texto y escuchar, medir start/end reales de frases y asociarlos al mismo hash del archivo. Ningún tiempo de caption se deduce de estas duraciones.
+The durations are sums of MPEG frame lengths. After approving the text and listening, measure the actual phrase start and end times and associate them with the same file hash. Derive caption timings from the recording.

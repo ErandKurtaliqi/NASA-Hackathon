@@ -1,6 +1,6 @@
 # Perseverance — My Journey: verified mission imagery
 
-Verified on **2026-11-04**. Scope: `follow-perseverance`, chapter 2 only.
+Sources verified. Scope: `follow-perseverance`, chapter 2 only.
 Official captions and their download links were checked before downloading;
 all five local images were decoded and visually inspected. No AI-generated
 imagery, substitute mission photographs, autoplay video or audio was added.

@@ -1,6 +1,6 @@
 # Final Mission Locations — Planet Explorer
 
-Implemented 2026-11-14 in `ErandKurtaliqi/NASA-Hackathon`.
+Implemented in `ErandKurtaliqi/NASA-Hackathon`.
 Base: `main` at `a912a7e7ef646a43cdd81ad16ada7af243dde494`.
 Review branch: `feat/final-mission-locations`.
 

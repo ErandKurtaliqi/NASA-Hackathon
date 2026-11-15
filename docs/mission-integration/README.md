@@ -1,86 +1,86 @@
-# Integracion local de misiones AURORALYS - 11 noviembre 2026
+# Local integration of AURORALYS missions
 
-## Resultado y limites
+## Results and limitations
 
-Candidato local con ocho historias y 40 capitulos. No es una publicacion final narrada: las grabaciones privadas se excluyen deliberadamente y no se solicitan al navegador. Tras recibir la ruta del paquete de Ingenuity se integro su historia real como helicoptero, reutilizando su registro existente de Hardware/explorer.
+Local candidate with eight stories and 40 chapters. It is not a final published story: private recordings are deliberately excluded and are not requested from the browser. After receiving the route of the Ingenuity package, your real history was integrated as a helicopter, reusing your existing Hardware/Explorer record.
 
-Rama: `review/mission-integration-office`. Worktree creado desde `8a77514` porque el checkout esperado no existia en OFFICE. No se cambia el checkout protegido de la raiz ni el trabajo previo. El commit final se registra en el informe de entrega, no se publica automaticamente.
+Branch: `review/mission-integration-office`. Worktree created from `8a77514` because the expected checkout did not exist in OFFICE. The protected root checkout or previous work is not changed. The final commit is recorded in the delivery report, is not automatically published.
 
-## Auditoria de fuentes
+## Audit of sources
 
-| Workstream | Commit local | Base comun con 8a77514 | Inventario del commit | Dependencias excluidas |
+| Workstream | Commit local | Common base with 8a77514 | Inventory of the commission | Dependencias excluidas |
 | --- | --- | --- | --- | --- |
-| F - Apollo 16 | 44e6a65 | 8120d9e | 43 archivos; componentes Apollo16ScrollStory/Apollo16Quiz, story/recordings/media, manifiestos, tests y registros | 18 MP3 (4/4/3/4/3), seis JPEG locales; PDF original solo en ZIP externo |
-| E - Mars | 814d044 | 8120d9e | 92 archivos; MarsScrollStory, tres definiciones/guiones, media, tests y registros | 56 MP3, tres PDF y extracciones crudas, seis JPEG locales |
+| F - Apollo 16 | 44e6a65 | 8120d9e | 43 files; Apollo16ScrollStory/Apollo16Quiz components, story/recordings/media, manifests, tests and records | 18 MP3 (4/4/3/4/3), six local JPEG; original PDF only in external ZIP |
+| E - Mars | 814d044 | 8120d9e | 92 files; MarsScrollStory, three definitions/guions, average, tests and records | 56 MP3, three PDFs and raw extractions, six local JPEGs |
 
-Ambos tienen un unico commit propio sobre 8120d9e. NO se fusionan ni cherry-pickean; sus commits no son ancestros del candidato. Se leen los objetos Git y se transfieren unicamente 13 archivos de fuente/texto revisados. `source-inventory.json` conserva commit y blob de procedencia, sin exigir esos objetos privados para ejecutar los tests futuros.
+Both have a unique commit of their own over 8120d9e. They do not merge or cherry-pickean; their commit is not the ancestor of the candidate. Git objects are read and only 13 revised source/text files are transferred. `source-inventory.json` retain commit and blob of origin, without requiring those private objects to run future tests.
 
-E contiene 47 segmentos narrativos: Sojourner 4/4/4/4, Opportunity 4/4/4/4 y Viking 1 3/4/4/4. Los quizzes tienen tres preguntas de cuatro opciones por mision. Sus 56 rutas de audio corresponden a 19/19/18 grabaciones; no existe una pista 19 de Viking. El duplicado Opportunity del ZIP Viking ya estaba excluido en E y no se vuelve a importar.
+E contains 47 narrative segments: Sojourner 4/4/4/4, Opportunity 4/4/4/4 and Viking 1 3/4/4/4. Quizzes have three questions of four options per mission. Their 56 audio paths correspond to 19/19/18 recordings; there is no Viking track 19. The duplicate Opportunity of the Viking ZIP was already excluded in E and is not re-imported.
 
-F contiene 15 segmentos narrativos y tres preguntas: 4/4/3/4/3 grabaciones. Se mantienen LRV-2, Orion, Casper y su hardware `lrv-2`, sin cambiar las identidades de Apollo 15/17. Se reutiliza su quiz dedicado, que protege doble envio y reintento.
+F contains 15 narrative segments and three questions: 4/4/3/4/3 recordings. LRV-2, Orion, Casper and their hardware are maintained `lrv-2`, without changing Apollo 15/17 identities. Your dedicated quiz is reused, protecting double sending and retrying.
 
-Conflictos de integracion identificados y resueltos:
+Integration conflicts identified and resolved:
 
-1. E/F registraban misiones modificando `data.ts` y `machineStories.ts`; la base visual actual usa `storyCatalog.ts` como frontera de publicacion. Se registra alli el nuevo contenido/hardware, manteniendo ambos archivos cientificos e historicos intactos.
-2. Los componentes E/F tenian titulo/nav fuera de la composicion. Se adaptan sus slots a RoverStoryLayout, StoryEnvironment, StoryHardware y las etiquetas/capas visuales de Haroon; se conservan hooks, actividades y textos.
-3. Sus referencias eran archivos locales MP3/JPEG. Los MP3 quedan detras de un adaptador de omision explicita, sin montar audio ni inventar TTS. Los JPEG nuevos se sustituyen en el mapping por sus URLs oficiales originales, sin importar binarios ni alterar los pies/creditos.
-4. MachineStoryPage necesitaba rutas internas de render y la misma reconciliacion de prerrequisitos antiguos que las otras misiones. Se agregan ramas aisladas y la condicion de finalizacion para F/E; no cambia el store ni el esquema.
-5. Los tests previos asumian tres historias/15 capitulos y ausencia de todas las misiones Mars. Se actualizan solo esos conteos y se conserva la exclusion especifica de Perseverance; snapshots de comportamiento normalizan fragmentos exactos autorizados.
+1. E/F recorded missions by modifying `data.ts` and `machineStories.ts`; the current visual base uses `storyCatalog.ts` as the publication boundary. The new content/hardware is registered there, keeping both scientific and historical files intact.
+2. The E/F components were titled/nav outside the composition. They adapt their slots to RoverStoryLayout, StoryEnvironment, StoryHardware and Haroon visual labels/layers; hooks, activities and texts are preserved.
+3. Its references were local MP3/JPEG files. MP3s are left behind an explicit omission adapter, without mounting audio or inventing TTS. New JPEGs are replaced in mapping by their original official URLs, regardless of binary or altering feet/credits.
+4. MachineStoryPage needed internal render routes and the same reconciliation of old prerequisites as the other missions. Separate branches and the termination condition for F/E are added; neither store nor scheme changes.
+5. The previous tests assumed three stories/15 chapters and absence of all Mars missions. Only those counts are updated and the specific exclusion of Perseverance is preserved; accurate fragments of behavior are normalized.
 
-## Estado de las ocho misiones
+## Status of the eight missions
 
-| Mision | Estado real en candidato | Narracion / hardware |
+| Mission | Candidate status | Narration / hardware |
 | --- | --- | --- |
-| Apollo 11 | Cinco capitulos, actividad laser, quiz y progreso conservados | Reflector estacionario; grabaciones privadas excluidas como en la base |
-| Apollo 15 | Cinco capitulos y actividad martillo/pluma conservados | 19 MP3 heredados intactos; reproduccion real comprobada |
-| Apollo 16 | Integrado desde F: cinco capitulos, controlador conceptual, descubrimientos, quiz, finalizacion | LRV-2; soporte de 18 grabaciones conservado, archivos excluidos |
-| Apollo 17 | Cinco capitulos, actividades, quiz y progreso conservados | LRV-3; grabaciones privadas excluidas como en la base |
-| Sojourner | Integrado desde E: cinco capitulos, perfil/descubrimientos/reflexion, quiz y finalizacion | Rover; soporte de 19 grabaciones, archivos excluidos |
-| Opportunity | Integrado desde E con las mismas funciones | Rover; soporte de 19 grabaciones, archivos excluidos; foto de ensamblaje identificada como terrestre |
-| Viking 1 | Integrado desde E con las mismas funciones | Lander estacionario sin ruedas; soporte de 18 grabaciones; modelo fotografiado en Tierra etiquetado |
-| Ingenuity | Integrado desde el paquete encontrado: cinco capitulos, perfil, descubrimientos, reflexion, quiz y finalizacion | Helicoptero; 19 originales verificados fuera de Git, soporte conservado, archivos excluidos |
+| Apollo 11 | Five chapters, laser activity, quiz, and progress preserved | Stationary reflector; private recordings excluded as on the base |
+| Apollo 15 | Five chapters and hammer-and-feather activity preserved | 19 existing MP3s preserved; playback verified |
+| Apollo 16 | Integrated from F: five chapters, conceptual controller, discoveries, maybe, ending | LRV-2; support of 18 preserved recordings, excluded files |
+| Apollo 17 | Five chapters, activities, quiz, and progress preserved | LRV-3; private recordings excluded as on the base |
+| Sojourner | Integrated from E: five chapters, profile/discovery/reflection, quiz and completion | Rover; 19 recordings supported, excluded files |
+| Opportunity | Integrated from E with the same functions | Rover; 19 recordings, excluded files; assembly photo identified as terrestrial |
+| Viking 1 | Integrated from E with the same functions | Stationary Lander without Wheels; 18 Recordings Stand; Photographed Model on Earth Tagged |
+| Ingenuity | Integrated from the package found: five chapters, profile, discoveries, reflection, maybe and ending | Helicopter; 19 originals checked outside Git, preserved support, excluded files |
 
-El dashboard descubre ocho historias y usa 40 capitulos como denominador. Un porcentaje menor de un registro antiguo representa mas misiones disponibles, no borrado de logros. `beyond-earth-progress`, IDs, badges y formatos existentes permanecen compatibles. Perseverance sigue fuera del catalogo; no se borra su progreso historico ni sus ubicaciones cientificas protegidas.
+Dashboard discovers eight stories and uses 40 chapters as a denominator. A smaller percentage of an old record represents more missions available, not erased from achievements. `beyond-earth-progress`, existing IDs, badges and formats remain compatible. Perseverance remains out of the catalog; neither its historical progress nor its scientific protected locations are erased.
 
-## Funciones conservadas y limites audiovisuales
+## Preserved functionality and audiovisual limitations
 
-Scroll nativo, Previous/Next, capitulos bloqueados por progreso, fuentes, captions/textos completos, actividades opcionales, quizzes, reintento, elegibilidad de finalizacion, insignias idempotentes, confirmacion real de guardado y recuperacion de errores. F conserva el avance de capitulo por scroll opt-in; E conserva su avance por boton. No se agrega scroll hijacking, timers de viaje ni cambios a escenas 3D.
+Native Scroll, Previous/Next, chapters blocked by progress, fonts, full chapters/texts, optional activities, quizzes, retry, termination eligibility, idepotent badges, actual save confirmation and error recovery. F retains chapter advance by scroll opt-in; E retains its advance by button. No scroll hijacking, travel timers or changes to 3D scenes.
 
-`ReviewStoryRecording` mantiene el contrato del reproductor compartido y delega en el cuando el recurso no esta excluido. En esta revision informa la omision y deja continuar leyendo. No se interpreta ausencia deliberada como archivo corrupto, ni se promete voz real en siete misiones sin sus recursos autorizados. Los mappings y los 18 estados pending de Apollo 16 se preservan. No hay timestamps nuevos, sincronizacion por palabra ni escucha humana declarada.
+`ReviewStoryRecording` keeps the player-shared contract and delegates to it when the resource is not excluded. In this review reports the omission and lets read on. No deliberate absence is interpreted as corrupt file, nor is real voice promised in seven missions without its authorized resources. The mappings and 18 states hanging on Apollo 16 are preserved. No new timestamps, word synchronization or declared human listening.
 
-La superficie lunar/Mars es SVG decorativo, no cartografia. Las fotografias/contextos corresponden a la mision, con descripciones y enlaces oficiales. Viking utiliza una foto de modelo terrestre y Opportunity una foto de ensamblaje terrestre; no se anuncian como selfies desde Marte. Continuan faltando recortes/modelos de presentacion aprobados para igualar exactamente las referencias de Haroon.
+The lunar/Mars surface is decorative SVG, not cartography. The photographs/contexts correspond to the mission, with official descriptions and links. Viking uses a photograph of Earth model and Opportunity a photo of Earth assembly; they are not advertised as selfies from Mars. There are still missing cuts/approved presentation models to match exactly the references of Haroon.
 
-## Revision cientifica y editorial
+## Scientific and editorial review
 
-Se mantienen las notas originales y los textos recibidos, sin reescribir el guion para ocultar desacuerdos. Se reabrieron fuentes primarias NASA el 11 de noviembre:
+Original notes and texts received are maintained, without rewriting the script to hide disagreements. NASA primary sources were reopened:
 
-- Sojourner: [NASA Pathfinder](https://science.nasa.gov/mission/mars-pathfinder/) indica 10.6 kg, frente a 10.5 en el guion. La nota conserva el caracter aproximado. Siguen pendientes las afirmaciones concretas del modem/suelo blanco y la distincion sols/dias terrestres; las fotos no se presentan como prueba de esas acciones.
-- Viking: [NASA Viking 1](https://science.nasa.gov/mission/viking-1/) fecha el cambio de nombre en enero de 1982. Se conserva la correccion visible al texto original de 1981 y la incertidumbre biologica; no se afirma vida confirmada. Haroon debe revisar/regrabar el guion antes de activarlo en una entrega narrada.
-- Opportunity: [NASA Opportunity](https://science.nasa.gov/mission/mer-opportunity/) respalda la referencia de su legado al record superado en octubre de 2026. Se conserva el contexto historico, sin reintroducir una historia de Perseverance al catalogo.
-- Apollo 16: [NASA Descartes](https://www.nasa.gov/history/apollo-16-on-the-moon-at-descartes/) respalda el contexto de Big Muley, Grand Prix y las fotografias. Se preservan notas sobre las metaforas de rocas brillantes/guardia, fechas UTC, camara ultravioleta separada y cifras pendientes de revision especializada.
+- Sojourner: [NASA Pathfinder](https://science.nasa.gov/mission/mars-pathfinder/) indicates 10.6 kg, compared to 10.5 in the script. The note retains the approximate character. Concrete statements of the white modem/soil and the suns/days terrestrial distinction are still pending; photos are not presented as evidence of such actions.
+- Viking: [NASA Viking 1](https://science.nasa.gov/mission/viking-1/) date the name change in January 1982. The visible correction to the original 1981 text and biological uncertainty is retained; no confirmed life is claimed. Haroon must review/record the script before activating it in a narrated delivery.
+- Opportunity: [NASA Opportunity](https://science.nasa.gov/mission/mer-opportunity/) supports the reference of its legacy to the record surpassed in October 2026. The historical context is preserved, without reintroducing a Perseverance story to the catalog.
+- Apollo 16: [NASA Descartes](https://www.nasa.gov/history/apollo-16-on-the-moon-at-descartes/) supports the context of Big Muley, Grand Prix and the photographs. Notes are preserved on the metaphores of bright rocks/guard, UTC dates, separate ultraviolet camera and outstanding numbers of specialized revision.
 
-No se afirma verificacion exhaustiva de cada frase, licencia universal de terceros o autorizacion para redistribuir las voces/PDF. Faltan derechos, revision editorial y tiempos medidos antes de una release completa con narracion.
+No exhaustive verification of each sentence, universal third party license or permission to redistribute voices/PDF is stated. Rights, editorial revision and times measured before a complete release with narrative are missing.
 
-## Validacion ejecutada
+## Validation performed
 
-- `npx.cmd tsc -b --pretty false`: correcto. `npm.cmd run build` tambien ejecuta TypeScript y pasa; continua el warning conocido de chunk Three.js >500 kB.
-- `node --test --test-concurrency=1 tests/*.test.mjs`: **239 aprobados, cero fallos/omitidos**. Incluye 22 pruebas de integracion (320 combinaciones de quiz para F/E/Ingenuity) y tres pruebas del nuevo paquete.
-- Store real: guardado normal, rechazo de escrituras, recuperacion, recarga, repeticion, logros previos, prerrequisitos flat antiguos y fallo parcial al guardar la insignia. No se sustituye la persistencia por un mock de componente.
-- Render de las 40 rutas en el shell real, landmarks, destinos y anchors; archivos GIS/homepage/explorer/store protegidos contra la base. Las historias anteriores siguen bajo sus pruebas de regresion.
-- Chrome real headless sobre el build de produccion: 106 capturas de rutas/variantes, siete de actividad/finalizacion, dos de evidencia cientifica de Ingenuity y dos de catalogos: **117 capturas verificadas** en total. Los 40 capitulos se prueban a 1366x768 y 390x844; las ocho aperturas tambien a 360x800, 439x591 y 1024x768; se incluye reduced motion en Apollo 15 e Ingenuity.
-- Cero overflow horizontal, imagenes rotas, errores JavaScript o fallos de carga de red en las rutas de historia. Sin targets pequenos en las vistas moviles medidas. Las seis imagenes F, seis E y tres Ingenuity cargan desde sus URLs originales, sin copias Git.
-- Reproduccion MP3 real de Apollo 15, Pause/Resume, cambio de segmento sin autoplay y actividad de evidencia. No se declara reproduccion de grabaciones excluidas. Los siete grupos privados no montan audio ni provocan solicitudes a MP3 ausentes.
-- Quiz y finalizacion reales de Apollo 15 y las cinco historias nuevas, persistencia tras recarga y ausencia de badges duplicados. Escape/Tab reales y swipe touch emulado.
-- Hardware Lab: ocho enlaces de historia activados realmente. Exploradores: diez selecciones de maquina, rutas de las cuatro historias Moon/cuatro Mars, incluida la nueva ruta real de Ingenuity. No se reclama QA de tiles, proyecciones o render GPU por validar esos enlaces.
-- Contextos Chrome incognito desechables; datos sinteticos solo alli. No se borra ni utiliza progreso del perfil habitual.
-- El primer cierre de siete historias fue 232/232; la ampliacion Ingenuity cierra con 239/239. Se corrigio el loader TS de una nueva prueba y el envio CDP de Enter (requiere el caracter de retorno), sin alterar controles ni reducir las protecciones.
-- Unico HTTP 404 observado en el audit de historias: `/favicon.ico`, incidencia heredada fuera de alcance.
+- `npx.cmd tsc -b --pretty false`: correct. `npm.cmd run build` also runs TypeScript and passes; continues the known warning of chunk Three.js >500 kB.
+- `node --test --test-concurrency=1 tests/*.test.mjs`: **239 approved, zero failed/missed**. Includes 22 integration tests (320 quiz combinations for F/E/Ingenuity) and three tests for the new package.
+- Real Store: Normal save, write rejection, recovery, recharge, repeat, previous achievements, old Flat prerequisites and partial failure when saving the badge. Persistentness is not replaced by a component mock.
+- Render of the 40 routes in the real shell, landmarks, destinations and anchovies; GIS/homepage/explorer/store files protected against the base. Previous stories are still under your regression tests.
+- Chrome real headless over the production build: 106 routes/variant catches, seven activity/finalization, two science evidence of Ingenuity and two catalogs: **117 verified catches** in total. The 40 chapters are tested at 1366x768 and 390x844; the eight openings also at 360x800, 439x591 and 1024x768; included reduced motion in Apollo 15 and Ingenuity.
+- Zero overflow horizontally, broken images, JavaScript errors or network load failures in history paths. No small targets in measured mobile views. The six images F, six E and three Ingenuity load from their original URLs, without Git copies.
+- Real MP3 reproduction of Apollo 15, Pause/Resume, segment change without autoplay and evidence activity. No reproduction of excluded recordings is declared. The seven private groups do not mount audio or cause MP3 requests absent.
+- Real details and ending of Apollo 15 and the five new stories, persistence after reloading and absence of duplicate badges. Real escape/Tab and emulated switch touch.
+- Hardware Lab: eight history links actually activated. Explorers: ten machine selections, routes from the four Moon/four Mars stories, including the new real Ingenuity route. QA of tiles, projections or GPU renders are not claimed for validating those links.
+- Disposable Chrome incognito contexts; synthetic data only there. No progress is deleted or used from the usual profile.
+- The first seven story closure was 232/232; the Ingenuity extension closes with 239/239. The TS loader of a new test was corrected and Enter's CDP shipment (requires the return character), without altering controls or reducing protections.
+- Only HTTP 404 observed in the story audit: `/favicon.ico`, inherited incidence out of reach.
 
-Artefactos locales: `$env:AURORALYS_QA_DIR (QA externo de la integración)`, con `verification.json`, `catalog-verification.json` y capturas `verified-*.jpg`. No se agregan a Git. Los logs de tests/build estan en el directorio qa-artifacts padre.
+Local artifacts: `$env:AURORALYS_QA_DIR` (external QA directory for the integration), with `verification.json`, `catalog-verification.json` and captures `verified-*.jpg`. Not added to Git. Tests/build logs are in the qa-artifacts parent directory.
 
-## Reproduccion y revision final recomendada
+## Reproduction and recommended final review
 
-Desde este worktree:
+From this worktree:
 
 ```powershell
 node --test --test-concurrency=1 tests/*.test.mjs
@@ -89,7 +89,7 @@ npm.cmd run build
 npm.cmd run preview -- --port 5200 --strictPort
 ```
 
-En un Chrome QA dedicado con puerto de debugging 9338 y perfil temporal fuera de dist:
+In a dedicated Chrome QA with debugging port 9338 and time profile out of dist:
 
 ```powershell
 $env:CHROME_QA_PORT = '9338'
@@ -97,15 +97,15 @@ node scripts/story-visual-qa.mjs ../qa-artifacts/mission-integration-ingenuity h
 node scripts/story-catalog-qa.mjs ../qa-artifacts/mission-integration-ingenuity http://127.0.0.1:5200
 ```
 
-Rutas de inicio: `/story/apollo-11-reflector/1`, `/story/apollo-15-rover/1`, `/story/apollo-16-rover/1`, `/story/apollo-17-rover/1`, `/story/sojourner/1`, `/story/opportunity/1`, `/story/viking-1/1`, `/story/ingenuity/1`; tambien `/hardware`, `/explore/moon`, `/explore/mars`, `/dashboard`. Avanzar capitulos con Next Chapter en la prueba manual; no borrar progreso para abrir el quiz. localStorage depende del origen/puerto.
+Start paths: `/story/apollo-11-reflector/1`, `/story/apollo-15-rover/1`, `/story/apollo-16-rover/1`, `/story/apollo-17-rover/1`, `/story/sojourner/1`, `/story/opportunity/1`, `/story/viking-1/1`, `/story/ingenuity/1`; also `/hardware`, `/explore/moon`, `/explore/mars`, `/dashboard`. Advance chapters with Next Chapter in manual test; do not erase progress to open the local storage quiz depends on the origin/port.
 
-Antes de publicar: revisar este diff local y los ocho recorridos con Haroon; resolver notas editoriales y derechos; autorizar hosting/audio y tiempos verificados; completar escucha, Safari/iOS, dispositivos fisicos, lectores de pantalla y zoom real. Coordinar con Erand futuros vinculos geograficos de las maquinas: no se inventan coordenadas o pins para las nuevas historias. Solo despues de esa revision considerar un push autorizado de codigo seguro y una integracion separada de medios aprobados.
+Before publishing: review this local diff and the eight tours with Haroon; resolve editorial notes and rights; authorize hosting/audio and verified times; complete listening, Safari/iOS, physical devices, screen readers and real zoom. Coordinate with Erand future geographic links of machines: no coordinates or pins are invented for new stories. Only after that review consider an authorized safe code push and a separate integration of approved media.
 
-## Seguridad Git
+## Security Git
 
-Historia basada unicamente en 8a77514 y su cadena segura. No merge, cherry-pick, rebase, push o PR. Originales E/F, rama visual, ramas protegidas y stashes conservados. No se instalan dependencias de la aplicacion ni se editan lockfiles. Para revisar el PDF se reutilizo pypdf temporal y se instalo el renderizador PyMuPDF solo en TEMP, fuera del proyecto. Se utiliza junction ignorado a node_modules existente. No se copian MP3/PDF/ZIP, extracciones crudas, JPEG nuevos, modelos o caches. La revision final del indice debe enumerar solo los archivos de texto siguientes; el commit es local y no autoriza su publicacion.
+History based only on 8a77514 and its secure string. No merge, cherry-pick, overbase, push or PR. Original E/F, visual branch, protected branches and stashes preserved. No application dependencies are installed or locked. To review the PDF, temporary pypdf is reused and the PyMuPDF renderer is installed only in TEMP, outside the project. Junction ignored to existing node_modules is used. MP3/PDF/ZIP, raw extractions, new JPEG, models or caches are not copied. The final revision of the index should list only the following text files; the commit is local and does not authorize publication.
 
-## Inventario exacto de archivos de este trabajo
+## Exact inventory of files of this work
 
 - `docs/mission-integration/README.md`
 - `docs/mission-integration/ingenuity-source-inventory.json`
@@ -145,18 +145,18 @@ Historia basada unicamente en 8a77514 y su cadena segura. No merge, cherry-pick,
 - `tests/moon-scope.test.mjs`
 - `tests/storytelling-quiz.test.mjs`
 
-## Ampliacion Ingenuity tras localizar el paquete
+## Ingenuity expansion after locating the package
 
-El paquete original se encontro en `$env:AURORALYS_INGENUITY_PACKAGE` (5,169,369 bytes; SHA-256 `a2b61dd8fb35681250f0a35adf2fb2d171ae259c8deebdf4fb56a9eb8289f54f`). Contiene un PDF de siete paginas y exactamente 19 MP3 (4/4/4/4/3), sin otro paquete duplicado. Se leyeron y renderizaron las siete paginas; la pagina 7 marca en naranja las respuestas B/C/C. Los 16 parrafos narrativos se transcriben como base editorial, sin agregar historia inventada; las tres preguntas conservan opciones y respuestas. NASA confirma las respuestas. La puntuacion/ortografia tipografica del PDF se normaliza para lectura web.
+The original package was found in `$env:AURORALYS_INGENUITY_PACKAGE` (5,169,369 bytes; SHA-256 `a2b61dd8fb35681250f0a35adf2fb2d171ae259c8deebdf4fb56a9eb8289f54f`). It contains a seven-page PDF and exactly 19 MP3 (4/4/4/4/3), without another duplicate package. The seven pages were read and rendered; page 7 orange marks the answers B/C/C. The 16 narrative paragraphs are transcribed as an editorial basis, without adding invented story; the three questions retain options and answers. NASA confirms the answers. The type-script punctuation/ortography of the PDF is normalized for web reading.
 
-Todos los originales se conservan byte por byte y se cotejan por hash. Chrome AudioContext.decodeAudioData decodifico los 19 archivos: 262.661 segundos (aproximadamente 4m23s). Eso verifica decodificacion, no escucha humana, correspondencia verbal completa o sincronizacion. No se crean cues a partir de la duracion. El manifiesto registra nombres originales, mappings, bytes, hashes, duraciones medidas y estados pending de escucha/timing.
+All originals are retained byte byte and crosschecked by hash. Chrome AudioContext.decodeAudioData decoded the 19 files: 262.661 seconds (approximately 4m23s). That verifies decoding, non-human listening, full verbal correspondence or synchronization. No cues are created from the duration. The manifest records original names, mappings, bytes, hashes, measured durations and listening/timing hanging states.
 
-La copia de inspeccion, el PDF, MP3, renders y diagnostico de decodificacion estan exclusivamente en `$env:AURORALYS_PRIVATE_INPUTS_DIR (inspección local externa)`, fuera de todos los worktrees. No se sirven desde Vite ni se agregan a Git. El ZIP original sigue en Descargas y permanece intacto. No se publica ninguna grabacion; ReviewStoryRecording muestra la omision explicita y permite leer. La narracion final necesita autorizacion y restauracion separada de originales.
+The inspection copy, PDF, MP3, renders and decoding diagnostic are exclusively in `$env:AURORALYS_PRIVATE_INPUTS_DIR` (external local inspection directory), outside of all worktrees. They are not served from Vite nor added to Git. The original ZIP remains in Downloads and remains intact. No recording is published; ReviewStoryRecording displays explicit omission and allows reading. The final narrative needs authorization and separate restoration of originals.
 
-Se reutilizan MarsScrollStory, StoryEnvironment, StoryHardware, los controles de scroll nativo, quiz compartido y store existentes. Hay un solo hardware `ingenuity` (el registro preexistente), clasificado como helicoptero; no se duplica ni se modifica data.ts. La nueva insignia es `ingenuity-storyteller` / Jezero Flight Explorer. Ninguna identidad anterior, coordenada o schema cambia. Una prueba compara los tres objetos completos de historias Mars y su hardware con b146db0.
+MarsScrollStory, StoryEnvironment, StoryHardware, the existing native scroll controls, shared quiz and store are reused. There is only one hardware `ingenuity` (preexisting record), classified as helicopter; it is not duplicated or modified data.ts. The new badge is `ingenuity-storyteller` / Jezero Flight Explorer. No previous identity, coordinate or schema changes. A test compares the three complete objects of Mars stories and their hardware to b146db0.
 
-NASA evidence: PIA24581 (fotografia de las palas desbloqueadas; fuente Photojournal), PIA24727 (crestas vistas en vuelo 9; fotografia contextual) y PIA26760 (concepto artistico de los futuros SkyFall, claramente identificado). Solo URLs remotas con creditos; no archivos nuevos de imagen. Los videos oficiales son enlaces opt-in. Se excluyen miniaturas de Google y el PNG de un tercero sin procedencia suficiente. No se afirma que la foto del helicoptero documente el accidente o cada accion del guion.
+NASA evidence: PIA24581 (photograph of unlocked blades; Photojournal source), PIA24727 (ridges seen in flight 9; contextual photograph) and PIA26760 (artistic concept of future SkyFall, clearly identified). Only remote URLs with credits; not new image files. Official videos are opt-in links. Google and PNG thumbnails of a third party with insufficient provenance are excluded. It is not claimed that the helicopter photo documents the accident or each action of the script.
 
-Notas cientificas visibles: las crestas pueden registrar antiguos procesos de fluidos, no constituyen una deteccion de agua subterranea; 30 sols no equivale a 30 dias terrestres; el accidente es una reconstruccion probable, no una filmacion del impacto; SkyFall es una mision futura. Fuentes verificadas el 11-11-2026: [NASA Ingenuity](https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/), [geologia del vuelo 9](https://www.jpl.nasa.gov/news/nasas-mars-helicopter-reveals-intriguing-terrain-for-rover-team/), [investigacion del accidente](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-performs-first-aircraft-accident-investigation-on-another-world/) y [NASA SkyFall](https://science.nasa.gov/mission/skyfall/). Haroon debe resolver la frase de agua subterranea antes de habilitar esa grabacion en una release narrada.
+Visible scientific notes: crests can record ancient fluid processes, do not constitute a detection of subterranean water; 30 suns do not amount to 30 terrestrial days; the accident is a probable reconstruction, not a filming of impact; SkyFall is a future mission. Sources verified on 11-11-2026: [NASA Ingenuity](https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/), [Flight geology 9](https://www.jpl.nasa.gov/news/nasas-mars-helicopter-reveals-intriguing-terrain-for-rover-team/), [accident investigation](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-performs-first-aircraft-accident-investigation-on-another-world/) and [NASA SkyFall](https://science.nasa.gov/mission/skyfall/). Haroon must solve the underground water phrase before enabling that recording in a narrated release.
 
-Cambios de esta ampliacion: 17 archivos de texto; cuatro nuevos (inventario, historia, evidencia y prueba), trece adaptados (README, dos scripts QA, MarsScrollStory, marsStories, marsStoryMedia, reviewMediaPolicy, storyPresentation y cinco tests de catalogo/integracion). El trabajo completo desde 8a77514 abarca 37 archivos de texto. No se agregan binarios ni ancestry E/F. Los commits de integracion son solo locales; no hay push ni PR.
+Changes to this extension: 17 text files; four new ones (inventory, history, evidence and evidence), thirteen adapted ones (README, two QA scripts, MarsScrollStory, MarsStoryMedia, MarsStoryMedia, reviewMediaPolicy, storyPresentation and five catalog/integration tests).The complete work since 8a77514 covers 37 text files. No binary or ancestry E/F. Integration committs are only local; there is neither push nor PR.

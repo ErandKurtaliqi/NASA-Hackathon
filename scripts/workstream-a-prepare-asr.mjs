@@ -45,7 +45,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     return { ...prepareCandidate(recording, JSON.parse(bytes)), rawOutputSha256: createHash('sha256').update(bytes).digest('hex') }
   })
   const output = {
-    status: 'candidates-only-not-runtime-captions', generatedOn: '2026-11-08',
+    status: 'candidates-only-not-runtime-captions',
     method: 'Fully local whisper.cpp inference against unchanged original MP3 files, then sentence grouping using returned token offsets. No script-based timestamp interpolation and no human listening certification.',
     engine: { name: 'whisper.cpp', release: 'b5454', binaryArchiveUrl: 'https://github.com/ggml-org/whisper.cpp/releases/download/b5454/whisper-bin-x64.zip',
       binaryArchiveSha256: '6ba69e3482d7826214f90a6a9c84ca07782aec1e1d0c6a7c30c994fd5d816ccb',

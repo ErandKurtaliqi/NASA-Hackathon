@@ -1,58 +1,58 @@
-# Cierre de la integración existente — 12 de noviembre de 2026
+# Finalizing the existing integration
 
-Esta entrega reúne las dos historias mediante el commit de merge que contiene este informe. La rama de revisión es `integration/haroon-master-continuous-storytelling` y su PR tiene como base **master**. No autoriza un merge inmediato a master: sigue pendiente el QA obligatorio descrito abajo. No se actualiza main ni se hace push directo a master.
+This release brings together the two stories through the merge commit that contains this report. The review branch is `integration/haroon-master-continuous-storytelling` and its PR is based on **master**. It does not authorize an immediate merge to master: the mandatory QA described below is still pending. Main is not updated nor is it made direct push to master.
 
-## Historial preservado
+## Preserved history
 
-- Primer padre/master verificado después de `git fetch origin`: `3b45e8f2324e8af85e55d81a1020306e95e1706e`.
+- First parent/master verified after `git fetch origin`: `3b45e8f2324e8af85e55d81a1020306e95e1706e`.
 - Segundo padre/storytelling: `ddb458657e1fa5fca0bd117f265e95b444090712`.
 - Worktree original: `master-integration`.
-- Se continuó el merge ya abierto. No se creó otro worktree, reinició, abortó, reseteó ni sustituyó el árbol de ningún desarrollador.
-- Se revisaron y prepararon las tres modificaciones del layout, su regresión y documentación. Se comprobó que las demás entradas del índice original conservaran sus blobs.
-- El SHA exacto de esta entrega se obtiene con `git log -1 --format=%H`; sus padres con `git show -s --format=%P HEAD`. Las verificaciones de ancestros deben aprobar para ambos SHA anteriores.
+- The already open merge was continued. No other worktree was created, restarted, aborted, reset or replaced the tree of any developer.
+- The three layout modifications, their regression and documentation were reviewed and prepared. It was found that the other entries in the original index retained their blobs.
+- The exact SHA of this delivery is obtained with `git log -1 --format=%H`; your parents with `git show -s --format=%P HEAD`. Ancestry checks must approve for both previous SHAs.
 
-## Funcionalidad retenida
+## Preserved functionality
 
-Los ocho documentales (Apollo 11, 15, 16, 17, Sojourner, Opportunity, Viking 1 e Ingenuity), sus cuarenta capítulos y 126 segmentos permanecen disponibles. Se mantienen el scroll continuo, el hardware y fondo estáticos, evidencia NASA, sincronización por segmento, controles compactos accesibles, quizzes, actividades, insignias y progreso persistente compatible. Las pruebas protegen las reglas de los paneles y el ciclo de vida del audio fuera del cambio visual autorizado.
+The eight documentaries (Apollo 11, 15, 16, 17, Sojourner, Opportunity, Viking 1 and Ingenuity), its forty chapters and 126 segments remain available. They keep the continuous scroll, static hardware and background, NASA evidence, segment synchronization, accessible compact controls, quizzes, activities, badges and consistent progress compatible. The tests protect the rules of the panels and the audio life cycle outside of the authorized visual change.
 
-También se retienen Perseverance, expediciones cinematográficas opcionales e inspección 3D, modelos/animaciones/cámaras de master, exploradores Moon/Mars, mapas científicos, Esri, homepage, contenido educativo en `/discover`, hardware y dashboard. Las rutas canónicas de los ocho documentales no son sustituidas por las expediciones opcionales.
+Perseverance, optional cinematic expeditions and 3D inspection, models/animations/master cameras, Moon/Mars explorers, scientific maps, Esri, homepage, educational content in `/discover`, hardware and dashboard are also retained. Canonic routes of the eight documentaries are not replaced by optional expeditions.
 
-## Validación automatizada
+## Automated validation
 
-| Comprobación | Resultado |
+| Check | Result |
 |---|---|
-| `node --test tests/*.test.mjs` | **286 aprobadas, 0 fallos, 0 omitidas, 0 canceladas** |
-| `npm.cmd run test:rover` | Aprobado |
-| `npx.cmd tsc -b --pretty false` | Aprobado |
-| `npm.cmd run build` | Aprobado; advertencia de chunks mayores de 500 kB |
-| `git diff --cached --check` y marcadores de conflicto | Sin errores ni marcadores |
-| Etapas del índice | Sin conflictos sin resolver |
-| Auditoría de historial y árbol | Aprobada dentro del alcance documentado |
-| Integridad/rangos HTTP de originales locales | 112/112; 56 hashes contrastados además con inventarios previos |
-| Aislamiento de audio externo en preview | Aprobado aun con la variable de desarrollo definida |
+| `node --test tests/*.test.mjs` | **286 passed, 0 failed, 0 skipped, 0 cancelled** |
+| `npm.cmd run test:rover` | Passed |
+| `npx.cmd tsc -b --pretty false` | Passed |
+| `npm.cmd run build` | Approved; warning of chunks greater than 500 kB |
+| `git diff --cached --check` and conflict markers | No errors or markers |
+| Index stages | No unresolved conflicts |
+| History and Tree Audit | Approved within documented scope |
+| Integrity/Runnel Ranges of Local Originals | 112/112; 56 hashes also contrasted with previous inventories |
+| External audio insulation in preview | Approved even with the defined development variable |
 
-El render SSR de las rutas usa los componentes reales, aislando GPU/mapas cuando corresponde. No constituye prueba de render o interacción en un navegador.
+The SSR render of the routes uses the actual components, isolating GPU/maps when applicable. It does not constitute proof of rendering or interaction in a browser.
 
-## Cobertura real de navegador y aprobación del usuario
+## Real browser coverage and user approval
 
-**Aprobado por el usuario:** revisión manual en Chrome del nuevo diseño compacto de Apollo 15. No se dispone de un registro de tamaños exactos, capturas, todos los capítulos, todas las interacciones o reproducción audible de esa revisión. No se amplía su alcance por inferencia.
+** User-approved:** manual revision in Chrome of the new compact Apollo 15 design. No record of exact sizes, captures, all chapters, all interactions or audible playback of that revision is available. Its scope is not extended by inference.
 
-**Ejecutado por el agente durante este cierre:** ninguna prueba de navegador real. La herramienta devolvió `apps: []` y `browsers: []`. Las pruebas automatizadas disponibles son las de Node/SSR/controladores/almacenamiento y transporte HTTP, con la cobertura descrita arriba. Las capturas de otras ramas no se presentan como evidencia de esta integración. Safari y dispositivos físicos no están disponibles.
+**Actor executed during this shutdown:** no real browser test. Tool returned `apps: []` and `browsers: []`. The available automated tests are Node/SSR/controllers/storage and HTTP transport, with the coverage described above. Catches from other branches are not presented as evidence of this integration. Safari and physical devices are not available.
 
-**Gate obligatorio antes de master:** comprobar las ocho misiones y los cuarenta enlaces de capítulo en 1440×900, 1366×768, 1024×768 y 390×844. Incluir scroll adelante/atrás, inmovilidad de hardware/fondo/paneles/controles, ausencia de solapamientos, evidencia y narración sincronizadas, Play/Pause/cancelación al navegar u ocultar, foco/teclado/touch, quizzes y actividades, progreso tras recarga y dashboard. Revisar navegación home/hardware, Perseverance, inspector 3D, ambos globos, mapas científicos y Esri. Registrar resultados y corregir cualquier fallo antes de marcar el PR listo para merge.
+**Required checks before merging into master:** check the eight missions and the forty chapter links in 1440×900, 1366×768, 1024×768 and 390×844. Include scroll forward/back, hardware/back/back/panels/control immobility, absence of overlaps, synchronized evidence and narration, Play/Pause/cancellation when browsing or hiding, focus/keyboarding/touch, quizzes and activities, progress after reloading and dashboard. Check home/hardware navigation, Perseverance, 3D inspector, both balloons, scientific maps and Esri. Register results and correct any bugs before marking the PR ready for merge.
 
-## Seguridad, medios y ciencia
+## Security, media, and science
 
-`master-integration-audit.json` audita los 27 commits divergentes y el árbol final. No detecta patrones conocidos de credenciales, rutas personales, medios no reconocidos ni ancestros privados prohibidos. Los 22 MP3 rastreados son los 19 Apollo 15 y tres de homepage ya publicados; no se añade ningún MP3 original privado, PDF o ZIP. Los demás recursos binarios se contrastan con los dos padres publicados. El alcance es patrones conocidos, hashes, rutas y ancestros; no es certificación exhaustiva de credenciales o licencias.
+`master-integration-audit.json` audits the 27 divergent commit and the final tree. It does not detect known patterns of credentials, personal paths, unrecognized media or forbidden private ancestors. The 22 MP3s tracked are the 19 Apollo 15 and three homepages already published; no original MP3 private, PDF or ZIP is added. Other binary resources are contrasted with the two published parents. The scope is known patterns, hashes, routes and ancestors; it is not exhaustive certification of credentials or licenses.
 
-Los 93 MP3 externos siguen fuera de Git/dist. El middleware externo sólo se registra en desarrollo y restringe nombres/rutas reales, loopback, Host/Origin, métodos y rangos. No hay hook de audio externo en preview/producción. Ver `master-integration-media.json` para los resultados HTTP; no implican escucha humana ni reproducción en navegador.
+The 93 external MP3s remain outside Git/dist. The external middleware is only logged in and restricts real names/paths, loopback, Host/Origin, methods and ranges. There is no external audio hook in preview/production. View `master-integration-media.json` for HTTP results; they do not involve human listening or browser playback.
 
-Siguen faltando localmente las grabaciones originales de **Apollo 11 y Apollo 17**. No se sustituyen con voz sintética. Haroon debe resolver autorización de distribución y entrega de las pistas externas/faltantes, revisión auditiva, correcciones de guion y tiempos medidos de captions antes de una entrega narrada completa.
+The original recordings of **Apollo 11 and Apollo 17** are still missing locally. They are not replaced with synthetic voice. Haroon must resolve the distribution and delivery authorization of the external/lack tracks, hearing review, script fixes and measured timings of chapters before a complete narrated delivery.
 
-Se conservan las cuestiones científicas/editoriales existentes de Viking 1 (cronología y límites biológicos), Apollo 16 (descripciones técnicas/científicas), Sojourner (geología y operaciones) e Ingenuity (interpretaciones geológicas y contexto de sus afirmaciones). Se mantienen también las retenciones de Apollo 11/17. No se reescriben ni regraban guiones durante el cierre; las decisiones y regrabaciones correspondientes requieren aprobación de Haroon. Detalle en `mission-integration/README.md` y `review-safe/scientific-decisions.md`.
+The existing scientific and editorial issues remain open for Viking 1 (chronology and biological limits), Apollo 16 (technical and scientific descriptions), Sojourner (geology and operations), and Ingenuity (geological interpretations and context). The Apollo 11 and 17 recordings on hold remain withheld. Script revisions and corresponding re-recordings require Haroon’s approval. See `mission-integration/README.md` and `review-safe/scientific-decisions.md`.
 
-## Revisión y merge final
+## Review and final merge
 
-Publicar únicamente `integration/haroon-master-continuous-storytelling` y mantener el PR contra master en borrador mientras falte el QA obligatorio. La aprobación visual parcial no equivale a autorizar el merge final. No usar force-push ni actualizar main.
+Publish only `integration/haroon-master-continuous-storytelling` and keep the PR against master in draft while the required QA is missing. Partial visual approval does not mean authorizing the final merge. Do not use force-push or update main.
 
-Después del QA completo, volver a ejecutar `git fetch origin` y verificar `git merge-base --is-ancestor origin/master HEAD`. Si master avanzó y no es ancestro, integrar sus cambios de forma revisable y repetir las comprobaciones antes del merge final; no sobrescribirlo. Mantener un método de merge que preserve ambas historias. Los resultados finales de publicación y la URL del PR se verifican en GitHub y se comunican por separado.
+After the full QA, re-run `git fetch origin` and check `git merge-base --is-ancestor origin/master HEAD`. If master advanced and is not ancestor, integrate your changes in a reviewable way and repeat the checks before the final merge; do not overwrite it. Maintain a Merge method that preserves both stories. The final release results and the PR URL are checked in GitHub and communicated separately.

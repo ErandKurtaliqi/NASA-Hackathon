@@ -1,108 +1,108 @@
-# Transferencia privada E/F — plan, no ejecutado
+# Private E/F transfer plan
 
-11 de noviembre de 2026. `814d044` (Mars Stories E) y `44e6a65` (Apollo 16 F) siguen ausentes como objetos Git en HOME, incluso después de inspeccionar el nuevo master remoto. No se reconstruyen desde PDFs, ni se mezclan commits completos en la revisión segura.
+`814d044` (Mars Stories E) and `44e6a65` (Apollo 16 F) remain absent as Git objects in HOME, even after inspecting the new remote master. They are not reconstructed from PDFs, nor are complete commits mixed into the secure review.
 
-Un bundle contiene objetos e historial, posiblemente audio/PDF y credenciales históricas: **no está cifrado**. No subir a GitHub, adjuntar a un PR, colocar en `public/`, un enlace abierto o una carpeta de XAMPP. Usar un método privado autenticado/cifrado aprobado por los responsables. Este documento no autoriza enviar originales a un repositorio concreto.
+A bundle contains objects and history, possibly audio/PDF, and historical credentials: **is not encrypted**. Do not upload to GitHub, attach to a PR, place in `public/`, an open link, or an XAMPP folder. Use an authenticated/encrypted private method approved by the responsible. This document does not authorize sending originals to a specific repository.
 
-## OFFICE: producir una copia sin cambiar worktrees
+## OFFICE: produce a copy without changing worktrees
 
-En PowerShell, sustituir la ruta del repositorio por la ruta real confirmada de OFFICE. No asumir que coincide con HOME. Los comandos no cambian de rama ni incluyen archivos sin commit.
+In PowerShell, replace the repository path with the confirmed real OFFICE path. Do not assume it matches HOME. Commands do not change branches or include uncommitted files.
 
 ```powershell
-$officeRepo = 'RUTA_REAL_DEL_REPOSITORIO_OFFICE'
+$officeRepo = 'ACTUAL_OFFICE_REPOSITORY_PATH'
 git -C $officeRepo status --short --branch
 git -C $officeRepo worktree list
 git -C $officeRepo cat-file -e '814d044^{commit}'
-if ($LASTEXITCODE -ne 0) { throw 'Mars E no disponible: detener' }
+if ($LASTEXITCODE -ne 0) { throw 'Mars E is unavailable. Stop the transfer.' }
 git -C $officeRepo cat-file -e '44e6a65^{commit}'
-if ($LASTEXITCODE -ne 0) { throw 'Apollo 16 F no disponible: detener' }
+if ($LASTEXITCODE -ne 0) { throw 'Apollo 16 F is unavailable. Stop the transfer.' }
 git -C $officeRepo rev-parse '814d044^{commit}' '44e6a65^{commit}'
 ```
 
-Registrar ambos hashes completos de 40 caracteres, padres, autores, fechas y `git show --stat` de cada commit. Revisar si hay trabajo sin commit: el bundle no lo contiene; respaldarlo aparte antes de cualquier cambio, sin incorporarlo automáticamente a E/F. Inspeccionar medios/secretos de su rango y conservar autoría real.
+Record each 40-character commit hash, its parents, author, date, and `git show --stat` output. Check for uncommitted work and back it up separately before any changes. The bundle excludes uncommitted work. Inspect the incoming commit range for media and secrets, and preserve the original authorship.
 
-Crear referencias nuevas, sin `-f`; si ya existen, detener y comparar, no sobrescribir:
+Create new references, without `-f`; if they already exist, stop and compare, do not overwrite:
 
 ```powershell
-git -C $officeRepo show-ref --verify --quiet refs/heads/transfer/office-e-20261111
-if ($LASTEXITCODE -eq 0) { throw 'Referencia E existente: revisar antes' }
-git -C $officeRepo show-ref --verify --quiet refs/heads/transfer/office-f-20261111
-if ($LASTEXITCODE -eq 0) { throw 'Referencia F existente: revisar antes' }
-git -C $officeRepo branch transfer/office-e-20261111 814d044
-if ($LASTEXITCODE -ne 0) { throw 'No se pudo crear referencia E' }
-git -C $officeRepo branch transfer/office-f-20261111 44e6a65
-if ($LASTEXITCODE -ne 0) { throw 'No se pudo crear referencia F' }
+git -C $officeRepo show-ref --verify --quiet refs/heads/transfer/office-e
+if ($LASTEXITCODE -eq 0) { throw 'The E ref already exists. Review it first.' }
+git -C $officeRepo show-ref --verify --quiet refs/heads/transfer/office-f
+if ($LASTEXITCODE -eq 0) { throw 'The F ref already exists. Review it first.' }
+git -C $officeRepo branch transfer/office-e 814d044
+if ($LASTEXITCODE -ne 0) { throw 'Could not create the E ref' }
+git -C $officeRepo branch transfer/office-f 44e6a65
+if ($LASTEXITCODE -ne 0) { throw 'Could not create the F ref' }
 
 $transferRoot = $env:AURORALYS_PRIVATE_TRANSFER_DIR
-if (-not $transferRoot) { throw 'Configurar un directorio privado externo en AURORALYS_PRIVATE_TRANSFER_DIR' }
+if (-not $transferRoot) { throw 'Set AURORALYS_PRIVATE_TRANSFER_DIR to a private external directory' }
 if (-not (Test-Path -LiteralPath $transferRoot)) {
   New-Item -ItemType Directory -Path $transferRoot | Out-Null
 }
-$bundlePath = Join-Path $transferRoot 'office-E-F-20261111.bundle'
-if (Test-Path -LiteralPath $bundlePath) { throw 'Bundle existente: no sobrescribir' }
-git -C $officeRepo bundle create $bundlePath transfer/office-e-20261111 transfer/office-f-20261111
-if ($LASTEXITCODE -ne 0) { throw 'Bundle no creado correctamente' }
+$bundlePath = Join-Path $transferRoot 'office-E-F.bundle'
+if (Test-Path -LiteralPath $bundlePath) { throw 'The bundle already exists. Do not overwrite it.' }
+git -C $officeRepo bundle create $bundlePath transfer/office-e transfer/office-f
+if ($LASTEXITCODE -ne 0) { throw 'Bundle creation failed' }
 git -C $officeRepo bundle verify $bundlePath
-if ($LASTEXITCODE -ne 0) { throw 'Bundle inválido' }
+if ($LASTEXITCODE -ne 0) { throw 'Invalid bundle' }
 git -C $officeRepo bundle list-heads $bundlePath
 Get-FileHash -LiteralPath $bundlePath -Algorithm SHA256
 ```
 
-Este bundle autocontenido conserva la clausura de ancestros de esas dos refs; no usa `--all`, pero puede incluir historia compartida y medios. No se presupone que `e9573da` sea ancestro de E/F ni se excluye una base desconocida para ahorrar tamaño. Si se quiere un bundle incremental, primero acordar hashes de prerequisitos y verificarlos en ambos equipos; no improvisar exclusiones.
+This self-contained bundle retains the closure of the ancestors of those two refs; it does not use `--all`, but it may include shared history and means. It is not assumed that `e9573da` is an ancestor of E/F nor is an unknown base for saving size excluded. If you want an incremental bundle, first agree on prerequisite hashes and verify them on both teams; do not improvise exclusions.
 
-Transferir el archivo por el canal privado aprobado. Confirmar SHA256 y hashes E/F por un canal autenticado independiente del propio archivo. Ningún password o token se escribe en comandos publicados o en esta documentación.
+Transfer the file through the approved private channel. Confirm SHA256 and hashes E/F by an authenticated channel independent of the file itself. No password or token is written in published commands or in this documentation.
 
-## HOME: verificar en cuarentena separada
+## HOME: check separately quarantined
 
-Primero comprobar SHA256 contra el valor comunicado y los dos heads completos con `git bundle list-heads`. No importar si difieren. La carpeta siguiente debe ser nueva y fuera del webroot:
+First check SHA256 against the reported value and the two full heads with `git bundle list-heads`. Do not import if they differ. The following folder should be new and out of the webroot:
 
 ```powershell
 $homeRepo = $env:AURORALYS_HOME_REPO
-if (-not $homeRepo) { throw 'Configurar AURORALYS_HOME_REPO' }
+if (-not $homeRepo) { throw 'Set AURORALYS_HOME_REPO' }
 $transferRoot = $env:AURORALYS_PRIVATE_TRANSFER_DIR
-if (-not $transferRoot) { throw 'Configurar AURORALYS_PRIVATE_TRANSFER_DIR' }
-$bundlePath = Join-Path $transferRoot 'office-E-F-20261111.bundle'
+if (-not $transferRoot) { throw 'Set AURORALYS_PRIVATE_TRANSFER_DIR' }
+$bundlePath = Join-Path $transferRoot 'office-E-F.bundle'
 $expectedSha256 = 'SHA256_CONFIRMADO_POR_EL_EQUIPO'
 if ((Get-FileHash -LiteralPath $bundlePath -Algorithm SHA256).Hash -ne $expectedSha256) {
-  throw 'Hash del bundle no coincide'
+  throw 'Bundle hash does not match'
 }
 git -C $homeRepo bundle verify $bundlePath
-if ($LASTEXITCODE -ne 0) { throw 'Bundle inválido o prerequisitos ausentes' }
+if ($LASTEXITCODE -ne 0) { throw 'Invalid bundle or missing prerequisites' }
 git -C $homeRepo bundle list-heads $bundlePath
 
-$quarantineRepo = Join-Path $transferRoot 'office-quarantine-20261111.git'
-if (Test-Path -LiteralPath $quarantineRepo) { throw 'Cuarentena existente: no sobrescribir' }
+$quarantineRepo = Join-Path $transferRoot 'office-quarantine.git'
+if (Test-Path -LiteralPath $quarantineRepo) { throw 'The quarantine repository already exists. Do not overwrite it.' }
 git init --bare $quarantineRepo
-if ($LASTEXITCODE -ne 0) { throw 'No se pudo crear cuarentena' }
-git -C $quarantineRepo fetch --no-tags $bundlePath 'refs/heads/transfer/office-e-20261111:refs/heads/incoming/office-e'
-if ($LASTEXITCODE -ne 0) { throw 'Importación E falló' }
-git -C $quarantineRepo fetch --no-tags $bundlePath 'refs/heads/transfer/office-f-20261111:refs/heads/incoming/office-f'
-if ($LASTEXITCODE -ne 0) { throw 'Importación F falló' }
+if ($LASTEXITCODE -ne 0) { throw 'Could not create the quarantine repository' }
+git -C $quarantineRepo fetch --no-tags $bundlePath 'refs/heads/transfer/office-e:refs/heads/incoming/office-e'
+if ($LASTEXITCODE -ne 0) { throw 'Import for E failed' }
+git -C $quarantineRepo fetch --no-tags $bundlePath 'refs/heads/transfer/office-f:refs/heads/incoming/office-f'
+if ($LASTEXITCODE -ne 0) { throw 'Import for F failed' }
 git -C $quarantineRepo rev-parse refs/heads/incoming/office-e refs/heads/incoming/office-f
 ```
 
-Comparar esos dos hashes completos con los de OFFICE. Revisar `git log`, padres, `git diff --name-status`, manifiestos, IDs, assets, licencias, scripts de instalación/hooks, dependencias, store y cambios GIS antes de ejecutar código o instalar dependencias. No usar `git clone --shared`, copiar `.git` sobre el proyecto, ni ejecutar código recibido como prueba automática de confianza.
+Compare those two complete hashes to those of OFFICE. Review `git log`, parents, `git diff --name-status`, manifests, IDs, assets, licenses, installation/hooks scripts, dependencies, store and GIS changes before running code or installing dependencies. Do not use `git clone --shared`, copy `.git` over the project, or execute code received as an automatic confidence test.
 
-Solo después de revisar y aprobar contenido, se pueden importar refs nuevas al repositorio local de desarrollo, sin tocar sus ramas actuales:
+Only after reviewing and approving content, new refs can be imported to the local development repository, without touching its current branches:
 
 ```powershell
-git -C $homeRepo show-ref --verify --quiet refs/incoming/office-e-20261111
-if ($LASTEXITCODE -eq 0) { throw 'Ref local E existente: revisar antes' }
-git -C $homeRepo show-ref --verify --quiet refs/incoming/office-f-20261111
-if ($LASTEXITCODE -eq 0) { throw 'Ref local F existente: revisar antes' }
-git -C $homeRepo fetch --no-tags --no-write-fetch-head $quarantineRepo 'refs/heads/incoming/office-e:refs/incoming/office-e-20261111'
-if ($LASTEXITCODE -ne 0) { throw 'Importación local E falló' }
-git -C $homeRepo fetch --no-tags --no-write-fetch-head $quarantineRepo 'refs/heads/incoming/office-f:refs/incoming/office-f-20261111'
-if ($LASTEXITCODE -ne 0) { throw 'Importación local F falló' }
+git -C $homeRepo show-ref --verify --quiet refs/incoming/office-e
+if ($LASTEXITCODE -eq 0) { throw 'The local E ref already exists. Review it first.' }
+git -C $homeRepo show-ref --verify --quiet refs/incoming/office-f
+if ($LASTEXITCODE -eq 0) { throw 'The local F ref already exists. Review it first.' }
+git -C $homeRepo fetch --no-tags --no-write-fetch-head $quarantineRepo 'refs/heads/incoming/office-e:refs/incoming/office-e'
+if ($LASTEXITCODE -ne 0) { throw 'Local import for E failed' }
+git -C $homeRepo fetch --no-tags --no-write-fetch-head $quarantineRepo 'refs/heads/incoming/office-f:refs/incoming/office-f'
+if ($LASTEXITCODE -ne 0) { throw 'Local import for F failed' }
 ```
 
-El fetch trae objetos, no modifica archivos de worktrees ni integra código. No incluir esas refs en un push genérico. Una futura revisión podrá abrir nuevos worktrees detached en rutas inexistentes fuera del webroot; no se reutilizan o borran los actuales. No hay merge, cherry-pick o rebase autorizado para la integración final en esta fase.
+The fetch brings objects, does not modify worktrees files or integrates code. Do not include those refs in a generic push. A future review may open new worktrees detached on non-existent routes outside the webroot; the current ones are not reused or deleted. There is no Merge, cherry pick or overbase authorized for final integration at this stage.
 
-## Contratos que revisar antes de integrar
+## Contracts to be reviewed before joining
 
-- Apollo 16: registro real story/hardware, cinco capítulos, identidad LRV correcta, quiz/reward, 18 MP3 y scripts, permisos, comparación de hashes del paquete y lifecycle de voz. No inventar IDs antes de leer F.
-- Mars E: Sojourner, Opportunity y Viking 1, cada identidad/categoría real; capítulos, fuentes y assets originales, narración disponible, quiz/progreso y posibles dependencias comunes. Viking 1 es lander, no rover.
-- Ingenuity: esperar paquete aprobado; su perfil informativo no demuestra una historia implementada. Conservar identidad de helicóptero.
-- No reintroducir Perseverance al catálogo final. Conservar sus registros de progreso y evidencia histórica. Erand debe acordar el filtro de atlas/pins y créditos; no borrar Jezero o coordenadas científicas.
-- Revisar por separado el master remoto `095cd1b` de cámara/animación, sin mezclarlo con E/F ni asumir aprobado el contrato GIS. La integración protegida no se movió.
-- Ejecutar suites por implementación y combinada, sin sumar conteos independientes; luego QA real de navegador/audio. No publicar nuevos originales o bundle a GitHub sin autorización específica del destino.
+- Apollo 16: real story/hardware record, five chapters, correct LRV identity, quiz/reward, 18 MP3 and scripts, permissions, package hashes comparison and voice lifecycle. Don't invent IDs before reading F.
+- Mars E: Sojourner, Opportunity and Viking 1, each identity/real category; original chapters, fonts and assets, available narrative, maybe/progress and possible common dependencies. Viking 1 is lander, not rover.
+- Ingenuity: wait approved package; your informative profile does not show a story implemented. Keep helicopter identity.
+- Do not reintroduce Perseverance to the final catalogue. Keep your records of progress and historical evidence. Erand must agree to the filter of atlas/pins and credits; do not delete Jezero or scientific coordinates.
+- Separately review the remote camera/animation master `095cd1b`, without mixing it with E/F or assuming the GIS contract. Protected integration did not move.
+- Run suites by deployment and combined, without adding independent counts; then real QA browser/audio. Do not post new originals or bundle to GitHub without specific destination authorization.

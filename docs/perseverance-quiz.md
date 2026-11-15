@@ -1,7 +1,7 @@
 # Perseverance Chapter 5 — Test Your Knowledge
 
 Scope: `/story/follow-perseverance/5` only. Scientific explanations reviewed
-against official sources on **2026-11-04**. Original implementation and validation
+against official sources. Original implementation and validation
 records are retained below; current completion and save behavior are described
 separately from that initial milestone.
 

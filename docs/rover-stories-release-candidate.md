@@ -1,104 +1,104 @@
-# Candidato local de Rover Stories — 9 de noviembre de 2026
+# Local Rover Stories release candidate
 
-Objetivo de revisión de Haroon: 10 de noviembre. Este informe distingue el candidato combinado de los workstreams aislados; sus resultados no se suman como si fueran un único build.
+The candidate was prepared for Haroon’s review. This report distinguishes the combined candidate from isolated workstreams; their results are not added up as if they were a single build.
 
-## Estado Git y procedencia
+## Git status and provenance
 
-- Repositorio raíz: `la raíz del repositorio`, rama protegida `integration/main-feature-review`, commit `8120d9ecba6babb9e2c0695c02c6ef96234b359b`.
-- Candidato: rama `review/rover-stories-release-candidate`, worktree `rover-stories-release-candidate`, creado desde esa base.
-- **HEAD del candidato sigue en 8120d9e. Los cambios combinados están sin commit, sin staging de contenido y sin push**, pendientes de revisión. Se aplicaron patches binarios inspeccionados con `git apply --check` y `git apply`; no se ejecutó un merge ni se modificó la ascendencia de las ramas originales.
-- Se consultaron las referencias reales de GitHub mediante `git ls-remote --heads origin`; coinciden con los objetos locales siguientes. Todas tienen merge-base `8120d9e`.
+- Protected branch at the repository root: `integration/main-feature-review`, commit `8120d9ecba6babb9e2c0695c02c6ef96234b359b`.
+- Candidate: branch `review/rover-stories-release-candidate`, worktree `rover-stories-release-candidate`, created from that base.
+- **The candidate HEAD remains at 8120d9e. The combined changes are unstaged, uncommitted, and unpushed**, pending review. The binary patches were checked with `git apply --check` and applied with `git apply`. The original branch ancestry is intact and no merge was performed.
+- The actual references of GitHub were consulted using `git ls-remote --heads origin`; they match the following local objects. They all have merge-base `8120d9e`.
 
-| Workstream remoto | HEAD verificado | Resultado de revisión |
+| Remote workstream | Verified HEAD | Review result |
 |---|---|---|
-| A — audio | `a6a8629354691655ff632131e49df5607450628e` | 12 archivos: reviewer/candidatos ASR y correcciones de reproducción/cues. Inspeccionado; **no integrado**. 0/19 grabaciones certificadas por escucha, cues de producción pendientes. |
-| B — Apollo 17 | `f1bd132f202ec0006a0f41674100466b3e84db7d` | 18 archivos revisados y aplicados localmente al candidato. Presentación 2D/scroll y voz opcional del navegador, sin MP3 inventados. |
-| C — actividad | `64c046273074e135e3c4759ee56a83b43618b924` | 9 archivos nuevos, sin solapamiento directo con B. Aplicados y conectados como actividad opcional en Apollo 15, capítulo 4. |
-| D — contrato de mapas | `3e8fa5922aaa7718e9c8e57d272ba8fdb9805574` | 2 documentos inspeccionados; contrato propuesto, no aprobado por Erand. Sin código GIS integrado. |
+| A — audio | `a6a8629354691655ff632131e49df5607450628e` | 12 files: reviewer/ASR candidates and playback/cues corrections. Inspected; **not integrated**. 0/19 certified listening recordings, pending production cuis. |
+| B — Apollo 17 | `f1bd132f202ec0006a0f41674100466b3e84db7d` | 18 files locally reviewed and applied to the candidate. 2D/scroll presentation and optional browser voice, no MP3 invented. |
+| C — activity | `64c046273074e135e3c4759ee56a83b43618b924` | 9 new files, without direct overlap with B. Applied and connected as optional activity in Apollo 15, Chapter 4. |
+| D — map contract | `3e8fa5922aaa7718e9c8e57d272ba8fdb9805574` | 2 documents inspected; proposed contract, not approved by Erand. No integrated GIS code. |
 
-Los documentos B/C copiados al candidato describen su revisión original del 8 de noviembre y conservan ese contexto histórico. Este informe registra la integración local actual.
+Documents B/C copied to the candidate describe their original revision and retain that historical context. This report records the current local integration.
 
-E permanece independiente en `mars-stories`, rama `review/workstream-e-mars-stories`, commit local `814d0443f65c77164635bc43b643a2aea2799d5f`: **92 archivos comprometidos localmente y worktree limpio**. Sojourner/Opportunity/Viking 1 no se incorporaron al candidato; sus 56 MP3 y tres PDF siguen locales con permiso de redistribución pendiente.
+E remains independent in `mars-stories`, branch `review/workstream-e-mars-stories`, commit local `814d0443f65c77164635bc43b643a2aea2799d5f`: **92 locally compromised files and worktree clean**. Sojourner/Opportunity/Viking 1 did not join the candidate; its 56 MP3 and three PDFs remain local with pending redistribution permission.
 
-F quedó implementado por separado en `apollo16`, rama `review/workstream-f-apollo16`, desde `8120d9e`, sin commit ni staging: **43 archivos, 9 modificados y 34 nuevos**. Sus resultados y reservas editoriales se documentan en su informe independiente de Apollo 16. No se copian sus grabaciones ni PDF al candidato.
+F was implemented separately in `apollo16`, branch `review/workstream-f-apollo16`, from `8120d9e`, without commit or tagging: **43 files, 9 modified and 34 new**. Its editorial results and reservations are documented in its independent Apollo 16 report. Neither its recordings nor PDFs are copied to the candidate.
 
-Estado comprobado de Apollo 16: identidad `apollo-16-rover`, hardware `lrv-2`, cinco capítulos y quiz original B/A/B de cuatro opciones. Reutiliza layout, scroll, reproductor, evidencia y confirmación de guardado; los quince textos originales permanecen acompañados de notas editoriales y la voz sólo se inicia mediante acción explícita. Los 18 MP3 (4/4/3/4/3; 4.111.629 bytes) conservan todos sus bytes y etiquetas. Seis imágenes NASA de Apollo 16, 353.377 bytes, con fotografías y fotogramas distinguidos; no se usan fotos de otra misión como sustitutos. El PDF de ocho páginas sigue dentro del ZIP externo, fuera de public/dist.
+Checked status of Apollo 16: identity `apollo-16-rover`, hardware `lrv-2`, five chapters and original B/A/B quiz of four options. Reuse layout, scroll, player, evidence and save confirmation; the fifteen original texts remain accompanied by editorial notes and the voice is only started by explicit action. 18 MP3 (4/4/3/4/3; 4.111.629 bytes) retain all their bytes and tags. Six NASA images of Apollo 16, 353.377 bytes, with distinguished photographs and frames; no photos of another mission are used as substitutes. Eight-page PDF is still inside the external ZIP, outside of public/dist.
 
-Validación F independiente: **176/176 tests, cero omitidos**, repetida por el coordinador, build de producción y TypeScript correctos, whitespace del diff y de todos los textos nuevos correcto. Render de cinco rutas nuevas, preservación de las quince anteriores, 64 combinaciones del quiz, navegación/progreso real/rechazo de storage/retry/insignias y reproductor compartido. Preview de producción local `http://127.0.0.1:5187/story/apollo-16-rover/1`; cinco rutas y Hardware/Dashboard sirven HTML; 18 audios y seis imágenes coinciden por HTTP con sus hashes y el audio admite Range 206. No se declara validación visual ni auditiva real.
+Independent F validation: **176/176 tests passed, none skipped**, repeated by the coordinator, correct production build and TypeScript, whitespace of the diff and all new texts correct. render of five new routes, preservation of the previous fifteen, 64 combinations of quiz, navigation/real progress/storage/retry/signia rejection and shared player. preview of local production `http://127.0.0.1:5187/story/apollo-16-rover/1`; five routes and Hardware/Dashboard serve HTML; 18 audios and six images match HTTP with its hashes and audio supports Range 206. No actual visual or auditory validation is declared.
 
-Las 18 grabaciones F contienen ID3v2.4/GEOB `application/c2pa` con declaraciones Eleven Labs Inc. y trainedAlgorithmicMedia, preservadas sin modificación. No se verificó criptográficamente la firma ni se deducen derechos de esas etiquetas; permiso de redistribución pendiente. Las notas científicas distinguen fechas UTC/EST, metáforas del guion, límites del recorrido a pie, Stone Mountain/North Ray, el guardabarros y la cámara ultravioleta independiente. El recuento original de fuentes ultravioletas requiere revisión especializada. Todos los cues siguen `pending`.
+The 18 F recordings contain ID3v2.4/GEOB `application/c2pa` with Eleven Labs Inc. and trainedAlgorithmicMedia statements, preserved without modification. The signature was not cryptographically verified or rights deducted from those labels; permission to re-distribution pending. Scientific notes distinguish UTC/EST dates, script metaphors, walking path limits, Stone Mountain/North Ray, mudguards and independent ultraviolet chamber. Original ultraviolet source counts require specialized review. All cues follow `pending`.
 
-**176 no se suma a 188:** F aún no está integrado en el candidato B+C. Cualquier integración futura debe coordinar catálogo/registro/página y sus tests, y pasar una nueva suite combinada.
+**176 does not add to 188:**F is not yet integrated into the B+C candidate. Any future integration must coordinate catalog/registration/page and its tests, and pass a new combined suite.
 
-No se hizo commit/push/PR, merge, rebase ni despliegue público en esta preparación. Se preservan main, la integración protegida, A–D, E, los worktrees, respaldos y stashes. Los servidores de revisión se vinculan únicamente a `127.0.0.1`.
+No commit/push/PR, merge, overlay or public deployment was made in this preparation. Main, protected integration, A–D, E, worktrees, backups and stashes are preserved. Revision servers are linked only to `127.0.0.1`.
 
-## Qué está integrado realmente
+## What is truly integrated
 
-El candidato contiene **tres historias y quince capítulos**:
+The candidate contains **three stories and fifteen chapters**:
 
-1. Apollo 15: conserva identidad `apollo-15-rover` / hardware `lrv-1`, sus 19 MP3, guiones, capítulos, controles, quiz, premios y guardado. Se añade únicamente el ejercicio opcional de C al capítulo de legado, donde está el experimento histórico del martillo y la pluma.
-2. Apollo 17: conserva identidad `apollo-17-rover` / hardware `lrv`, registro científico, preguntas y premio. B sustituye su presentación por el layout compartido Rover Story, selección por scroll, botones, fuentes y voz opcional del navegador. No hay nuevas grabaciones aprobadas para esta misión.
-3. Perseverance: conserva los cinco capítulos existentes, piloto, modelo, navegación, quiz, confirmación de completado y guardado.
+1. Apollo 15: retains identity `apollo-15-rover` / hardware `lrv-1`, its 19 MP3, scripts, chapters, controls, quiz, prizes and saved. Only the optional exercise of C is added to the legacy chapter, where is the historical experiment of the hammer and pen.
+2. Apollo 17: retains identity `apollo-17-rover` / hardware `lrv`, scientific record, questions and award. B replaces its presentation with the Rover Story shared layout, selection by scroll, buttons, sources and optional browser voice. No new recordings approved for this mission.
+3. Perseverance: preserves the five existing chapters, pilot, model, navigation, quiz, confirmation of completion and save.
 
-La actividad de predicción tiene radios y envío explícitos, feedback específico, fuente NASA, reintento y foco. **No guarda progreso, no entrega insignias y no bloquea avanzar**. No tiene callbacks de completado, store, audio ni navegación propios. Está incluida en el bundle normal de producción, no solamente en `activity-preview.html`; esa página sigue siendo una demo de desarrollo.
+The prediction activity has explicit radios and sending, specific feedback, NASA source, retry and focus. **Does not save progress, does not deliver badges and does not block progress**. It does not have its own callbacks, store, audio or navigation. It is included in the normal production bundle, not only in `activity-preview.html`; that page remains a demo development.
 
-No se integran todavía Apollo 16, Sojourner, Opportunity o Viking 1 en este candidato. No se crean pins ni relaciones geográficas nuevas.
+Apollo 16, Sojourner, Opportunity or Viking 1 are not yet integrated into this candidate. No new pins or geographical relationships are created.
 
-## Conflictos y resoluciones
+## Conflicts and resolutions
 
-- B y C no compartían archivos modificados: aplicación limpia de ambos patches, sin conflictos Git de texto/binario.
-- C era una demo aislada y no estaba montada en el producto. Se añadieron **dos imports y una línea de render** a `Apollo15ScrollStory.tsx`, sólo bajo `index === 3`.
-- El test de ownership de B exigía que todo Apollo 15 fuera idéntico a la base. Falló al montar C. Se añadió `withoutReleaseActivity`, que elimina exactamente esas tres líneas al comparar; todo lo demás sigue protegido por igualdad de fuente. No se retiró el test.
-- Los hosts React escritos a mano no exponían `useId`, usado por los radios accesibles de C. Se añadió el hook estable a esos hosts, sin sustituir el componente real ni el adaptador de persistencia. La actividad continúa teniendo identificadores separados por instancia.
-- En Windows, el checkout CRLF del guion Apollo 15 fallaba una comparación histórica de bytes contra Git. Se restauró el archivo a los bytes exactos del blob de `8120d9e`, sin cambio de contenido ni diff Git. Su hash Git sigue siendo `8a4f0c9ad8483f62f5d144d9000165d4e3d3c4de`; el índice sólo refrescó su estado, sin cambio staged.
-- A modificaría `Apollo15ScrollStory.tsx` y `StoryRecording.tsx` y requeriría coordinar el nuevo punto de montaje y guards de B. No se aplicó por inercia. Sus candidatos ASR no son timestamps aprobados.
+- B and C did not share modified files: clean application of both patches, no Git text/binary conflicts.
+- C was an isolated demo and was not mounted on the product. **two imports and a render line**to `Apollo15ScrollStory.tsx` were added, only under `index === 3`.
+- The B ownership test required that all Apollo 15 be identical to the base. C was failed to mount. Added `withoutReleaseActivity`, which eliminates exactly those three lines when comparing; everything else remains protected by equal source. The test was not withdrawn.
+- The handwritten React hosts did not display `useId`, used by C's accessible radios. The stable hook was added to those hosts, without replacing the actual component or the persistence adapter. The activity continues to have instance-separated identifiers.
+- In Windows, the CRLF checkout of the Apollo 15 script failed a historical byte comparison against Git. The file was restored to the exact bytes of the `8120d9e` blob, without change of content or Git diff. Its Git hash remains `8a4f0c9ad8483f62f5d144d9000165d4e3d3c4de`; the index only refreshed its status, without change staged.
+- A would modify `Apollo15ScrollStory.tsx` and `StoryRecording.tsx` and would require coordinating the new mount point and B guards. It was not applied by inertia. Its ASR candidates are not approved time Stamps.
 
-## Validación del candidato combinado
+## Validation of the combined candidate
 
-| Fase | Pruebas focalizadas | Suite completa | TypeScript / producción |
+| Fase | Focused tests | Suite completa | TypeScript / production |
 |---|---:|---:|---|
-| Base reproducida | — | 165/165 | Correctos |
-| B aplicado | 50/50 (B + progreso real) | 173/173 | Correctos |
-| B + C, antes de conectar la actividad | 14/14 (B + C) | 181/181 | Verificados con el montaje final siguiente |
-| C conectado en Apollo 15 | 61/61 (B, C, progreso e integración) | 184/184 | Correctos |
-| Auditoría adicional del candidato | 4/4 | **188/188, cero fallos** | Build final de aplicación correcto; `tsc -p tsconfig.app.json --noEmit --pretty false` correcto |
+| Reproduced baseline | — | 165/165 | Passed |
+| B applied | 50/50 (B + real progress) | 173/173 | Passed |
+| B + C, before connecting the activity | 14/14 (B + C) | 181/181 | Checked with the next final assembly |
+| C connected to Apollo 15 | 61/61 (B, C, progress and integration) | 184/184 | Passed |
+| Additional audit of the candidate | 4/4 | **188/188 passed, none failed** | Final application build passed; `tsc -p tsconfig.app.json --noEmit --pretty false` correct |
 
 Comandos: `node --test tests/*.test.mjs`, `npm.cmd run build`, `node_modules/.bin/tsc.cmd -p tsconfig.app.json --noEmit --pretty false`.
 
-Las tres pruebas nuevas dentro del host de persistencia ejercitan predicción correcta e incorrectas desde la página real: selección, envío, foco, evidencia, reintento, almacenamiento rechazado sin intento de escritura de la actividad, pista de audio conservada y paso posterior al quiz sin completarlo automáticamente. El store real se conserva; sólo se aíslan router/GPU/audio y hooks del host de test.
+The three new tests within the persistence host exercise correct and incorrect prediction from the real page: selection, sending, focus, evidence, retry, rejected storage without attempt to write the activity, preserved audio track and post-maybe step without automatically completing it. The actual store is preserved; only router/GPU/audio and test host hooks are isolated.
 
-`tests/release-candidate.test.mjs` comprueba además:
+`tests/release-candidate.test.mjs` further checks:
 
-- Inventario y bytes de **todos los MP3 preexistentes** idénticos a la base.
-- Ausencia de nuevos audios/PDF E/F en el candidato.
-- Homepage, exploradores, identidades de misiones, registros científicos, GIS/3D y store iguales a la base.
-- Fuentes de producción B/C idénticas a sus ramas revisadas.
-- Render React de los quince capítulos: C aparece solamente en Apollo 15, capítulo 4; Apollo 17 usa su rama nueva.
+- Inventory and bytes of **all pre-existing MP3**identical to the base.
+- Absence of new audios/PDF E/F in the candidate.
+- Homepage, explorers, mission identities, scientific records, GIS/3D and store equal to the base.
+- B/C production sources identical to their revised branches.
+- Render React of the fifteen chapters: C appears only in Apollo 15, chapter 4; Apollo 17 uses its new branch.
 
-`git diff --check` correcto; también se comprobaron los archivos de texto nuevos con `git diff --no-index --check NUL <archivo>`. Pueden aparecer avisos LF/CRLF de Git en Windows; no se alteró la configuración Git.
+`git diff --check` correct; new text files were also checked with `git diff --no-index --check NUL <file>`. Git LF/CRLF notices may appear on Windows; Git settings were not altered.
 
-Build final: 2.654 módulos. Permanece el aviso preexistente de React Three Fiber, 823,49 kB minificados. El chunk de historia combinado es aproximadamente 120,39 kB; no se promete una mejora de rendimiento móvil sin medición.
+Final Build: 2.654 modules. React Three Fiber pre-existing warning remains, 823.49 kB minified. The combined history chunk is approximately 120,39 kB; no mobile performance improvement is promised without measurement.
 
-## Medios, ciencia y permisos
+## Media, science, and permissions
 
-Las cuatro imágenes B conservan sus hashes y procedencia NASA. Se reconsultaron la galería Apollo 50th y los registros NASA API `S72-55070` y `7036668`, y se inspeccionaron visualmente los JPEG locales. El catálogo 7036668 contiene una descripción histórica con un recuento de misiones incorrecto; esa frase no se copia al contenido de la aplicación.
+The four B images retain their hashes and NASA source. The Apollo 50th gallery and NASA API records were checked `S72-55070` and `7036668`, and the local JPEGs were visually inspected. The catalogue 7036668 contains a historical description with an incorrect mission count; that phrase is not copied to the application content.
 
-La actividad C reutiliza S71-43788, **fotograma real de TV**. La [fuente NASA del experimento](https://science.nasa.gov/resource/the-apollo-15-hammer-feather-drop/) permite examinar el vídeo; la UI no afirma que una imagen fija pruebe tiempos de caída exactos. [Galería Apollo NASA](https://www.nasa.gov/specials/apollo50th/photos.html).
+Activity C reuses S71-43788, **real TV pic.**. The [NASA source of the experiment](https://science.nasa.gov/resource/the-apollo-15-hammer-feather-drop/) allows the video to be examined; the UI does not claim that a fixed image proves exact drop times. [Nasa Apollo Gallery](https://www.nasa.gov/specials/apollo50th/photos.html).
 
-Pendientes:
+Outstanding items:
 
-- Apollo 15: las 19 entradas de caption timing siguen `pending`; no se activaron los candidatos de A. Escuchar, corregir y aprobar las frases antes de llamarlas sincronizadas. Los tres audios de quiz requieren transcripción aprobada.
-- Apollo 17: voz sintética del navegador, claramente identificada. Calidad/disponibilidad offline dependen del dispositivo. No existe aquí un paquete MP3 de Haroon ni timestamps que se puedan afirmar.
-- Algunos pasos B no tienen fotografía directa seleccionada: muestran una tarjeta de fuente, sin sustituir una foto de otra misión. Curación adicional es mejora pendiente.
-- E: permiso de los tres PDF y 56 MP3 pendiente; notas científicas de Sojourner y Viking requieren cierre editorial. Sus 37 MP3 de Sojourner/Viking incluyen metadatos ElevenLabs sin documentación del plan/licencia.
-- F: permiso del PDF y 18 MP3 también pendiente; no publicar por estar ya implementados localmente. Su informe propio separa guion original de notas científicas.
-- Se mantienen créditos y restricciones NASA/terceros, sin afirmar respaldo institucional. No se descargaron imágenes ajenas a la misión como sustitutos.
+- Apollo 15: the 19 entries of caption timing follow `pending`; A candidates were not activated. Listen, correct, and approve phrases before calling them synchronized. All three audios of maybe require approved transcription.
+- Apollo 17: synthetic browser voice, clearly identified. Offline quality/availability depend on the device. There is no MP3 package of Haroon or timestamps that can be affirmed here.
+- Some steps B do not have selected direct photograph: they show a source card, without replacing a photo of another mission. Additional healing is pending improvement.
+- E: permission of the three pending PDFs and 56 MP3s; scientific notes from Sojourner and Viking require editorial closure. Sojourner/Viking's 37 MP3 include ElevenLabs metadata without plan/licence documentation.
+- F: PDF permission and 18 MP3 also pending; not to publish because they are already implemented locally. Your own report separates original script from scientific notes.
+- NASA/third party credits and restrictions are maintained, without asserting institutional support. Images outside the mission were not downloaded as substitutes.
 
-El contrato D sigue pendiente del propietario GIS: selección externa desde pins, nuevos IDs/ubicaciones para Apollo 15/16 y bindings explícitos. No se añaden coordenadas ni overlays de pins ficticios para la demo. Hardware Lab y las rutas actuales permiten entrar en las historias sin ese trabajo.
+Contract D remains pending from the owner GIS: external selection from pins, new IDs/locations for Apollo 15/16 and explicit bindings. No coordinates or overlays of fake pins are added for the demo. Hardware Lab and current routes allow you to enter the stories without that work.
 
-## Pruebas locales y revisión manual
+## Local testing and manual review
 
-Se inició el preview del build de producción en `http://127.0.0.1:5186/`.
+The preview of the production build was started at `http://127.0.0.1:5186/`.
 
 ```powershell
 Set-Location -LiteralPath $env:AURORALYS_RELEASE_WORKTREE
@@ -107,35 +107,35 @@ npm.cmd run preview -- --port 5186 --strictPort
 ```
 
 - `http://127.0.0.1:5186/story/apollo-15-rover/1`
-- `http://127.0.0.1:5186/story/apollo-15-rover/4` (requiere capítulos anteriores; actividad opcional).
+- `http://127.0.0.1:5186/story/apollo-15-rover/4` (requires previous chapters; optional activity).
 - `http://127.0.0.1:5186/story/apollo-17-rover/1`
 - `http://127.0.0.1:5186/story/follow-perseverance/1`
 - `http://127.0.0.1:5186/hardware`, `/dashboard`, `/explore/moon`.
 
-Smoke HTTP: quince rutas SPA, cuatro JPEG B y diecinueve MP3 Apollo 15 servidos con bytes correctos. Se comprobó que el bundle incluye C y que `dist` conserva sólo el inventario MP3 original, sin PDF ni carpetas de audio nuevas E/F. **HTTP 200 y SSR no equivalen a revisión de navegador.**
+Smoke HTTP: fifteen SPA routes, four JPEG B and nineteen MP3 Apollo 15 served with correct bytes. It was found that the bundle includes C and that `dist` retains only the original MP3 inventory, without PDF or new E/F audio folders. **HTTP 200 and SSR do not amount to browser revision.**
 
-Computer Use devolvió `apps: [], browsers: []`; no se pudo completar revisión visual/táctil ni escucha real. Usar perfil de prueba o ventana privada, sin borrar progreso habitual. Revisar:
+Computer Use returned `apps: [], browsers: []`; could not complete visual/touch revision or actual listening. Use test profile or private window, without deleting usual progress. Check:
 
-1. Desktop y 360×800, 390×844, 439×591; zoom de texto 200%, sticky y tarjetas activas visibles, ausencia de overflow que oculte controles.
-2. Tab/Enter/Space, radios con flechas, foco tras enviar/reintentar, retorno al capítulo y lector de pantalla.
-3. Audio Apollo 15 y voz Apollo 17: play/pause/resume/replay/mute, cambio de segmento/capítulo, Back, ocultar pestaña, errores e imagen no disponible. Confirmar que no haya solapamiento ni autoplay.
-4. Movimiento reducido, scroll/touch nativo, opt-out del avance al cruzar el fin de capítulo y ausencia de avance involuntario desde el quiz o la actividad.
-5. Quiz: respuestas correctas/incorrectas, última explicación, View Results, Complete Story, retry, badge único y dashboard tras recarga. Rechazo de storage y Retry saving sin confirmación falsa.
-6. Perseverance: capítulos 1–5 y escena/landing existentes. El código y las pruebas están protegidos; falta la comprobación con GPU real.
+1. Desktop and 360×800, 390×844, 439×591; text zoom 200%, sticky and visible active cards, no overflow that hides controls.
+2. Tab/Enter/Space, arrow radios, focus after sending/retrying, return to chapter and screen reader.
+3. Audio Apollo 15 and voice Apollo 17: play/pause/resume/replay/mute, segment/chapter change, Back, hide tab, errors and image not available. Confirm that there is no overlap or autoplay.
+4. Reduced movement, native scroll/touch, opt-out of advance when crossing the end of chapter and absence of involuntary advance from the quiz or activity.
+5. Quiz: correct/incorrect answers, last explanation, View Results, Complete Story, retry, unique badge and dashboard after reloading. Storage and Retry saving rejection without false confirmation.
+6. Perseverance: existing chapters 1–5 and scene/landing. Code and testing are protected; no check with real GPU.
 
-## Secuencia mínima para una demo estable
+## Minimum sequence for a stable demo
 
-1. Revisar este diff B+C y completar el smoke manual de las tres historias. Mantener el candidato libre de E/F y de APIs GIS propuestas mientras falten permisos/aprobación.
-2. Aprobar el candidato antes de cualquier commit, push o despliegue. El build local ya es demostrable; no se necesita integrar siete historias para demostrar una ruta estable.
-3. Revisar Apollo 16 aisladamente con Haroon: guion/voz, evidencia, quiz, finalización, móvil y permisos. Sólo después coordinar sus tres seams de catálogo/registro/página y tests de recuento con el candidato.
-4. Cerrar las notas editoriales/licencias de E antes de considerar su registro de tres misiones y nuevos medios. No copiar los ZIP ni el duplicado Opportunity.
-5. Revisar A por separado: sus correcciones de runtime pueden evaluarse sin activar ASR/cues no aprobados. GIS/2D de Erand permanece fuera del release frontend hasta acordar el contrato D.
+1. Review this B+C diff and complete the manual smoke of the three stories. Keep the candidate free of proposed I/O and GIS APIs while missing permissions/approval.
+2. Approve the candidate before any commit, push or deployment. The local build is already demonstrable; you don't need to integrate seven stories to demonstrate a stable path.
+3. Review Apollo 16 in isolation with Haroon: script/voice, evidence, quiz, completion, mobile and permissions. Only after coordinating your three catalog/registration/page logs and counting tests with the candidate.
+4. Close editorial notes/E-licences before considering your three-mission and new media record. Do not copy the ZIPs or duplicate Opportunity.
+5. Review A separately: your runtime corrections can be evaluated without activating ASR/unapproved coles. Erand GIS/2D remains outside the release frontend until contract D is agreed.
 
-## Inventario exacto del candidato
+## Exact inventory of the candidate
 
-La lista de archivos se añade al final mediante cotejo de Git; incluye imports/renderer B, montaje C, tests, cuatro imágenes NASA y documentación. No incluye `dist`, logs, caches ni el junction `node_modules`.
+The file list is added at the end by Git matching; it includes imports/renderer B, C mount, tests, four NASA images and documentation. It does not include `dist`, logs, caches or the `node_modules` matching.
 
-Total actual: **34 archivos** (11 modificados y 23 nuevos), sin cambios staged.
+Current total: **34 files** (11 modified and 23 new), no changes staged.
 
 - `activity-preview.html`
 - `docs/rover-stories-release-candidate.md`
@@ -172,9 +172,9 @@ Total actual: **34 archivos** (11 modificados y 23 nuevos), sin cambios staged.
 - `tests/workstream-b-apollo17.test.mjs`
 - `tests/workstream-c-activity.test.mjs`
 
-## Inventario exacto de F, separado del candidato
+## Exact inventory of F, separated from candidate
 
-Estos 43 archivos pertenecen exclusivamente a `apollo16` (9 modificados, 34 nuevos); no son parte del diff B+C. El PDF original sigue fuera del worktree, en el ZIP de entrada.
+These 43 files belong exclusively to `apollo16` (9 modified, 34 new); they are not part of the B+C diff. The original PDF remains outside the worktree, in the input ZIP.
 
 - `docs/apollo16-input-manifest.json`
 - `docs/workstream-f-apollo16.md`

@@ -1,5 +1,4 @@
 {
-  "date": "2026-11-11",
   "sourceInventoryCommit": "4f6d3806e962dfcb3eaed12634d0e9fee9ec974b",
   "note": "Expected scripts come from the existing private QA inventory, not new listening. Source PDFs and recordings are not included. See scientific-decisions.md for updated findings that supersede the original hold rationales.",
   "recordings": [

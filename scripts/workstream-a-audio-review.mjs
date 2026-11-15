@@ -64,11 +64,12 @@ export async function createAudioReview(root) {
         status: candidate.status, engine: candidates.engine.name, model: candidates.model.name }
     }
   }
-  return { missionId: 'apollo-15-rover', hardwareId: 'lrv-1', generatedOn: '2026-11-08',
+  const media = Object.fromEntries(Object.entries(apollo15StoryMedia).map(([id, { verifiedOn, ...entry }]) => [id, entry]))
+  return { missionId: 'apollo-15-rover', hardwareId: 'lrv-1',
     durationMethod: 'Sum of actual MPEG Layer III frame sample counts / sample rate. Includes encoding padding; native decoded duration can differ. No sentence timestamps inferred.',
     audioProvenance: 'Original project narration, not NASA mission audio. MP3 files unchanged.',
     evidenceNote: 'Contextual media are verified stills from the existing Apollo 15 manifest. Original script source links are preserved as history, not automatically certified for display.',
-    media: apollo15StoryMedia, recordings }
+    media, recordings }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {

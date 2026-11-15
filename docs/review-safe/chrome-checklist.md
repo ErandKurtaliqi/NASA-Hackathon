@@ -1,10 +1,10 @@
-# Chrome: aceptación manual pendiente
+# Chrome: Manual acceptance pending
 
-11 de noviembre de 2026. El inventario de herramientas sigue sin browser/native host; no hay prueba visual, auditiva o E2E real nueva. Las pruebas automatizadas no equivalen a esta lista. Usar un perfil QA separado; no limpiar progreso personal.
+The tool inventory is still without browser/native host; there is no new visual, auditory or real E2E test. Automated testing does not match this list. Use a separate QA profile; do not clean up personal progress.
 
-## Preparación y alcance
+## Preparation and scope
 
-**Revisión de código**, puerto 5197:
+**Code review**, port 5197:
 
 ```powershell
 Set-Location -LiteralPath $env:AURORALYS_REVIEW_WORKTREE
@@ -12,30 +12,30 @@ npm.cmd run build
 npm.cmd run preview -- --port 5197 --strictPort
 ```
 
-**Narración original local**, usar otro terminal y puerto 5196:
+**Original local ** description, use another terminal and port 5196:
 
 ```powershell
 Set-Location -LiteralPath $env:AURORALYS_NARRATED_WORKTREE
 npm.cmd run preview -- --port 5196 --strictPort
 ```
 
-No suponer que están iniciados; si un puerto está ocupado, comprobar qué servidor responde o elegir otro puerto libre. No detener servicios ajenos. Ambos son solo loopback, sin despliegue. El build original ya fue validado en `4f6d380`; no copiar sus MP3/PDF al review.
+Do not assume that they are started; if a port is occupied, check which server responds or choose another free port. Do not stop other people's services. Both are only loopback, no display. The original build has already been validated in `4f6d380`; do not copy your MP3/PDF to the review.
 
-| Prioridad y pasos | Resultado esperado | Qué registrar si falla |
+| Priority and steps | Expected result | Record on failure |
 |---|---|---|
-| 1. Abrir `/`, activar sonido por gesto y seleccionar Moon/Mars; pausar sonido y salir | Guía/captions disponibles, sin autoplay inicial ni solapamiento; navegación a ambos explorers; voz termina al salir | Ruta/origen, grabación, control pulsado, error Console/Network, si queda sonido tras salir |
-| 2. Abrir `/story/apollo-15-rover/1` en 5197; avanzar por los cinco capítulos con Previous/Next y scroll | Voz existente de la misión, contenido/foto correspondiente, lectura sin sonido, navegación natural; actividades opcionales no bloquean | Capítulo/segmento activo y destino; foco, foto/leyenda, autoavance activado o desactivado |
-| 3. Abrir Apollo 11 y Apollo 17 en 5197, cinco capítulos cada una | Aviso «Code review build»; ninguna promesa de reproducir audios excluidos; lectura, quiz/progreso y fuentes funcionan | Si hay `<audio>`/Play engañoso o requests a MP3 ausentes; distinguir de imágenes remotas bloqueadas |
-| 4. En 5196 escuchar los 53 audios habilitados de historias/homepage; para las siete retenciones usar revisión editorial de originales, no habilitarlas | Misión, capítulo, script y voz correctos; retenciones visibles/silenciosas en la app, con lectura | Nombre de archivo/SHA, frase audible que difiere, fuente y decisión requerida; no aprobar por HTTP |
-| 5. Durante audio: Play, Pause, Resume, Replay, mute/unmute; cambiar capítulo/pregunta/historia; atrás/adelante y ocultar pestaña | Pausa conserva posición; Replay vuelve al inicio; desmutear no auto-reproduce; una sola voz y cleanup; TTS histórico no compite | Pista previa/nueva, posiciones observadas, secuencia exacta y error de Play si existe |
-| 6. Comparar texto y evidencia NASA con cada segmento | Captions legibles sin voz; créditos/fuentes accesibles; distinguir fotografía/ilustración y texto de frase temporizada | Discrepancia concreta y fuente; no inventar tiempos ni editar audio durante QA |
-| 7. Apollo 15 capítulo 4, actividad martillo/pluma; Apollo 11 capítulo 1, actividad de reflexión | Predicción/feedback/retry opcionales; reflector estacionario, no medición real; ningún badge o bloqueo por actividad | Opción, feedback, foco y si cambió progreso inesperadamente |
-| 8. Quiz de cada misión: aciertos/errores, tres explicaciones, View Results, TRY AGAIN y Complete Story | Última explicación visible; puntaje honesto; intento nuevo incompleto no permite finalizar; capítulo ya completado conserva estado/badge único | Respuestas, score, estado de botón, foco y snapshot antes/después sin compartir datos personales |
-| 9. Recargar Dashboard y retomar historias; probar rechazo de storage en perfil QA y Retry saving | Progreso persistido se conserva; fallo distingue sesión/guardado; retry recupera snapshot sin repetir quiz ni duplicar badges | Error y pasos exactos; no usar clear/removeItem ni modificar schema |
-| 10. Tab/Shift-Tab/Escape, zoom 200%, reduced motion; probar 360×800, 390×844, 430×932, 768×1024, 1366×768 y 1920×1080 | Foco visible, navegación/controles táctiles utilizables, sin overflow ni texto/fotos solapados; fuentes completas | Captura con ruta/viewport/estado; ancho del documento, elemento que desborda y controles inaccesibles |
+| 1. Open `/`, activate gesture sound and select Moon/Mars; pause sound and exit | Available guidance/captions, no initial autoplay or overlap; navigation to both explorers; voice ending on exit | Path/origin, recording, pulsed control, Console/Network error, if sound is left after exit |
+| 2. Open `/story/apollo-15-rover/1` in 5197; advance through the five chapters with Previous/Next and scroll | Existing mission voice, corresponding content/photo, reading without sound, natural navigation; optional activities do not block | Chapter/active segment and destination; focus, photo/legend, auto-advance enabled or disabled |
+| 3. Open Apollo 11 and Apollo 17 in 5197, five chapters each | Code review build warning; no promise to play excluded audios; read, maybe/progress and fonts work | If there is `<audio>`/Play misleading or MP3 requests missing; distinguish from remote images blocked |
+| 4. In 5196 listen to 53 audios enabled from stories/homepage; for the seven retentions use original editing, not enable them | Correct mission, chapter, script and voice; visible/silent retentions in the app, with reading | File name/SHA, different audible phrase, font and decision required; do not approve by HTTP |
+| 5. During audio: Play, Pause, Summary, Replay, mute/unmute; change chapter/question/history; back/back and hide tab | Pause retains position; Replay returns to the beginning; unmute does not auto-reduce; single voice and cleanup; historical TTS does not compete | Pre/new track, observed positions, exact sequence and Play error if there is |
+| 6. Compare NASA text and evidence to each segment | Voiceless readable chapters; credits/accessible sources; distinguishing photography/illustration and timed phrase text | Record the specific discrepancy and source. Avoid inventing timings or editing audio during QA. |
+| 7. Apollo 15 chapter 4, hammer and feather activity; Apollo 11 chapter 1, reflection activity | Optional prediction/feedback/retry; stationary reflector, not actual measurement; no activity-blocking or badge | Option, feedback, focus and if progress changed unexpectedly |
+| 8. Quiz of each mission: correct/mistakes, three explanations, View Results, TRY AGAIN and Complete Story | Last visible explanation; honest score; incomplete new attempt does not allow completion; chapter already completed retains unique status/badge | Answers, score, button status, focus and snapshot before/after without sharing personal data |
+| 9. Reload Dashboard and resume stories; try storage rejection in QA profile and Retry saving | Persisting progress is preserved; session/saved fault; retry recovers snapshot without repeating quiz or duplicating badges | Record the error and exact steps. Avoid clear/removeItem and schema changes. |
+| 10. Tab/Shift-Tab/Escape, zoom 200%, reduced motion; test 360×800, 390×844, 430×932, 768×1024, 1366×768, and 1920×1080 | Visible focus, navigation/touch controls usable, no overflow or text/overlay photos; full fonts | Track/viewport/state capture; document width, overflowing element and inaccessible controls |
 
-Para Console/Network, filtrar errores y requests fallidos, anotar status/MIME y reproducir con caché/red normal y lenta. No compartir cookies, URLs firmadas o credenciales. La evidencia remota Apollo 11 tiene fallback si no carga; un bloqueo de red no es evidencia de mala atribución.
+For Console/Network, filter failed errors and requests, write down status/MIME and play with normal and slow cache/network. Don't share cookies, signed URLs or credentials. The remote Apollo 11 evidence has failback if it doesn't load; a network lock is not evidence of bad attribution.
 
-Comparar el primer viewport Apollo 15 con la referencia de Haroon de 1364×768: máquina izquierda, título/relato central, evidencia derecha, tipografía/espaciado, fondo/horizonte, sonido y línea de capítulos. La app conserva cinco capítulos; la referencia tiene cuatro. Siguen pendientes recortes 2D aprobados y superficie/horizonte; no se afirma equivalencia. No copiar las capturas como evidencia NASA. Registrar cambios GIS/3D para Erand, no alterar cámara, pines o coordenadas durante QA.
+Compare the first Apollo 15 viewport with the Haroon reference of 1364×768: left machine, title/central story, right evidence, typography/space, background/horizon, sound and chapter line. The app retains five chapters; the reference has four. 2D approved cuts and surface/horizon are still pending; no equivalence is claimed. Do not copy the captures as NASA evidence. Register changes GIS/3D for Erand, do not alter camera, pins or coordinates during QA.
 
-Los siete archivos y checkpoints de escucha están en [scientific-decisions.md](scientific-decisions.md) y [held-recordings.json](held-recordings.json). No hay aprobación humana registrada todavía.
+The seven listening files and checklists are in [scientific-decisions.md](scientific-decisions.md) and [held-recordings.json](held-recordings.json). There is no human approval registered yet.

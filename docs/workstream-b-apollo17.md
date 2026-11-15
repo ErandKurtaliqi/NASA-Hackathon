@@ -1,6 +1,6 @@
 # Workstream B — Apollo 17 reusable Rover Story
 
-2026-11-08. Isolated detached worktree:
+Isolated detached worktree:
 `apollo17 (repository-relative)`, based on `8120d9e`.
 No changes have been transferred to `integration/main-feature-review`, committed,
 merged, or pushed. Dependencies are reused read-only through a `node_modules`
@@ -94,7 +94,7 @@ sentence alignment are claimed for browser-generated voice.
 
 ## NASA evidence and verification
 
-Verified 2026-11-08 through official NASA sources. Exact URLs, descriptions, meaningful
+Verified through official NASA sources. Exact URLs, descriptions, meaningful
 alt text, dimensions, credits, dates and usage notes are in `apollo17StoryMedia.ts`.
 These are unchanged downloaded JPEG renditions, not generated or locally edited art.
 Four assets total 254,780 bytes.

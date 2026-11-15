@@ -14,7 +14,6 @@
       "height": 1920,
       "bytes": 481844,
       "sha256": "6d314d8a4f75c086439d9f1297968330ab55d53b5635b1d34632ca6154a70354",
-      "verifiedOn": "2026-11-11",
       "gitResource": "URL and metadata only; downloaded inspection file stays outside the worktree"
     },
     {
@@ -28,7 +27,6 @@
       "height": 747,
       "bytes": 225651,
       "sha256": "b2d4f5fb0db24898c51541e3c9b60b774be4f2cd3e20d74328f7ce1126628f1d",
-      "verifiedOn": "2026-11-11",
       "gitResource": "URL and metadata only; downloaded inspection file stays outside the worktree"
     },
     {
@@ -42,7 +40,6 @@
       "height": 1920,
       "bytes": 131672,
       "sha256": "9b685bb49bea37ae055e39508967df6f468a0d1bab9921c81bbc5b0d6dadb0e9",
-      "verifiedOn": "2026-11-11",
       "gitResource": "URL and metadata only; downloaded inspection file stays outside the worktree"
     }
   ]
