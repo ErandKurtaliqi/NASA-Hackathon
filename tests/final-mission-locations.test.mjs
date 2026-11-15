@@ -34,6 +34,7 @@ new Function('require','module','exports',result.outputFiles.find(f=>f.path.ends
   id=>id==='react'?{...React,useEffect:(fn,deps)=>effects.push({fn,deps}),useState:value=>[value,next=>tileStates.push(next)],useRef:value=>({current:value}),useMemo:fn=>fn()}:require(id),module,module.exports)
 const api = module.exports
 const expected = [
+  ['moon','Apollo 11 Eagle Descent Stage','Tranquility Base, Mare Tranquillitatis',0.67408,23.47297,'0.67408° N, 23.47297° E'],
   ['moon','Apollo 11 LRRR','Mare Tranquillitatis, Sea of Tranquility',0.67345,23.47307,'0.67345° N, 23.47307° E'],
   ['moon','Apollo 15 LRV','Hadley-Apennine Region, Hadley Rille',26.13110,3.63972,'26.13110° N, 3.63972° E'],
   ['moon','Apollo 16 LRV','Descartes Highlands, near Orion Lunar Module',-8.97292,15.50279,'8.97292° S, 15.50279° E'],
@@ -49,10 +50,10 @@ function nodes(tree, predicate) {
   return [...(predicate(tree)?[tree]:[]),...nodes(tree.props.children,predicate)]
 }
 
-for (const planet of ['moon','mars']) test(`${planet}: exactly four approved missions; no general-purpose or retired entries`,()=>{
+for (const planet of ['moon','mars']) test(`${planet}: expected mission inventory; no general-purpose or retired entries`,()=>{
   const rows=api.getPlanetLocations(planet)
   assert.deepEqual(rows.map(r=>r.name),expected.filter(r=>r[0]===planet).map(r=>r[1]))
-  assert.equal(rows.length,4)
+  assert.equal(rows.length,planet==='moon'?5:4)
   assert.ok(rows.every(r=>!['jezero','curiosity','perseverance','tycho'].includes(r.id)))
 })
 
@@ -64,7 +65,7 @@ for (const [planet,name,place,lat,lon,display] of expected) test(`${name}: exact
   let selected, viewed
   const props={planet,selectedId:row.id,onSelect:id=>selected=id,onViewMap:id=>viewed=id}
   const tree=api.Locations(props), buttons=nodes(tree,n=>n.type==='button')
-  assert.equal(buttons.length,5)
+  assert.equal(buttons.length,planet==='moon'?6:5)
   const active=buttons.find(b=>b.props['aria-pressed']===true)
   active.props.onClick(); assert.equal(selected,row.id)
   assert.equal(active.props['aria-controls'],'location-information')
@@ -81,7 +82,7 @@ for (const planet of ['moon','mars']) test(`${planet}: Leaflet creates only supp
     calls.length=0;effects.length=0
     const tree=api.PlanetMap({planet,focusId:row.id,focusRequest:7})
     const pins=nodes(tree,n=>n.type==='map-marker')
-    assert.equal(pins.length,planet==='moon'?4:1)
+    assert.equal(pins.length,planet==='moon'?5:1)
     assert.deepEqual(pins.map(p=>p.props.position),api.getPlanetLocations(planet).filter(api.hasCoordinates).map(r=>[r.coordinates.latitude,r.coordinates.longitude]))
     const focus=nodes(tree,n=>typeof n.type==='function'&&n.type.name==='FocusLocation')[0]
     focus.type(focus.props);effects.forEach(e=>e.fn())
@@ -122,8 +123,8 @@ test('a failed NASA tile batch cannot be reported as live, and a later successfu
   assert.deepEqual(tileStates.slice(-2),['loading','live'])
 })
 
-test('all eight mission links resolve without changing the existing story registry',()=>{
-  assert.equal(new Set(api.storyMapLocations.map(r=>api.getMapStory(r)?.id)).size,8)
+test('all nine mission links resolve',()=>{
+  assert.equal(new Set(api.storyMapLocations.map(r=>api.getMapStory(r)?.id)).size,9)
   assert.ok(api.storyMapLocations.every(r=>api.getMapStory(r)?.planet===r.planet))
 })
 

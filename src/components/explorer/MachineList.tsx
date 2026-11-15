@@ -1,4 +1,5 @@
 import { Bot, ChevronRight, Plane, Satellite } from 'lucide-react'
+import { eaglePortrait } from '../../features/storytelling/apollo11Eagle'
 import { apollo11StoryMedia } from '../../features/storytelling/apollo11StoryMedia'
 import { apollo15StoryMedia } from '../../features/storytelling/apollo15StoryMedia'
 import { apollo16StoryMedia } from '../../features/storytelling/apollo16StoryMedia'
@@ -7,6 +8,7 @@ import type { HardwareProfile } from '../../types'
 import styles from '../../pages/ExplorerPage.module.css'
 
 const moonPortraits: Partial<Record<string, string>> = {
+  'lunar-module': eaglePortrait.src,
   'apollo-11-lrrr': apollo11StoryMedia.array.src,
   'lrv-1': apollo15StoryMedia.rover.src,
   'lrv-2': apollo16StoryMedia.rover.src,

@@ -1,6 +1,7 @@
 import { apollo15StoryMedia } from './apollo15StoryMedia'
 import { apollo17StoryMedia } from './apollo17StoryMedia'
 import { apollo11StoryMedia } from './apollo11StoryMedia'
+import { eaglePortrait } from './apollo11Eagle'
 import { apollo16StoryMedia } from './apollo16StoryMedia'
 import { marsHeroMedia, marsStoryMedia } from './marsStoryMedia'
 import type { StoryEvidenceMedia } from '../../components/storytelling/StoryMedia'
@@ -17,6 +18,8 @@ export type StoryPresentation = {
 
 /** Visual configuration only. No mission registration, script, timing or GIS data. */
 export const moonStoryPresentation = {
+  'apollo-11-eagle': { world: 'moon', hardware: 'lander', subtitle: 'Eagle descent stage',
+    hardwareLabel: 'LM-5 · Tranquility Base', portrait: eaglePortrait, portraitStyle: 'lander' },
   'apollo-15-rover': { world: 'moon', hardware: 'lunar-rover', subtitle: 'LRV · Lunar Roving Vehicle',
     hardwareLabel: 'LRV-1 · First Apollo lunar rover', portrait: apollo15StoryMedia.rover, portraitStyle: 'rover', cutout: 'apollo15-photo' },
   'apollo-17-rover': { world: 'moon', hardware: 'lunar-rover', subtitle: 'LRV-3 · Taurus-Littrow',

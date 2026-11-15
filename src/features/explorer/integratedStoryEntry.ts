@@ -4,7 +4,7 @@ import { getStoryEntry } from './storyEntry'
 import type { HardwareProfile } from '../../types'
 import type { MachineProgress } from '../../store'
 
-const moonRoster = ['apollo-11-lrrr', 'lrv-1', 'lrv-2', 'lrv']
+const moonRoster = ['lunar-module', 'apollo-11-lrrr', 'lrv-1', 'lrv-2', 'lrv']
 const marsRoster = ['ingenuity', 'sojourner', 'opportunity', 'viking-1']
 
 export const explorerHardware = [

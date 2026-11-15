@@ -2,6 +2,7 @@ import { hardware } from '../../data'
 import { machineStories, type MachineStory } from '../../machineStories'
 import { apollo11Hardware, apollo11Story } from './apollo11Story'
 import { moonQuiz } from './moonRecordings'
+import { eagleHardware, eagleStory } from './apollo11Eagle'
 import { apollo16Story } from './apollo16Story'
 import { marsMachineStories, marsStoryHardware } from './marsStories'
 import type { HardwareProfile } from '../../types'
@@ -24,7 +25,8 @@ export const storyCatalog: Record<string, MachineStory> = {
     { label: 'NASA: orange volcanic glass', url: 'https://science.nasa.gov/solar-system/moon/history-of-lunar-exploration/' },
   ] },
   'apollo-11-reflector': apollo11Story,
+  'apollo-11-eagle': eagleStory,
   'apollo-16-rover': apollo16Story,
   ...marsMachineStories,
 }
-export const missionHardware = [apollo11Hardware, ...hardware.filter(item => item.id !== 'perseverance'), apollo16Hardware, ...marsStoryHardware]
+export const missionHardware = [apollo11Hardware, eagleHardware, ...hardware.filter(item => !['perseverance', 'lunar-module'].includes(item.id)), apollo16Hardware, ...marsStoryHardware]

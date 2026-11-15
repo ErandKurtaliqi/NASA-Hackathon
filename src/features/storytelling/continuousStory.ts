@@ -5,6 +5,7 @@ import { moonRecordings } from './moonRecordings'
 import { isMarsStory, marsStoryContent, marsReviewNote } from './marsStories'
 import { apollo15SegmentMedia, apollo15StoryMedia } from './apollo15StoryMedia'
 import { apollo16SegmentMedia, apollo16StoryMedia } from './apollo16StoryMedia'
+import { eagleAudioPath, eagleChapters } from './apollo11Eagle'
 import apollo11Evidence from './apollo11Evidence.json'
 import apollo15Evidence from './apollo15Evidence.json'
 import apollo16Evidence from './apollo16Evidence.json'
@@ -52,6 +53,7 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
   return chapterMeta.slice(0, 4).flatMap((chapter, c) => {
     const tracks = story.id === 'apollo-15-rover' ? apollo15ChapterRecordings[c]
       : story.id === 'apollo-16-rover' ? apollo16ChapterRecordings[c]
+      : story.id === 'apollo-11-eagle' ? eagleChapters[c]
       : story.id === 'apollo-11-reflector' ? moonRecordings['11'][c]
       : story.id === 'apollo-17-rover' ? moonRecordings['17'][c]
       : isMarsStory(story.id) ? marsStoryContent[story.id].chapters[c] : []
@@ -81,6 +83,12 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
         evidence = images ? images[0] : apollo16StoryMedia[apollo16SegmentMedia[c][s]]
         note = apollo16ChapterRecordings[c][s].note.text
       }
+      else if (story.id === 'apollo-11-eagle') {
+        gallery = eagleChapters[c][s].gallery
+        evidence = gallery.find((item): item is StoryEvidenceMedia => 'src' in item)
+        if (c === 2 && s === 2) note = 'NASA credits Buzz Aldrin with deploying the retroreflector. The original recording says Neil Armstrong.'
+        if (c === 1 && s === 0) note = 'Crews had previously orbited the Moon. Apollo 11 was the first crewed landing.'
+      }
       else if (story.id === 'apollo-11-reflector' || story.id === 'apollo-17-rover') {
         const moon = moonRecordings[story.id === 'apollo-11-reflector' ? '11' : '17'][c][s]
         note = moon.review; audioHold = story.id === 'apollo-11-reflector' && moon.playback === 'review-required' ? moon.review : undefined
@@ -109,6 +117,7 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
   })
 }
 export function quizRecording(storyId: string, question: number) {
+  if (storyId === 'apollo-11-eagle') return eagleAudioPath(5, question + 1)
   return storyId === 'apollo-15-rover' ? apollo15QuizRecordings[question] : storyId === 'apollo-16-rover' ? apollo16QuizRecordings[question] : `/audio/${storyId.startsWith('apollo-') ? storyId.split('-').slice(0, 2).join('-') : storyId}/chapter-5/${question + 1}.mp3`
 }
 

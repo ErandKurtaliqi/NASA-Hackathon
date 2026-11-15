@@ -19,7 +19,7 @@ const result = await build({ stdin: { contents: "export {default as App} from '.
       loader: 'tsx', contents: 'export const OfficialRover=()=>null,LunarRover=()=>null;export default function Scene(){return null}' }))
     build.onLoad({ filter: /[\\/]store\.ts$/ }, () => ({ loader: 'ts', contents: `
       const state={completedChapters:[],badges:[],exploredLocations:[],inspectedInstruments:[],
-        storyProgress:Object.fromEntries(['apollo-15-rover','apollo-17-rover','apollo-11-reflector','apollo-16-rover','sojourner','opportunity','viking-1','ingenuity'].map(id=>[id,{completed:['meet','journey','challenges','legacy','quiz'],lastChapter:5,completedMission:true}])),
+        storyProgress:Object.fromEntries(['apollo-15-rover','apollo-17-rover','apollo-11-reflector','apollo-11-eagle','apollo-16-rover','sojourner','opportunity','viking-1','ingenuity'].map(id=>[id,{completed:['meet','journey','challenges','legacy','quiz'],lastChapter:5,completedMission:true}])),
         completeStoryChapter(){throw Error('Render must not complete a chapter')},awardBadge(){throw Error('Render must not award')},exploreLocation(){throw Error('Render must not explore')}};
       export const useProgress=selector=>selector?selector(state):state;
       export const useProgressPersistence=()=>({status:'saved'});
@@ -42,7 +42,7 @@ function render(path) {
     })
   })
 }
-const validPath = path => /^\/inspection\/(apollo-(15|17)-rover)\/[1-5]$/.test(path) || /^(?:\/|\/explore\/(?:moon|mars)|\/discover|\/hardware|\/dashboard|\/sources|\/story\/(?:apollo-(?:15|16|17)-rover|apollo-11-reflector|sojourner|opportunity|viking-1|ingenuity|follow-perseverance)\/[1-5])$/.test(path)
+const validPath = path => /^\/inspection\/(apollo-(15|17)-rover)\/[1-5]$/.test(path) || /^(?:\/|\/explore\/(?:moon|mars)|\/discover|\/hardware|\/dashboard|\/sources|\/story\/(?:apollo-(?:15|16|17)-rover|apollo-11-reflector|apollo-11-eagle|sojourner|opportunity|viking-1|ingenuity|follow-perseverance)\/[1-5])$/.test(path)
 function assertInternalLinks(html) {
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1])
   assert.equal(new Set(ids).size, ids.length, 'No duplicate DOM IDs within a route')
@@ -63,8 +63,8 @@ test('application primary routes render their real frontend and valid internal n
   }
 })
 
-test('all forty active story routes render in the real shell with controls, evidence and source access', async () => {
-  for (const id of ['apollo-15-rover', 'apollo-17-rover', 'apollo-11-reflector', 'apollo-16-rover', 'sojourner', 'opportunity', 'viking-1', 'ingenuity']) for (let chapter = 1; chapter <= 5; chapter++) {
+test('all 45 active story routes render in the real shell with controls, evidence and source access', async () => {
+  for (const id of ['apollo-15-rover', 'apollo-17-rover', 'apollo-11-reflector', 'apollo-11-eagle', 'apollo-16-rover', 'sojourner', 'opportunity', 'viking-1', 'ingenuity']) for (let chapter = 1; chapter <= 5; chapter++) {
     const html = await render(`/story/${id}/${chapter}`)
     assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1, `${id}/${chapter}`)
     assert.ok(html.includes('Story chapters') && html.includes('Mission sources'), `${id}/${chapter}`)
@@ -85,8 +85,8 @@ test('invalid and unpublished stories recover without mounting narration or quiz
   assert.ok((await render('/unknown-route')).includes('Signal lost'))
 })
 
-test('eight canonical routes and forty legacy links render the full continuous document with one narrator and an in-page quiz', async () => {
-  for (const id of ['apollo-15-rover','apollo-17-rover','apollo-11-reflector','apollo-16-rover','sojourner','opportunity','viking-1','ingenuity']) {
+test('nine canonical routes and 45 chapter links render the full continuous document with one narrator and an in-page quiz', async () => {
+  for (const id of ['apollo-15-rover','apollo-17-rover','apollo-11-reflector','apollo-11-eagle','apollo-16-rover','sojourner','opportunity','viking-1','ingenuity']) {
     for (const suffix of ['', '/1','/2','/3','/4','/5']) {
       const html = await render(`/story/${id}${suffix}`)
       assert.ok(html.includes(`data-continuous-story="${id}"`))

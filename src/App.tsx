@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage'
 import ExplorerPage from './pages/ExplorerPage'
 import FooterBrand from './components/branding/FooterBrand'
 import StoryMedia from './components/storytelling/StoryMedia'
+import { eaglePortrait } from './features/storytelling/apollo11Eagle'
 import { apollo11StoryMedia } from './features/storytelling/apollo11StoryMedia'
 
 const LunarRoverScene = lazy(() => import('./components/LunarRoverScene'))
@@ -70,7 +71,7 @@ function Hardware() {
     <section className="page-heading">
       <span className="eyebrow"><span/> HARDWARE LAB</span>
       <h1>Machines built<br/>for other worlds.</h1>
-      <p>Explore eight pieces of mission hardware left on Mars and the Moon.</p>
+      <p>Explore {selectedHardware.length} pieces of mission hardware left on Mars and the Moon.</p>
     </section>
     <div className="hardware-layout">
       <div className="hardware-list" aria-label="Mission hardware">
@@ -92,7 +93,7 @@ function Hardware() {
       <div className="hardware-view">
         <div className="hardware-scene">
           <Suspense fallback={<SceneLoader/>}>
-            {selected.id === 'ingenuity' ? <IngenuityScene/> : isLunarRover ? <LunarRoverScene interactive/> : selected.id === 'apollo-11-lrrr' ? <StoryMedia media={apollo11StoryMedia.array} motionEnabled={false}/> : <MachineIllustration id={selected.id}/>}
+            {selected.id === 'ingenuity' ? <IngenuityScene/> : isLunarRover ? <LunarRoverScene interactive/> : selected.id === 'lunar-module' ? <StoryMedia media={eaglePortrait} motionEnabled={false}/> : selected.id === 'apollo-11-lrrr' ? <StoryMedia media={apollo11StoryMedia.array} motionEnabled={false}/> : <MachineIllustration id={selected.id}/>}
           </Suspense>
         </div>
         <div className="hardware-info">

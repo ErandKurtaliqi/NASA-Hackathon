@@ -37,7 +37,7 @@ test('each documentary has one final mission location while legacy scientific ma
     return story ? [story.id] : []
   })
   assert.deepEqual(entries.sort(), Object.keys(api.storyCatalog).sort())
-  assert.equal(api.storyMapLocations.length, 8)
+  assert.equal(api.storyMapLocations.length, 9)
   assert.ok(!api.storyMapLocations.some(location => ['tycho', 'curiosity', 'jezero'].includes(location.id)))
   assert.equal(api.getMapStory(api.markers.find(marker => marker.id === 'tycho')), undefined)
 })
@@ -81,10 +81,10 @@ test('master and documentary catalogs retain separate mission data with a single
   assert.deepEqual(api.explorerHardware.filter(item => item.planet === 'mars').map(item => item.id),
     ['ingenuity', 'sojourner', 'opportunity', 'viking-1'])
   const moonRoster = api.explorerHardware.filter(item => item.planet === 'moon')
-  assert.deepEqual(moonRoster.map(item => item.id), ['apollo-11-lrrr', 'lrv-1', 'lrv-2', 'lrv'])
+  assert.deepEqual(moonRoster.map(item => item.id), ['lunar-module', 'apollo-11-lrrr', 'lrv-1', 'lrv-2', 'lrv'])
   assert.equal(moonRoster.find(item => item.id === 'lrv').name, 'Apollo 17 Lunar Roving Vehicle')
   const ids = api.explorerHardware.map(h => api.getExplorerStoryEntry(h)?.story.id).filter(Boolean)
-  assert.equal(new Set(ids).size, 8)
+  assert.equal(new Set(ids).size, 9)
   assert.ok(!ids.includes('follow-perseverance'))
   assert.equal(api.sources.marsTrekExplorer.url, 'https://trek.nasa.gov/mars/')
   assert.ok(api.sources.marsVisual)

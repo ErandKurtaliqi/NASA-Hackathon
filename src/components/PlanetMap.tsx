@@ -111,7 +111,7 @@ export default function PlanetMap({ planet, focusId, focusRequest }: { planet: P
           icon={icons.get(marker.id)!}
           title={label}
           alt={label}
-          zIndexOffset={story ? 1000 : 0}
+          zIndexOffset={marker.id === focused?.id ? 2000 : story ? 1000 : 0}
           eventHandlers={{
             click: activate,
             keydown: (event: L.LeafletKeyboardEvent) => {
