@@ -6,20 +6,20 @@ export type MoonMission = '11' | '17'
 export type MoonRecording = {
   chapter: number; segment: number; title: string; text: string; audio: string
   mapping: 'filename-and-pdf'; listening: 'pending' | 'approved-by-haroon'; timing: 'pending'
-  playback: 'enabled' | 'review-required'; review?: string; readingText: string
+  playback: 'enabled' | 'review-required'; review?: string; reviewSource?: string; readingText: string
 }
 // Never silently edit the supplied script or recording. Questionable assertions
 // remain in the private source, while the public reading uses supported wording.
-const reviews: Record<string, { review: string; readingText?: string; playback?: 'enabled'; listening?: 'approved-by-haroon' }> = {
+const reviews: Record<string, { review: string; source?: string; readingText?: string; playback?: 'enabled'; listening?: 'approved-by-haroon' }> = {
   '11:2:3': { review: 'The package names an individual deployer inconsistently. Historical review is required before playing this recording.', readingText: 'Buzz Aldrin carried the experiment packages away from Eagle. The crew placed the passive reflector on the lunar surface during the Apollo 11 moonwalk.' },
   '11:2:4': { review: 'The approximate 14-meter placement is supported by NASA ALSJ. Individual deployer attribution remains disputed across NASA sources; the original recording is still held for an editorial decision.', readingText: 'The reflector was set on the lunar surface, leveled and pointed toward Earth. It needed no electrical power.' },
   // Haroon listened to and approved the complete, unchanged original; confirmed
   // by the user on 2026-11-15. See docs/review-safe/scientific-decisions.md.
   '11:4:4': { review: 'NASA ALSJ supports placement approximately 14 meters from Eagle. Haroon listened to and approved the complete original recording, confirmed on 2026-11-15. This is passive reflection, not a powered transmitter.', playback: 'enabled', listening: 'approved-by-haroon' },
-  '17:2:4': { review: 'The PDF gives 35.9 km here and 35.7 km in its summary. Keep the recording pending scientific approval.', readingText: 'Across three surface traverses, LRV-3 extended the astronauts’ reach. The mission covered about 36 kilometers and returned samples from diverse terrain.' },
-  '17:3:2': { review: 'The supplied battery-gauge account needs a direct mission-report reference before playback approval.', readingText: 'Battery power and thermal monitoring were essential to operating an electric vehicle in lunar vacuum. Read the existing engineering account below.' },
-  '17:3:3': { review: 'The package gives conflicting ages for the volcanic glass. NASA describes roughly 3.6-billion-year-old volcanic material.', readingText: 'Schmitt discovered orange soil at Shorty Crater. Its volcanic glass beads preserve evidence of ancient explosive eruptions, about 3.6 billion years ago.' },
-  '17:4:1': { review: 'The exact parking distance conflicts with the PDF’s own instruction to omit unconfirmed distances.', readingText: 'Cernan parked the rover away from Challenger so its Earth-controlled television camera could observe liftoff. The rover was deliberately left on the Moon.' },
+  '17:2:4': { review: 'NASA NSSDCA reports 35.9 km and 4 hours 26 minutes of driving. This is rover driving time across three traverses, not the total duration of the lunar EVAs. Restoring the original narrative and enabling its recording await explicit editorial approval.', source: 'https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html', readingText: 'Across three surface traverses, LRV-3 extended the astronauts’ reach. The mission covered about 36 kilometers and returned samples from diverse terrain.' },
+  '17:3:2': { review: 'Apollo 17 Mission Report, section 9.1, printed page 9-1 (PDF page 129), documents the battery 2 temperature indicator fault and monitoring using battery 1 and earlier trends. The battery did not lose its power supply. Restoring the original narrative and enabling its recording await explicit editorial approval.', source: 'https://ntrs.nasa.gov/api/citations/19730015117/downloads/19730015117.pdf', readingText: 'Battery power and thermal monitoring were essential to operating an electric vehicle in lunar vacuum. Read the existing engineering account below.' },
+  '17:3:3': { review: 'The original narration uses approximately 3.7 billion years. NASA SP-350, chapter 14.6, reports cooling ages of 3.5 to 3.7 billion years; other NASA summaries use approximately 3.6 billion. The current reading is an editorial alternative, not a verbatim transcript of the held original. Restoring the original narrative and enabling its recording await explicit editorial approval.', source: 'https://www.nasa.gov/wp-content/uploads/static/history/SP-350/ch-14-6.html', readingText: 'Schmitt discovered orange soil at Shorty Crater. Its volcanic glass beads preserve evidence of ancient explosive eruptions, about 3.6 billion years ago.' },
+  '17:4:1': { review: 'NASA History identifies the final VIP parking site approximately 158 meters from the lunar module, positioned to televise liftoff. The original approximation has source support. Restoring the original narrative and enabling its recording await explicit editorial approval.', source: 'https://www.nasa.gov/history/50-years-ago-apollo-17-lands-at-taurus-littrow/', readingText: 'Cernan parked the rover away from Challenger so its Earth-controlled television camera could observe liftoff. The rover was deliberately left on the Moon.' },
 }
 export const moonQuiz: Record<MoonMission, QuizQuestion[]> = {
   '11': [
@@ -40,7 +40,7 @@ function manifest(mission: MoonMission, scripts: typeof apollo11Scripts): MoonRe
     return { ...segment, audio: `/audio/apollo-${mission}/chapter-${segment.chapter}/${segment.segment}.mp3`,
       mapping: 'filename-and-pdf', listening: audit?.listening ?? 'pending', timing: 'pending',
       playback: audit?.playback ?? (audit ? 'review-required' : 'enabled'), readingText: audit?.readingText ?? segment.text,
-      review: audit?.review }
+      review: audit?.review, reviewSource: audit?.source }
   }))
 }
 export const moonRecordings = { '11': manifest('11', apollo11Scripts), '17': manifest('17', apollo17Scripts) }

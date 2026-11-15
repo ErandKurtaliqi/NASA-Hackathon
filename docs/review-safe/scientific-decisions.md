@@ -30,6 +30,53 @@ Approval for 4/4 does not apply to 2/3, 2/4, or Apollo 17. Caption timing remain
 pending. Meet Me's duplicate heading is removed only from the displayed script;
 the original audio and source archive remain unchanged.
 
+## Current Apollo 17 decision and restoration proposal
+
+The user explicitly confirmed that individual listening/editorial approval for
+the four Apollo 17 originals has **not** been obtained. Haroon requested that
+the text/audio mismatch be corrected; that request is not recorded as approval
+of the individual original recordings. The original scripts are prepared for
+review, not published as editorially approved. Existing alternate readings are
+retained until confirmation. All original MP3 bytes remain unchanged.
+
+The continuous reader previously ignored `review-required` for Apollo 17, even
+though the recording metadata retained those holds. It now enforces the same
+per-recording decision for Apollo 11 and Apollo 17. An alternate reading no
+longer plays alongside a held, different original. The approval for Apollo 11
+4/4 remains valid and its playback is unchanged.
+
+- **2/4, Three Journeys, One Moon:** Source C supports 35.9 km and 4 h 26 min of
+  driving across the traverses. This is not the total lunar EVA time. The
+  proposed original says "of exploring"; Haroon must explicitly accept that
+  wording with its driving-time context or approve revised text and a matching
+  corrected recording. The supported numbers themselves are not the blocker.
+- **3/2, A Warning from My Battery:** The complete mission report was downloaded
+  and its PDF page 129, printed page 9-1, section 9.1, was text-extracted. It
+  describes battery 2's temperature indication going off-scale low, a probable
+  thermistor fault, and monitoring using battery 1 and earlier trends. The
+  original correctly describes a temperature gauge, not a loss of battery
+  power. Listening/editorial confirmation is still required for restoration.
+- **3/3, Mystery of Orange Soil:** The recording says approximately 3.7 billion
+  years. [NASA SP-350, chapter 14.6](https://www.nasa.gov/wp-content/uploads/static/history/SP-350/ch-14-6.html)
+  gives cooling ages of 3.5 to 3.7 billion years. The [NASA Lunar Sample Compendium,
+  sample 74220](https://www.lpi.usra.edu/lunar/samples/atlas/compendium/74220.pdf)
+  reports multiple age estimates, including approximately 3.6 and 3.7 billion
+  years. This supports a historical approximation; it does not make all published
+  estimates identical. Source E's approximately 3.6-billion-year summary remains
+  preserved. Haroon must approve the selected source/approximation and original
+  wording, or approve a corrected recording. No 3.6-billion-year text is labeled
+  as a verbatim transcript of the original.
+- **4/1, My Final Place:** Source F supports the approximate 158-meter final VIP
+  parking position and televising liftoff. The original approximation is
+  supported; listening/editorial approval is still required for restoration.
+
+Local ASR was run against the four unchanged originals. It corroborates the
+expected script content, including "exploring", "temperature gauge", 3.7 billion
+years, and 158 meters. This is a machine candidate, not human listening approval
+or a replacement transcript/caption. The four direct source links and scientific
+precisions are available in Mission sources. No clarification boxes were added
+back into the narrative.
+
 ## Historical review record
 
 This review updates the earlier classification. It leaves scripts, recordings, and playback permissions intact. The files, chapter and segment assignments, and SHA-256 hashes for all seven tracks match the local inventory. Listening is still required to confirm what the recordings say. [held-recordings.json](held-recordings.json) contains the complete expected scripts, hashes, MPEG durations, and current reading text from `4f6d380`.

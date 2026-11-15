@@ -1,4 +1,4 @@
-// Real Chrome QA. Use the same Playwright/Chrome environment variables as
+// Combined Apollo 11/17 Chrome QA. Use the same environment variables as
 // verify-documentary-layout.mjs; start Vite or preview before running this file.
 import assert from 'node:assert/strict'
 import { mkdir, writeFile } from 'node:fs/promises'
@@ -32,7 +32,9 @@ try {
   await restricted.close()
   // Isolated native decoding proves file/playback health. It never changes the
   // documentary's holds or substitutes this test player into the application.
-  for (const path of ['/audio/apollo-11/chapter-2/3.mp3', '/audio/apollo-11/chapter-2/4.mp3', '/audio/apollo-11/chapter-4/4.mp3']) {
+  // Set AURORALYS_QA_SKIP_NATIVE=1 only for a layout rerun after unchanged files
+  // have already passed full native playback and SHA-256 verification.
+  for (const path of process.env.AURORALYS_QA_SKIP_NATIVE === '1' ? [] : ['/audio/apollo-11/chapter-2/3.mp3', '/audio/apollo-11/chapter-2/4.mp3', '/audio/apollo-11/chapter-4/4.mp3', '/audio/apollo-17/chapter-2/4.mp3', '/audio/apollo-17/chapter-3/2.mp3', '/audio/apollo-17/chapter-3/3.mp3', '/audio/apollo-17/chapter-4/1.mp3']) {
     const page = await browser.newPage()
     await page.goto(base + '/__native_audio_qa__', { waitUntil: 'domcontentloaded' })
     const response = await page.request.get(base + path)
@@ -64,8 +66,10 @@ try {
     console.log(`PASS native decode and signal ${path}`)
     await page.close()
   }
-  for (const id of ['apollo-11-reflector', 'apollo-15-rover', 'apollo-16-rover', 'apollo-17-rover', 'ingenuity', 'sojourner', 'opportunity', 'viking-1']) {
-    const page = await browser.newPage({ viewport: { width: 1366, height: 768 }, reducedMotion: 'reduce' })
+  const desktop = ['apollo-11-reflector', 'apollo-15-rover', 'apollo-16-rover', 'apollo-17-rover', 'ingenuity', 'sojourner', 'opportunity', 'viking-1'].map(id => ({ id, width: 1366, height: 768 }))
+  const mobile = ['apollo-11-reflector', 'apollo-17-rover'].map(id => ({ id, width: 390, height: 844 }))
+  for (const { id, width, height } of [...desktop, ...mobile]) {
+    const page = await browser.newPage({ viewport: { width, height }, reducedMotion: 'reduce' })
     page.setDefaultTimeout(10000)
     page.on('pageerror', error => results.errors.push({ id, error: error.message }))
     const mediaErrors = [], consoleErrors = [], httpErrors = []
@@ -82,13 +86,18 @@ try {
       await page.waitForFunction(id => document.querySelector('[data-continuous-story]').dataset.activeSegment === id, segment.id)
     }
     const checked = []
-    for (const segment of id === 'apollo-11-reflector' ? segments : segments.slice(0, 2)) {
+    for (const segment of ['apollo-11-reflector', 'apollo-17-rover'].includes(id) ? segments : segments.slice(0, 2)) {
       await select(segment)
+      const card = reader.locator(`[data-segment="${segment.id}"]`)
+      assert.equal(await card.locator(':scope > p').first().textContent(), segment.text)
       if (segment.audioHold) {
         await page.waitForFunction(() => { const a = document.querySelector('[data-documentary-audio] audio'); return a.paused && !a.getAttribute('src') })
         if (await sound.getAttribute('aria-pressed') === 'true') await sound.click()
         await sound.click()
         assert.ok((await page.locator('[data-documentary-audio] [role=status]').textContent()).includes('under review'))
+        const notice = await page.locator('[data-documentary-audio] [role=status]').boundingBox()
+        assert.ok(notice.width >= 240 && notice.x >= 0 && notice.x + notice.width <= width)
+        assert.ok(await page.locator('[data-documentary-audio] [role=status]').evaluate(p => p.scrollHeight <= p.clientHeight + 1), 'The review notice is fully readable')
         assert.ok(await page.locator('[data-documentary-audio] audio').evaluate(a => a.paused && !a.getAttribute('src')))
         checked.push({ title: segment.title, audio: segment.audio, held: true, silentInDocumentary: true })
       } else {
@@ -107,8 +116,8 @@ try {
         assert.ok(await page.evaluate(() => [...document.querySelectorAll('audio,video')].filter(a => !a.paused).length <= 1))
         checked.push({ title: segment.title, audio: segment.audio, held: false, ...state, muteAndRestart: true })
       }
-      if (id === 'apollo-11-reflector' && (segment.audioHold || segment.title === 'More Than a Mirror' || segment.segment === 0 && segment.chapter === 0)) {
-        await page.screenshot({ path: resolve(output, `${id}-${segment.chapter + 1}-${segment.segment + 1}.png`) })
+      if (segment.audioHold || id === 'apollo-11-reflector' && (segment.title === 'More Than a Mirror' || segment.segment === 0 && segment.chapter === 0)) {
+        await page.screenshot({ path: resolve(output, `${id}-${segment.chapter + 1}-${segment.segment + 1}-${width}x${height}.png`) })
       }
     }
     if (id === 'apollo-11-reflector') {
@@ -117,6 +126,21 @@ try {
       await select(segments[0]); await select(segments.at(-1))
       await page.waitForFunction(() => { const a = document.querySelector('[data-documentary-audio] audio'); return a.getAttribute('src') === '/audio/apollo-11/chapter-4/4.mp3' && !a.paused && a.currentTime > 0.1 })
     }
+    if (id === 'apollo-17-rover') {
+      await page.getByRole('button', { name: 'Mission sources' }).click()
+      await reader.locator('[data-scientific-review] summary').click()
+      for (const segment of segments.filter(s => s.audioHold)) {
+        assert.ok((await reader.locator('[data-scientific-review]').textContent()).includes(segment.note))
+        assert.ok((await reader.locator('[data-scientific-review] a').evaluateAll(links => links.map(a => a.href))).includes(segment.source))
+      }
+      await reader.locator('[data-scientific-review] summary').click()
+      await select(segments[0])
+    }
+    const overflow = await page.evaluate(() => {
+      const root = document.querySelector('[data-documentary-reader]')
+      return { page: document.documentElement.scrollWidth - innerWidth, reader: root.scrollWidth - root.clientWidth }
+    })
+    assert.ok(overflow.page <= 1 && overflow.reader <= 1, JSON.stringify(overflow))
     for (let chapter = 0; chapter < 4; chapter++) {
       await chapters.nth(chapter).click()
       await reader.getByRole('button', { name: /^Mark .+ complete$/ }).nth(chapter).click()
@@ -135,8 +159,8 @@ try {
     assert.ok(await page.evaluate(id => JSON.parse(localStorage.getItem('beyond-earth-progress')).state.badges.includes(`${id}-storyteller`), id))
     mediaErrors.push(...await page.locator('audio').evaluateAll(audios => audios.flatMap(a => a.error ? [a.error.code] : [])))
     assert.deepEqual(mediaErrors, [])
-    results.stories.push({ id, checked, autoplayBlockedBeforeGesture: autoplayBlocked, quizTimelineBadgePersistence: true, mediaErrors, consoleErrors, httpErrors })
-    console.log(`PASS documentary ${id}: ${checked.length} segments, quiz, timeline, badge and reload`)
+    results.stories.push({ id, viewport: { width, height }, checked, overflow, autoplayBlockedBeforeGesture: autoplayBlocked, quizTimelineBadgePersistence: true, mediaErrors, consoleErrors, httpErrors })
+    console.log(`PASS documentary ${id} ${width}x${height}: ${checked.length} segments, quiz, timeline, badge and reload`)
     await page.close()
   }
   assert.deepEqual(results.errors, [])
@@ -144,4 +168,4 @@ try {
   await browser.close()
   await writeFile(resolve(output, 'browser-results.json'), JSON.stringify(results, null, 2))
 }
-console.log('Passed 3 native file checks and 8 documentary journeys; editorial holds remain explicit')
+console.log(`Passed ${results.nativeFiles.length} native file checks and ${results.stories.length} documentary journeys; editorial holds remain explicit`)

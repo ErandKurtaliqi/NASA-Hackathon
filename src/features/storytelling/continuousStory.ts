@@ -91,7 +91,8 @@ export function documentarySegments(story: MachineStory): DocumentarySegment[] {
       }
       else if (story.id === 'apollo-11-reflector' || story.id === 'apollo-17-rover') {
         const moon = moonRecordings[story.id === 'apollo-11-reflector' ? '11' : '17'][c][s]
-        note = moon.review; audioHold = story.id === 'apollo-11-reflector' && moon.playback === 'review-required' ? moon.review : undefined
+        note = moon.review; audioHold = moon.playback === 'review-required' ? moon.review : undefined
+        source = moon.reviewSource ?? source
         if (story.id === 'apollo-11-reflector') {
           const images = apollo11Galleries[apollo11GalleryOffsets[c] + s]
           gallery = images

@@ -55,7 +55,7 @@ test('scientific holds remain explicit; missing evidence is never replaced by un
   assert.equal(moon.filter(s=>s.audioHold).length,2)
   assert.ok(moon.some(s=>!s.evidence))
   const apollo17 = documentarySegments(storyCatalog['apollo-17-rover'])
-  assert.equal(apollo17.filter(s=>s.audioHold).length,0)
+  assert.equal(apollo17.filter(s=>s.audioHold).length,4)
   assert.ok(apollo17.some(s=>s.note))
   assert.ok(documentarySegments(storyCatalog['viking-1']).some(s=>s.note?.includes('1982')))
 })
