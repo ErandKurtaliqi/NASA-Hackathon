@@ -5,8 +5,8 @@
 .document::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5; background-image: radial-gradient(circle at 17px 29px,#cadfff99 0 1px,transparent 1.5px),radial-gradient(circle at 89px 71px,#b5c5db66 0 .7px,transparent 1.3px); background-size: 223px 211px,307px 283px; }
 .environment { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .header { display: flex; align-items: start; gap: 24px; flex-shrink: 0; min-height: 88px; font-size: 13px; }
-.headerActions { margin-inline-start: auto; display: flex; align-items: center; gap: 8px; }
-.headerActions > a { color: #e9f4ff; background: #0b1725e8; border: 1px solid #9bcbe269; border-radius: 12px; padding: 8px 12px; }
+.headerActions { margin-inline-start: auto; display: flex; align-items: flex-start; gap: 8px; }
+.document .headerActions > a, .document .sourceControls > button { white-space: nowrap; color: #e9f4ff; background: #141e28; border: 1px solid #394b5d; border-radius: 12px; padding: 8px 12px; }
 .document [data-documentary-save-warning] { position: absolute; z-index: 40; top: 70px; left: 18px; width: min(440px,calc(100% - 36px)); max-height: 55%; overflow: auto; padding: 18px; background: #101724; border: 2px solid #f4c47b; border-radius: 16px; }
 .document [data-documentary-save-warning] h2 { font-size: 18px; }
 .document button { font: inherit; min-height: 44px; min-width: 44px; color: #e9f4ff; background: #0b1725e8; border: 1px solid #9bcbe269; border-radius: 12px; padding: 8px 12px; cursor: pointer; }
@@ -60,9 +60,9 @@
 .document[data-world=mars] .evidence figure { border-color: #f4b78b99; box-shadow: 0 0 35px #d8673226; }
 @media (max-width: 700px) {
   .document { padding: 8px 14px; gap: 6px; }
-  .header { font-size: 10px; gap: 10px; height: 44px; }
+  .header { font-size: 10px; gap: 10px; height: auto; }
   .document .hardwareLink { display: none; }
-  .headerActions :is(a, button) { font-size: 10px; padding: 4px 8px; white-space: nowrap; }
+  .document .headerActions > a, .document .sourceControls > button { padding-inline: 8px; }
   .stage { grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(0,1.2fr) minmax(0,1fr); gap: 8px; }
   .evidence { grid-column: 1; grid-row: 2; }
   .evidence > div > p { font-size: 9px; margin-block-end: 4px; }
@@ -93,16 +93,14 @@
   .hint { margin-block: 4px; }
 }
 
-.sourceControls { display: flex; flex-direction: column; align-items: stretch; gap: 4px; width: min(250px, 24vw); }
-.sourceControls [data-documentary-audio] { min-width: 0; }
-.sourceControls [data-documentary-audio] button { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; }
-.sourceControls [aria-pressed=true] { border-color: #c4eaff; background: #24455e; }
+.sourceControls { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+.sourceControls [data-documentary-audio] { display: grid; justify-items: center; min-width: 0; }
+.document .sourceControls [data-documentary-audio] button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 50%; background: #141e28; border-color: #394b5d; }
+.document .sourceControls [data-documentary-audio] button[aria-pressed=true] { border-color: #c4eaff; background: #24455e; }
 .sourceControls [role=status] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.sourceControls [role=status][data-important=true], .sourceControls [data-story-caption] { position: static; clip-path: none; width: auto; height: auto; max-height: 3.2em; margin: 4px 0 0; overflow: auto; font-size: 11px; line-height: 1.5; }
+.sourceControls [role=status][data-important=true], .sourceControls [data-story-caption] { position: static; clip-path: none; width: 0; min-width: 100%; height: auto; max-height: 3.2em; margin: 4px 0 0; overflow: auto; font-size: 11px; line-height: 1.5; }
 @media (max-width: 700px) {
   .header { display: grid; grid-template-columns: minmax(0,1fr) auto; height: auto; min-height: 88px; gap: 4px 12px; }
   .header > a:first-child { grid-column: 1; grid-row: 1; }
-  .headerActions { display: contents; }
-  .headerActions > a { grid-column: 1; grid-row: 2; justify-self: start; }
-  .sourceControls { grid-column: 2; grid-row: 1 / span 2; width: 130px; }
+  .headerActions { grid-column: 2; grid-row: 1; }
 }

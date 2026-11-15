@@ -65,7 +65,7 @@ export default function DocumentaryAudio({ src, nextSrc, label, hold, contextId 
   return <section aria-label="Recorded narration" data-documentary-audio>
     <audio ref={audio} preload="none" onTimeUpdate={event => setTime(event.currentTarget.currentTime)} />
     <button type="button" aria-label={sound ? 'Sound off' : 'Sound on'} aria-pressed={sound} aria-describedby={statusId} onClick={toggleSound}>
-      {sound ? <Volume2 aria-hidden="true" size={16}/> : <VolumeX aria-hidden="true" size={16}/>}<span>Sound {sound ? 'on' : 'off'}</span>
+      {sound ? <Volume2 aria-hidden="true" size={20}/> : <VolumeX aria-hidden="true" size={20}/>}
     </button>
     <p id={statusId} role="status" aria-live="polite" aria-atomic="true" data-important={!!hold || unavailable || status === 'blocked'}>{message}</p>
     {caption && <p data-story-caption>{caption}</p>}
