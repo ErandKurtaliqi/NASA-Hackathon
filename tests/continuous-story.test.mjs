@@ -176,8 +176,11 @@ test('historical source normalization permits only reviewed routing/export seams
 })
 
 
-test('narration deck keeps only sound, play and position controls', () => {
+test('approved documentary header exposes only Sound on/off without a playback deck', () => {
   const source = readFileSync(join(root,'src/components/storytelling/DocumentaryAudio.tsx'),'utf8')
-  assert.ok(source.includes('Narration sound') && source.includes('Resume narration') && source.includes('data-control-label>Position'))
-  assert.ok(!source.includes('Replay narration') && !source.includes('>Volume<input'))
+  assert.ok(source.includes("aria-label={sound ? 'Sound off' : 'Sound on'}"))
+  assert.ok(!/Resume narration|Pause narration|type="range"|Replay narration/.test(source))
+  const page = readFileSync(join(root,'src/components/storytelling/ContinuousStoryPage.tsx'),'utf8')
+  assert.ok(!/data-documentary-controls|Previous segment|Next segment/.test(page))
+  assert.ok(page.indexOf('Mission sources ↗</button>') < page.indexOf('<DocumentaryAudio'))
 })

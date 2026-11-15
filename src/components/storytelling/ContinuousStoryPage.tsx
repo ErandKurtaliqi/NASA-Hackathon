@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { chapterMeta, type MachineStory } from '../../machineStories'
 import { resolveStoryRoute } from '../../features/storytelling/pilot'
 import { activeDocumentSegment, documentaryPresentation, documentarySegments, quizRecording, terrainId } from '../../features/storytelling/continuousStory'
@@ -17,11 +16,12 @@ import MissionSceneCredits from './MissionSceneCredits'
 import DocumentarySaveWarning from './DocumentarySaveWarning'
 import { apollo15StageAssets } from '../../features/storytelling/storyStageAssets'
 import { shortChapterLabels } from '../../features/storytelling/storyPresentation'
+import { noteDocumentaryPlanet } from '../../features/explorer/documentaryPlanetReturn'
 import styles from './ContinuousStoryPage.module.css'
 
 function SelectQuizRecording({ src, onSelect }: { src: string; onSelect: (src: string) => void }) {
   useEffect(() => { onSelect(src) }, [src, onSelect])
-  return <p>Use the recorded narration controls for this question. Verified transcript timing is pending.</p>
+  return <p>Use Sound on below Mission sources to hear this question. Verified transcript timing is pending.</p>
 }
 
 export default function ContinuousStoryPage() {
@@ -32,6 +32,7 @@ export default function ContinuousStoryPage() {
 }
 
 function ContinuousDocument({ story, initialChapter }: { story: MachineStory; initialChapter: number }) {
+  useEffect(() => { noteDocumentaryPlanet(story.planet) }, [story.planet])
   const segments = useMemo(() => documentarySegments(story), [story])
   const presentation = documentaryPresentation(story)
   const initial = initialChapter === 4 ? segments.length : segments.findIndex(s => s.chapter === initialChapter)
@@ -89,19 +90,32 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
   }
   const renderRecording = (question: number) => <SelectQuizRecording src={quizRecording(story.id, question)} onSelect={selectQuestion} />
   const finishQuiz = () => { setQuizReady(true); setQuestionAudio(undefined) }
+  const syncVisibleNarration = () => {
+    const root = reader.current
+    if (!root) return true
+    const box = root.getBoundingClientRect()
+    const next = activeDocumentSegment(cards.current.map(card => card?.getBoundingClientRect().top ?? Infinity), box.top + Math.min(96, box.height * .22), activeRef.current)
+    activeRef.current = next; setActive(next)
+    return next === active
+  }
   return <div className={styles.document} data-continuous-story={story.id} data-active-segment={segment?.id ?? `${story.id}:quiz`} data-active-chapter={chapter + 1} data-world={presentation.world}>
     <DocumentarySaveWarning />
     <div className={styles.environment} data-documentary-background><StoryEnvironment world={presentation.world} idPrefix={terrainId(story.id)} /></div>
     <header className={styles.header}>
-      <Link to={`/explore/${story.planet}?view=map`}>← Back to {story.planet === 'moon' ? 'Moon' : 'Mars'} missions</Link>
+      <Link to={`/explore/${story.planet}`}>← Back to {story.planet === 'moon' ? 'Moon' : 'Mars'} missions</Link>
       <Link className={styles.hardwareLink} to="/hardware">Hardware Lab</Link>
       <div className={styles.headerActions}>
         <Link to="/dashboard">Mission Control</Link>
+        <div className={styles.sourceControls}>
         <button type="button" onClick={() => {
           const sources = reader.current?.querySelector<HTMLElement>('[data-mission-sources]')
           sources?.scrollIntoView({ block: 'start', behavior: 'instant' })
           sources?.focus({ preventScroll: true })
         }}>Mission sources ↗</button>
+        <DocumentaryAudio src={selectedAudio} nextSrc={upcoming?.audioHold ? undefined : upcoming?.audio}
+          contextId={segment?.id ?? `${story.id}:quiz:${questionAudio ?? 'complete'}`} onBeforeEnable={syncVisibleNarration}
+          label={`Chapter ${chapter + 1} / 5 · ${segment?.title ?? 'Quiz and completion'}`} hold={segment?.audioHold} />
+        </div>
       </div>
     </header>
     <div className={styles.title}>
@@ -132,11 +146,11 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
             {story.category === 'stationary-experiment' && <p>Identify the experiment followed in this story. The astronauts also left other equipment on the Moon.</p>}
             {story.id === 'apollo-16-rover' ? <Apollo16Quiz story={story} sound={false} onSound={() => {}} onComplete={finishQuiz} onResult={captureQuizResult} onRetry={() => setQuizReady(false)} renderRecording={renderRecording} /> : <QuizChapter story={story} onComplete={finishQuiz} onResult={captureQuizResult} onRetry={() => setQuizReady(false)} renderRecording={renderRecording} reducedMotion={reduced} />}
             <button type="button" disabled={!quizReady || !chapterMeta.slice(0, 4).every((_, i) => done(i))} onClick={finish}>COMPLETE STORY</button>
-            {!chapterMeta.slice(0, 4).every((_, i) => done(i)) && <p>Mark the four reading chapters complete before saving your mission. Use the chapter shortcuts above to return.</p>}
+            {!chapterMeta.slice(0, 4).every((_, i) => done(i)) && <p>Mark the four reading chapters complete before saving your mission. Use the chapter timeline below to return.</p>}
             {progress.storyProgress[story.id]?.quizResult && <p>Saved quiz result: {progress.storyProgress[story.id].quizResult!.score} / {progress.storyProgress[story.id].quizResult!.total}</p>}
             <ApolloProgressSaveStatus story={story} />
             {done(4) && <p><strong>Mission badge earned</strong> · {story.reward}</p>}
-            <p><Link to="/dashboard">View mission dashboard →</Link></p><p><Link to={`/explore/${story.planet}?view=map`}>Return to the planetary map →</Link></p>
+            <p><Link to="/dashboard">View mission dashboard →</Link></p><p><Link to={`/explore/${story.planet}`}>Return to the {story.planet === 'moon' ? 'Moon' : 'Mars'} globe →</Link></p>
           </article>
           <section data-mission-sources tabIndex={-1} aria-label="Scientific mission sources"><h2>Mission sources</h2>{story.sources.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a></p>)}{story.id === 'apollo-15-rover' ? <p>Photographic composition for storytelling · NASA <a href={apollo15StageAssets.surface.sourceUrl} target="_blank" rel="noreferrer">Apollo 15 surface panorama ↗</a> and a masked historical rover photograph. Decorative stars and lighting; not a single mission photograph or a geographic reconstruction.</p> : <MissionSceneCredits idPrefix={terrainId(story.id)} diagram={story.category === 'stationary-experiment'} />}<p>Photographic composition for storytelling; not a geographic reconstruction. Project narration is not original astronaut audio. Educational project; not an official NASA product.</p><a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" target="_blank" rel="noreferrer">NASA media usage guidelines ↗</a></section>
         </div>
@@ -144,9 +158,5 @@ function ContinuousDocument({ story, initialChapter }: { story: MachineStory; in
       <aside className={styles.evidence} aria-label="NASA evidence"><DocumentaryEvidence key={segment?.gallery ? segment.id : undefined} gallery={segment?.gallery} video={segment?.video} youtubeVideoId={segment?.youtubeVideoId} optionalVideo={segment?.optionalVideo} media={segment?.evidence ?? (chapter === 4 ? presentation.portrait : undefined)} source={segment?.source ?? story.sources[0].url} sourceLabel={segment?.evidenceLabel} sourceSummary={segment?.evidenceSummary} /></aside>
     </section>
     <nav aria-label="Story chapters" className={styles.chapters}>{chapterMeta.map((item, i) => <button type="button" key={item.id} data-completed={done(i)} aria-current={chapter === i ? 'step' : undefined} aria-label={`${i + 1}. ${item.title}${done(i) ? ', completed' : ''}`} onClick={() => select(i === 4 ? segments.length : segments.findIndex(s => s.chapter === i))}><b aria-hidden="true">{done(i) ? '✓' : ''}</b><span>{shortChapterLabels[i]}</span></button>)}</nav>
-    <div className={styles.deck} data-documentary-controls>
-      <div className={styles.shortcuts}><button type="button" disabled={active === 0} onClick={() => select(active - 1)} aria-label="Previous segment"><ChevronLeft aria-hidden="true" data-compact-control-icon/><span data-compact-control-label>Previous segment</span></button><button type="button" disabled={active === segments.length} onClick={() => select(active + 1)} aria-label="Next segment"><span data-compact-control-label>Next segment</span><ChevronRight aria-hidden="true" data-compact-control-icon/></button></div>
-      <DocumentaryAudio src={selectedAudio} nextSrc={upcoming?.audioHold ? undefined : upcoming?.audio} label={`Chapter ${chapter + 1} / 5 · ${segment?.title ?? 'Quiz and completion'}`} hold={segment?.audioHold} />
-    </div>
   </div>
 }

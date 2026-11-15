@@ -24,7 +24,7 @@ const result = await build({ stdin: { contents: "export {Shell} from './src/App'
     build.onResolve({ filter: /^react-router-dom$/ }, () => ({ path: 'router', namespace: 'navigation-router' }))
     build.onLoad({ filter: /.*/, namespace: 'navigation-router' }, () => ({ loader: 'js', contents: `
       export const Link='a',NavLink='a',Route='route',Routes='routes',Navigate='redirect';
-      export const useSearchParams=()=>[new URLSearchParams()];export const useLocation=()=>globalThis.__navLocation,useNavigate=()=>{},useParams=()=>({});` }))
+      export const useSearchParams=()=>[new URLSearchParams()];export const useNavigationType=()=> 'PUSH';export const useLocation=()=>globalThis.__navLocation,useNavigate=()=>{},useParams=()=>({});` }))
     build.onLoad({ filter: /[\\/](RoverScene|LunarRoverScene|IngenuityScene|LandingSequence|PlanetScene|PlanetMap|CinematicScene)\.tsx$/ }, () => ({ loader: 'tsx', contents: 'export const OfficialRover=()=>null,LunarRover=()=>null;export default function Scene(){return null}' }))
     build.onResolve({ filter: /^@react-three\/(fiber|drei)$/ }, args => ({ path: args.path, namespace: 'no-gpu' }))
     build.onLoad({ filter: /.*/, namespace: 'no-gpu' }, () => ({ loader: 'js', contents: 'export const Canvas=()=>null,Stars=()=>null,useFrame=()=>{},useThree=()=>({});' }))
